@@ -2,19 +2,29 @@ import React from "react";
 import Slider from "react-slick";
 import TechCard from "../components/herramientasCarta"; 
 
-// Importa los íconos (Ahora sin SiVisualstudiocode ni SiWamp)
-import { FaReact, FaGitAlt, FaDocker, FaAngular, FaDatabase, FaLinux } from "react-icons/fa";
 import { 
-  SiJavascript, 
-  SiPython, 
-  SiDotnet, 
-  SiPostgresql, 
-  SiDjango, 
-  SiGithub, 
-  SiSupabase 
+    FaReact, 
+    FaGitAlt, 
+    FaDocker, 
+    FaAngular, 
+    FaDatabase, 
+    FaLinux 
+} from "react-icons/fa";
+import { 
+    SiJavascript, 
+    SiPython, 
+    SiDotnet, 
+    SiPostgresql, 
+    SiDjango, 
+    SiGithub, 
+    SiSupabase
 } from "react-icons/si";
-import { TbSql } from "react-icons/tb";
-import { MdOutlineDataUsage } from "react-icons/md"; 
+import { 
+    TbSql 
+} from "react-icons/tb";
+import { 
+    MdOutlineDataUsage 
+} from "react-icons/md"; 
 
 
 export default function StackSection() {
@@ -60,7 +70,6 @@ export default function StackSection() {
       title: "Frameworks y Librerías",
       items: [
         { icon: <FaReact />, name: "React" },
-        { icon: <FaAngular />, name: "Angular" },
         { icon: <SiDjango />, name: "Django" },
         { icon: <MdOutlineDataUsage />, name: "Django REST Framework" }, 
         { icon: <SiDotnet />, name: ".NET DLLs" },
