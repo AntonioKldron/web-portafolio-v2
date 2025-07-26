@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function ExperienciaCarta({ empresa, año, roll, descripcion, tecnologias }) {
+export default function ExperienciaCarta({ empresa, año, roll, descripcion, tecnologias, link }) {
   return (
     <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl shadow-xl p-6 max-w-xl mx-auto text-white space-y-4">
       <div className="flex justify-between items-start border-b border-white/10 pb-2">
@@ -16,12 +16,15 @@ export default function ExperienciaCarta({ empresa, año, roll, descripcion, tec
           {descripcion}
         </p>
 
-        <a 
-          href="#" 
-          className="inline-block text-indigo-400 hover:text-indigo-300 transition duration-200 text-sm font-medium"
-        >
-          Ver más →
-        </a>
+        {link && (
+          <a 
+            href={link} 
+            rel="noopener noreferrer"
+            className="inline-block text-indigo-400 hover:text-indigo-300 transition duration-200 text-sm font-medium"
+          >
+            Ver más →
+          </a>
+        )}
       </div>
 
       {/* Tecnologías */}

@@ -28,6 +28,7 @@ export default function ExperienciaSeccion() {
         roll="Desarrollador Fullstack Jr."
         descripcion="Desarrollo de sistemas web académicos con Laravel (backend) y React (frontend), optimizando procesos escolares."
         tecnologias={tecnologiasFabrica}
+        link="/itm"
       />
 
       <ExperienciaCarta
@@ -36,6 +37,7 @@ export default function ExperienciaSeccion() {
         roll="Desarrollador SQL / Backend"
         descripcion="Desarrollo de soluciones SQL, automatización de procesos y APIs para integrar sistemas empresariales en el sector automotriz."
         tecnologias={tecnologiasIntelisis}
+        link="/intelisis"
       />
     </div>
   );

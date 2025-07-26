@@ -63,7 +63,7 @@ export default function StackSection() {
         { icon: <SiJavascript />, name: "JavaScript" },
         { icon: <SiPython />, name: "Python" },
         { icon: <TbSql />, name: "SQL" },
-        { icon: <SiDotnet />, name: "C# / .NET" },
+        { icon: <SiDotnet />, name: "C#" },
       ],
     },
     {
