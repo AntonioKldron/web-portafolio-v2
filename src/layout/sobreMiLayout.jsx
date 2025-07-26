@@ -40,6 +40,7 @@ export default function MiCartaPerfil() {
                 <a href="#herramientas" className="hover:text-indigo-400 transition-colors">Herramientas</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Experiencia</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Proyectos</a>
+                <a href="#" className="hover:text-indigo-400 transition-colors">Educacion</a>
                 </div>
 
                 {/* Enlaces sociales */}

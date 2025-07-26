@@ -17,14 +17,10 @@ export default function Index() {
   {/* Columna Derecha: Secciones de contenido */}
   <div className="w-full lg:w-1/2 h-screen flex flex-col p-4 overflow-y-auto">
     <div id='sobre-mi' className='h-screen flex-shrink-0 flex items-center justify-center'>
-      <div>
        <SobreMiSeccion /> 
-      </div>
     </div>
-    <div id='herramientas' className='h-screen flex-shrink-0 flex items-center justify-center'>
-      <div>
+    <div id='herramientas' className='h-screen flex-shrink-0 flex items-center justify-center lg:w-full'>
        <StackSection /> 
-      </div>
     </div>
   </div>
 </div>

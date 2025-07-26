@@ -103,11 +103,10 @@ export default function StackSection() {
 
   return (
     <section className="
-      w-full 
+      w-3/5 
       h-full                
       flex flex-col                
-      px-4 py-4             
-      bg-gray-900           
+      px-4 py-4                        
       text-indigo-100       
       rounded-xl            
       shadow-lg             
