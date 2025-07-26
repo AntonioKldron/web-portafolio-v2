@@ -29,13 +29,13 @@ import {
 
 export default function StackSection() {
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 700,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 4500,
+        autoplaySpeed: 5000,
         pauseOnHover: true,
         arrows: false, 
         responsive: [
@@ -103,18 +103,15 @@ export default function StackSection() {
 
   return (
     <section className="
-      w-3/5 
+      w-4/5 
       h-full                
       flex flex-col                
       px-4 py-4                        
-      text-indigo-100       
-      rounded-xl            
-      shadow-lg             
-      max-w-4xl mx-auto     
+      text-indigo-100         
       overflow-hidden       
     ">
         <div className="justify-between items-center mt-8 w-full">
-            <h2 className="text-3xl font-bold text-center text-indigo-400 mb-4"> 
+            <h2 className="text-3xl font-bold text-center text-indigo-400 mb-4 text-white"> 
                 Herramientas
             </h2>
 
@@ -133,7 +130,6 @@ export default function StackSection() {
             ))}
             </div>            
         </div>
-
     </section>
   );
 }

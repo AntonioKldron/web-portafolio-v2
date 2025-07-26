@@ -17,7 +17,7 @@ export default function MiCartaPerfil() {
 
             <div className="flex-1">
                 <h1 className="text-4xl font-bold text-white mb-1">
-                Jose Antonio Cornelio Calderon
+                    José Antonio Cornelio Calderón
                 </h1>
                 <h3 className="text-xl font-semibold text-indigo-400 mb-4">
                 Ingeniero de software
@@ -38,7 +38,7 @@ export default function MiCartaPerfil() {
                 <div className="flex flex-col space-y-2 text-indigo-300 font-medium">
                 <a href="#sobre-mi" className="hover:text-indigo-400 transition-colors">Sobre mí</a>
                 <a href="#herramientas" className="hover:text-indigo-400 transition-colors">Herramientas</a>
-                <a href="#" className="hover:text-indigo-400 transition-colors">Experiencia</a>
+                <a href="#experiencia" className="hover:text-indigo-400 transition-colors">Experiencia</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Proyectos</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Educacion</a>
                 </div>

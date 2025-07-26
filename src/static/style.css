@@ -1,0 +1,50 @@
+#floating-bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    background: radial-gradient(#020b11, #03111a);
+    overflow: hidden;
+  }
+  
+  #floating-bg.active {
+    opacity: 1;
+  }
+  
+  /* Luces flotantes */
+  .light {
+    position: absolute;
+    width: 0px;
+    background-color: rgb(119, 126, 143);
+    box-shadow: #0f136d 0px 0px 20px 2px;
+    top: 100vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0.75;
+  }
+  
+  .x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
+  .x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
+  .x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
+  .x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
+  .x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
+  .x6 { animation: floatUp 3s infinite linear; transform: scale(0.8); left: -81%; }
+  .x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
+  .x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
+  .x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
+  
+  @keyframes floatUp {
+    0%   { top: 100vh; opacity: 0; }
+    25%  { opacity: 1; }
+    50%  { top: 50vh; opacity: 0.8; }
+    75%  { opacity: 1; }
+    100% { top: -10vh; opacity: 0; }
+  }
+  

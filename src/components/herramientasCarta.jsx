@@ -9,7 +9,7 @@ export default function TechCard({ icon, name }) {
       rounded-md                                                          /* Bordes suavemente redondeados */
       shadow-sm                                                           /* Sombra discreta para profundidad */
       border border-gray-700                                              /* Borde fino y oscuro */
-      h-15                                                                /* Altura compacta para encajar en el layout */
+      h-14                                                                /* Altura compacta para encajar en el layout */
       text-center                                                         /* Centra el texto y el ícono */
       transition-all duration-300 ease-in-out                             /* Transiciones suaves para todos los efectos */
       hover:bg-gradient-to-br hover:from-gray-700 hover:to-gray-800       /* Degradado más claro en hover */

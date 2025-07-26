@@ -3,10 +3,12 @@ import MiCartaPerfil from '../layout/sobreMiLayout';
 import MouseLightSpot from '../components/SpotlightCard'; 
 import SobreMiSeccion from '../components/sobreMiCarta';
 import StackSection from '../components/herramientasSeccion';
+import FondoAnimado from '../static/fondo'
 
 export default function Index() {
   return (
-    <div className="min-h-screen w-full text-indigo-100 bg-gray-900 saoverflow-hidden animated-gradient">
+    <div className="min-h-screen w-full text-indigo-100  saoverflow-hidden animated-gradient">
+      <FondoAnimado isActive={true} />
       <MouseLightSpot />
       <div className="flex flex-col lg:flex-row h-full">
         <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-full lg:h-screen p-4">
@@ -17,12 +19,17 @@ export default function Index() {
 
         {/* Contenedor combinado para móvil / columna derecha en escritorio */}
         <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-fit lg:h-screen p-4 scroll-smooth space-y-8">
+          
           <section id="sobre-mi" className="min-h-screen flex items-center justify-center">
             <SobreMiSeccion />
           </section>
 
           <section id="herramientas" className="min-h-screen flex items-center justify-center">
             <StackSection />
+          </section>
+
+          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+            <SobreMiSeccion />
           </section>
         </div>
       </div>
