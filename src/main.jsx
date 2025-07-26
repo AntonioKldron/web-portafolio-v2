@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { StrictMode } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { router } from './router/router.jsx';
+import '../src/style/styles.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
