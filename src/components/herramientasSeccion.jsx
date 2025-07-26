@@ -107,7 +107,7 @@ export default function StackSection() {
     ">
         <div className="justify-between items-center mt-8 w-full">
             <h2 className="text-3xl font-bold text-center text-indigo-400 mb-4"> 
-                Stack Tecnológico
+                Herramientas
             </h2>
 
             <div className="flex flex-col justify-start flex-grow"> 
