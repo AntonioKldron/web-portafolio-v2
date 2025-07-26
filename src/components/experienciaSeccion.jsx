@@ -1,18 +1,42 @@
 import React from 'react';
+import ExperienciaCarta from '../components/experienciaCarta';
+import { SiDjango, SiPython, SiPhp, SiReact, SiLaravel } from "react-icons/si";
+import { TbSql } from "react-icons/tb";
 
-export default function SobreMiSeccion() {
+export default function ExperienciaSeccion() {
+  const tecnologiasIntelisis = [
+    { icon: <SiDjango size={20} />, name: "Django" },
+    { icon: <SiPython size={20} />, name: "Python" },
+    { icon: <TbSql size={20} />, name: "SQL Server" },
+  ];
+
+  const tecnologiasFabrica = [
+    { icon: <SiPhp size={20} />, name: "PHP" },
+    { icon: <SiReact size={20} />, name: "React" },
+    { icon: <SiLaravel size={20} />, name: "Laravel" },
+  ];
+
   return (
-    <div>
-      <h1 className="text-3xl font-bold text-white mb-4">
-        Hola, Soy
-      </h1>
-      <p className="text-justify text-gray-300 text-base leading-relaxed">
-        Un <span className="text-indigo-400 font-semibold">Ingeniero de Software</span> con experiencia en el desarrollo de <span className="text-indigo-400 font-semibold">soluciones backend</span>, integración de <span className="text-indigo-400 font-semibold">APIs REST</span> y manejo avanzado de bases de datos como <span className="text-indigo-400 font-semibold">SQL Server</span>. Actualmente me desempeño como <span className="text-indigo-400 font-semibold">Desarrollador SQL en Intelisis Solution</span>, donde participo en proyectos estratégicos de <span className="text-indigo-400 font-semibold">automatización e integración</span> del sistema ERP, principalmente en el sector automotriz. He trabajado con tecnologías como <span className="text-indigo-400 font-semibold">Django, Django Rest Framework y React</span>, desarrollando servicios que permiten la comunicación efectiva entre distintas plataformas.
+    <div className='w-11/12 lg:w-789 mx-auto space-y-10'>
+      <h2 className="text-3xl font-bold text-center text-white/90"> 
+        Experiencia
+      </h2>
 
-        <br /><br />
+      <ExperienciaCarta
+        empresa="TecNM Campus Morelia"
+        año="2022-2023"
+        roll="Desarrollador Fullstack Jr."
+        descripcion="Desarrollo de sistemas web académicos con Laravel (backend) y React (frontend), optimizando procesos escolares."
+        tecnologias={tecnologiasFabrica}
+      />
 
-        Me enfoco en construir <span className="text-indigo-400 font-semibold">soluciones seguras, escalables</span> y alineadas a los objetivos del negocio, aplicando <span className="text-indigo-400 font-semibold">buenas prácticas</span> en cada etapa del desarrollo. Además, tengo experiencia diseñando estructuras lógicas para procesos complejos, optimizando el rendimiento y garantizando la integridad de los datos. Me considero una persona <span className="text-indigo-400 font-semibold">analítica, proactiva y comprometida</span> con la mejora continua, siempre buscando aportar valor a los proyectos a través de la tecnología.
-      </p>
+      <ExperienciaCarta
+        empresa="Intelisis Solution CA de SV"
+        año="2024-Act"
+        roll="Desarrollador SQL / Backend"
+        descripcion="Desarrollo de soluciones SQL, automatización de procesos y APIs para integrar sistemas empresariales en el sector automotriz."
+        tecnologias={tecnologiasIntelisis}
+      />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import MouseLightSpot from '../components/SpotlightCard';
 import SobreMiSeccion from '../components/sobreMiCarta';
 import StackSection from '../components/herramientasSeccion';
 import FondoAnimado from '../static/fondo'
+import ExperienciaSeccion from '../components/experienciaSeccion'
 
 export default function Index() {
   return (
@@ -29,7 +30,7 @@ export default function Index() {
           </section>
 
           <section id="experiencia" className="min-h-screen flex items-center justify-center">
-            <SobreMiSeccion />
+            <ExperienciaSeccion />
           </section>
         </div>
       </div>
