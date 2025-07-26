@@ -1,7 +1,7 @@
 import React from 'react';
 import MiCartaPerfil from '../layout/sobreMiLayout';
 import MouseLightSpot from '../components/SpotlightCard'; 
-import SobreMiSeccion from '../components/sobreMiCart';
+import SobreMiSeccion from '../components/sobreMiCarta';
 import StackSection from '../components/herramientasSeccion';
 
 export default function Index() {
@@ -10,9 +10,9 @@ export default function Index() {
       <MouseLightSpot />
       <div className="flex flex-col lg:flex-row h-full">
         <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-full lg:h-screen p-4">
-        <div className="min-h-full flex items-center justify-center">
-          <MiCartaPerfil />
-        </div>
+          <div className="min-h-full flex items-center justify-center">
+            <MiCartaPerfil />
+          </div>
         </div>
 
         {/* Contenedor combinado para móvil / columna derecha en escritorio */}
