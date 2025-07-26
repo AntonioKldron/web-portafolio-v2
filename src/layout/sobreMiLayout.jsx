@@ -37,8 +37,8 @@ export default function MiCartaPerfil() {
         <div className="flex flex-row justify-between items-center mt-8 w-full">
             <div className='space-y-8'>
                 <div className="flex flex-col space-y-2 text-indigo-300 font-medium">
-                <a href="#" className="hover:text-indigo-400 transition-colors">Sobre mí</a>
-                <a href="#" className="hover:text-indigo-400 transition-colors">Herramientas</a>
+                <a href="#sobre-mi" className="hover:text-indigo-400 transition-colors">Sobre mí</a>
+                <a href="#herramientas" className="hover:text-indigo-400 transition-colors">Herramientas</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Experiencia</a>
                 <a href="#" className="hover:text-indigo-400 transition-colors">Proyectos</a>
                 </div>

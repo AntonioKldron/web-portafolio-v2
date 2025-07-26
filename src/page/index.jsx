@@ -15,10 +15,10 @@ export default function Index() {
       </div>
 
       <div className="w-1/2 h-screen flex flex-col p-4 overflow-y-auto"> 
-        <div className='h-screen flex-shrink-0 flex items-center justify-center'>
+        <div id='sobre-mi' className='h-screen flex-shrink-0 flex items-center justify-center'>
           <SobreMiSeccion />
         </div>
-        <div className='h-screen flex-shrink-0 flex items-center justify-center'>
+        <div id='herramientas'className='h-screen flex-shrink-0 flex items-center justify-center'>
           <StackSection />
         </div>
       </div>
