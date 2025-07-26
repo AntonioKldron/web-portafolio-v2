@@ -25,7 +25,7 @@ export default function StackSection() {
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
-        autoplaySpeed: 3500,
+        autoplaySpeed: 4500,
         pauseOnHover: true,
         arrows: false, 
         responsive: [
