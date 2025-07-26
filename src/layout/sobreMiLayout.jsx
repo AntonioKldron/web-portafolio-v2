@@ -23,13 +23,12 @@ export default function MiCartaPerfil() {
                 Ingeniero de software
                 </h3>
                 <p className="text-justify text-base leading-relaxed max-w-xl">
-                Ingeniero de software enfocado en crear{' '}
-                <span className="text-indigo-400 font-semibold">soluciones web robustas</span>,{' '}
-                <span className="text-indigo-400 font-semibold">accesibles</span> y{' '}
-                <span className="text-indigo-400 font-semibold">visualmente pulidas</span>, integrando{' '}
-                <span className="text-indigo-400 font-semibold">APIs</span>,{' '}
-                <span className="text-indigo-400 font-semibold">bases de datos</span> y{' '}
-                <span className="text-indigo-400 font-semibold">herramientas ERP</span>.
+                    Ingeniero en software especializado en{' '}
+                    <span className="text-indigo-400 font-semibold">APIs REST</span> e integración de{' '}
+                    <span className="text-indigo-400 font-semibold">sistemas ERP</span> con experiencia en{' '}
+                    <span className="text-indigo-400 font-semibold">React</span>,{' '}
+                    <span className="text-indigo-400 font-semibold">Django</span> y{' '}
+                    <span className="text-indigo-400 font-semibold">SQL Server</span>.
                 </p>
             </div>
         </div>
