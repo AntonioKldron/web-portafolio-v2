@@ -1,32 +1,31 @@
 import React from 'react';
-import MiCartaPerfil from '../layout/sobreMiLayout'
+import MiCartaPerfil from '../layout/sobreMiLayout';
 import MouseLightSpot from '../components/SpotlightCard'; 
 import SobreMiSeccion from '../components/sobreMiCart';
-import StackSection from '../components/herramientasSeccion'
+import StackSection from '../components/herramientasSeccion';
 
 export default function Index() {
   return (
-<div className="min-h-screen bg-gray-900 text-indigo-100 flex flex-col lg:flex-row">
-  <MouseLightSpot />
+    <div className="min-h-screen w-full text-indigo-100 bg-gray-900 saoverflow-hidden animated-gradient">
+      <MouseLightSpot />
+      <div className="flex flex-col lg:flex-row h-full">
+        <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-full lg:h-screen p-4">
+        <div className="min-h-full flex items-center justify-center">
+          <MiCartaPerfil />
+        </div>
+        </div>
 
-  {/* Columna Izquierda: MiCartaPerfil */}
-  <div className="w-full lg:w-1/2 h-screen flex items-center justify-center p-4">
-    <MiCartaPerfil />
-  </div>
+        {/* Contenedor combinado para móvil / columna derecha en escritorio */}
+        <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-fit lg:h-screen p-4 scroll-smooth space-y-8">
+          <section id="sobre-mi" className="min-h-screen flex items-center justify-center">
+            <SobreMiSeccion />
+          </section>
 
-  {/* Columna Derecha: Secciones de contenido */}
-  <div className="w-full lg:w-1/2 h-screen flex flex-col p-4 overflow-y-auto">
-    <div id='sobre-mi' className='h-screen flex-shrink-0 flex items-center justify-center'>
-      <div>
-        <SobreMiSeccion /> 
+          <section id="herramientas" className="min-h-screen flex items-center justify-center">
+            <StackSection />
+          </section>
+        </div>
       </div>
     </div>
-    <div id='herramientas' className='h-screen flex-shrink-0 flex items-center justify-center'>
-      <div>
-        <StackSection /> 
-      </div> 
-    </div>
-  </div>
-</div>
   );
 }
