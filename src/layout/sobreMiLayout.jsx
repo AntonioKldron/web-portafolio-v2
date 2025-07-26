@@ -23,7 +23,7 @@ export default function MiCartaPerfil() {
                 Ingeniero de software
                 </h3>
                 <p className="text-justify text-base leading-relaxed max-w-xl">
-                    Ingeniero en software especializado en{' '}
+                    Ingeniero de software especializado en{' '}
                     <span className="text-indigo-400 font-semibold">APIs REST</span> e integración de{' '}
                     <span className="text-indigo-400 font-semibold">sistemas ERP</span> con experiencia en{' '}
                     <span className="text-indigo-400 font-semibold">React</span>,{' '}

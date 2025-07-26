@@ -34,11 +34,11 @@ export default function MouseLightSpot() {
           w-70 h-70         /* ¡Aumentado a 208px para un halo más grande! */
           bg-gradient-to-br /* Un gradiente para más profundidad */
           from-purple-500   /* Color de inicio vibrante */
-          via-blue-600      /* Color intermedio para transición suave */
-          to-pink-500       /* Color de finalización llamativo */
+          via-blue-900      /* Color intermedio para transición suave */
+          to-pink-700       /* Color de finalización llamativo */
           rounded-full      /* Sigue siendo un círculo perfecto */
           blur-3xl          /* Desenfoque fuerte para un efecto de luz suave */
-          opacity-50        /* Un poco más opaco para que destaque más */
+          opacity-70        /* Un poco más opaco para que destaque más */
           animate-pulse-slow /* Animación de pulsación sutil para vida */
         `}
       ></div>
