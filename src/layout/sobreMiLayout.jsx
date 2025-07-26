@@ -45,10 +45,10 @@ export default function MiCartaPerfil() {
 
                 {/* Enlaces sociales */}
                 <div className="flex space-x-6 justify-center text-gray-400">
-                    <a href="#" className="text-2xl hover:text-blue-400 transition-colors transform hover:scale-105" aria-label="Link a Git">
+                    <a href="https://github.com/AntonioKldron" className="text-2xl hover:text-blue-400 transition-colors transform hover:scale-105" aria-label="Link a Git">
                         <i className="fab fa-github"></i>
                     </a>
-                    <a href="#" className="text-2xl hover:text-blue-500 transition-colors transform hover:scale-105" aria-label="Link a LinkedIn">
+                    <a href="https://www.linkedin.com/in/josé-antonio-cornelio-calderón-201885291" className="text-2xl hover:text-blue-500 transition-colors transform hover:scale-105" aria-label="Link a LinkedIn">
                         <i className="fab fa-linkedin"></i>
                     </a>
                     <a href="#" className="text-2xl hover:text-green-400 transition-colors transform hover:scale-105" aria-label="Link a Whatsapp">
