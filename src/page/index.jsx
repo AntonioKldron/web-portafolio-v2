@@ -5,6 +5,9 @@ import SobreMiSeccion from '../components/sobreMiCarta';
 import StackSection from '../components/herramientasSeccion';
 import FondoAnimado from '../static/fondo'
 import ExperienciaSeccion from '../components/experienciaSeccion'
+import SeccionProyectos from '../components/proyectoSeccion'
+import SeccionEducacion from '../components/estudiosSeccion'
+
 
 export default function Index() {
   return (
@@ -31,6 +34,14 @@ export default function Index() {
 
           <section id="experiencia" className="min-h-screen flex items-center justify-center">
             <ExperienciaSeccion />
+          </section>
+
+          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+            <SeccionProyectos />
+          </section>
+
+          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+            <SeccionEducacion />
           </section>
         </div>
       </div>
