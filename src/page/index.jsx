@@ -36,11 +36,11 @@ export default function Index() {
             <ExperienciaSeccion />
           </section>
 
-          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+          <section id="proyectos" className="min-h-screen flex items-center justify-center">
             <SeccionProyectos />
           </section>
 
-          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+          <section id="educacion" className="min-h-screen flex items-center justify-center">
             <SeccionEducacion />
           </section>
         </div>

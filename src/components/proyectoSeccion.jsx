@@ -6,26 +6,14 @@ import { SiTailwindcss, SiSupabase } from 'react-icons/si';
 export default function SeccionProyectos() {
   const proyectos = [
     {
-        titulo: "Techani-v1",
-        descripcion: "Versión inicial desarrollada con PHP, CSS y JavaScript.",
+        titulo: "Mi Portafolio Web",
+        descripcion: "Proyecto personal desarrollado con React y Tailwind para mostrar mi trabajo profesional y académico.",
         tecnologias: [
-          { name: "PHP", icon: <FaPhp /> },
-          { name: "HTML", icon: <FaHtml5 /> },
-          { name: "CSS", icon: <FaCss3Alt /> },
-          { name: "JavaScript", icon: <FaJsSquare /> }
+          { name: "React", icon: <FaReact /> },
+          { name: "Tailwind", icon: <SiTailwindcss /> }
         ],
-        enlace: "#"
-      },
-    {
-      titulo: "Techani-v2",
-      descripcion: "Aplicación para monitoreo de diabetes tipo 1, desarrollada como proyecto universitario.",
-      tecnologias: [
-        { name: "React", icon: <FaReact /> },
-        { name: "Tailwind", icon: <SiTailwindcss /> },
-        { name: "Supabase", icon: <SiSupabase /> }
-      ],
-      enlace: "#"
-    }
+        enlace: "https://tu-portafolio-web.com" // pon aquí tu URL real
+      }
   ];
 
   return (
