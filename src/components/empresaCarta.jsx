@@ -81,7 +81,7 @@ export default function ExperienciaCard({
       {proyectos.length > 0 && (
         <div className="w-full overflow-x-auto px-6 pb-10 relative z-10">
           <h3 className="text-lg font-semibold border-b border-indigo-400 pb-2 mb-4">
-            Proyectos destacados
+            Proyectos
           </h3>
           <table className="min-w-full text-sm text-left text-indigo-200 border-collapse">
             <thead>

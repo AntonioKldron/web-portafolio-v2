@@ -15,7 +15,7 @@ const IntelisisSection = () => {
     <ExperienciaCard
       empresa={Intelisis}
       cargo="Desarrollador Backend SQL"
-      duracion="Febrero 2023 - Actualidad"
+      duracion="Febrero 2024 - Actualidad"
       tecnologias={[
         { name: "Django", icon: <SiDjango /> },
         { name: "Django REST Framework", icon: <SiDjango /> }, 

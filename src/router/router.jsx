@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Index from "../page/index.jsx";
 import IntelisisSection from "../page/intelisis.jsx";
-import FasItmMoreliaSection from "../page/fasItmMorelia.jsx"
+import ItmSection from '../page/fasItmMorelia.jsx'
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <FasItmMoreliaSection />,
+        element: <ItmSection />,
       },
     ],
   },
