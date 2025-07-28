@@ -18,7 +18,7 @@ export default function ExperienciaCard({
         <div className="flex flex-col lg:flex-row flex-grow h-1/2">
           <div className="lg:w-1/4 w-full flex items-center justify-center p-6">
             {typeof empresa === "string" ? (
-              <a href="/" className="block">
+              <a href="/index" className="block">
                 <img
                   src={empresa}
                   alt="Logo empresa"
