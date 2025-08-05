@@ -7,6 +7,19 @@ import FondoAnimado from '../static/fondo'
 import ExperienciaSeccion from '../components/experienciaSeccion'
 import SeccionProyectos from '../components/proyectoSeccion'
 import SeccionEducacion from '../components/estudiosSeccion'
+import ExperienciaSeccion2 from '../components/experienciaSeccion2'
+import {
+  SiPython,
+  SiDjango,
+  SiReact,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiPhp,
+  SiLaravel,
+  SiDotnet,
+} from "react-icons/si";
+
 
 
 export default function Index() {
@@ -36,10 +49,14 @@ export default function Index() {
             <ExperienciaSeccion />
           </section>
 
-          <section id="proyectos" className="min-h-screen flex items-center justify-center">
-            <SeccionProyectos />
+          <section id="experiencia" className="min-h-screen flex items-center justify-center">
+            <ExperienciaSeccion2 />
           </section>
 
+          <section id="proyectos" className="min-h-screen flex items-center justify-center">
+            <SeccionProyectos />
+            
+          </section>
           <section id="educacion" className="min-h-screen flex items-center justify-center">
             <SeccionEducacion />
           </section>

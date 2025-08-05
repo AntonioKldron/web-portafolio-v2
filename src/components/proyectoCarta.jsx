@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Proyecto({ titulo, descripcion, tecnologias = [], imagen, enlace }) {
   return (
-    <div className="bg-white/5 border border-white/10 rounded-2xl shadow-lg p-6 flex flex-col lg:flex-row gap-6 text-white">
+    <div className="bg-white/5 border border-white/10 rounded-2xl shadow-lg p-6 flex flex-col lg:flex-row gap-6 text-white ">
 
       {/* Solo renderiza imagen si existe */}
       {imagen && (
