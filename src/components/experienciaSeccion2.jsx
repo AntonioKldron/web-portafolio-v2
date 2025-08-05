@@ -27,10 +27,10 @@ import intelisis from '../assets/img/Intelisis/intelisis.png';
 
 export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, tecnologias, link }) {
   return (
-    <section id="educacion" className="w-11/12 lg:w-789 mx-auto space-y-10 flex items-center justify-center">
+    <section id="educacion" className="w-12/12 lg:w-789 mx-auto space-y-10 flex items-center justify-center">
       <ExperienciaCarta2
         empresa="Intelisis Solution CA de SV"
-        año="Febrero 2023-Actualmente"
+        año="Febrero 2024-Actualmente"
         roll="Desarrollador SQL / Backend"
         descripcion="Desarrollo de soluciones SQL, automatización de procesos y APIs para integrar sistemas empresariales en el sector automotriz."
         tecnologias={[
@@ -39,7 +39,7 @@ export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, 
         experienciaCompleta={{
           empresa: intelisis,
           cargo: "Desarrollador SQL / Backend",
-          duracion: "Febrero 2023-Actualmente",
+          duracion: "Febrero 2024-Actualmente",
           tecnologias: [
             { name: "Python", icon: <SiPython /> },
             { name: "Django", icon: <SiDjango /> },
