@@ -53,7 +53,7 @@ export default function Index() {
             <SeccionProyectos />
             
           </section>
-          <section id="educacion" className="min-h-screen flex items-center justify-center">
+          <section id="formacion" className="min-h-screen flex items-center justify-center">
             <SeccionEducacion />
           </section>
         </div>

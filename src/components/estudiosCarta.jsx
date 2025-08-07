@@ -8,7 +8,7 @@ export default function Educacion({ estudios }) {
     >
       <h1 className="text-3xl font-extrabold text-center mb-12 tracking-wide">Educación</h1>
 
-      <div className="space-y-12">
+      <div className="space-y-12 text-justify">
         {estudios.map((estudio, index) => (
           <div key={index} className="border-l-2 border-indigo-500 pl-6">
             <div className="flex justify-between items-center mb-1">

@@ -33,7 +33,7 @@ export default function Modal({ isOpen, onClose, children }) {
     setShow(false);
     setTimeout(() => {
       onClose();
-    }, 250); // duración igual a la animación de salida
+    }, 200); // duración igual a la animación de salida
   };
 
   // Evita renderizar si el modal no está abierto

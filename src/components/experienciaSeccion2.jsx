@@ -117,14 +117,80 @@ export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, 
           ],
           descripcion:
             "Durante mi estancia en Intelisis, desempeñé un papel clave en el diseño, desarrollo e integración de soluciones tecnológicas orientadas a la automatización y mejora de procesos dentro del ERP de la empresa. Desarrollé APIs RESTful utilizando Django y FastAPI, enfocadas en la gestión de módulos críticos como citas, clientes, vehículos y órdenes de servicio, implementando OAuth2 para garantizar seguridad y control de acceso granular por empresa y sucursal. Contribuí a la integración en tiempo real entre sistemas externos e Intelisis, optimizando la eficiencia operativa. Realicé desarrollo avanzado en SQL Server, incluyendo procedimientos almacenados, funciones, triggers y ensamblados, extendiendo así las capacidades del ERP. Además, participé activamente en el consumo y exposición de servicios internos, habilitando una comunicación fluida entre áreas del sistema. Implementé soluciones escalables para entornos multiagencia y colaboré en el despliegue, pruebas y mantenimiento de aplicaciones en entornos controlados, asegurando su estabilidad. Finalmente, elaboré documentación técnica detallada para facilitar la continuidad y escalabilidad de los desarrollos realizados.",
-          proyectos: [
-            {
-              nombre: "BYD CRM Integration",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Sincronización de datos de agencias automotrices.",
-              repositorio: "https://github.com/tuusuario/byd-api",
-            },
-          ],
+            proyectos: [
+              {
+                nombre: "BYD CRM Integración",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Integración para la sincronización de datos de agencias automotrices con sistemas CRM.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Clear Mechanics Integración",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Sincronización de información entre Intelisis y la plataforma ClearMechanics para soporte técnico y diagnóstico vehicular.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "API Servicios",
+                tecnologias: ["Python", "Django", "REST Framework"],
+                descripcion: "Exposición de servicios del DMS Intelisis para consumo externo: citas, órdenes, clientes, tipos de orden, inventario y VINs.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "API Prospectos",
+                tecnologias: ["Python", "Django", "REST Framework"],
+                descripcion: "API para la gestión, creación y conversión de prospectos en clientes, integrando sistemas externos con Intelisis.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Geely Integración",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Integración entre Intelisis y sistemas externos de Geely para el manejo de prospectos y conversión a clientes.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Seekop Integración",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Implementación de integración entre Intelisis y la plataforma Seekop para la gestión de prospectos y su seguimiento.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Salesforce Mazda",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Integración de Intelisis con Salesforce para automatizar la gestión de prospectos del ecosistema Mazda.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Salesforce Daimler",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Sincronización de prospectos y clientes entre Intelisis y Salesforce para Daimler.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "7 Técnicas Mazda",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Interfaz de integración con plataforma de Mazda para la gestión y seguimiento de prospectos generados.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "API Fame",
+                tecnologias: ["Python", "Django", "REST Framework"],
+                descripcion: "Desarrollo de una API REST para la administración de prospectos desde plataformas externas hacia Intelisis para el grupo FAME.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "Xentry Integración",
+                tecnologias: ["SQL Server", "C#"],
+                descripcion: "Integración con plataforma Xentry para el consumo de servicios del DMS Intelisis, facilitando la transferencia de información automotriz.",
+                repositorio: "/404",
+              },
+              {
+                nombre: "CRM Postventa Toyota",
+                tecnologias: ["JavaScript", "TypeScript", "Angular"],
+                descripcion: "Desarrollo de un CRM postventa para Toyota, integrando servicios de Intelisis y mejorando la experiencia del cliente.",
+                repositorio: "/404",
+              },
+            ],
         }}
       />
     </section>

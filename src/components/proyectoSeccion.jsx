@@ -12,7 +12,7 @@ export default function SeccionProyectos() {
           { name: "React", icon: <FaReact /> },
           { name: "Tailwind", icon: <SiTailwindcss /> }
         ],
-        enlace: "https://tu-portafolio-web.com" // pon aquí tu URL real
+        enlace: "/" // pon aquí tu URL real
       }
   ];
 
