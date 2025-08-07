@@ -41,7 +41,7 @@ export default function Modal({ isOpen, onClose, children }) {
 
   return (
     <div
-      className="fixed inset-0  bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 h-full bg-opacity-50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={handleBackdropClick}
     >
       <div

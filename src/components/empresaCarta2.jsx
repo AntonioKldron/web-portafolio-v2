@@ -38,7 +38,7 @@ export default function ExperienciaCard({
 
           {/* Rol y tecnologías */}
           <div className="lg:w-3/4 w-full flex flex-col justify-center px-6 py-6 space-y-6">
-            <section>
+            <section className="h-1/3">
               <h3 className="text-lg font-semibold border-b border-indigo-400 pb-1 mb-2">
                 Rol
               </h3>
@@ -49,7 +49,7 @@ export default function ExperienciaCard({
               </p>
             </section>
 
-            <section>
+            <section className="h-2/3">
               <h3 className="text-lg font-semibold border-b border-indigo-400 pb-1 mb-4">
                 Tecnologías
               </h3>

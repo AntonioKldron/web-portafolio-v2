@@ -61,7 +61,6 @@ export default function ExperienciaCarta2({
         </div>
       </div>
 
-      {/* ✅ Se pasa handleCloseModal como prop */}
       <Modal isOpen={modalOpen} onClose={handleCloseModal}>
         <EmpresaCarta {...experienciaCompleta} isModal onClose={handleCloseModal} />
       </Modal>

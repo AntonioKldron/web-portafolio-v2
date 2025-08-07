@@ -43,24 +43,24 @@ export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, 
         empresa="Instituto Tecnologico de Morelia"
         año="Febrero 2023-Noviembre 2023"
         roll="Desarrollador Full Stack jr"
-        descripcion="Desarrollo de soluciones SQL, automatización de procesos y APIs para integrar sistemas empresariales en el sector automotriz."
+        descripcion="Participación como desarrollador en proyectos académicos de posgrado y en iniciativas del sector privado, a través de una unidad interna de desarrollo conocida como Fábrica Académica de Software."
         tecnologias={[
-          { icon: <SiPhp size={20} />, name: "PHP" },
-          { icon: <SiReact size={20} />, name: "React" },
-          { icon: <SiLaravel size={20} />, name: "Laravel" },
+          { icon: <SiPhp/>, name: "PHP" },
+          { icon: <SiReact/>, name: "React" },
+          { icon: <SiLaravel/>, name: "Laravel" },
         ]}
         experienciaCompleta={{
           empresa: itmmorelia,
           cargo: "Desarrollador Full Stack jr",
           duracion: "Febrero 2023-Noviembre 2023",
           tecnologias: [
-            { icon: <SiPhp size={20} />, name: "PHP" },
-            { icon: <SiReact size={20} />, name: "React" },
-            { icon: <SiLaravel size={20} />, name: "Laravel" },
+            { icon: <SiPhp/>, name: "PHP" },
+            { icon: <SiReact/>, name: "React" },
+            { icon: <SiLaravel/>, name: "Laravel" },
             { name: "Git", icon: <SiGit /> },
           ],
           descripcion:
-            "Durante mi estancia en Intelisis, desempeñé un papel clave en el diseño, desarrollo e integración de soluciones tecnológicas orientadas a la automatización y mejora de procesos dentro del ERP de la empresa. Desarrollé APIs RESTful utilizando Django y FastAPI, enfocadas en la gestión de módulos críticos como citas, clientes, vehículos y órdenes de servicio, implementando OAuth2 para garantizar seguridad y control de acceso granular por empresa y sucursal. Contribuí a la integración en tiempo real entre sistemas externos e Intelisis, optimizando la eficiencia operativa. Realicé desarrollo avanzado en SQL Server, incluyendo procedimientos almacenados, funciones, triggers y ensamblados, extendiendo así las capacidades del ERP. Además, participé activamente en el consumo y exposición de servicios internos, habilitando una comunicación fluida entre áreas del sistema. Implementé soluciones escalables para entornos multiagencia y colaboré en el despliegue, pruebas y mantenimiento de aplicaciones en entornos controlados, asegurando su estabilidad. Finalmente, elaboré documentación técnica detallada para facilitar la continuidad y escalabilidad de los desarrollos realizados.",
+            "Durante mi participación como Desarrollador Full Stack Jr. en la Fábrica Académica de Software del Instituto Tecnológico de Morelia (enero 2023 - enero 2024), formé parte de un equipo multidisciplinario enfocado en el desarrollo de soluciones tecnológicas para proyectos académicos e institucionales. Mis responsabilidades incluyeron el diseño y desarrollo de aplicaciones web full stack, empleando tecnologías como React.js para el frontend y Django con SQLite o MariaDB para el backend, asegurando siempre la integridad de los datos y el rendimiento en las consultas. Colaboré en la creación de landing pages responsivas utilizando HTML5, CSS y PHP, siguiendo buenas prácticas de diseño y accesibilidad. Participé también en el modelado de bases de datos relacionales, y en la implementación de APIs REST para proyectos internos. Además, apoyé en el diseño de interfaces gráficas y prototipos en Figma, contribuyendo a mejorar la experiencia de usuario en cada aplicación. Esta experiencia me permitió desarrollar habilidades tanto técnicas como de trabajo en equipo, así como una visión integral del ciclo de vida del software, desde la conceptualización hasta la entrega del producto final.",
           proyectos: [
             {
               nombre: "OMD",
@@ -90,7 +90,7 @@ export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, 
         }}
       />
 
-<ExperienciaCarta2
+      <ExperienciaCarta2
         empresa="Intelisis Solution CA de SV"
         año="Febrero 2024-Actualmente"
         roll="Desarrollador SQL / Backend"
