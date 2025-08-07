@@ -63,7 +63,8 @@ export default function MiCartaPerfil() {
                 <a
                 href={CV}
                 download='CV-Jose-Antonio-Cornelio-Calderon'
-                className="px-6 py-3 bg-indigo-500 text-white rounded-xl font-semibold shadow-md hover:bg-indigo-600 hover:scale-105 transform transition-transform duration-300"
+                className="px-6 py-3 bg-gray-800 text-white rounded-xl font-medium hover:bg-indigo-500 active:scale-95 transition duration-200"
+
                 >
                 Descargar CV
                 </a>

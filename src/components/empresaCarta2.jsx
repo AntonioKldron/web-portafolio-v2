@@ -8,23 +8,29 @@ export default function ExperienciaCard({
   tecnologias,
   descripcion,
   proyectos = [],
+  onClose, // ✅ nueva prop
 }) {
   return (
     <div className="min-h-screen flex flex-col relative overflow-hidden text-white">
-      <FondoAnimado isActive={true} />
+
+      {/* Fondo animado si aplica */}
+      {/* <FondoAnimado /> */}
 
       <div className="flex flex-col h-auto lg:h-screen relative z-10">
         {/* Encabezado */}
         <div className="flex flex-col lg:flex-row flex-grow h-1/2">
           <div className="lg:w-1/4 w-full flex items-center justify-center p-6">
             {typeof empresa === "string" ? (
-              <a href="/index" className="block">
+              <button
+                onClick={onClose} // ✅ Cierra al hacer clic en el logo
+                className="block"
+              >
                 <img
                   src={empresa}
                   alt="Logo empresa"
                   className="max-h-40 object-contain cursor-pointer mx-auto"
                 />
-              </a>
+              </button>
             ) : (
               empresa
             )}
@@ -32,19 +38,17 @@ export default function ExperienciaCard({
 
           {/* Rol y tecnologías */}
           <div className="lg:w-3/4 w-full flex flex-col justify-center px-6 py-6 space-y-6">
-            {/* Rol */}
             <section>
               <h3 className="text-lg font-semibold border-b border-indigo-400 pb-1 mb-2">
                 Rol
               </h3>
               <p className="text-sm text-indigo-200 tracking-wide">
-                {cargo}{" "}
-                <span className="mx-2 text-indigo-400">·</span>{" "}
+                {cargo}
+                <span className="mx-2 text-indigo-400">·</span>
                 <span className="italic">{duracion}</span>
               </p>
             </section>
 
-            {/* Tecnologías */}
             <section>
               <h3 className="text-lg font-semibold border-b border-indigo-400 pb-1 mb-4">
                 Tecnologías
@@ -86,18 +90,10 @@ export default function ExperienciaCard({
           <table className="min-w-full text-sm text-left text-indigo-200 border-collapse">
             <thead>
               <tr>
-                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">
-                  Proyecto
-                </th>
-                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">
-                  Tecnologías
-                </th>
-                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">
-                  Descripción
-                </th>
-                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">
-                  Repositorio
-                </th>
+                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">Proyecto</th>
+                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">Tecnologías</th>
+                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">Descripción</th>
+                <th className="px-4 py-2 border-b border-indigo-400 font-semibold">Repositorio</th>
               </tr>
             </thead>
             <tbody>
@@ -125,6 +121,16 @@ export default function ExperienciaCard({
           </table>
         </div>
       )}
+
+      {/* ✅ Botón para cerrar modal abajo */}
+      <div className="flex justify-center p-6 z-20">
+        <button
+          onClick={onClose}
+          className="px-6 py-3 bg-gray-800 text-white rounded-xl font-semibold shadow-md hover:bg-indigo-500 transition-colors duration-300"
+        >
+          Cerrar
+        </button>
+      </div>
     </div>
   );
 }

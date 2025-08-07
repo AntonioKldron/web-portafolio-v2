@@ -46,10 +46,6 @@ export default function Index() {
           </section>
 
           <section id="experiencia" className="min-h-screen flex items-center justify-center">
-            <ExperienciaSeccion />
-          </section>
-
-          <section id="experiencia" className="min-h-screen flex items-center justify-center">
             <ExperienciaSeccion2 />
           </section>
 

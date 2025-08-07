@@ -8,9 +8,13 @@ export default function ExperienciaCarta2({
   roll,
   descripcion,
   tecnologias,
-  experienciaCompleta, // 👈 Nuevo prop para pasar todo a ExperienciaCard
+  experienciaCompleta,
 }) {
   const [modalOpen, setModalOpen] = useState(false);
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   return (
     <>
@@ -57,8 +61,9 @@ export default function ExperienciaCarta2({
         </div>
       </div>
 
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-        <EmpresaCarta {...experienciaCompleta} isModal />
+      {/* ✅ Se pasa handleCloseModal como prop */}
+      <Modal isOpen={modalOpen} onClose={handleCloseModal}>
+        <EmpresaCarta {...experienciaCompleta} isModal onClose={handleCloseModal} />
       </Modal>
     </>
   );
