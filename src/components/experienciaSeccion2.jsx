@@ -29,8 +29,8 @@ import {
   } from "react-icons/tb";
   
 import { DiVisualstudio } from "react-icons/di";
-import intelisis from '../assets/img/Intelisis/intelisis.png';
-import itmmorelia from '../assets/img/Itm/Itmorelia.png';
+import intelisis from '../assets/img/intelisis/intelisis.png';
+import itmmorelia from '../assets/img/itm/itmorelia.png';
 
 export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, tecnologias, link }) {
   return (
