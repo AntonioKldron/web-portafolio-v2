@@ -45,18 +45,46 @@ export default function MiCartaPerfil() {
 
                 {/* Enlaces sociales */}
                 <div className="flex space-x-6 justify-center text-gray-400">
-                    <a href="https://github.com/AntonioKldron" className="text-2xl hover:text-blue-400 transition-colors transform hover:scale-105" aria-label="Link a Git">
-                        <i className="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/josé-antonio-cornelio-calderón-201885291" className="text-2xl hover:text-blue-500 transition-colors transform hover:scale-105" aria-label="Link a LinkedIn">
-                        <i className="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://wa.me/524431582962" className="text-2xl hover:text-green-400 transition-colors transform hover:scale-105" aria-label="Link a Whatsapp">
-                        <i className="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:antoncc47@gmail.com" className="text-2xl hover:text-red-400 transition-colors transform hover:scale-105" aria-label="Link a Gmail">
-                        <i className="fas fa-envelope"></i>
-                    </a>
+                <a
+  href="https://github.com/AntonioKldron"
+  className="text-2xl hover:text-blue-400 transition-colors transform hover:scale-105"
+  aria-label="Link a Git"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <i className="fab fa-github"></i>
+</a>
+
+<a
+  href="https://www.linkedin.com/in/josé-antonio-cornelio-calderón-201885291"
+  className="text-2xl hover:text-blue-500 transition-colors transform hover:scale-105"
+  aria-label="Link a LinkedIn"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <i className="fab fa-linkedin"></i>
+</a>
+
+<a
+  href="https://wa.me/524431582962"
+  className="text-2xl hover:text-green-400 transition-colors transform hover:scale-105"
+  aria-label="Link a Whatsapp"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <i className="fab fa-whatsapp"></i>
+</a>
+
+<a
+  href="mailto:antoncc47@gmail.com"
+  className="text-2xl hover:text-red-400 transition-colors transform hover:scale-105"
+  aria-label="Link a Gmail"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <i className="fas fa-envelope"></i>
+</a>
+
                 </div>
             </div>
             <div className="flex-1 flex justify-center items-center">
