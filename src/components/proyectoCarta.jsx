@@ -129,48 +129,65 @@ export default function Proyecto({
       </div>
 
       {modalAbierto && (
-        <div className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center transition-opacity duration-300 px-4">
-          {/* Botón cerrar */}
-          <button
-            onClick={cerrarModal}
-            className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl transition-colors z-50"
-            aria-label="Cerrar"
-          >
-            ✖
-          </button>
+      <div className="fixed inset-0 z-50 bg-black/80 flex flex-col items-center justify-center transition-opacity duration-300 px-4 py-8">
+        {/* Botón cerrar */}
+        <button
+          onClick={cerrarModal}
+          className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl transition-colors z-50"
+          aria-label="Cerrar"
+        >
+          ✖
+        </button>
 
-          <div className="relative w-full max-w-4xl">
-            {/* Imagen principal */}
-            <img
-              src={imagenes[indiceImagen]}
-              alt={`Imagen ${indiceImagen + 1}`}
-              className={`w-full max-h-[85vh] object-contain rounded-xl shadow-xl transition-opacity duration-300 ${
-                fade ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
+        <div className="relative w-full max-w-4xl">
+          {/* Imagen principal */}
+          <img
+            src={imagenes[indiceImagen]}
+            alt={`Imagen ${indiceImagen + 1}`}
+            className={`w-full max-h-[70vh] object-contain rounded-xl shadow-xl transition-opacity duration-300 ${
+              fade ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
 
-            {/* Botones de navegación */}
-            {imagenes.length > 1 && (
-              <>
-                <button
-                  onClick={imagenAnterior}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
-                  aria-label="Imagen anterior"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={imagenSiguiente}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
-                  aria-label="Imagen siguiente"
-                >
-                  ›
-                </button>
-              </>
-            )}
-          </div>
+          {/* Botones de navegación */}
+          {imagenes.length > 1 && (
+            <>
+              <button
+                onClick={imagenAnterior}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
+                aria-label="Imagen anterior"
+              >
+                ‹
+              </button>
+              <button
+                onClick={imagenSiguiente}
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
+                aria-label="Imagen siguiente"
+              >
+                ›
+              </button>
+            </>
+          )}
         </div>
-      )}
+
+        {/* Miniaturas */}
+        {imagenes.length > 1 && (
+          <div className="mt-4 flex flex-wrap justify-center gap-2 max-w-4xl overflow-x-auto">
+            {imagenes.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`Miniatura ${index + 1}`}
+                onClick={() => setIndiceImagen(index)}
+                className={`h-20 w-20 object-cover rounded-md cursor-pointer border-2 transition-all ${
+                  index === indiceImagen ? 'border-white scale-105' : 'border-transparent opacity-70 hover:opacity-100'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    )}
     </>
   );
 }
