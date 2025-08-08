@@ -172,7 +172,7 @@ export default function Proyecto({
 
         {/* Miniaturas */}
         {imagenes.length > 1 && (
-          <div className="mt-4 flex flex-wrap justify-center gap-2 max-w-4xl overflow-x-auto">
+          <div className="mt-4 flex flex-wrap justify-center gap-2 max-w-4xl overflow-y-hidden overflow-x-auto whitespace-nowrap">
             {imagenes.map((img, index) => (
               <img
                 key={index}
