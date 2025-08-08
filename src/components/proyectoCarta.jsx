@@ -133,7 +133,7 @@ export default function Proyecto({
           {/* Botón cerrar */}
           <button
             onClick={cerrarModal}
-            className="absolute top-4 right-4 text-white text-3xl hover:text-red-400 transition z-50"
+            className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl transition-colors z-50"
             aria-label="Cerrar"
           >
             ✖
