@@ -5,6 +5,11 @@ import { SiTailwindcss, SiSupabase } from 'react-icons/si';
 import website from "../assets/img/proyect/website/website.png"
 
 export default function SeccionProyectos() {
+  const imgWebSite = import.meta.glob('../assets/img/proyect/website/carrusel/*.png', {
+    eager: true,
+    import: 'default'
+  });
+
   const proyectos = [
     {
         titulo: "Mi Portafolio Web",
@@ -14,7 +19,11 @@ export default function SeccionProyectos() {
           { name: "React", icon: <FaReact /> },
           { name: "Tailwind", icon: <SiTailwindcss /> }
         ],
-        enlace: "/" // pon aquí tu URL real
+        imagenes: Object.entries(imgWebSite)
+        .sort(([a], [b]) => a.localeCompare(b)) // opcional
+        .map(([, value]) => value),
+        urlSitio: "/",
+        urlRepositorio: "https://github.com/AntonioKldron/web-portafolio-v2.git"
       }
   ];
 
