@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import rostro from '../assets/img/miFoto.png';
-import CV from '../../public/pdf/A4 - 1.pdf';
+import CV from '../../public/pdf/Cv-Jose Antonio Cornelio Calderon.pdf';
 
 export default function MiCartaPerfil() {
     const [activeSections, setActiveSections] = useState([]);
