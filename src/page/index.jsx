@@ -8,26 +8,13 @@ import ExperienciaSeccion from '../components/experienciaSeccion'
 import SeccionProyectos from '../components/proyectoSeccion'
 import SeccionEducacion from '../components/estudiosSeccion'
 import ExperienciaSeccion2 from '../components/experienciaSeccion2'
-import {
-  SiPython,
-  SiDjango,
-  SiReact,
-  SiJavascript,
-  SiHtml5,
-  SiCss3,
-  SiPhp,
-  SiLaravel,
-  SiDotnet,
-} from "react-icons/si";
-
-
 
 export default function Index() {
   return (
     <div className="min-h-screen w-full text-indigo-100  saoverflow-hidden animated-gradient">
       <FondoAnimado isActive={true} />
       <MouseLightSpot />
-      <div className="flex flex-col lg:flex-row h-full">
+      <div className="flex flex-col lg:flex-row">
         <div className="lg:w-1/2 flex-shrink-0 overflow-visible lg:overflow-y-auto h-full lg:h-screen p-4">
           <div className="min-h-full flex items-center justify-center">
             <MiCartaPerfil />
@@ -56,6 +43,11 @@ export default function Index() {
           <section id="formacion" className="min-h-screen flex items-center justify-center">
             <SeccionEducacion />
           </section>
+
+          {/* Footer siempre visible al fondo */}
+          <footer className="text-center text-sm text-gray-400 py-4">
+            © {new Date().getFullYear()} José Antonio Cornelio Calderón <br /> Todos los derechos reservados.
+          </footer>
         </div>
       </div>
     </div>
