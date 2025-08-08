@@ -2,12 +2,14 @@ import React from 'react';
 import Proyecto from '../components/proyectoCarta';
 import { FaReact, FaPhp, FaCss3Alt, FaJsSquare, FaHtml5 } from 'react-icons/fa';
 import { SiTailwindcss, SiSupabase } from 'react-icons/si';
+import website from "../assets/img/proyect/website/website.png"
 
 export default function SeccionProyectos() {
   const proyectos = [
     {
         titulo: "Mi Portafolio Web",
         descripcion: "Proyecto personal desarrollado con React y Tailwind para mostrar mi trabajo profesional y académico.",
+        imagen: website,
         tecnologias: [
           { name: "React", icon: <FaReact /> },
           { name: "Tailwind", icon: <SiTailwindcss /> }
