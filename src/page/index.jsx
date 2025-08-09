@@ -12,7 +12,7 @@ export default function Index() {
   const observerRef = useRef(null);
 
   return (
-  <div className="relative min-h-screen w-full text-indigo-100 overflow-hidden">
+  <div className="relative min-h-screen w-full text-indigo-100 overflow-hidden px-10">
       
       {/* Fondo siempre activo y fijo */}
       <div className="fixed inset-0 z-0">
