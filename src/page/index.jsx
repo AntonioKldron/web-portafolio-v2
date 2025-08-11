@@ -13,7 +13,7 @@ export default function Index() {
   const observerRef = useRef(null);
 
   return (
-    <div className="relative min-h-screen w-full text-indigo-100 overflow-hidden px-[60px] lg:px-5">
+    <div className="relative min-h-screen w-full text-indigo-100 overflow-hidden px-[45px] lg:px-5">
       <div className="fixed inset-0 z-0">
         <FondoAnimado isActive={true} />
       </div>
