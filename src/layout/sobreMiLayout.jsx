@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import rostro from '../assets/img/Foto.png';
+import rostro from '../assets/img/miFoto.png';
 import CV from '../../public/pdf/Cv-Jose Antonio Cornelio Calderon.pdf';
 
 export default function MiCartaPerfil() {
