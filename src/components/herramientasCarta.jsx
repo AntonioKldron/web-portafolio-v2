@@ -1,28 +1,24 @@
 import React from 'react';
 
-export default function TechCard({ icon, name }) {
+export default function TechCard({ icon, name, colorClass }) {
   return (
-    <div className="
-      flex flex-col items-center justify-center 
-      p-1 m-0.5                                                           /* Padding y margen mínimos para la compacidad */
-      bg-gradient-to-br from-gray-800 to-gray-900                         /* Fondo con un degradado sutil */
-      rounded-md                                                          /* Bordes suavemente redondeados */
-      shadow-sm                                                           /* Sombra discreta para profundidad */
-      border border-gray-700                                              /* Borde fino y oscuro */
-      h-14                                                                /* Altura compacta para encajar en el layout */
-      text-center                                                         /* Centra el texto y el ícono */
-      transition-all duration-300 ease-in-out                             /* Transiciones suaves para todos los efectos */
-      hover:bg-gradient-to-br hover:from-gray-700 hover:to-gray-800       /* Degradado más claro en hover */
-      hover:border-indigo-500                                             /* Borde se ilumina a indigo en hover */
-      hover:shadow-md                                                     /* Sombra ligeramente más pronunciada en hover */
-      hover:scale-105                                                     /* Efecto de escala sutil en hover */
-    ">
-      <div className="text-2xl text-indigo-400 mb-0.5">
-        {icon}
+    <div className="px-1 py-2"> {/* Reducido para compactar el carrusel */}
+      <div className={`group relative flex flex-col items-center justify-center p-3 rounded-xl 
+                    bg-[#0a0f1c]/60 backdrop-blur-lg border border-white/5 transition-all 
+                    duration-300 hover:border-indigo-500/50 hover:bg-white/5 ${colorClass}`}>
+        
+        {/* Icono escalado a 3xl para ahorrar espacio vertical */}
+        <div className="text-3xl mb-1.5 transition-all duration-300 group-hover:scale-110">
+          {icon}
+        </div>
+        
+        <p className="text-[9px] font-bold tracking-[0.1em] text-gray-500 
+                    group-hover:text-white transition-colors uppercase text-center font-mono">
+          {name}
+        </p>
+
+        <div className="absolute top-1.5 right-1.5 w-1 h-1 bg-white/5 rounded-full group-hover:bg-indigo-400" />
       </div>
-      <p className="text-xs font-semibold text-gray-200">
-        {name}
-      </p>
     </div>
   );
 }
