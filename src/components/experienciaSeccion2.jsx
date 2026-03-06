@@ -1,194 +1,144 @@
-import React from 'react';
-import ExperienciaCarta2 from './ExperienciaCarta2';
-import {
-    SiPython,
-    SiDjango,
-    SiPostgresql,
-    SiJavascript,
-    SiAngular,
-    SiDocker,
-    SiLinux,
-    SiFastapi,
-    SiSwagger,
-    SiJsonwebtokens,
-    SiGit,
-    SiGithub,
-    SiPhp,
-    SiReact,
-    SiLaravel
-  } from "react-icons/si";
-  
-  import {
-    FaDatabase,         // Base de datos (SQL Server)
-    FaMicrosoft,        // Representa Microsoft / .NET / C#
-    FaCode,             // REST API genérico
-    FaProjectDiagram,   // Arquitectura/REST
-  } from "react-icons/fa";
-  import { 
-    TbSql 
-  } from "react-icons/tb";
-  
-import { DiVisualstudio } from "react-icons/di";
+import React, { useState } from "react";
+import ExperienciaUnidad from "./ExperienciaUnidad";
+import cinepolis from '../assets/img/cinepolis/cinepolis.png';
 import intelisis from '../assets/img/intelisis/intelisis.png';
 import itmmorelia from '../assets/img/itm/itmorelia.png';
+import { SiPython, SiDjango, SiPostgresql, SiJavascript, SiAngular, SiDocker, SiLinux, SiGit, SiPhp, SiReact, SiLaravel, SiFastapi, SiOracle, SiMariadb, SiSqlite } from "react-icons/si";
+import { FaDatabase, FaServer, FaCogs, FaJava } from "react-icons/fa";
 
-export default function ExperienciaSeccion2({ empresa, año, roll, descripcion, tecnologias, link }) {
+export default function ExperienciaSeccion2() {
+  const [openUnit, setOpenUnit] = useState(null);
+
+  const experienciaData = [
+    {
+      id: "EXP_00",
+      empresa: "Cinépolis",
+      ubicacion: "Morelia, Michoacán",
+      logo: cinepolis,
+      puesto: "Analista ERP",
+      periodo: "Enero 2026 - Actualidad",
+      resumen_largo: "Ingeniería de Software especializada en la optimización de PeopleSoft y la integración de librerías Java personalizadas para la resolución de lógica compleja de negocio a nivel global.",
+      descripcion: "Diseño, desarrollo y optimización de soluciones robustas utilizando PeopleTools: PeopleCode, Application Designer, Application Packages y Application Engine.",
+      detalles: [
+        "Desarrollo avanzado en PeopleTools: PeopleCode, Application Designer y Application Packages.",
+        "Integración de librerías Java (.jar) personalizadas para potenciar funcionalidades nativas.",
+        "Gestión y soporte de servicios web REST/SOAP mediante Integration Broker.",
+        "Análisis de datos mediante SQL Oracle, Meta-SQL y reporteo avanzado con BI Publisher.",
+        "Consultoría técnico-funcional para áreas de Finanzas, RH y Operaciones asegurando cumplimiento de SLAs."
+      ],
+      tecnologias: [
+        { name: "Oracle SQL", icon: <SiOracle /> }, 
+        { name: "Java", icon: <FaJava /> },
+        { name: "PeopleSoft", icon: <FaServer /> }
+      ],
+      proyectos: []
+    },
+    {
+      id: "EXP_01",
+      empresa: "Intelisis Solution CA de SV",
+      ubicacion: "Morelia, Michoacán",
+      logo: intelisis,
+      puesto: "Desarrollador SQL / Backend", // Se mantiene como título principal de la unidad
+      periodo: "Feb 2024 - Enero 2026",
+      resumen_largo: "Evolución profesional desde la optimización técnica inicial como becario hasta el liderazgo en el desarrollo de APIs RESTful y arquitectura backend para el sector automotriz.",
+      puestos: [
+        {
+          nombre: "Desarrollador Back-End",
+          fecha: "Julio 2024 – Enero 2026",
+          descripcion: "Arquitectura y despliegue de APIs RESTful empleando Django y FastAPI para la gestión integral de flujos operativos (clientes, vehículos y órdenes de servicio).",
+          detalles: [
+            "Implementación de protocolos OAuth2 y esquemas de control de acceso granular para protección de activos.",
+            "Ingeniería de bases de datos senior en SQL Server: procedimientos, triggers y ensamblados optimizados.",
+            "Sincronización en tiempo real entre el ERP e interfaces externas, incrementando eficiencia multiagencia.",
+            "Liderazgo en fases de pruebas unitarias, despliegues controlados y elaboración de documentación técnica."
+          ]
+        },
+        {
+          nombre: "Becario de Desarrollo",
+          fecha: "Febrero 2024 – Julio 2024",
+          descripcion: "Optimización de Backend y gestión de infraestructura inicial para el DMS Intelisis, enfocado en rendimiento y estabilidad.",
+          detalles: [
+            "Desarrollo y depuración de scripts SQL en SQL Server para la mejora del rendimiento en la gestión de datos.",
+            "Gestión de actualizaciones y puesta en producción en entornos WAMP Server, garantizando estabilidad.",
+            "Colaboración activa bajo metodologías ágiles, integrando módulos internos y brindando soporte técnico."
+          ]
+        }
+      ],
+      tecnologias: [
+        { name: "Python", icon: <SiPython /> }, 
+        { name: "Django", icon: <SiDjango /> },
+        { name: "FastAPI", icon: <SiFastapi /> },
+        { name: "SQL Server", icon: <FaDatabase /> }, 
+        { name: "PostgreSQL", icon: <SiPostgresql /> },
+        { name: "Docker", icon: <SiDocker /> }, 
+        { name: "Linux", icon: <SiLinux /> },
+        { name: "Git", icon: <SiGit /> },
+        { name: "JavaScript", icon: <SiJavascript /> },
+        { name: "Angular", icon: <SiAngular /> }
+      ],
+      proyectos: [
+        { nombre: "BYD Integración", descripcion: "Sincronización de agencias automotrices con sistemas CRM de la marca BYD.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "Clear Mechanics", descripcion: "Sincronización de información técnica para soporte y diagnóstico vehicular.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "API Servicios", descripcion: "Exposición de servicios del DMS: citas, órdenes, clientes, inventario y VINs.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
+        { nombre: "API Prospectos", descripcion: "Gestión, creación y conversión de prospectos integrando sistemas externos.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
+        { nombre: "Geely Integración", descripcion: "Manejo de prospectos, inventarios y venta de unidades de la marca Geely.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "Seekop Integration", descripcion: "Gestión de prospectos y venta de unidades mediante la plataforma Seekop.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "Salesforce Mazda", descripcion: "Automatización de la gestión de prospectos del ecosistema Mazda.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "Salesforce Daimler", descripcion: "Generación de KPIs para ventas, servicios e inventarios en Salesforce.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "7 Técnicas Mazda", descripcion: "Interfaz de KPIs para reportar el ciclo de vida completo de las unidades.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: ["Python", "Django"], repositorio: "/404" },
+        { nombre: "Xentry API", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
+        { nombre: "CRM Postventa Toyota", descripcion: "Desarrollo de CRM postventa integrando servicios nativos de Intelisis.", tecnologias: ["Angular", "TS"], repositorio: "/404" }
+      ]
+    },
+    {
+      id: "EXP_02",
+      empresa: "Fábrica Académica de Software (ITM)",
+      ubicacion: "Morelia, Michoacán",
+      logo: itmmorelia,
+      puesto: "Desarrollador Full Stack Jr",
+      periodo: "Enero 2023 - Enero 2024",
+      resumen_largo: "Desarrollo integral de aplicaciones web institucionales de extremo a extremo y modelado de bases de datos relacionales en el Instituto Tecnológico de Morelia.",
+      descripcion: "Construcción de aplicaciones web de extremo a extremo utilizando React.js para el frontend y Django para el backend, enfocadas en la optimización de procesos internos.",
+      detalles: [
+        "Desarrollo Full Stack con React.js para el frontend y Django/Laravel para el backend.",
+        "Modelado de prototipos y sistemas de diseño responsivos en Figma para UX/UI.",
+        "Diseño de esquemas de bases de datos relacionales en MariaDB y SQLite.",
+        "Aseguramiento de la integridad referencial y eficiencia en consultas REST."
+      ],
+      tecnologias: [
+        { name: "React", icon: <SiReact /> }, 
+        { name: "PHP", icon: <SiPhp /> },
+        { name: "Laravel", icon: <SiLaravel /> }, 
+        { name: "MariaDB", icon: <SiMariadb /> },
+        { name: "SQLite", icon: <SiSqlite /> },
+        { name: "Git", icon: <SiGit /> }
+      ],
+      proyectos: [
+        { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: ["React", "Supabase", "Tailwind"], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
+        { nombre: "Techani 1", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
+        { nombre: "OMD System", descripcion: "Plataforma de gestión web para una organización sin fines de lucro.", tecnologias: ["PHP", "MariaDB"], repositorio: "/404" }
+      ]
+    }
+  ];
+
   return (
-    <section id="educacion" className="w-12/12 lg:w-789 mx-auto space-y-10 flex items-center justify-center flex-col">
-      <h2 className="text-3xl font-bold text-center text-white/90"> 
-        Experiencia
-      </h2>
+    <section className="w-full max-w-5xl mx-auto px-4 py-16 relative z-10">
+      <div className="flex flex-col mb-12 space-y-2 md:ml-12">
+        <div className="flex items-center gap-3">
+          <div className="h-[1px] w-8 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
+          <span className="text-[10px] font-bold tracking-[0.4em] text-indigo-400 uppercase font-mono">System Timeline</span>
+        </div>
+        <h2 className="text-4xl lg:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">
+          Trayectoria <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Profesional.</span>
+        </h2>
+      </div>
 
-      <ExperienciaCarta2
-        empresa="Intelisis Solution CA de SV"
-        año="Febrero 2024 - Actualmente"
-        roll="Desarrollador SQL / Backend"
-        descripcion="Desarrollo de soluciones SQL, automatización de procesos y APIs para integrar sistemas empresariales en el sector automotriz."
-        tecnologias={[
-          { name: "Python", icon: <SiPython /> },
-          { name: "SQL Server", icon: <TbSql /> },
-          { name: "Django", icon: <SiDjango /> },
-        ]}
-        experienciaCompleta={{
-          empresa: intelisis,
-          cargo: "Desarrollador SQL / Backend",
-          duracion: "Febrero 2024 - Actualmente",
-          tecnologias: [
-            { name: "Python", icon: <SiPython /> },
-            { name: "Django", icon: <SiDjango /> },
-            { name: "SQL Server", icon: <FaDatabase /> },
-            { name: "PostgreSQL", icon: <SiPostgresql /> },
-            { name: "JavaScript", icon: <SiJavascript /> },
-            { name: "Angular", icon: <SiAngular /> },
-            { name: "Docker", icon: <SiDocker /> },
-            { name: "Linux", icon: <SiLinux /> },
-            { name: "Git", icon: <SiGit /> },
-          ],
-          descripcion:
-            "Durante mi estancia en Intelisis, desempeñé un papel clave en el diseño, desarrollo e integración de soluciones tecnológicas orientadas a la automatización y mejora de procesos dentro del ERP de la empresa. Desarrollé APIs RESTful utilizando Django y FastAPI, enfocadas en la gestión de módulos críticos como citas, clientes, vehículos y órdenes de servicio, implementando OAuth2 para garantizar seguridad y control de acceso granular por empresa y sucursal. Contribuí a la integración en tiempo real entre sistemas externos e Intelisis, optimizando la eficiencia operativa. Realicé desarrollo avanzado en SQL Server, incluyendo procedimientos almacenados, funciones, triggers y ensamblados, extendiendo así las capacidades del ERP. Además, participé activamente en el consumo y exposición de servicios internos, habilitando una comunicación fluida entre áreas del sistema. Implementé soluciones escalables para entornos multiagencia y colaboré en el despliegue, pruebas y mantenimiento de aplicaciones en entornos controlados, asegurando su estabilidad. Finalmente, elaboré documentación técnica detallada para facilitar la continuidad y escalabilidad de los desarrollos realizados.",
-          proyectos: [
-            {
-              nombre: "BYD CRM Integración",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Integración para la sincronización de datos de agencias automotrices con sistemas CRM de la marca BYD.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Clear Mechanics Integración",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Sincronización de información entre Intelisis y la plataforma ClearMechanics para soporte técnico y diagnóstico vehicular.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "API Servicios",
-              tecnologias: ["Python", "Django", "REST Framework"],
-              descripcion: "Exposición de servicios del DMS Intelisis para consumo externo: citas, órdenes, clientes, tipos de orden, inventario y VINs.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "API Prospectos",
-              tecnologias: ["Python", "Django", "REST Framework"],
-              descripcion: "API para la gestión, creación y conversión de prospectos en clientes, integrando sistemas externos con Intelisis.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Geely Integración",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Integración entre Intelisis y sistemas externos de Geely para el manejo de prospectos, inventarios y venta de unidades.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Seekop Integración",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Implementación de integración entre Intelisis y la plataforma Seekop para la gestión de prospectos y venta de unidades.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Salesforce Mazda",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Integración de Intelisis con Salesforce para automatizar la gestión de prospectos del ecosistema Mazda.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Salesforce Daimler",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Creación de archivos para la generación de KPIs en la plataforma Salesforce, facilitando la toma de decisiones (ventas, servicios, inventarios).",
-              repositorio: "/404",
-            },
-            {
-              nombre: "7 Técnicas Mazda",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Interfaz para la creación de KPIs que reporten todo el ciclo de vida de una unidad en las agencias, incluyendo ventas y servicios. Gestión de inventarios y reportes de información general y específica.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "API Fame",
-              tecnologias: ["Python", "Django", "REST Framework"],
-              descripcion: "Desarrollo de una API REST para la administración y conexión entre los diferentes CRMs del grupo FAME.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Xentry Integración",
-              tecnologias: ["SQL Server", "C#"],
-              descripcion: "Integración con la plataforma Xentry para el consumo de servicios del DMS Intelisis, facilitando la transferencia de información automotriz.",
-              repositorio: "/404",
-            },
-            {
-              nombre: "CRM Postventa Toyota",
-              tecnologias: ["JavaScript", "TypeScript", "Angular"],
-              descripcion: "Desarrollo de un CRM postventa para Toyota, integrando servicios de Intelisis y mejorando la experiencia del cliente.",
-              repositorio: "/404",
-            },
-          ],
-        }}
-      />
-
-
-      <ExperienciaCarta2
-        empresa="Instituto Tecnologico de Morelia"
-        año="Febrero 2023-Noviembre 2023"
-        roll="Desarrollador Full Stack jr"
-        descripcion="Participación como desarrollador en proyectos académicos de posgrado y en iniciativas del sector privado, a través de una unidad interna de desarrollo conocida como Fábrica Académica de Software."
-        tecnologias={[
-          { icon: <SiPhp/>, name: "PHP" },
-          { icon: <SiReact/>, name: "React" },
-          { icon: <SiLaravel/>, name: "Laravel" },
-        ]}
-        experienciaCompleta={{
-          empresa: itmmorelia,
-          cargo: "Desarrollador Full Stack jr",
-          duracion: "Febrero 2023-Noviembre 2023",
-          tecnologias: [
-            { icon: <SiPhp/>, name: "PHP" },
-            { icon: <SiReact/>, name: "React" },
-            { icon: <SiLaravel/>, name: "Laravel" },
-            { name: "Git", icon: <SiGit /> },
-          ],
-          descripcion:
-            "Durante mi participación como Desarrollador Full Stack Jr. en la Fábrica Académica de Software del Instituto Tecnológico de Morelia (enero 2023 - enero 2024), formé parte de un equipo multidisciplinario enfocado en el desarrollo de soluciones tecnológicas para proyectos académicos e institucionales. Mis responsabilidades incluyeron el diseño y desarrollo de aplicaciones web full stack, empleando tecnologías como React.js para el frontend y Django con SQLite o MariaDB para el backend, asegurando siempre la integridad de los datos y el rendimiento en las consultas. Colaboré en la creación de landing pages responsivas utilizando HTML5, CSS y PHP, siguiendo buenas prácticas de diseño y accesibilidad. Participé también en el modelado de bases de datos relacionales, y en la implementación de APIs REST para proyectos internos. Además, apoyé en el diseño de interfaces gráficas y prototipos en Figma, contribuyendo a mejorar la experiencia de usuario en cada aplicación. Esta experiencia me permitió desarrollar habilidades tanto técnicas como de trabajo en equipo, así como una visión integral del ciclo de vida del software, desde la conceptualización hasta la entrega del producto final.",
-          proyectos: [
-            {
-              nombre: "OMD",
-              tecnologias: ["PHP"],
-              descripcion: "Aplicaion web para la gestion de una organizacion sin fines de lucro",
-              repositorio: "/404",
-            },
-            {
-              nombre: "Techani 1",
-              tecnologias: ["PHP"],
-              descripcion: "Aplicaion web para la gestion de la diabetes tipo 1",
-              repositorio: "https://github.com/alfonsonadamas/Techani.git",
-            },
-            {
-              nombre: "Techani 2",
-              tecnologias: ["React,Supabase,Talwind"],
-              descripcion: "Aplicaion web para la gestion de la diabetes tipo 1",
-              repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git",
-            },
-          ],
-        }}
-      />
-
+      <div className="relative flex flex-col md:ml-12">
+        {experienciaData.map((exp, idx) => (
+          <ExperienciaUnidad key={exp.id} data={exp} isOpen={openUnit === idx} toggle={() => setOpenUnit(openUnit === idx ? null : idx)} />
+        ))}
+      </div>
     </section>
   );
 }
