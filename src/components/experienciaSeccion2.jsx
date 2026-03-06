@@ -124,13 +124,14 @@ export default function ExperienciaSeccion2() {
 
   return (
     <section className="w-full max-w-5xl mx-auto px-4 py-16 relative z-10">
-      <div className="flex flex-col mb-12 space-y-2 md:ml-12">
+
+      <div className="flex flex-col mb-6 space-y-1">
         <div className="flex items-center gap-3">
           <div className="h-[1px] w-8 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
-          <span className="text-[10px] font-bold tracking-[0.4em] text-indigo-400 uppercase font-mono">System Timeline</span>
+          <span className="text-[10px] font-bold tracking-[0.3em] text-indigo-400 uppercase font-mono">System Timeline</span>
         </div>
-        <h2 className="text-4xl lg:text-6xl font-black text-white uppercase italic tracking-tighter leading-none">
-          Trayectoria <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Profesional.</span>
+        <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight">
+        Trayectoria <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Profesional.</span>
         </h2>
       </div>
 

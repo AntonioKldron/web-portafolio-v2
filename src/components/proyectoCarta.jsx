@@ -1,193 +1,99 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { FaChevronDown, FaGithub, FaExternalLinkAlt, FaExpandAlt, FaCode } from 'react-icons/fa';
 
-export default function Proyecto({
-  titulo,
-  descripcion,
-  tecnologias = [],
-  imagen,
-  imagenes = [],
-  urlSitio,
-  urlRepositorio
-}) {
-  const [modalAbierto, setModalAbierto] = useState(false);
-  const [indiceImagen, setIndiceImagen] = useState(0);
-  const [fade, setFade] = useState(true);
-
-  // Abrir modal
-  const abrirModal = () => {
-    setIndiceImagen(0);
-    setModalAbierto(true);
-    setFade(true);
-  };
-
-  // Cerrar modal con animación
-  const cerrarModal = () => {
-    setFade(false);
-    setTimeout(() => setModalAbierto(false), 300);
-  };
-
-  // Cambio manual de imágenes
-  const imagenSiguiente = () => {
-    setFade(false);
-    setTimeout(() => {
-      setIndiceImagen((prev) => (prev + 1) % imagenes.length);
-      setFade(true);
-    }, 100);
-  };
-
-  const imagenAnterior = () => {
-    setFade(false);
-    setTimeout(() => {
-      setIndiceImagen((prev) => (prev - 1 + imagenes.length) % imagenes.length);
-      setFade(true);
-    }, 100);
-  };
-
-  // Escape key para cerrar modal
-  useEffect(() => {
-    const manejarEscape = (e) => {
-      if (e.key === 'Escape') cerrarModal();
-    };
-
-    if (modalAbierto) {
-      window.addEventListener('keydown', manejarEscape);
-    }
-
-    return () => window.removeEventListener('keydown', manejarEscape);
-  }, [modalAbierto]);
-
-  // Rotación automática de imágenes
-  useEffect(() => {
-    if (!modalAbierto || imagenes.length <= 1) return;
-
-    const intervalo = setInterval(() => {
-      setFade(false);
-      setTimeout(() => {
-        setIndiceImagen((prev) => (prev + 1) % imagenes.length);
-        setFade(true);
-      }, 100);
-    }, 8000);
-
-    return () => clearInterval(intervalo);
-  }, [modalAbierto, imagenes]);
+export default function ProyectoCarta({ data, isOpen, toggle, abrirModal }) {
+  if (!data) return null;
 
   return (
-    <>
-      <div className="bg-white/5 border border-white/10 rounded-2xl shadow-lg p-6 flex flex-col lg:flex-row gap-6 text-white">
-        {imagen && (
-          <div className="lg:w-1/3 w-full cursor-pointer" onClick={abrirModal}>
-            <img
-              src={imagen}
-              alt={`Imagen del proyecto ${titulo}`}
-              className="rounded-xl w-full object-cover h-48 lg:h-full hover:opacity-80 transition"
-            />
+    <div className={`w-full max-w-7xl mx-auto border rounded-[2rem] transition-all duration-500 overflow-hidden 
+      ${isOpen 
+        ? 'bg-[#0f172a]/80 border-indigo-500/30 shadow-[0_0_30px_rgba(99,102,241,0.05)]' 
+        : 'bg-[#0a0f1c]/60 border-white/5 hover:border-indigo-500/20 hover:bg-[#0a0f1c]/90'
+      } backdrop-blur-xl group`}>
+      
+      {/* CABECERA DE LA CARTA */}
+      <div onClick={toggle} className="w-full p-6 sm:p-8 cursor-pointer select-none">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+          <div className="flex items-center gap-6 flex-1">
+            <div 
+              className="relative w-20 h-20 rounded-2xl bg-white/5 border border-white/10 p-1 flex items-center justify-center shrink-0 overflow-hidden group/img transition-all duration-500 hover:border-indigo-500/50 shadow-2xl"
+              onClick={(e) => { e.stopPropagation(); abrirModal(); }}
+            >
+              <img src={data.imagen} alt={data.titulo} className="w-full h-full object-cover rounded-xl" />
+              <div className="absolute inset-0 bg-indigo-600/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+                 <FaExpandAlt size={16} className="text-white scale-110" />
+              </div>
+            </div>
+            
+            <div className="flex flex-col space-y-2 flex-1">
+              <h3 className="text-2xl font-black tracking-tight text-white group-hover:text-indigo-400 transition-colors uppercase leading-none italic">
+                {data.titulo}
+              </h3>
+              <p className="text-[13px] text-gray-400 leading-relaxed font-medium line-clamp-2 md:line-clamp-1 max-w-4xl">
+                {data.descripcion_corta}
+              </p>
+              <div className="flex items-center gap-4 pt-1">
+                 <span className="text-[10px] font-black text-indigo-400/60 uppercase tracking-[0.3em]">
+                    Desplegado en: {data.lanzamiento}
+                 </span>
+                 <div className="h-[1px] w-8 bg-indigo-500/30" />
+                 <span className="text-[9px] font-mono text-indigo-400/40 uppercase tracking-widest italic font-bold">System Certified</span>
+              </div>
+            </div>
           </div>
-        )}
 
-        <div className={imagen ? 'flex flex-col justify-between lg:w-2/3' : 'flex flex-col justify-between w-full'}>
-          <div>
-            <h2 className="text-2xl font-semibold">{titulo}</h2>
-            <p className="text-sm text-white/70 mt-2 text-justify">{descripcion}</p>
-          </div>
-
-          <div className="mt-4 flex flex-wrap gap-4 text-xl">
-            {tecnologias.map((tec, index) => (
-              <span
-                key={index}
-                className="flex items-center gap-2 text-white/80 hover:text-white transition"
-                title={tec.name}
-              >
-                {tec.icon}
-                <span className="text-sm hidden sm:inline">{tec.name}</span>
-              </span>
-            ))}
-          </div>
-
-          <div className="mt-4 flex gap-4 text-sm font-medium">
-            {urlSitio && (
-              <a
-                href={urlSitio}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 transition"
-              >
-                Ver sitio →
-              </a>
-            )}
-            {urlRepositorio && (
-              <a
-                href={urlRepositorio}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-indigo-400 hover:text-indigo-300 transition"
-              >
-                Ver repositorio →
-              </a>
-            )}
-          </div>
+          <motion.div animate={{ rotate: isOpen ? 180 : 0 }} className="text-indigo-500 bg-indigo-500/5 p-3 rounded-2xl border border-indigo-500/10 shrink-0">
+            <FaChevronDown size={16} />
+          </motion.div>
         </div>
       </div>
 
-      {modalAbierto && (
-      <div className="fixed inset-0 z-50 bg-black/80 flex flex-col items-center justify-center transition-opacity duration-300 px-4 py-8">
-        {/* Botón cerrar */}
-        <button
-          onClick={cerrarModal}
-          className="absolute top-4 right-4 text-gray-300 hover:text-white text-2xl transition-colors z-50"
-          aria-label="Cerrar"
-        >
-          ✖
-        </button>
-
-        <div className="relative w-full max-w-4xl">
-          {/* Imagen principal */}
-          <img
-            src={imagenes[indiceImagen]}
-            alt={`Imagen ${indiceImagen + 1}`}
-            className={`w-full max-h-[70vh] object-contain rounded-xl shadow-xl transition-opacity duration-300 ${
-              fade ? 'opacity-100' : 'opacity-0'
-            }`}
-          />
-
-          {/* Botones de navegación */}
-          {imagenes.length > 1 && (
-            <>
-              <button
-                onClick={imagenAnterior}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
-                aria-label="Imagen anterior"
-              >
-                ‹
-              </button>
-              <button
-                onClick={imagenSiguiente}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl bg-black/50 hover:bg-black/70 p-3 rounded-full shadow-md"
-                aria-label="Imagen siguiente"
-              >
-                ›
-              </button>
-            </>
-          )}
-        </div>
-
-        {/* Miniaturas */}
-        {imagenes.length > 1 && (
-          <div className="mt-4 flex flex-wrap justify-center gap-2 max-w-4xl overflow-y-hidden overflow-x-auto whitespace-nowrap">
-            {imagenes.map((img, index) => (
-              <img
-                key={index}
-                src={img}
-                alt={`Miniatura ${index + 1}`}
-                onClick={() => setIndiceImagen(index)}
-                className={`h-20 w-20 object-cover rounded-md cursor-pointer border-2 transition-all ${
-                  index === indiceImagen ? 'border-white scale-105' : 'border-transparent opacity-70 hover:opacity-100'
-                }`}
-              />
-            ))}
-          </div>
+      {/* CONTENIDO DESPLEGADO */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="px-8 sm:px-12 pb-12">
+            <div className="pt-8 border-t border-white/5 space-y-12">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-indigo-500"><FaCode size={12} /><p className="text-[10px] font-black uppercase tracking-[0.4em]">System Specs</p></div>
+                  <p className="text-[15px] text-gray-300 leading-relaxed text-justify font-medium">{data.descripcion}</p>
+                </div>
+                <div className="space-y-4">
+                  <p className="text-[10px] font-black text-indigo-400/80 uppercase tracking-[0.4em]">Deployment Details</p>
+                  <ul className="space-y-3">
+                    {data.detalles.map((det, i) => (
+                      <li key={i} className="flex gap-4 text-[13px] text-gray-400 group/item">
+                        <span className="text-indigo-500 font-mono font-black group-hover/item:scale-125 transition-transform">»</span>
+                        <span className="group-hover/item:text-white transition-colors leading-snug">{det}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div className="flex flex-col md:flex-row justify-between items-end gap-8 pt-8 border-t border-white/5">
+                <div className="flex gap-4">
+                  {data.urlSitio && (
+                    <a href={data.urlSitio} target="_blank" rel="noreferrer" className="flex items-center gap-3 px-7 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all shadow-lg shadow-indigo-500/20 active:scale-95">
+                      <FaExternalLinkAlt size={10} /> Live Build
+                    </a>
+                  )}
+                  <a href={data.urlRepositorio} target="_blank" rel="noreferrer" className="flex items-center gap-3 px-7 py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl text-[10px] font-black uppercase tracking-widest transition-all border border-white/10 active:scale-95">
+                    <FaGithub size={12} /> Git Registry
+                  </a>
+                </div>
+                <div className="flex flex-wrap gap-2.5 justify-end">
+                  {data.tecnologias.map((tech, i) => (
+                    <span key={i} className="flex items-center gap-2.5 px-4 py-2 bg-white/5 rounded-xl border border-white/5 text-[10px] font-bold text-gray-400 hover:text-white transition-all uppercase tracking-tighter">
+                      <span className="text-indigo-400 text-lg">{tech.icon}</span> {tech.name}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         )}
-      </div>
-    )}
-    </>
+      </AnimatePresence>
+    </div>
   );
 }
