@@ -33,8 +33,8 @@ export default function SeccionProyectos() {
   const proyectosData = [
     {
       id: "PROY_01",
-      titulo: "Portafolio Web V2",
-      lanzamiento: "Marzo 2026",
+      titulo: "Portafolio Web",
+      lanzamiento: "Octubre 2025",
       descripcion_corta: "Consola de ingeniería profesional con React y Tailwind.",
       descripcion: "Arquitectura frontend de alto rendimiento con micro-animaciones dinámicas y optimización de activos multimedia.",
       imagen: website,
@@ -43,27 +43,14 @@ export default function SeccionProyectos() {
       imagenes: carruselWebsite,
       urlSitio: "/",
       urlRepositorio: "https://github.com/AntonioKldron/web-portafolio-v2.git"
-    },
-    {
-      id: "PROY_02",
-      titulo: "Techani 2.0",
-      lanzamiento: "Noviembre 2023",
-      descripcion_corta: "Gestión de salud para diabetes tipo 1 desarrollada en el IT Morelia.",
-      descripcion: "Sistema integral desarrollado utilizando Supabase para el monitoreo clínico de diabetes.",
-      imagen: website, 
-      detalles: ["Persistencia con Supabase", "Backend con PostgreSQL", "Visualización en tiempo real"],
-      tecnologias: [{ name: "React", icon: <FaReact /> }, { name: "Supabase", icon: <SiSupabase /> }, { name: "PostgreSQL", icon: <FaDatabase /> }],
-      imagenes: [], 
-      urlSitio: "/404",
-      urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git"
     }
   ];
 
   return (
-    <section className="py-24 px-4 bg-transparent relative" id="proyectos">
+    <section className="py-24 px-4 bg-transparent relative w-full" id="proyectos">
       <div className="max-w-7xl mx-auto space-y-12">
 
-        <div className="flex flex-col mb-6 space-y-1">
+        <div className="flex flex-col mb-6">
           <div className="flex items-center gap-3">
             <div className="h-[1px] w-8 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
             <span className="text-[10px] font-bold tracking-[0.3em] text-indigo-400 uppercase font-mono">Inventory Registry</span>
