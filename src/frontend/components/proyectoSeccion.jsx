@@ -43,22 +43,40 @@ export default function SeccionProyectos() {
       imagenes: carruselWebsite,
       urlSitio: "/",
       urlRepositorio: "https://github.com/AntonioKldron/web-portafolio-v2.git"
+    },
+    {
+      id: "PROY_02",
+      titulo: "Portafolio Web",
+      lanzamiento: "Octubre 2025",
+      descripcion_corta: "Consola de ingeniería profesional con React y Tailwind.",
+      descripcion: "Arquitectura frontend de alto rendimiento con micro-animaciones dinámicas y optimización de activos multimedia.",
+      imagen: website,
+      detalles: ["Interfaz reactiva con React.js", "Animaciones con Framer Motion", "Arquitectura modular"],
+      tecnologias: [{ name: "React", icon: <FaReact /> }, { name: "Tailwind", icon: <SiTailwindcss /> }, { name: "Framer", icon: <SiFramer /> }],
+      imagenes: carruselWebsite,
+      urlSitio: "/",
+      urlRepositorio: "https://github.com/AntonioKldron/web-portafolio-v2.git"
     }
   ];
 
   return (
-    <section className="py-24 px-4 bg-transparent relative w-full" id="proyectos">
+    <section className="py-24 px-4 bg-transparent relative overflow-hidden font-sans w-full h-full">
       <div className="max-w-7xl mx-auto space-y-12">
-
-        <div className="flex flex-col mb-6">
-          <div className="flex items-center gap-3">
-            <div className="h-[1px] w-8 bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
-            <span className="text-[10px] font-bold tracking-[0.3em] text-indigo-400 uppercase font-mono">Inventory Registry</span>
+        
+        {/* HEADER */}
+        <div className="flex flex-col mb-12">
+          <div className="flex items-center gap-4 mb-4 ml-1">
+            <span className="h-[1px] w-10 bg-gradient-to-r from-indigo-500 to-transparent"></span>
+            <span className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] drop-shadow-md">
+              Proyectos
+            </span>
           </div>
-          <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic leading-tight">
-            Proyectos <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Destacados.</span>
+          <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic mt-2">
+            Desarrollos <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Realizados.</span>
           </h2>
         </div>
+
+
 
         <div className="space-y-4">
           {proyectosData.map((pro, idx) => (

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SiPython } from "react-icons/si";
+import { SiPython,SiJavascript } from "react-icons/si";
 import { FaDatabase } from "react-icons/fa";
 import { DiJava } from "react-icons/di";
 
@@ -11,8 +11,7 @@ export default function SobreMiSeccion() {
   );
 
   return (
-    // overflow-x-hidden aquí previene que las animaciones de escaneo o sombras se salgan
-    <div className="w-full max-w-full flex flex-col justify-center min-h-screen relative z-10 py-8 lg:py-0 bg-transparent overflow-x-hidden">
+    <div className="py-24 px-4 bg-transparent relative overflow-hidden font-sans w-full h-full">
       
       <style>
         {`
@@ -27,27 +26,22 @@ export default function SobreMiSeccion() {
         `}
       </style>
 
-      {/* --- ENCABEZADO --- */}
       <div className="flex items-center gap-4 mb-4 ml-1">
         <span className="h-[1px] w-10 bg-gradient-to-r from-indigo-500 to-transparent"></span>
         <span className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] drop-shadow-md">
-          Profile
+          Sobre mi
         </span>
       </div>
 
-      {/* --- TÍTULO --- */}
       <h2 className="text-3xl lg:text-[2.6rem] font-black mb-10 text-white tracking-tighter leading-[1.1] drop-shadow-2xl max-w-full">
-        Ingeniería de software con <br className="hidden lg:block" /> 
+        Ingeniería de sistemas empresariales <br className="hidden lg:block" /> 
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-blue-500">
-          propósito y precisión.
+          integraciones, datos y arquitectura.
         </span>
       </h2>
 
-      {/* --- CONTENIDO PRINCIPAL --- */}
-      {/* Se eliminaron márgenes negativos y se ajustó el gap para evitar desbordamiento */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start w-full">
         
-        {/* === COLUMNA IZQUIERDA: CITA + SKILLS === */}
         <div className="lg:col-span-5 flex flex-col space-y-10 w-full">
           
           <div className="relative pl-8 group">
@@ -56,7 +50,7 @@ export default function SobreMiSeccion() {
             </div>
             
             <p className="text-xl lg:text-[1.6rem] font-extralight text-gray-200 leading-snug italic tracking-tight group-hover:text-white transition-all duration-500">
-              "Construyo el <span className="font-bold text-indigo-400 not-italic">motor invisible</span> que hace que las aplicaciones sean rápidas, seguras y escalables."
+              "Diseño el <span className="font-bold text-indigo-400 not-italic">motor invisible</span> que conecta sistemas empresariales, automatiza procesos y transforma la lógica de negocio en software escalable."
             </p>
           </div>
 
@@ -64,6 +58,7 @@ export default function SobreMiSeccion() {
             <p className="text-[10px] font-black tracking-[0.3em] text-indigo-500/60 uppercase ml-1">Core Stack</p>
             <div className="flex flex-wrap gap-6">
               {[
+                { icon: <SiJavascript />, label: "JavaScript", color: "hover:text-red-500" },
                 { icon: <DiJava />, label: "Java", color: "hover:text-red-500" },
                 { icon: <SiPython />, label: "Python", color: "hover:text-yellow-500" },
                 { icon: <FaDatabase />, label: "SQL", color: "hover:text-blue-500" }
@@ -84,20 +79,25 @@ export default function SobreMiSeccion() {
           </div>
         </div>
 
-        {/* === COLUMNA DERECHA: TEXTO NARRATIVO === */}
         <div className="lg:col-span-7 w-full overflow-hidden">
           <div className="space-y-6 text-gray-400 text-sm lg:text-[1.05rem] leading-[1.9] font-light text-justify">
+            
             <p className="transition-all duration-500 hover:text-gray-200">
-              Soy un <Highlight>Ingeniero de Software</Highlight> apasionado por transformar la lógica de negocio en código eficiente. Mi especialidad radica en el desarrollo de <Highlight>soluciones backend</Highlight>, la integración de <Highlight>APIs REST</Highlight> y el diseño y manejo avanzado de bases de datos como <Highlight>SQL Server</Highlight>.
+              Soy un <Highlight>Software & Systems Engineer</Highlight> enfocado en el desarrollo de soluciones empresariales y en la arquitectura de integraciones entre sistemas críticos. Mi trabajo se centra en convertir procesos complejos de negocio en <Highlight>software robusto, escalable y seguro</Highlight>.
             </p>
             
             <p className="transition-all duration-500 hover:text-gray-200">
-              Actualmente me desempeño como <Highlight>Desarrollador SQL en Intelisis Solution</Highlight>, participando en la <Highlight>automatización e integración</Highlight> de sistemas ERP. También colaboro en <Highlight>Cinépolis</Highlight> como <Highlight>Analista</Highlight>, aportando mi capacidad analítica a la mejora continua.
+              Actualmente me desempeño como <Highlight>Analista ERP en Cinépolis</Highlight>, trabajando sobre la plataforma <Highlight>Oracle PeopleSoft</Highlight> mediante el desarrollo de lógica avanzada con <Highlight>PeopleCode, Application Engine y Application Packages</Highlight>. También participo en la gestión de <Highlight>servicios REST y SOAP mediante Integration Broker</Highlight>, asegurando la interoperabilidad entre sistemas corporativos críticos.
             </p>
 
             <p className="transition-all duration-500 hover:text-gray-200">
-              Domino el ecosistema de <Highlight>Django, Django REST Framework y React</Highlight>, creando arquitecturas <Highlight>seguras y escalables</Highlight> que optimizan el rendimiento.
+              Previamente trabajé como <Highlight>Backend Engineer en Intelisis</Highlight>, donde desarrollé <Highlight>APIs REST con Django y FastAPI</Highlight>, implementé <Highlight>seguridad con OAuth2</Highlight> y diseñé soluciones avanzadas en <Highlight>SQL Server</Highlight> para la automatización e integración de procesos dentro del ERP automotriz.
             </p>
+
+            <p className="transition-all duration-500 hover:text-gray-200">
+              Mi stack incluye tecnologías como <Highlight>Python, JavaScript, SQL Server y Oracle</Highlight>, así como frameworks como <Highlight>Django, FastAPI y React</Highlight>. Me especializo en construir <Highlight>arquitecturas de integración y soluciones backend orientadas a entornos enterprise</Highlight>.
+            </p>
+
           </div>
         </div>
       </div>

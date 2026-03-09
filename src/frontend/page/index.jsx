@@ -6,7 +6,7 @@ import FondoAnimado from '../static/fondo';
 import ExperienciaSeccion2 from '../components/experienciaSeccion2';
 import SeccionProyectos from '../components/proyectoSeccion';
 import SeccionEducacion from '../components/estudiosSeccion';
-import Sidebar from '../layout/navbarMovil.jsx';
+import Sidebar from '../layout/navbarMovil.jsx'; 
 
 export default function Index() {
   const observerRef = useRef(null);
@@ -18,11 +18,18 @@ export default function Index() {
     window.addEventListener('resize', handleResize);
     
     const sections = document.querySelectorAll('.reveal-section');
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
       });
-    }, { threshold: 0.15 });
+    }, { 
+      // Sincronización técnica: root apunta al div de scroll en PC
+      root: window.innerWidth >= 1024 ? observerRef.current : null,
+      threshold: 0.1
+    });
 
     sections.forEach(section => observer.observe(section));
     return () => {
@@ -31,82 +38,82 @@ export default function Index() {
     };
   }, []);
 
-  // Componente Separador Sutil
   const Separador = () => (
-    <div className="w-full flex justify-center py-2 opacity-20">
+    <div className="w-full flex justify-center py-4 opacity-10">
       <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent"></div>
     </div>
   );
 
   return (
     <div className="relative min-h-screen w-full text-indigo-100 overflow-x-hidden bg-[#030712]">
-      
       <style>{`
         .reveal-section {
           opacity: 0;
-          transform: translateY(20px);
-          transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+          transform: translateY(40px) scale(0.95);
+          filter: blur(10px);
+          transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .reveal-section.active {
           opacity: 1;
-          transform: translateY(0);
+          transform: translateY(0) scale(1);
+          filter: blur(0px);
         }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
 
       {!isMobile && (
-        <div className="fixed inset-0 z-0">
+        <div className="fixed inset-0 z-0 opacity-40">
           <FondoAnimado isActive={true} />
         </div>
       )}
       
       <Sidebar />
 
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full">
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full bg-transparent">
         
-        {/* PANEL PERFIL (25%) */}
-        <div id="encabezado" className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20">
+        {/* PANEL PERFIL (Fijo en PC) */}
+        <div id="encabezado" className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 bg-transparent lg:border-r border-white/5">
           <MiCartaPerfil observerRef={observerRef} />
         </div>
 
-        {/* COLUMNA DE CONTENIDO (75%) */}
+        {/* COLUMNA DE CONTENIDO (Scrollable) */}
         <div 
           ref={observerRef} 
-          className="w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:pl-12 md:pr-24 lg:px-20 lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 space-y-4"
+          className="lg:overflow-y-auto no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:pl-12 md:pr-24 lg:px-20 lg:h-screen scroll-smooth relative z-10 space-y-4 bg-transparent"
         >
-          {/* SECCIONES EN COLUMNA CON MÁRGENES MÍNIMOS */}
-          <section id="sobre-mi" className="min-h-fit lg:min-h-screen flex flex-col items-center justify-center reveal-section pt-10 lg:pt-0">
+          {/* Todas las secciones con IDs exactos para el Sidebar */}
+          <section id="sobre-mi" className="min-h-screen flex flex-col items-center justify-center reveal-section pt-10 lg:pt-0">
             <SobreMiSeccion />
           </section>
-
+          
           <Separador />
-
-          <section id="herramientas" className="min-h-fit lg:min-h-screen flex flex-col items-center justify-center reveal-section">
+          
+          <section id="herramientas" className="min-h-screen flex flex-col items-center justify-center reveal-section">
             <StackSection /> 
           </section>
-
+          
           <Separador />
-
-          <section id="experiencia" className="min-h-fit lg:min-h-screen flex flex-col items-center justify-center reveal-section">
+          
+          <section id="experiencia" className="min-h-screen flex flex-col items-center justify-center reveal-section">
             <ExperienciaSeccion2 />
           </section>
-
+          
           <Separador />
-
-          <section id="proyectos" className="min-h-fit lg:min-h-screen flex flex-col items-center justify-center reveal-section">
+          
+          <section id="proyectos" className="min-h-screen flex flex-col items-center justify-center reveal-section">
             <SeccionProyectos />
           </section>
-
+          
           <Separador />
-
-          <section id="formacion" className="min-h-fit lg:min-h-screen flex flex-col items-center justify-center reveal-section pb-20">
+          
+          <section id="formacion" className="min-h-screen flex flex-col items-center justify-center reveal-section pb-20">
             <SeccionEducacion />
           </section>
 
-          <footer className="text-center text-sm text-gray-500 py-10 reveal-section border-t border-white/5 pr-8">
+          <footer className="text-center text-[10px] text-gray-600 py-20 reveal-section border-t border-white/5 pr-8 uppercase tracking-[0.4em] font-mono bg-transparent">
             © {new Date().getFullYear()} José Antonio Cornelio Calderón <br /> 
-            <span className="text-[10px] opacity-60 italic uppercase tracking-widest font-mono">
-              todos los derechos reservados
-            </span>
+            Ingeniero de Software | Intelisis & Cinépolis
           </footer>
         </div>
       </div>

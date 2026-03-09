@@ -56,14 +56,22 @@ export default function Educacion({ estudios = [], certificaciones = [] }) {
   );
 
   return (
-    <section id="formacion" className="py-24 px-6 bg-transparent relative overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+    <section id="formacion" className="py-24 px-4 bg-transparent relative overflow-hidden font-sans w-full h-full">
+      <div className="max-w-7xl mx-auto space-y-12">
         
-        <div className="mb-16">
-          <h2 className="text-4xl lg:text-5xl font-black text-white uppercase italic tracking-tighter">
-            Formación.
+        {/* HEADER */}
+        <div className="flex flex-col mb-12">
+          <div className="flex items-center gap-4 mb-4 ml-1">
+            <span className="h-[1px] w-10 bg-gradient-to-r from-indigo-500 to-transparent"></span>
+            <span className="text-indigo-400 font-bold tracking-[0.4em] uppercase text-[10px] drop-shadow-md">
+              Educacion
+            </span>
+          </div>
+          <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic mt-2">
+            Forma<span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">cion.</span>
           </h2>
         </div>
+
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-12 items-start">
           
