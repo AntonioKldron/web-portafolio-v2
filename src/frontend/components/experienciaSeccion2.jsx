@@ -134,7 +134,7 @@ export default function ExperienciaSeccion2() {
             </span>
           </div>
           <h2 className="text-3xl lg:text-5xl font-black text-white tracking-tighter uppercase italic mt-2">
-            Trayectoria <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Profecional.</span>
+            Trayectoria <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400 font-light not-italic">Profesional.</span>
           </h2>
         </div>
 
