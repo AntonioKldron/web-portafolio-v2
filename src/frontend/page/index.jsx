@@ -111,9 +111,27 @@ export default function Index() {
             <SeccionEducacion />
           </section>
 
-          <footer className="text-center text-[10px] text-gray-600 py-20 reveal-section border-t border-white/5 pr-8 uppercase tracking-[0.4em] font-mono bg-transparent">
-            © {new Date().getFullYear()} José Antonio Cornelio Calderón <br /> 
-            Ingeniero de Software | Intelisis & Cinépolis
+          <footer className="w-full py-20 reveal-section border-t border-white/5 bg-transparent">
+            <div className="flex flex-col items-center justify-center space-y-3 px-8 text-center uppercase tracking-[0.4em] font-mono">
+              
+              {/* Línea Principal */}
+              <p className="text-[10px] text-gray-400 font-black">
+                © {new Date().getFullYear()} <span className="text-indigo-500/80">José Antonio Cornelio Calderón</span>
+              </p>
+
+              {/* Línea de Subtítulo con separador Cyberpunk */}
+              <div className="flex items-center gap-4 text-[9px] text-gray-600">
+                <div className="h-[1px] w-8 bg-white/5" />
+                <span>Software Engineer</span>
+                <div className="h-[1px] w-8 bg-white/5" />
+              </div>
+
+              {/* Nota de Derechos */}
+              <p className="text-[8px] text-gray-700 tracking-widest">
+                All Systems Operational | Derechos Reservados
+              </p>
+
+            </div>
           </footer>
         </div>
       </div>
