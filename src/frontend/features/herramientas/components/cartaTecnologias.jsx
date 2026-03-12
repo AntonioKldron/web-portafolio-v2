@@ -4,10 +4,6 @@ import { motion } from 'framer-motion';
 export default function CartaTecnologia({ icono, nombre, colorMarca }) {
   return (
     <div className="group relative w-24 h-32 md:w-32 md:h-44 shrink-0 flex flex-col items-center justify-center select-none">
-      {/* Ghost ID para estética de ingeniería */}
-      <div className="absolute top-0 left-0 text-[7px] font-mono text-white/5 uppercase tracking-[0.4em] hidden md:block">
-        UNIT_PRX_{nombre?.substring(0, 3)}
-      </div>
 
       <div className={`text-4xl md:text-6xl mb-4 transition-all duration-700 group-hover:scale-125 md:group-hover:-translate-y-3 ${colorMarca}`}>
         {icono}

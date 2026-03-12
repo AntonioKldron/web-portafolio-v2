@@ -61,7 +61,7 @@ export const data = {
 
   // HERRAMIENTAS
   vscode: { name: "VS Code", icon: <VscVscodeInsiders />, primary: "text-blue-500", secondary: "text-blue-600/50" },
-  cursor: { name: "Cursor IA", icon: <LiaConnectdevelop />, primary: "text-cyan-300", secondary: "text-cyan-400/50" },
+  cursor: { name: "Cursor IA", icon: <LiaConnectdevelop />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
   jetbrains: { name: "JetBrains", icon: <SiJetbrains />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   git: { name: "Git", icon: <FaGitAlt />, primary: "text-orange-600", secondary: "text-orange-700/50" },
   github: { name: "GitHub", icon: <SiGithub />, primary: "text-white", secondary: "text-white/20" },
