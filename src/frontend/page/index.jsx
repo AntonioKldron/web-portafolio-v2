@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import MiCartaPerfil from '../layout/sobreMiLayout';
 import SobreMiSeccion from '../components/sobreMiCarta';
-import StackSection from '../components/herramientasMenu'; 
 import FondoAnimado from '../static/fondo';
 import ExperienciaSeccion2 from '../components/experienciaSeccion2';
 import SeccionProyectos from '../components/proyectoSeccion';
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
+/*Seccion*/
+import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
 
 export default function Index() {
   const observerRef = useRef(null);
@@ -86,7 +87,7 @@ export default function Index() {
           <Separador />
           
           <section id="herramientas" className="min-h-screen flex flex-col justify-center reveal-section">
-            <StackSection /> 
+            <SeccionHerramientas /> 
           </section>
           
           <Separador />
