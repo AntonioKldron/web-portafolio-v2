@@ -17,7 +17,7 @@ export default function SeccionSobreMi() {
       subtitulo={data.subtitulo} 
       tituloPrincipal={data.tituloPrincipal} 
       tituloHighlight={data.tituloHighlight}
-      align="center"
+      align="left"
     />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start w-full">
