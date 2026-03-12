@@ -34,8 +34,6 @@ export default function SeccionProyectos() {
       { icon: <SiNestjs />, name: "Nest.js", color: "text-red-500" },
       { icon: <SiFastapi />, name: "FastAPI", color: "text-emerald-400" },
       { icon: <SiDjango />, name: "Django", color: "text-emerald-700" },
-      { icon: <SiSpringboot />, name: "Spring Boot", color: "text-green-500" },
-      { icon: <SiDotnet />, name: ".NET Core", color: "text-purple-600" },
     ],
   },
   {
@@ -44,7 +42,6 @@ export default function SeccionProyectos() {
     icon: <FaReact />,
     items: [
       { icon: <FaReact />, name: "React", color: "text-cyan-400" },
-      { icon: <FaAngular />, name: "Angular", color: "text-red-600" },
       { icon: <RiTailwindCssFill />, name: "Tailwind CSS", color: "text-cyan-500" },
       { icon: <DiBootstrap />, name: "Bootstrap", color: "text-purple-600" },
     ],

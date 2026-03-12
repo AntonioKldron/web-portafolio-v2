@@ -8,7 +8,7 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.8s ease;
-    background: radial-gradient(#0e0146, #390147);
+    background: radial-gradient(#0b032e, #021b2a);
     overflow: hidden;
   }
   
@@ -20,7 +20,7 @@
   .light {
     position: absolute;
     width: 0px;
-    box-shadow: #0a5bd3 0px 0px 20px 2px;
+    box-shadow: #1993cf 0px 0px 20px 2px;
     top: 100vh;
     bottom: 0;
     left: 0;
