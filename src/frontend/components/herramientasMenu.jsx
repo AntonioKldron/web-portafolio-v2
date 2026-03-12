@@ -1,111 +1,21 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import TechCard from './herramientasCarta';
-import { FaFigma, FaGitAlt, FaTerminal, FaAngular, FaReact, FaJava, FaCode, FaCogs, FaDatabase, FaChevronDown } from 'react-icons/fa';
-import { VscAzure, VscVscodeInsiders } from "react-icons/vsc";
-import { SiOracle, SiJetbrains, SiSpringboot, SiDjango, SiFastapi, SiNestjs, SiPython, SiPostgresql, SiDotnet, SiJavascript, SiSupabase, SiGo, SiRust, SiPhp, SiMysql, SiRedis, SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux } from "react-icons/si";
-import { TbSql } from "react-icons/tb";
-import { DiBootstrap ,DiMsqlServer,DiTrello,DiWindows   } from "react-icons/di";
-import { RiTailwindCssFill } from "react-icons/ri";
-import { LiaConnectdevelop } from "react-icons/lia";
+import { FaChevronDown } from 'react-icons/fa';
+import { herramientasData } from '../data/herramientas/herramientasData'; 
 
 export default function SeccionProyectos() {
   const [activeTab, setActiveTab] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const categorias = [
-  {
-    id: "cat-1",
-    title: "Lenguajes de Programación",
-    icon: <FaCode />,
-    items: [
-      { icon: <SiJavascript />, name: "JavaScript", color: "text-yellow-400" },
-      { icon: <SiPython />, name: "Python", color: "text-blue-500" },
-      { icon: <TbSql />, name: "SQL (T-SQL / PL-SQL)", color: "text-indigo-400" },
-      { icon: <SiDotnet />, name: "C#", color: "text-purple-500" },
-      { icon: <FaJava />, name: "Java", color: "text-red-500" },
-    ],
-  },
-  {
-    id: "cat-2",
-    title: "Backend",
-    icon: <FaCogs />,
-    items: [
-      { icon: <SiNestjs />, name: "Nest.js", color: "text-red-500" },
-      { icon: <SiFastapi />, name: "FastAPI", color: "text-emerald-400" },
-      { icon: <SiDjango />, name: "Django", color: "text-emerald-700" },
-    ],
-  },
-  {
-    id: "cat-3",
-    title: "Frontend",
-    icon: <FaReact />,
-    items: [
-      { icon: <FaReact />, name: "React", color: "text-cyan-400" },
-      { icon: <RiTailwindCssFill />, name: "Tailwind CSS", color: "text-cyan-500" },
-      { icon: <DiBootstrap />, name: "Bootstrap", color: "text-purple-600" },
-    ],
-  },
-  {
-    id: "cat-4",
-    title: "ERP & Enterprise Solutions",
-    icon: <LiaConnectdevelop />,
-    items: [
-      { icon: <FaCogs />, name: "PeopleSoft Dev", color: "text-blue-500" },
-      { icon: <FaTerminal />, name: "Intelisis SDK", color: "text-orange-500" },
-    ],
-  },
-  {
-    id: "cat-5",
-    title: "Bases de Datos",
-    icon: <FaDatabase />,
-    items: [
-      { icon: <DiMsqlServer />, name: "SQL Server", color: "text-red-600" },
-      { icon: <SiOracle />, name: "Oracle DB", color: "text-red-500" },
-      { icon: <SiPostgresql />, name: "PostgreSQL", color: "text-blue-400" },
-      { icon: <SiSupabase />, name: "Supabase", color: "text-emerald-500" },
-    ],
-  },
-  {
-    id: "cat-6",
-    title: "Infraestructura & Cloud",
-    icon: <SiAmazonwebservices />,
-    items: [
-      { icon: <SiDocker />, name: "Docker", color: "text-blue-400" },
-      { icon: <SiLinux />, name: "Linux", color: "text-gray-200" },
-      { icon: <DiWindows />, name: "Windows Server", color: "text-blue-600" },
-    ],
-  },
-  {
-    id: "cat-7",
-    title: "Herramientas de Desarrollo",
-    icon: <FaGitAlt />,
-    items: [
-      { icon: <VscVscodeInsiders />, name: "VS Code", color: "text-blue-500" },
-      { icon: <LiaConnectdevelop />, name: "Cursor IA", color: "text-cyan-300" },
-      { icon: <SiJetbrains />, name: "JetBrains Suite", color: "text-orange-500" },
-      { icon: <FaGitAlt />, name: "Git", color: "text-orange-600" },
-      { icon: <VscAzure />, name: "Azure Studio", color: "text-blue-400" },
-      { icon: <SiGithub />, name: "GitHub", color: "text-white" },
-      { icon: <FaDatabase />, name: "SSMS", color: "text-amber-500" },
-      { icon: <DiTrello />, name: "Trello", color: "text-blue-500" },
-      { icon: <FaFigma />, name: "Figma", color: "text-pink-400" },
-    ],
-  },
-];
-
-  const currentItems = categorias[activeTab].items;
-  
-  // LOGICA: Solo carrusel si hay estrictamente más de 6 elementos
+  const currentItems = herramientasData[activeTab]?.items || [];
   const isCarousel = currentItems.length > 6;
-
   const midIndex = Math.ceil(currentItems.length / 2);
 
-  // Función para rellenar el carrusel infinito
   const fillRow = (arr) => {
     if (arr.length === 0) return [];
     let filled = [...arr];
-    while (filled.length < 12) { // Rellenamos hasta tener longitud suficiente para el loop
+    while (filled.length < 12) { 
       filled = [...filled, ...arr];
     }
     return filled;
@@ -133,25 +43,25 @@ export default function SeccionProyectos() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* MENU RESPONSIVO (Móvil) */}
+          {/* MENU RESPONSIVO */}
           <div className="lg:hidden w-full z-40 relative">
             <button 
               onClick={() => setIsMenuOpen(!isMenuOpen)} 
               className="w-full flex items-center justify-between p-4 bg-[#030712]/60 border border-white/10 rounded-2xl backdrop-blur-xl"
             >
               <div className="flex items-center gap-4 text-indigo-400">
-                {categorias[activeTab].icon}
-                <span className="text-xs font-black uppercase text-white">{categorias[activeTab].title}</span>
+                {herramientasData[activeTab]?.icon}
+                <span className="text-xs font-black uppercase text-white">{herramientasData[activeTab]?.title}</span>
               </div>
               <motion.div animate={{ rotate: isMenuOpen ? 180 : 0 }}><FaChevronDown className="text-indigo-500" /></motion.div>
             </button>
             <AnimatePresence>
               {isMenuOpen && (
                 <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 5 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full left-0 w-full mt-2 bg-[#030712]/95 border border-white/10 rounded-2xl backdrop-blur-3xl overflow-hidden z-50 shadow-2xl text-left">
-                  {categorias.map((cat, idx) => (
+                  {herramientasData.map((cat, idx) => (
                     <button key={cat.id} onClick={() => { setActiveTab(idx); setIsMenuOpen(false); }} className={`w-full flex items-center gap-4 p-4 ${activeTab === idx ? 'bg-indigo-500/10 text-white' : 'text-white/40 text-left'}`}>
-                      <div className="text-lg">{cat.icon}</div>
-                      <span className="text-[10px] font-black uppercase tracking-widest">{cat.title}</span>
+                      <div className="text-lg">{cat?.icon}</div>
+                      <span className="text-[10px] font-black uppercase tracking-widest">{cat?.title}</span>
                     </button>
                   ))}
                 </motion.div>
@@ -159,7 +69,7 @@ export default function SeccionProyectos() {
             </AnimatePresence>
           </div>
 
-          {/* PANEL DE CONTROL (Escritorio) */}
+          {/* PANEL DE CONTROL */}
           <div className="hidden lg:flex lg:col-span-3 flex-col gap-2 p-3 bg-[#030712]/40 border border-white/5 rounded-[2.2rem] backdrop-blur-[40px] z-30 shadow-2xl max-w-[260px] ring-1 ring-white/5 shrink-0">
              <div className="flex px-3 py-2 items-center justify-between border-b border-white/10 mb-2 relative text-left">
                <div className="flex flex-col">
@@ -168,57 +78,40 @@ export default function SeccionProyectos() {
                </div>
                <div className="w-1 h-1 rounded-full bg-emerald-500 shadow-[0_0_8px_#10b981] animate-pulse" />
              </div>
-            {categorias.map((cat, idx) => {
+            {herramientasData.map((cat, idx) => {
               const isActive = activeTab === idx;
               return (
                 <button key={cat.id} onClick={() => setActiveTab(idx)} className={`relative flex items-center gap-4 p-3 transition-all duration-700 rounded-[1.2rem] ${isActive ? 'bg-gradient-to-r from-indigo-600/10 via-indigo-600/5 to-transparent' : 'bg-transparent opacity-20 hover:opacity-80'}`}>
                   {isActive && <motion.div layoutId="navLine" className="absolute left-0 w-[4px] h-8 bg-indigo-500 shadow-[0_0_20px_#6366f1] rounded-r-full" />}
-                  <div className={`text-lg z-10 ${isActive ? 'text-white scale-110' : 'text-indigo-400'}`}>{cat.icon}</div>
-                  <h3 className={`text-[9px] font-black tracking-[0.2em] uppercase transition-all ${isActive ? 'text-white text-left' : 'text-white/40 text-left'}`}>{cat.title}</h3>
+                  <div className={`text-lg z-10 ${isActive ? 'text-white scale-110' : 'text-indigo-400'}`}>{cat?.icon}</div>
+                  <h3 className={`text-[9px] font-black tracking-[0.2em] uppercase transition-all ${isActive ? 'text-white text-left' : 'text-white/40 text-left'}`}>{cat?.title}</h3>
                 </button>
               );
             })}
           </div>
 
-          {/* VISOR (Diferencia entre Grid y Carrusel) */}
+          {/* VISOR */}
           <div className="lg:col-span-9 relative bg-transparent lg:pl-10 overflow-hidden min-h-[400px]">
             <AnimatePresence mode="wait">
-              <motion.div 
-                key={activeTab} 
-                initial={{ opacity: 0, x: 20 }} 
-                animate={{ opacity: 1, x: 0 }} 
-                exit={{ opacity: 0, x: -20 }} 
-                transition={{ duration: 0.4 }}
-                className="w-full"
-              >
+              <motion.div key={activeTab} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.4 }} className="w-full">
                 {!isCarousel ? (
-                  /* VISTA GRID: Para 6 o menos elementos */
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-6 py-10">
                     {currentItems.map((tech, i) => (
                       <div key={`grid-${i}`} className="flex justify-center lg:justify-start">
-                         <TechCard {...tech} />
+                         <TechCard icon={tech?.icon} name={tech?.name} color={tech?.primary} />
                       </div>
                     ))}
                   </div>
                 ) : (
-                  /* VISTA CARRUSEL: Para más de 6 elementos */
                   <div className="flex flex-col gap-12 py-10">
                     <div className="flex overflow-hidden">
-                      <motion.div 
-                        animate={{ x: [0, -1200] }} 
-                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
-                        className="flex gap-16 shrink-0"
-                      >
-                        {row1.map((tech, i) => <TechCard key={`r1-${i}`} {...tech} />)}
+                      <motion.div animate={{ x: [0, -1200] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 shrink-0">
+                        {row1.map((tech, i) => <TechCard key={`r1-${i}`} icon={tech?.icon} name={tech?.name} color={tech?.primary} />)}
                       </motion.div>
                     </div>
                     <div className="flex overflow-hidden">
-                      <motion.div 
-                        animate={{ x: [-1200, 0] }} 
-                        transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
-                        className="flex gap-16 shrink-0"
-                      >
-                        {row2.map((tech, i) => <TechCard key={`r2-${i}`} {...tech} />)}
+                      <motion.div animate={{ x: [-1200, 0] }} transition={{ duration: 30, repeat: Infinity, ease: "linear" }} className="flex gap-16 shrink-0">
+                        {row2.map((tech, i) => <TechCard key={`r2-${i}`} icon={tech?.icon} name={tech?.name} color={tech?.primary} />)}
                       </motion.div>
                     </div>
                   </div>
