@@ -13,14 +13,12 @@ export default function SeccionSobreMi() {
           .animate-flow-slim { position: absolute; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, #6366f1, transparent); animation: verticalFlow 5s linear infinite; }`}
       </style>
 
-      {/* Encabezado sin márgenes superiores extras */}
-      <div className="mb-8">
-        <EncabezadoSeccion 
-          subtitulo={data.subtitulo} 
-          tituloPrincipal={data.tituloPrincipal} 
-          tituloHighlight={data.tituloHighlight} 
-        />
-      </div>
+    <EncabezadoSeccion 
+      subtitulo={data.subtitulo} 
+      tituloPrincipal={data.tituloPrincipal} 
+      tituloHighlight={data.tituloHighlight}
+      align="center"
+    />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start w-full">
         
