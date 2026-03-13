@@ -23,7 +23,7 @@ export default function EncabezadoSeccion({
   return (
     <div className={`flex flex-col mb-10 pointer-events-none select-none w-full relative ${alignClasses[align]}`}>
       
-      {/* 1. SUBTÍTULO CON EFECTO DE ESCANEO LÁSER */}
+      {/* 1. SUBTÍTULO CON LÁSER MORADO OSCURO */}
       <div className={`flex items-center gap-4 mb-2 ${align === "right" ? "flex-row-reverse" : ""}`}>
         <div className="relative h-[1px] w-12 bg-main-border overflow-hidden hidden md:block">
           <motion.div 
@@ -31,14 +31,14 @@ export default function EncabezadoSeccion({
             whileInView={{ left: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="absolute h-full w-full bg-gradient-to-r from-transparent via-primary-accent to-transparent"
+            className="absolute h-full w-full bg-gradient-to-r from-transparent via-[#7e22ce] to-transparent"
           />
           <motion.div 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "circOut" }}
-            className={`absolute inset-0 bg-primary-accent ${lineOrigin[align]}`}
+            className={`absolute inset-0 bg-[#6b21a8] ${lineOrigin[align]}`}
           />
         </div>
 
@@ -47,29 +47,29 @@ export default function EncabezadoSeccion({
           whileInView={{ opacity: 1, letterSpacing: "0.5em" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-primary-accent font-black uppercase text-[9px] tracking-[0.5em] relative"
+          /* Morado fuerte para el subtítulo */
+          className="text-[#a855f7] dark:text-purple-400 font-black uppercase text-[9px] tracking-[0.5em] relative"
         >
           {subtitulo}
           <motion.span 
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
-            className="ml-1 inline-block w-1 h-1 bg-cyan-400 rounded-full"
+            className="ml-1 inline-block w-1.5 h-1.5 bg-[#d946ef] rounded-full shadow-[0_0_8px_#a855f7]"
           />
         </motion.span>
       </div>
 
-      {/* 2. TÍTULO PRINCIPAL CON ADAPTACIÓN DE COLOR */}
+      {/* 2. TÍTULO PRINCIPAL SIN LÍNEA DE ABAJO */}
       <div className="relative group">
-        <div className="overflow-hidden">
+        {/* pb-3 para dar espacio a la curva descendente de la 'g' */}
+        <div className="relative pb-3 overflow-hidden">
           <motion.h2 
             initial={{ y: "100%", skewY: 5 }}
             whileInView={{ y: 0, skewY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            /* MODO CLARO: text-white (resalta sobre el azul vibrante)
-               MODO OSCURO: text-main-text (blanco azulado suave)
-            */
-            className="text-2xl lg:text-[2.2rem] font-black text-white dark:text-main-text tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3 drop-shadow-sm"
+            /* Blanco puro para el fondo azul vibrante */
+            className="text-2xl lg:text-[2.2rem] font-black text-white dark:text-main-text tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3 drop-shadow-md"
           >
             <span className="opacity-100 dark:opacity-90">
               {tituloPrincipal}
@@ -80,30 +80,20 @@ export default function EncabezadoSeccion({
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-              /* HIGHLIGHT: 
-                 Claro: Cyan muy claro/Blanco para que "brille" sobre el azul.
-                 Oscuro: Tu degradado original de acento.
-              */
-              className="relative italic font-light lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-cyan-100 dark:from-primary-accent dark:via-cyan-400 dark:to-blue-500"
+              /* DEGRADADO MORADO OSCURO E INTENSO */
+              className="relative italic font-light lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] via-[#c026d3] to-[#4c1d95] drop-shadow-[0_2px_12px_rgba(107,33,168,0.3)]"
             >
               {tituloHighlight}.
-              <motion.div 
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 1.2, duration: 1 }}
-                /* Subrayado adaptable */
-                className="absolute -bottom-1 left-0 h-[1px] w-full bg-gradient-to-r from-white/40 to-transparent dark:from-primary-accent/50 dark:to-transparent origin-left"
-              />
+              {/* LÍNEA DE ABAJO ELIMINADA AQUÍ */}
             </motion.span>
           </motion.h2>
         </div>
 
-        {/* 3. GLOW ATMOSFÉRICO (Opacidad reducida en modo claro para no ensuciar) */}
+        {/* 3. GLOW ATMOSFÉRICO MORADO OSCURO */}
         <motion.div 
-          animate={{ opacity: [0.03, 0.08, 0.03], scale: [1, 1.2, 1] }}
+          animate={{ opacity: [0.03, 0.1, 0.03], scale: [1, 1.2, 1] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -inset-10 bg-primary-accent blur-[80px] -z-10 rounded-full"
+          className="absolute -inset-10 bg-[#581c87] blur-[100px] -z-10 rounded-full"
         />
       </div>
     </div>
