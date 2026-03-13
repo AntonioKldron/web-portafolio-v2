@@ -4,6 +4,8 @@ import ExperienciaSeccion2 from '../components/experienciaSeccion2';
 import SeccionProyectos from '../components/proyectoSeccion';
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
+/**/ 
+import ExperienciaSeccion from '../features/experiencia/ExperienciaSeccion.jsx'
 import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
 import SeccionSobreMi from '../features/sobreMi/seccionSobreMi.jsx'
 import MiCartaPerfil from '../features/perfil/miCartaPerfil.jsx'
@@ -84,7 +86,7 @@ export default function Index() {
           </section>
           
           <section id="experiencia" className="reveal-section w-full">
-            <ExperienciaSeccion2 />
+            <ExperienciaSeccion />
           </section>
           
           <section id="proyectos" className="reveal-section w-full">

@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   FaFigma, FaGitAlt, FaTerminal, FaAngular, FaReact, 
-  FaJava, FaCode, FaCogs, FaDatabase 
-} from 'react-icons/fa';
+  FaJava, FaCode, FaCogs, FaDatabase, FaLaravel 
+} from 'react-icons/fa'; // Se agregó FaLaravel
 import { VscAzure, VscVscodeInsiders } from "react-icons/vsc";
 import { 
   SiOracle, SiJetbrains, SiSpringboot, SiDjango, SiFastapi, 
@@ -11,7 +11,7 @@ import {
   SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux 
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
-import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows } from "react-icons/di";
+import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; // Se agregó DiSqllite
 import { RiTailwindCssFill } from "react-icons/ri";
 import { LiaConnectdevelop } from "react-icons/lia";
 
@@ -31,6 +31,7 @@ export const data = {
   fastapi: { name: "FastAPI", icon: <SiFastapi />, primary: "text-emerald-400", secondary: "text-emerald-500/50" },
   django: { name: "Django", icon: <SiDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
   springboot: { name: "Spring Boot", icon: <SiSpringboot />, primary: "text-green-500", secondary: "text-green-600/50" },
+  laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" }, // Nuevo
 
   // FRONTEND
   react: { name: "React", icon: <FaReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
@@ -51,6 +52,7 @@ export const data = {
   supabase: { name: "Supabase", icon: <SiSupabase />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
   redis: { name: "Redis", icon: <SiRedis />, primary: "text-red-500", secondary: "text-red-600/50" },
   database: { name: "Database", icon: <FaDatabase />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
+  sqlite: { name: "SQLite", icon: <DiSqllite />, primary: "text-sky-400", secondary: "text-sky-500/50" }, // Nuevo
 
   // INFRAESTRUCTURA
   aws: { name: "AWS", icon: <SiAmazonwebservices />, primary: "text-orange-400", secondary: "text-orange-500/50" },
