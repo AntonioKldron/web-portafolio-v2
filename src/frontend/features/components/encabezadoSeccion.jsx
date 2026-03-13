@@ -25,20 +25,20 @@ export default function EncabezadoSeccion({
       
       {/* 1. SUBTÍTULO CON EFECTO DE ESCANEO LÁSER */}
       <div className={`flex items-center gap-4 mb-2 ${align === "right" ? "flex-row-reverse" : ""}`}>
-        <div className="relative h-[1px] w-12 bg-white/10 overflow-hidden hidden md:block">
+        <div className="relative h-[1px] w-12 bg-main-border overflow-hidden hidden md:block">
           <motion.div 
             initial={{ left: "-100%" }}
             whileInView={{ left: "100%" }}
             viewport={{ once: true }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-            className="absolute h-full w-full bg-gradient-to-r from-transparent via-indigo-500 to-transparent"
+            className="absolute h-full w-full bg-gradient-to-r from-transparent via-primary-accent to-transparent"
           />
           <motion.div 
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: "circOut" }}
-            className={`absolute inset-0 bg-indigo-500 ${lineOrigin[align]}`}
+            className={`absolute inset-0 bg-primary-accent ${lineOrigin[align]}`}
           />
         </div>
 
@@ -47,10 +47,9 @@ export default function EncabezadoSeccion({
           whileInView={{ opacity: 1, letterSpacing: "0.5em" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-indigo-500 font-black uppercase text-[9px] tracking-[0.5em] relative"
+          className="text-primary-accent font-black uppercase text-[9px] tracking-[0.5em] relative"
         >
           {subtitulo}
-          {/* Micro-destello parpadeante */}
           <motion.span 
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
@@ -59,7 +58,7 @@ export default function EncabezadoSeccion({
         </motion.span>
       </div>
 
-      {/* 2. TÍTULO PRINCIPAL CON MÁSCARA Y GLITCH SUTIL */}
+      {/* 2. TÍTULO PRINCIPAL CON ADAPTACIÓN DE COLOR */}
       <div className="relative group">
         <div className="overflow-hidden">
           <motion.h2 
@@ -67,54 +66,46 @@ export default function EncabezadoSeccion({
             whileInView={{ y: 0, skewY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-2xl lg:text-[2.2rem] font-black text-white tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3"
+            /* MODO CLARO: text-white (resalta sobre el azul vibrante)
+               MODO OSCURO: text-main-text (blanco azulado suave)
+            */
+            className="text-2xl lg:text-[2.2rem] font-black text-white dark:text-main-text tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3 drop-shadow-sm"
           >
-            <span className="opacity-90 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+            <span className="opacity-100 dark:opacity-90">
               {tituloPrincipal}
             </span>
             
-            {/* 3. HIGHLIGHT CON REVELADO DE DIFUMINADO Y GRADIENTE FLUIDO */}
             <motion.span 
               initial={{ opacity: 0, filter: "blur(12px)", x: 20 }}
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-              className="relative italic font-light lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-blue-500"
+              /* HIGHLIGHT: 
+                 Claro: Cyan muy claro/Blanco para que "brille" sobre el azul.
+                 Oscuro: Tu degradado original de acento.
+              */
+              className="relative italic font-light lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-cyan-200 via-white to-cyan-100 dark:from-primary-accent dark:via-cyan-400 dark:to-blue-500"
             >
               {tituloHighlight}.
-              
-              {/* Underline animado sutil */}
               <motion.div 
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 1.2, duration: 1 }}
-                className="absolute -bottom-1 left-0 h-[1px] w-full bg-gradient-to-r from-indigo-500/50 to-transparent origin-left"
+                /* Subrayado adaptable */
+                className="absolute -bottom-1 left-0 h-[1px] w-full bg-gradient-to-r from-white/40 to-transparent dark:from-primary-accent/50 dark:to-transparent origin-left"
               />
             </motion.span>
           </motion.h2>
         </div>
 
-        {/* 4. BACKGROUND ATMOSPHERIC FX (Glow parpadeante) */}
+        {/* 3. GLOW ATMOSFÉRICO (Opacidad reducida en modo claro para no ensuciar) */}
         <motion.div 
-          animate={{ 
-            opacity: [0.05, 0.12, 0.05],
-            scale: [1, 1.2, 1],
-          }}
+          animate={{ opacity: [0.03, 0.08, 0.03], scale: [1, 1.2, 1] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -inset-10 bg-indigo-600 blur-[80px] -z-10 rounded-full"
-        />
-        
-        {/* Partícula de escaneo horizontal que cruza el título una sola vez */}
-        <motion.div 
-          initial={{ left: "-20%", opacity: 0 }}
-          whileInView={{ left: "120%", opacity: [0, 1, 0] }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5, delay: 0.6, ease: "easeInOut" }}
-          className="absolute top-1/2 -translate-y-1/2 w-10 h-[140%] bg-white/5 skew-x-12 -z-10 blur-md"
+          className="absolute -inset-10 bg-primary-accent blur-[80px] -z-10 rounded-full"
         />
       </div>
-
     </div>
   );
 }

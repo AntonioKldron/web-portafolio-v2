@@ -13,6 +13,7 @@ export default function MiCartaPerfil({ observerRef }) {
   const t = useTranslation(perfilData);
   const { nombre, apellido, foto, cv, socials } = perfilData;
 
+  // Observer para scroll
   useEffect(() => {
     const container = observerRef?.current || null;
     const sections = document.querySelectorAll("section[id]");
@@ -33,45 +34,22 @@ export default function MiCartaPerfil({ observerRef }) {
 
   return (
     <div className="
+      informational-card-container
       flex flex-col justify-between h-full w-full relative z-20 
-      transition-colors duration-700 overflow-hidden font-sans p-8 lg:p-12
-      /* COLORES SÓLIDOS: Usamos las variables del bloque INTERFAZ de tu CSS */
-      bg-card-bg text-main-text border-main-border lg:border-r
+      p-8 lg:p-12 overflow-hidden font-sans
+      bg-card-bg text-main-text border-r border-main-border
     ">
-      
-      {/* PANEL DE CONTROL */}
+      {/* CONTROLES */}
       <div className="absolute top-4 right-4 z-50 flex gap-2">
-        <button 
-          onClick={toggleLang} 
-          className="
-            flex items-center gap-1 text-[10px] font-mono px-3 py-1.5 rounded-full 
-            border border-main-border transition-all uppercase tracking-widest 
-            /* Fondo sólido del botón usando la base principal */
-            bg-main-bg text-main-text hover:border-primary-accent
-          "
-        >
+        <button onClick={toggleLang} className="flex items-center gap-1 text-[10px] font-mono px-3 py-1.5 rounded-full border border-main-border bg-main-bg text-main-text hover:border-primary-accent transition-all uppercase">
           <HiTranslate size={14} className="text-primary-accent" />
           {lang === 'es' ? 'EN' : 'ES'}
         </button>
-        
-        <button 
-          onClick={toggleTheme} 
-          className="
-            p-2 rounded-full border border-main-border transition-all 
-            bg-main-bg text-main-text hover:border-primary-accent
-          "
-        >
-          {isDark ? (
-            <HiSun size={16} className="text-yellow-400" /> 
-          ) : (
-            <HiMoon size={16} className="text-primary-accent" />
-          )}
+        <button onClick={toggleTheme} className="p-2 rounded-full border border-main-border bg-main-bg text-main-text hover:border-primary-accent transition-all">
+          {isDark ? <HiSun size={16} className="text-yellow-400" /> : <HiMoon size={16} className="text-primary-accent" />}
         </button>
       </div>
 
-      {/* Textura de ruido sutil (opcional, mantiene el grano sobre el color sólido) */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-      
       <ProfileHeader foto={foto} nombre={nombre} apellido={apellido} rol={t.rol} />
       <ProfileNav menuItems={t.menuItems} activeSection={activeSection} onScrollTo={scrollTo} />
       <ProfileFooter socials={socials} cv={cv} />

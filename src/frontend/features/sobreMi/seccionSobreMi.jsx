@@ -1,52 +1,57 @@
 import React from 'react';
-import { sobreMiContenido as data } from '../../data/sobreMi/sobreMiData';
+import { useApp } from '../../context/AppContext'; // Importamos el contexto para saber el idioma
+import { useTranslation } from '../../hooks/useTranslation';
+import { sobreMiContenido } from '../../data/sobreMi/sobreMiData';
 import ItemParrafoSobreMi from './components/itemParrafoSobreMi';
 import CoreStack from './components/coreStack';
 import EncabezadoSeccion from '../components/encabezadoSeccion';
 
 export default function SeccionSobreMi() {
+  // Usamos el traductor igual que lo hiciste en MiCartaPerfil
+  const t = useTranslation(sobreMiContenido);
+
   return (
-    /* mt-2 para esa separación mínima que pediste y pt-0 para evitar huecos */
     <div className="mt-4 pt-0 bg-transparent relative font-sans w-full">
       <style>
         {`@keyframes verticalFlow { 0% { top: -20%; opacity: 0; } 50% { opacity: 0.8; } 100% { top: 100%; opacity: 0; } }
-          .animate-flow-slim { position: absolute; width: 100%; height: 30%; background: linear-gradient(to bottom, transparent, #6366f1, transparent); animation: verticalFlow 5s linear infinite; }`}
+          .animate-flow-slim { 
+            position: absolute; width: 100%; height: 30%; 
+            background: linear-gradient(to bottom, transparent, var(--color-primary-accent), transparent); 
+            animation: verticalFlow 5s linear infinite; 
+          }`}
       </style>
 
-    <EncabezadoSeccion 
-      subtitulo={data.subtitulo} 
-      tituloPrincipal={data.tituloPrincipal} 
-      tituloHighlight={data.tituloHighlight}
-      align="left"
-    />
+      {/* Usamos t.subtitulo, t.tituloPrincipal, etc. */}
+      <EncabezadoSeccion 
+        subtitulo={t.subtitulo} 
+        tituloPrincipal={t.tituloPrincipal} 
+        tituloHighlight={t.tituloHighlight}
+        align="left"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start w-full">
         
-        {/* COLUMNA IZQUIERDA (30%) - Eliminado el sticky para evitar desplazamientos */}
         <div className="lg:col-span-4 flex flex-col space-y-10 w-full">
-          
           <div className="relative pl-6 group">
-            {/* Barra lateral estática */}
-            <div className="absolute left-0 top-0 h-full w-[1px] bg-white/10 rounded-full overflow-hidden">
+            <div className="absolute left-0 top-0 h-full w-[1px] bg-main-border rounded-full overflow-hidden">
               <div className="animate-flow-slim" />
             </div>
             
-            <p className="text-lg lg:text-[1.35rem] font-extralight text-gray-200 leading-[1.35] italic tracking-tight">
-              "{data.fraseCorta.split('motor invisible')[0]}
-              <span className="font-bold text-indigo-400 not-italic">
-                motor invisible
-              </span>
-              {data.fraseCorta.split('motor invisible')[1]}"
+            {/* Traducción de la frase corta */}
+            <p className="text-lg lg:text-[1.35rem] font-extralight text-main-text leading-[1.35] italic tracking-tight">
+              {/* Aquí asumo que quieres mantener el highlight en "motor invisible" / "invisible engine" */}
+              {t.fraseCorta}
             </p>
           </div>
 
-          <CoreStack skills={data.coreStack} />
+          {/* El coreStack se toma de sobreMiContenido directamente porque no cambia */}
+          <CoreStack skills={sobreMiContenido.coreStack} />
         </div>
 
-        {/* COLUMNA DERECHA (70%) */}
         <div className="lg:col-span-8 w-full">
           <div className="flex flex-col">
-            {data.parrafos.map((p, i) => (
+            {/* Mapeamos los párrafos traducidos */}
+            {t.parrafos.map((p, i) => (
               <ItemParrafoSobreMi 
                 key={i} 
                 texto={p.texto} 
@@ -55,7 +60,6 @@ export default function SeccionSobreMi() {
             ))}
           </div>
         </div>
-
       </div>
     </div>
   );

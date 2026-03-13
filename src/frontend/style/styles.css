@@ -1,70 +1,91 @@
 @import "tailwindcss";
 
+@import "tailwindcss";
+
 @layer base {
   :root {
-    /* =========================================================
-       🟢 INTERFAZ (UI): Carta, Textos y Botones (MODO CLARO)
-       ========================================================= */
-    /* Fondo sólido de la carta lateral de información */
-    --color-bg-card: #090a0a;        
-    /* Fondo de los botones pequeños (idioma/tema) */
-    --color-bg-main: #0a1f66;        
-    /* Color de los bordes y líneas divisorias */
-    --color-border: #1c4fa1;         
-    /* Texto principal (Títulos y nombres destacados) */
-    --color-text-base: #dbeafe;      
-    /* Texto secundario (Descripciones y párrafos) */
-    --color-text-muted: #93c5fd;     
-    /* Color de acento para detalles y hovers */
-    --color-accent: #123867;         
+    /* --- 🧊 MODO CLARO --- */
+    --color-bg-screen: #0095ff;      /* Tu azul vibrante */
+    --bg-grad-1: #5f8cac;            
+    --bg-grad-2: #0077ff;            
+    --shadow-color: #ffffff;         
 
-    /* =========================================================
-       🔵 FONDO ANIMADO: Luces y Degradados (MODO CLARO)
-       ========================================================= */
-    /* Color base del lienzo detrás de todo */
-    --color-bg-screen: #0a1f66;      
-    /* Centro del degradado circular del fondo */
-    --bg-grad-1: #1e3a8a;            
-    /* Exterior del degradado circular del fondo */
-    --bg-grad-2: #172554;            
-    /* Color del resplandor neón de las luces flotantes */
-    --shadow-color: #c2cedc;         
+    --color-bg-card: #ffffff;        /* Carta Blanca */
+    --color-border: #e2e8f0;         
+
+    /* Letras Lado Derecho (Sobre Azul) */
+    --color-text-right: #ffffff; 
+    
+    /* Letras Carta (Sobre Blanco) */
+    --color-text-card-base: #0f172a;  /* Navy casi negro */
+    --color-text-card-muted: #475569; /* Gris oscuro */
+    --color-primary-accent: #0077ff;  /* Azul para links/iconos */
   }
 
   .dark {
-    /* =========================================================
-       🌙 INTERFAZ (UI): Carta, Textos y Botones (MODO OSCURO)
-       ========================================================= */
-    /* Fondo negro profundo para la carta lateral */
-    --color-bg-card: #000513;        
-    /* Fondo de botones en modo oscuro */
-    --color-bg-main: #020617;        
-    /* Bordes sutiles para la oscuridad */
-    --color-border: #1e293b;         
-    /* Texto gris plata (buena lectura en negro) */
-    --color-text-base: #94a3b8;      
-    /* Texto gris oscuro para descripciones */
-    --color-text-muted: #475569;     
-    /* Acento neón índigo */
-    --color-accent: #6366f1;         
+    /* --- 🌌 MODO OSCURO --- */
+    --color-bg-screen: #020617; 
+    --bg-grad-1: #030712; 
+    --bg-grad-2: #000000; 
+    --shadow-color: #6366f1; 
 
-    /* =========================================================
-       🌌 FONDO ANIMADO: Luces y Degradados (MODO OSCURO)
-       ========================================================= */
-    /* Fondo negro azulado del lienzo */
-    --color-bg-screen: #021050;      
-    /* Iluminación central mínima en el fondo */
-    --bg-grad-1: #030712;            
-    /* Negro total en los bordes de la pantalla */
-    --bg-grad-2: #000000;            
-    /* Resplandor violeta/índigo de las partículas */
-    --shadow-color: #241ae7;         
+    --color-bg-card: #030712;        /* Carta Negra */
+    --color-border: #1e293b; 
+
+    /* Letras Lado Derecho (Sobre Negro) */
+    --color-text-right: #f1f5f9; 
+    
+    /* Letras Carta (Sobre Negro) */
+    --color-text-card-base: #f1f5f9;  /* Blanco azulado */
+    --color-text-card-muted: #94a3b8; /* Gris plata */
+    --color-primary-accent: #6366f1;  /* Índigo neón */
+  }
+
+  /* --- APLICACIÓN EN LA CARTA (IZQUIERDA) --- */
+  .informational-card-container {
+    background-color: var(--color-bg-card);
+    /* Usamos la variable de texto de la carta */
+    color: var(--color-text-card-base);
+  }
+
+  /* Títulos y Nombres en la carta */
+  .informational-card-container h1,
+  .informational-card-container .text-main-text {
+    color: var(--color-text-card-base) !important;
+  }
+
+  /* Menú y Redes Sociales en la carta */
+  .informational-card-container nav a,
+  .informational-card-container footer i,
+  .informational-card-container p {
+    color: var(--color-text-card-muted) !important;
+  }
+
+  /* Sección Activa y Hovers en la carta */
+  .informational-card-container .text-primary-accent,
+  .informational-card-container nav a:hover,
+  .informational-card-container footer i:hover {
+    color: var(--color-primary-accent) !important;
+  }
+
+  /* --- APLICACIÓN EN EL CONTENIDO (DERECHA) --- */
+  /* Forzamos que todo lo que esté en la sección derecha sea legible sobre su fondo */
+  .reveal-section h1, 
+  .reveal-section h2, 
+  .reveal-section p, 
+  .reveal-section span:not(.text-transparent) {
+    color: var(--color-text-right) !important;
+  }
+
+  /* Highlights en los párrafos de la derecha (Strong/B) */
+  .reveal-section strong, 
+  .reveal-section b {
+    color: #ffffff !important;
+    font-weight: 700;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
   }
 }
 
-/* Configuración del motor de temas de Tailwind.
-   Esto permite usar clases como 'bg-card-bg' o 'text-main-text'.
-*/
 @theme {
   --color-card-bg: var(--color-bg-card);
   --color-main-bg: var(--color-bg-main);
@@ -76,7 +97,7 @@
 }
 
 /* =========================================================
-   TU ANIMACIÓN ORIGINAL (CONSERVADA ÍNTEGRAMENTE)
+   TU ANIMACIÓN ORIGINAL (RESTAURADA ÍNTEGRAMENTE)
    ========================================================= */
 
 #floating-bg {
@@ -89,8 +110,7 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.8s ease;
-    /* Usa las variables del bloque FONDO ANIMADO */
-    background: radial-gradient(var(--bg-grad-1), var(--bg-grad-2));
+    background: radial-gradient(circle at center, var(--bg-grad-1), var(--bg-grad-2));
     overflow: hidden;
 }
 
@@ -102,10 +122,8 @@
 .light {
     position: absolute;
     width: 0px;
-    /* Usa la variable de texto muted para el núcleo de la luz */
-    background-color: var(--color-text-muted);
-    /* Usa la variable shadow-color para el brillo neón */
-    box-shadow: var(--shadow-color) 0px 0px 20px 2px;
+    background-color: var(--color-text-muted); /* Usa la variable muted para el núcleo */
+    box-shadow: var(--shadow-color) 0px 0px 20px 2px; /* Usa shadow-color para el brillo */
     top: 100vh;
     bottom: 0;
     left: 0;
@@ -132,9 +150,4 @@
     50%  { top: 50vh; opacity: 0.8; }
     75%  { opacity: 1; }
     100% { top: -10vh; opacity: 0; }
-}
-
-/* Transiciones globales suaves para cambios de tema */
-* {
-  transition: background-color 0.6s ease, border-color 0.6s ease, color 0.6s ease;
 }
