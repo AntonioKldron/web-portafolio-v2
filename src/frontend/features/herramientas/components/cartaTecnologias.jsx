@@ -1,15 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useApp } from '../../../context/AppContext';
 
 export default function CartaTecnologia({ icono, nombre, colorMarca }) {
+  const { isDark } = useApp();
+
   return (
     <div className="group relative w-24 h-32 md:w-32 md:h-44 shrink-0 flex flex-col items-center justify-center select-none">
-
       <div className={`text-4xl md:text-6xl mb-4 transition-all duration-700 group-hover:scale-125 md:group-hover:-translate-y-3 ${colorMarca}`}>
         {icono}
       </div>
       
-      <p className="text-[10px] md:text-[11px] font-black tracking-widest text-gray-500 group-hover:text-white transition-colors uppercase font-mono italic text-center">
+      <p className={`text-[10px] md:text-[11px] font-black tracking-widest transition-colors uppercase font-mono italic text-center
+        ${isDark ? 'text-gray-500 group-hover:text-white' : 'text-slate-400 group-hover:text-slate-800'}`}>
         {nombre}
       </p>
 

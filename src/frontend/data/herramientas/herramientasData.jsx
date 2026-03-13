@@ -1,55 +1,47 @@
 import { data as dt } from '../icons/iconsRegistro';
 
 export const herramientasData = {
-  // Nueva sección para el encabezado
-  header: {
-    subtitulo: "Herramientas",
-    tituloPrincipal: "Stack",
-    tituloHighlight: "Tecnológico"
+  // Datos comunes que no cambian (iconos)
+  iconosCategorias: {
+    cat1: dt.code.icon,
+    cat2: dt.cogs.icon,
+    cat3: dt.react.icon,
+    cat4: dt.enterprise.icon,
+    cat5: dt.database.icon,
+    cat6: dt.aws.icon,
+    cat7: dt.git.icon
   },
-  // Categorías
-  categorias: [
-    { 
-      id: "cat-1", 
-      title: "Lenguajes de Programación", 
-      icon: dt.code.icon, 
-      items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] 
+  
+  es: {
+    header: {
+      subtitulo: "Herramientas",
+      tituloPrincipal: "Stack",
+      tituloHighlight: "Tecnológico"
     },
-    { 
-      id: "cat-2", 
-      title: "Backend", 
-      icon: dt.cogs.icon, 
-      items: [dt.nestjs, dt.fastapi, dt.django] 
+    categorias: [
+      { id: "cat-1", title: "Lenguajes", items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] },
+      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.fastapi, dt.django] },
+      { id: "cat-3", title: "Frontend", items: [dt.react, dt.angular, dt.tailwind, dt.bootstrap] },
+      { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
+      { id: "cat-5", title: "Bases de Datos", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.supabase] },
+      { id: "cat-6", title: "Infraestructura", items: [dt.docker, dt.linux, dt.windows] },
+      { id: "cat-7", title: "Dev Tools", items: [dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
+    ]
+  },
+  en: {
+    header: {
+      subtitulo: "Stack",
+      tituloPrincipal: "Tech",
+      tituloHighlight: "Stack"
     },
-    { 
-      id: "cat-3", 
-      title: "Frontend", 
-      icon: dt.react.icon, 
-      items: [dt.react, dt.angular, dt.tailwind, dt.bootstrap] 
-    },
-    { 
-      id: "cat-4", 
-      title: "ERP & Enterprise Solutions", 
-      icon: dt.enterprise.icon, 
-      items: [dt.peoplesoft, dt.intelisis] 
-    },
-    { 
-      id: "cat-5", 
-      title: "Bases de Datos", 
-      icon: dt.database.icon, 
-      items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.supabase] 
-    },
-    { 
-      id: "cat-6", 
-      title: "Infraestructura & Cloud", 
-      icon: dt.aws.icon, 
-      items: [dt.docker, dt.linux, dt.windows] 
-    },
-    { 
-      id: "cat-7", 
-      title: "Herramientas de Desarrollo", 
-      icon: dt.git.icon, 
-      items: [dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] 
-    }
-  ]
+    categorias: [
+      { id: "cat-1", title: "Languages", items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] },
+      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.fastapi, dt.django] },
+      { id: "cat-3", title: "Frontend", items: [dt.react, dt.angular, dt.tailwind, dt.bootstrap] },
+      { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
+      { id: "cat-5", title: "Databases", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.supabase] },
+      { id: "cat-6", title: "Infrastructure", items: [dt.docker, dt.linux, dt.windows] },
+      { id: "cat-7", title: "Dev Tools", items: [dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
+    ]
+  }
 };
