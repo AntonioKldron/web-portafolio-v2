@@ -1,12 +1,13 @@
 import React, { useRef, useEffect } from 'react';
 import FondoAnimado from '../static/fondo';
-import ExperienciaSeccion2 from '../components/experienciaSeccion2'; // <--- Nombre importado
+import ExperienciaSeccion2 from '../components/experienciaSeccion2'; 
 import SeccionProyectos from '../components/proyectoSeccion';
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
 import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
 import SeccionSobreMi from '../features/sobreMi/seccionSobreMi.jsx'
 import MiCartaPerfil from '../features/perfil/miCartaPerfil.jsx'
+import Footer from '../layout/footer.jsx'
 
 export default function Index() {
   const observerRef = useRef(null);
@@ -46,15 +47,20 @@ export default function Index() {
 
       <div className="relative z-10 flex flex-col lg:flex-row w-full bg-transparent">
         
-        {/* 2. PANEL IZQUIERDO (CARTA) */}
-        <div className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20">
+        {/* 2. PANEL IZQUIERDO (CARTA) 
+            pr-20: Sincronizado con el panel derecho para no chocar con el Sidebar
+        */}
+        <div className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 pl-6 pr-20 lg:pr-0 lg:pl-0">
           <MiCartaPerfil observerRef={observerRef} />
         </div>
 
-        {/* 3. PANEL DERECHO - FLUJO CONTINUO */}
+        {/* 3. PANEL DERECHO - FLUJO CONTINUO 
+            pl-6: Margen mínimo izquierdo
+            pr-20: Espacio considerable para el Sidebar móvil
+        */}
         <div 
           ref={observerRef} 
-          className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] px-8 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10"
+          className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10"
         >
           <div className="h-8 lg:hidden" />
 
@@ -66,7 +72,6 @@ export default function Index() {
             <SeccionHerramientas />
           </section>
           
-          {/* CORRECCIÓN AQUÍ: Usamos el nombre ExperienciaSeccion2 */}
           <section id="experiencia" className="h-auto reveal-section py-12 lg:py-20">
             <ExperienciaSeccion2 />
           </section>
@@ -79,23 +84,7 @@ export default function Index() {
             <SeccionEducacion />
           </section>
           
-          {/* FOOTER PREMIUM */}
-          <footer className="w-full pt-20 pb-16 flex flex-col items-center gap-6 relative overflow-hidden group">
-            <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent shadow-[0_0_15px_rgba(168,85,247,0.4)]" />
-            <div className="flex flex-col items-center gap-4 relative z-10 text-center">
-              <p className="text-[11px] md:text-[13px] tracking-[0.5em] font-mono text-white uppercase leading-relaxed">
-                <span className="font-black drop-shadow-[0_0_12px_rgba(255,255,255,0.4)]">José Antonio Cornelio Calderón</span>
-              </p>
-              <p className="text-[9px] tracking-[0.4em] font-mono text-white/80 uppercase flex flex-wrap justify-center gap-2">
-                <span>© {new Date().getFullYear()}</span>
-                <span className="text-purple-500 font-bold">//</span>
-                <span>Todos los derechos reservados</span>
-                <span className="text-purple-500 font-bold">//</span>
-                <span className="font-bold text-purple-400">Software Engineer</span>
-              </p>
-            </div>
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-full max-w-2xl h-32 bg-purple-900/20 blur-[120px] pointer-events-none" />
-          </footer>
+          <Footer />
 
         </div>
       </div>

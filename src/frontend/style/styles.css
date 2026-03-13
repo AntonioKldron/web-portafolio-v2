@@ -8,16 +8,16 @@
     --color-bg-screen: #0095ff;      /* Tu azul vibrante */
     --bg-grad-1: #5f8cac;            
     --bg-grad-2: #0077ff;            
-    --shadow-color: #020e3d;         
+    --shadow-color: #e3e3e3;         
 
     --color-bg-card: #ffffff;        /* Carta Blanca */
     --color-border: #e2e8f0;         
 
     /* Letras Lado Derecho (Sobre Azul) */
-    --color-text-right: #ffffff; 
+    --color-text-right: #010101; 
     
     /* Letras Carta (Sobre Blanco) */
-    --color-text-card-base: #0f172a;  /* Navy casi negro */
+    --color-text-card-base: #001035;  /* Navy casi negro */
     --color-text-card-muted: #475569; /* Gris oscuro */
     --color-primary-accent: #0077ff;  /* Azul para links/iconos */
   }
@@ -80,7 +80,7 @@
   /* Highlights en los párrafos de la derecha (Strong/B) */
   .reveal-section strong, 
   .reveal-section b {
-    color: #ffffff !important;
+    color: #ad0176 !important;
     font-weight: 700;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
   }
