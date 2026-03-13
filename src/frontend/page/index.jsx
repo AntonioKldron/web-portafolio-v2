@@ -5,7 +5,7 @@ import SeccionProyectos from '../components/proyectoSeccion';
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
 /**/ 
-import ExperienciaSeccion from '../features/experiencia/ExperienciaSeccion.jsx'
+import ExperienciaSeccion from '../features/experiencia/experienciaSeccion.jsx'
 import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
 import SeccionSobreMi from '../features/sobreMi/seccionSobreMi.jsx'
 import MiCartaPerfil from '../features/perfil/miCartaPerfil.jsx'

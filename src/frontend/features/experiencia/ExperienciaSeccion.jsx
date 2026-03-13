@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useTranslation } from "../../hooks/useTranslation";
-import { experienciaData } from "../../data/experiencia/experienciaData";
-import { ExperienciaUnidad } from "./components/ExperienciaUnidad";
-import { useApp } from "../../context/AppContext";
+import { useTranslation } from "../../hooks/useTranslation.js";
+import { experienciaData } from "../../data/experiencia/experienciaData.jsx";
+import { ExperienciaUnidad } from "./components/experienciaUnidad.jsx";
+import { useApp } from "../../context/AppContext.jsx";
 import EncabezadoSeccion from '../components/encabezadoSeccion.jsx';
 
 export default function ExperienciaSeccion() {
@@ -11,19 +11,20 @@ export default function ExperienciaSeccion() {
   const { isDark } = useApp();
 
   return (
-    <section className="py-24 px-4 bg-transparent relative w-full h-full">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section className="px-4 bg-transparent relative w-full h-full">
+      <div className="max-w-7xl mx-auto">
         
-        {/* COMPONENTE DE ENCABEZADO INTEGRADO */}
-        <EncabezadoSeccion 
-          subtitulo={t.header.subtitulo} 
-          tituloPrincipal={t.header.titulo} 
-          tituloHighlight={t.header.highlight} 
-          align="left" 
-        />
+        {/* Ajustado con mb-6 para reducir espacio con las cartas */}
+        <div className="mb-6">
+          <EncabezadoSeccion 
+            subtitulo={t.header.subtitulo} 
+            tituloPrincipal={t.header.titulo} 
+            tituloHighlight={t.header.highlight} 
+            align="left" 
+          />
+        </div>
 
         <div className="relative flex flex-col md:ml-12">
-          {/* Mapeo seguro de items de experiencia */}
           {t.items?.map((exp, idx) => (
             <ExperienciaUnidad 
               key={exp.id} 
