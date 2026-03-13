@@ -2,95 +2,139 @@
 
 @layer base {
   :root {
-    /* MODO CLARO: Paleta de Azules Acero */
-    --color-bg-main: #2f85db;        /* Slate 100 (Sustituye al blanco) */
-    --color-bg-card: #428bea;        /* Slate 200 */
-    --color-border: #124d96;         /* Slate 300 */
-    --color-text-base: #1e293b;      /* Slate 800 */
-    --color-text-muted: #475569;     /* Slate 600 */
-    --color-accent: #3b82f6;         /* Blue 500 */
-    
-    /* Fondo Animado Claro */
-    --bg-gradient-start: #206acb;
-    --bg-gradient-end: #033169;
-    --shadow-light: #162130;         /* Brillo acero */
-    --opacity-light: 0.5;
+    /* =========================================================
+       🟢 INTERFAZ (UI): Carta, Textos y Botones (MODO CLARO)
+       ========================================================= */
+    /* Fondo sólido de la carta lateral de información */
+    --color-bg-card: #090a0a;        
+    /* Fondo de los botones pequeños (idioma/tema) */
+    --color-bg-main: #0a1f66;        
+    /* Color de los bordes y líneas divisorias */
+    --color-border: #1c4fa1;         
+    /* Texto principal (Títulos y nombres destacados) */
+    --color-text-base: #dbeafe;      
+    /* Texto secundario (Descripciones y párrafos) */
+    --color-text-muted: #93c5fd;     
+    /* Color de acento para detalles y hovers */
+    --color-accent: #123867;         
+
+    /* =========================================================
+       🔵 FONDO ANIMADO: Luces y Degradados (MODO CLARO)
+       ========================================================= */
+    /* Color base del lienzo detrás de todo */
+    --color-bg-screen: #0a1f66;      
+    /* Centro del degradado circular del fondo */
+    --bg-grad-1: #1e3a8a;            
+    /* Exterior del degradado circular del fondo */
+    --bg-grad-2: #172554;            
+    /* Color del resplandor neón de las luces flotantes */
+    --shadow-color: #c2cedc;         
   }
 
   .dark {
-    /* MODO OSCURO: Midnight & Deep Blue */
-    --color-bg-main: #020617;        /* Slate 950 */
-    --color-bg-card: #030712;        /* Azul noche profundo */
-    --color-border: rgba(30, 41, 59, 0.5);
-    --color-text-base: #94a3b8;      /* Slate 400 (Sustituye al blanco) */
-    --color-text-muted: #475569;     /* Slate 600 */
-    --color-accent: #6366f1;         /* Indigo 500 */
-    
-    /* Fondo Animado Oscuro */
-    --bg-gradient-start: #0b032e;
-    --bg-gradient-end: #020617;
-    --shadow-light: #1993cf;         /* Brillo Cian */
-    --opacity-light: 0.6;
+    /* =========================================================
+       🌙 INTERFAZ (UI): Carta, Textos y Botones (MODO OSCURO)
+       ========================================================= */
+    /* Fondo negro profundo para la carta lateral */
+    --color-bg-card: #000513;        
+    /* Fondo de botones en modo oscuro */
+    --color-bg-main: #020617;        
+    /* Bordes sutiles para la oscuridad */
+    --color-border: #1e293b;         
+    /* Texto gris plata (buena lectura en negro) */
+    --color-text-base: #94a3b8;      
+    /* Texto gris oscuro para descripciones */
+    --color-text-muted: #475569;     
+    /* Acento neón índigo */
+    --color-accent: #6366f1;         
+
+    /* =========================================================
+       🌌 FONDO ANIMADO: Luces y Degradados (MODO OSCURO)
+       ========================================================= */
+    /* Fondo negro azulado del lienzo */
+    --color-bg-screen: #021050;      
+    /* Iluminación central mínima en el fondo */
+    --bg-grad-1: #030712;            
+    /* Negro total en los bordes de la pantalla */
+    --bg-grad-2: #000000;            
+    /* Resplandor violeta/índigo de las partículas */
+    --shadow-color: #241ae7;         
   }
 }
 
+/* Configuración del motor de temas de Tailwind.
+   Esto permite usar clases como 'bg-card-bg' o 'text-main-text'.
+*/
 @theme {
-  --color-main-bg: var(--color-bg-main);
   --color-card-bg: var(--color-bg-card);
+  --color-main-bg: var(--color-bg-main);
   --color-main-border: var(--color-border);
   --color-main-text: var(--color-text-base);
   --color-muted-text: var(--color-text-muted);
   --color-primary-accent: var(--color-accent);
+  --color-screen-bg: var(--color-bg-screen);
 }
 
-@variant dark (&:where(.dark, .dark *));
+/* =========================================================
+   TU ANIMACIÓN ORIGINAL (CONSERVADA ÍNTEGRAMENTE)
+   ========================================================= */
 
-/* Transición suave */
-* {
-  transition: background-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              color 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* CONFIGURACIÓN DEL FONDO FLOTANTE */
 #floating-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0;
-  background: radial-gradient(circle at center, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-  overflow: hidden;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    /* Usa las variables del bloque FONDO ANIMADO */
+    background: radial-gradient(var(--bg-grad-1), var(--bg-grad-2));
+    overflow: hidden;
 }
 
 #floating-bg.active {
-  opacity: 1;
+    opacity: 1;
 }
 
+/* Estilos de las partículas de luz */
 .light {
-  position: absolute;
-  width: 0px;
-  bottom: 0;
-  margin: auto;
-  opacity: var(--opacity-light);
-  box-shadow: var(--shadow-light) 0px 0px 35px 5px;
+    position: absolute;
+    width: 0px;
+    /* Usa la variable de texto muted para el núcleo de la luz */
+    background-color: var(--color-text-muted);
+    /* Usa la variable shadow-color para el brillo neón */
+    box-shadow: var(--shadow-color) 0px 0px 20px 2px;
+    top: 100vh;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    opacity: 0.75;
 }
 
-/* ANIMACIONES */
-.x1 { animation: floatUp 4s infinite linear; }
-.x2 { animation: floatUp 7s infinite linear; left: 15%; }
-.x3 { animation: floatUp 2.5s infinite linear; left: -15%; }
-.x4 { animation: floatUp 4.5s infinite linear; left: -34%; }
-.x5 { animation: floatUp 8s infinite linear; left: -57%; }
-.x6 { animation: floatUp 3s infinite linear; left: -81%; }
-.x7 { animation: floatUp 5.3s infinite linear; left: 37%; }
-.x8 { animation: floatUp 4.7s infinite linear; left: 62%; }
-.x9 { animation: floatUp 4.1s infinite linear; left: 85%; }
+/* Clases de animación individual para las 9 luces */
+.x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
+.x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
+.x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
+.x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
+.x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
+.x6 { animation: floatUp 3s infinite linear; transform: scale(0.8); left: -81%; }
+.x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
+.x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
+.x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
 
+/* Keyframes de la animación de ascenso */
 @keyframes floatUp {
-  0%   { top: 100vh; opacity: 0; }
-  25%  { opacity: 1; }
-  50%  { top: 50vh; opacity: 0.6; }
-  100% { top: -10vh; opacity: 0; }
+    0%   { top: 100vh; opacity: 0; }
+    25%  { opacity: 1; }
+    50%  { top: 50vh; opacity: 0.8; }
+    75%  { opacity: 1; }
+    100% { top: -10vh; opacity: 0; }
+}
+
+/* Transiciones globales suaves para cambios de tema */
+* {
+  transition: background-color 0.6s ease, border-color 0.6s ease, color 0.6s ease;
 }

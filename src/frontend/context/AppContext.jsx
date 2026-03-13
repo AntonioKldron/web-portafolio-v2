@@ -4,7 +4,11 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'es');
-  const [isDark, setIsDark] = useState(localStorage.getItem('theme') !== 'light');
+  // Detecta preferencia del sistema o guardada
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -16,10 +20,6 @@ export const AppProvider = ({ children }) => {
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
-
-  useEffect(() => {
-    localStorage.setItem('lang', lang);
-  }, [lang]);
 
   const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
   const toggleTheme = () => setIsDark(prev => !prev);
