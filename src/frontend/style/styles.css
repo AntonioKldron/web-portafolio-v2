@@ -8,7 +8,7 @@
     --color-bg-screen: #0095ff;      /* Tu azul vibrante */
     --bg-grad-1: #5f8cac;            
     --bg-grad-2: #0077ff;            
-    --shadow-color: #ffffff;         
+    --shadow-color: #020e3d;         
 
     --color-bg-card: #ffffff;        /* Carta Blanca */
     --color-border: #e2e8f0;         
@@ -33,7 +33,7 @@
     --color-border: #1e293b; 
 
     /* Letras Lado Derecho (Sobre Negro) */
-    --color-text-right: #f1f5f9; 
+    --color-text-right: #b3b3b3; 
     
     /* Letras Carta (Sobre Negro) */
     --color-text-card-base: #f1f5f9;  /* Blanco azulado */
