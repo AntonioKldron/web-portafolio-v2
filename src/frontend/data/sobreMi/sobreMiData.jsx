@@ -1,15 +1,12 @@
 import { data as dt } from '../icons/iconsRegistro';
 
 export const sobreMiContenido = {
-  // El stack se queda fuera porque los iconos son universales
   coreStack: [
     { ...dt.javascript },
     { ...dt.java },
     { ...dt.python },
     { ...dt.sql }
   ],
-
-  // Versión en Español
   es: {
     subtitulo: "Sobre mí",
     tituloPrincipal: "Ingeniería de sistemas empresariales",
@@ -51,8 +48,6 @@ export const sobreMiContenido = {
       }
     ]
   },
-
-  // Versión en Inglés
   en: {
     subtitulo: "About me",
     tituloPrincipal: "Enterprise Systems Engineering",

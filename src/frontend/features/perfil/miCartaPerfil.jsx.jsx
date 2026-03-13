@@ -10,10 +10,11 @@ import { HiMoon, HiSun, HiTranslate } from 'react-icons/hi';
 export default function MiCartaPerfil({ observerRef }) {
   const [activeSection, setActiveSection] = useState("");
   const { lang, isDark, toggleLang, toggleTheme } = useApp();
+  
+  // 't' obtiene automáticamente el objeto 'es' o 'en' según 'lang'
   const t = useTranslation(perfilData);
-  const { nombre, apellido, foto, cv, socials } = perfilData;
+  const { nombre, apellido, foto, socials } = perfilData;
 
-  // Observer para scroll
   useEffect(() => {
     const container = observerRef?.current || null;
     const sections = document.querySelectorAll("section[id]");
@@ -21,7 +22,11 @@ export default function MiCartaPerfil({ observerRef }) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) setActiveSection(entry.target.id);
       });
-    }, { root: container, rootMargin: '-49% 0px -49% 0px', threshold: 0 });
+    }, { 
+      root: container, 
+      rootMargin: '-49% 0px -49% 0px', 
+      threshold: 0 
+    });
 
     sections.forEach((s) => observer.observe(s));
     return () => observer.disconnect();
@@ -36,14 +41,12 @@ export default function MiCartaPerfil({ observerRef }) {
     <div className="
       informational-card-container
       flex flex-col justify-between relative z-20 
-      /* MÓVIL: Ajuste automático y borde inferior */
       h-auto w-full p-6 border-b gap-6
-      /* ESCRITORIO: Altura completa, borde derecho y sin gap */
       lg:h-full lg:p-12 lg:border-r lg:border-b-0 lg:gap-0
       overflow-hidden font-sans
       bg-card-bg text-main-text border-main-border
     ">
-      {/* CONTROLES (Traductor y Tema) */}
+      {/* CONTROLES */}
       <div className="absolute top-4 right-4 z-50 flex gap-2">
         <button onClick={toggleLang} className="flex items-center gap-1 text-[10px] font-mono px-3 py-1.5 rounded-full border border-main-border bg-main-bg text-main-text hover:border-primary-accent transition-all uppercase">
           <HiTranslate size={14} className="text-primary-accent" />
@@ -54,16 +57,14 @@ export default function MiCartaPerfil({ observerRef }) {
         </button>
       </div>
 
-      {/* 1. HEADER (Foto, nombre, rol) - Siempre visible */}
       <ProfileHeader foto={foto} nombre={nombre} apellido={apellido} rol={t.rol} />
 
-      {/* 2. NAV (Menú de secciones) - SOLO VISIBLE EN ESCRITORIO */}
       <div className="hidden lg:block">
         <ProfileNav menuItems={t.menuItems} activeSection={activeSection} onScrollTo={scrollTo} />
       </div>
 
-      {/* 3. FOOTER (Redes sociales y CV) - Siempre visible */}
-      <ProfileFooter socials={socials} cv={cv} />
+      {/* Dinámico: Pasamos t.cv (archivo) */}
+      <ProfileFooter socials={socials} cv={t.cv} />
     </div>
   );
 }

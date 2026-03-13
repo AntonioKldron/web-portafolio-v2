@@ -1,12 +1,12 @@
 import rostro from '../../assets/img/perfil/foto.png';
-import CV_PDF from '../../../../public/pdf/Cv-Jose Antonio Cornelio Calderon.pdf';
+import CV_ES from '../../../../public/doc/pdf/es/cv_es-Jose Antonio Cornelio Calderon.pdf';
+import CV_EN from '../../../../public/doc/pdf/en/cv_en-Jose Antonio Cornelio Calderon.pdf';
 
 export const perfilData = {
   nombre: "José Antonio",
   apellido: "Cornelio Calderón",
   version: "v2.6.0",
   foto: rostro,
-  cv: CV_PDF,
   socials: [
     { name: "github", url: "https://github.com/AntonioKldron", icon: "fab fa-github", color: "hover:text-white" },
     { name: "linkedin", url: "https://www.linkedin.com/in/josé-antonio-cornelio-calderón-201885291", icon: "fab fa-linkedin", color: "hover:text-[#0A66C2]" },
@@ -15,6 +15,7 @@ export const perfilData = {
   ],
   es: {
     rol: "Ingeniero de Software",
+    cv: CV_ES, // CV en español
     menuItems: [
       { id: "sobre-mi", label: "Sobre mí" },
       { id: "herramientas", label: "Herramientas" },
@@ -25,6 +26,7 @@ export const perfilData = {
   },
   en: {
     rol: "Software Engineer",
+    cv: CV_EN, // CV en inglés
     menuItems: [
       { id: "sobre-mi", label: "About me" },
       { id: "herramientas", label: "Stack" },
