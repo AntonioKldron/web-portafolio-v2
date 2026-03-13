@@ -9,7 +9,6 @@ export default function SeccionHerramientas() {
   const [indiceCategoria, setIndiceCategoria] = useState(0);
   const t = useTranslation(herramientasData);
   
-  // Inyectamos los iconos estáticos a las categorías traducidas
   const categoriasConIconos = t.categorias.map(cat => ({
     ...cat,
     icon: herramientasData.iconosCategorias[cat.id.replace('-', '')]
@@ -18,8 +17,8 @@ export default function SeccionHerramientas() {
   const categoriaActual = categoriasConIconos[indiceCategoria];
 
   return (
-    <section className="py-12 px-4 bg-transparent relative font-sans w-full">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <section className="py-12 px-4 bg-transparent relative font-sans w-full overflow-hidden">
+      <div className="max-w-7xl mx-auto space-y-10">
         
         <EncabezadoSeccion 
           subtitulo={t.header.subtitulo} 
@@ -28,21 +27,26 @@ export default function SeccionHerramientas() {
           align="right" 
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          <div className="lg:col-span-8 order-last lg:order-first">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          {/* VISOR (Consola) */}
+          <div className="lg:col-span-8 order-last lg:order-first h-full flex items-center">
             <VisorTecnologico 
               items={categoriaActual?.items || []} 
               idCategoria={categoriaActual?.id} 
+              tituloCategoria={categoriaActual?.title}
             />
           </div>
 
-          <div className="lg:col-span-4 order-first lg:order-last">
+          {/* NAVEGACIÓN */}
+          <div className="lg:col-span-4 order-first lg:order-last flex justify-center lg:justify-end">
             <MenuNavegacionStack 
               categorias={categoriasConIconos} 
               indiceActivo={indiceCategoria} 
               alSeleccionar={setIndiceCategoria} 
             />
           </div>
+
         </div>
       </div>
     </section>
