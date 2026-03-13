@@ -14,21 +14,35 @@ export default function Index() {
 
   useEffect(() => {
     const sections = document.querySelectorAll('.reveal-section');
-    const observer = new IntersectionObserver((entries) => {
+    
+    // Observer para las animaciones de aparición (Fade In)
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('active');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05 });
 
-    sections.forEach(section => observer.observe(section));
-    return () => sections.forEach(section => observer.unobserve(section));
+    sections.forEach(section => revealObserver.observe(section));
+    return () => revealObserver.disconnect();
   }, []);
 
   return (
     <div className="relative min-h-screen w-full overflow-x-hidden text-main-text bg-screen-bg transition-colors duration-500">
       <style>{`
-        .reveal-section { opacity: 0; transform: translateY(20px); transition: all 0.8s ease-out; }
-        .reveal-section.active { opacity: 1; transform: translateY(0); }
+        /* Animación suave sin saltos de espacio */
+        .reveal-section { 
+          opacity: 0; 
+          transform: translateY(10px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        .reveal-section.active { 
+          opacity: 1; 
+          transform: translateY(0);
+        }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
@@ -48,44 +62,42 @@ export default function Index() {
       <div className="relative z-10 flex flex-col lg:flex-row w-full bg-transparent">
         
         {/* 2. PANEL IZQUIERDO (CARTA) 
-            pr-20: Sincronizado con el panel derecho para no chocar con el Sidebar
+            Pasamos el observerRef para que la barra azul sepa dónde mirar
         */}
         <div className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 pl-6 pr-20 lg:pr-0 lg:pl-0">
           <MiCartaPerfil observerRef={observerRef} />
         </div>
 
         {/* 3. PANEL DERECHO - FLUJO CONTINUO 
-            pl-6: Margen mínimo izquierdo
-            pr-20: Espacio considerable para el Sidebar móvil
+            IMPORTANTE: lg:h-screen y lg:overflow-y-auto son vitales para que el Nav funcione
         */}
         <div 
           ref={observerRef} 
-          className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10"
+          className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
         >
-          <div className="h-8 lg:hidden" />
-
-          <section id="sobre-mi" className="h-auto reveal-section py-12 lg:py-20">
+          <section id="sobre-mi" className="reveal-section w-full">
             <SeccionSobreMi />
           </section>
           
-          <section id="herramientas" className="h-auto reveal-section py-12 lg:py-20">
+          <section id="herramientas" className="reveal-section w-full">
             <SeccionHerramientas />
           </section>
           
-          <section id="experiencia" className="h-auto reveal-section py-12 lg:py-20">
+          <section id="experiencia" className="reveal-section w-full">
             <ExperienciaSeccion2 />
           </section>
           
-          <section id="proyectos" className="h-auto reveal-section py-12 lg:py-20">
+          <section id="proyectos" className="reveal-section w-full">
             <SeccionProyectos />
           </section>
           
-          <section id="formacion" className="h-auto reveal-section py-12 lg:py-20">
+          <section id="formacion" className="reveal-section w-full">
             <SeccionEducacion />
           </section>
           
-          <Footer />
-
+          <section  className="reveal-section w-full">
+            <Footer />
+          </section>
         </div>
       </div>
     </div>
