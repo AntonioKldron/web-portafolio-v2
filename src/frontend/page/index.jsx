@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import FondoAnimado from '../static/fondo';
-import ExperienciaSeccion2 from '../components/experienciaSeccion2'; 
-import SeccionProyectos from '../components/proyectoSeccion';
+/*import ExperienciaSeccion2 from '../components/experienciaSeccion2'; 
+import SeccionProyectos from '../components/proyectoSeccion';*/
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
 /**/ 
+import SeccionProyectos from '../features/proyectos/seccionProyectos.jsx'
 import ExperienciaSeccion from '../features/experiencia/experienciaSeccion.jsx'
 import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
 import SeccionSobreMi from '../features/sobreMi/seccionSobreMi.jsx'
