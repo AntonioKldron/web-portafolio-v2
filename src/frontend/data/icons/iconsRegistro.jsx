@@ -2,16 +2,17 @@ import React from 'react';
 import { 
   FaFigma, FaGitAlt, FaTerminal, FaAngular, FaReact, 
   FaJava, FaCode, FaCogs, FaDatabase, FaLaravel 
-} from 'react-icons/fa'; // Se agregó FaLaravel
+} from 'react-icons/fa'; 
 import { VscAzure, VscVscodeInsiders } from "react-icons/vsc";
 import { 
   SiOracle, SiJetbrains, SiSpringboot, SiDjango, SiFastapi, 
   SiNestjs, SiPython, SiPostgresql, SiDotnet, SiJavascript, 
   SiSupabase, SiGo, SiRust, SiPhp, SiMysql, SiRedis, 
-  SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux 
+  SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux,
+  SiLivewire
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
-import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; // Se agregó DiSqllite
+import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; 
 import { RiTailwindCssFill } from "react-icons/ri";
 import { LiaConnectdevelop } from "react-icons/lia";
 
@@ -31,13 +32,14 @@ export const data = {
   fastapi: { name: "FastAPI", icon: <SiFastapi />, primary: "text-emerald-400", secondary: "text-emerald-500/50" },
   django: { name: "Django", icon: <SiDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
   springboot: { name: "Spring Boot", icon: <SiSpringboot />, primary: "text-green-500", secondary: "text-green-600/50" },
-  laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" }, // Nuevo
+  laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" }, 
 
   // FRONTEND
   react: { name: "React", icon: <FaReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
   angular: { name: "Angular", icon: <FaAngular />, primary: "text-red-600", secondary: "text-red-700/50" },
   tailwind: { name: "Tailwind CSS", icon: <RiTailwindCssFill />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
   bootstrap: { name: "Bootstrap", icon: <DiBootstrap />, primary: "text-purple-600", secondary: "text-purple-700/50" },
+  livewire: { name: "Livewire", icon: <SiLivewire />, primary: "text-fuchsia-500", secondary: "text-fuchsia-500/50" },
 
   // ERP & ENTERPRISE
   peoplesoft: { name: "PeopleSoft Dev", icon: <FaCogs />, primary: "text-blue-500", secondary: "text-blue-600/50" },
@@ -52,7 +54,7 @@ export const data = {
   supabase: { name: "Supabase", icon: <SiSupabase />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
   redis: { name: "Redis", icon: <SiRedis />, primary: "text-red-500", secondary: "text-red-600/50" },
   database: { name: "Database", icon: <FaDatabase />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
-  sqlite: { name: "SQLite", icon: <DiSqllite />, primary: "text-sky-400", secondary: "text-sky-500/50" }, // Nuevo
+  sqlite: { name: "SQLite", icon: <DiSqllite />, primary: "text-sky-400", secondary: "text-sky-500/50" }, 
 
   // INFRAESTRUCTURA
   aws: { name: "AWS", icon: <SiAmazonwebservices />, primary: "text-orange-400", secondary: "text-orange-500/50" },

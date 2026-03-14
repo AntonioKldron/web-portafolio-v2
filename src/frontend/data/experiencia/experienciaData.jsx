@@ -133,7 +133,7 @@ en: {
       },
       {
         id: "EXP_01",
-        empresa: "Intelisis Solution",
+        empresa: "Intelisis Solution CA de SV",
         ubicacion: "Morelia, Mexico",
         logo: intelisis,
         puesto: "SQL / Backend Developer",

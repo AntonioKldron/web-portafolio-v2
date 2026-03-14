@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown } from "react-icons/fa";
 import { useApp } from "../../../context/AppContext";
 
-// Importaciones corregidas a la carpeta 'components'
+// Importaciones de componentes
 import { MetaInfo } from "./MetaInfo";
 import { PuestosTimeline } from "./PuestosTimeline";
 import { DeploymentRegistry } from "./DeploymentRegistry";
@@ -44,16 +44,25 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                   <img src={data.logo} alt={data.empresa} className="w-full h-full object-contain" />
                 </div>
                 <div className="flex flex-col">
+                  {/* Título: Si hay más de 1 puesto, muestra la Empresa. Si no, el puesto individual */}
                   <h3 className={`text-xl font-black italic uppercase leading-none ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                    {puestos.length > 0 ? (isDark ? "Trayectoria Profesional" : "Professional Path") : data.puesto}
+                    {puestos.length > 1 
+                      ? data.empresa 
+                      : (puestos.length === 1 ? puestos[0].nombre : data.puesto)}
                   </h3>
-                  <p className={`text-[13px] font-bold uppercase tracking-widest mt-1 ${isDark ? 'text-gray-400' : 'text-indigo-600'}`}>
-                    {data.empresa}
-                  </p>
+
+                  {/* Subtítulo: Solo se muestra si NO hay múltiples roles para evitar repetir el nombre de la empresa */}
+                  {puestos.length <= 1 && (
+                    <p className={`text-[13px] font-bold uppercase tracking-widest mt-1 ${isDark ? 'text-gray-400' : 'text-indigo-600'}`}>
+                      {data.empresa}
+                    </p>
+                  )}
                 </div>
               </div>
               <MetaInfo periodo={data.periodo} ubicacion={data.ubicacion} isDark={isDark} />
-              <motion.div animate={{ rotate: isOpen ? 180 : 0 }} className="text-indigo-500 hidden md:block"><FaChevronDown /></motion.div>
+              <motion.div animate={{ rotate: isOpen ? 180 : 0 }} className="text-indigo-500 hidden md:block">
+                <FaChevronDown />
+              </motion.div>
             </div>
             {!isOpen && (
               <motion.p className={`mt-6 md:ml-20 text-[12px] italic border-l-2 border-indigo-500/30 pl-6 ${isDark ? 'text-gray-400' : 'text-slate-600'}`}>
@@ -64,7 +73,12 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
 
           <AnimatePresence>
             {isOpen && (
-              <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="px-6 pb-8">
+              <motion.div 
+                initial={{ height: 0, opacity: 0 }} 
+                animate={{ height: "auto", opacity: 1 }} 
+                exit={{ height: 0, opacity: 0 }} 
+                className="px-6 pb-8"
+              >
                 <div className={`pt-8 border-t space-y-12 ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
                   {puestos.length > 0 ? (
                     <PuestosTimeline puestos={puestos} isDark={isDark} />
@@ -72,7 +86,9 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
                       <div className="lg:col-span-2 space-y-4">
                         <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Info</p>
-                        <p className={`text-[15px] leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>{data.descripcion}</p>
+                        <p className={`text-[15px] leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
+                          {data.descripcion}
+                        </p>
                       </div>
                       <div className="lg:col-span-3 space-y-4">
                         <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Impact Logs</p>
@@ -86,6 +102,7 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                       </div>
                     </div>
                   )}
+
                   {proyectos.length > 0 && (
                     <DeploymentRegistry 
                       proyectos={proyectos} 
@@ -95,6 +112,7 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                       isDark={isDark} 
                     />
                   )}
+
                   <TechStackRegistry 
                     tecnologias={tecnologias} 
                     visibleTech={visibleTech} 

@@ -12,7 +12,20 @@ export const ProfileHeader = ({ foto, nombre, apellido, rol }) => (
         {nombre} <br /> 
         <span className="text-primary-accent not-italic font-light">{apellido}</span>
       </h1>
-      <span className="text-[10px] font-mono tracking-[0.4em] text-muted-text uppercase pt-2 block">{rol}</span>
+      <span className="
+          text-[10px] 
+          font-mono 
+          tracking-[0.4em] 
+          uppercase 
+          pt-2 
+          block
+          bg-gradient-to-b from-blue-900 via-blue-700 to-cyan-600
+          bg-clip-text
+          text-transparent
+          font-medium
+        ">
+          {rol}
+      </span>
     </div>
   </header>
 );
