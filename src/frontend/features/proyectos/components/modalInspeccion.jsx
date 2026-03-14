@@ -1,185 +1,237 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaTimes, FaChevronLeft, FaChevronRight, 
-  FaTerminal, FaFingerprint, FaCrosshairs, 
-  FaSatelliteDish, FaShieldAlt 
-} from 'react-icons/fa';
+import React, { useEffect, useState, useRef } from 'react';
+import { createPortal } from 'react-dom';
+import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import { useApp } from '../../../context/AppContext'; 
+
+// Iconos minimalistas premium (importados internamente para limpieza)
+const CloseIcon = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>;
 
 export default function ModalInspeccion({ abierto, onClose, imagenes, indice, setIndice }) {
   const { isDark } = useApp();
-  const [scanning, setScanning] = useState(false);
+  const [direction, setDirection] = useState(0);
+  const containerRef = useRef(null);
 
+  // --- SENIOR UX: FÍSICA DE RESORTE (Spring Physics) ---
+  // Reemplazamos animaciones lineales por físicas para dar sensación de peso
+  const xOffset = useMotionValue(0);
+  const springX = useSpring(xOffset, { stiffness: 120, damping: 24 });
+
+  // --- Senior UI: Efecto Parallax 3D sutil en la imagen ---
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-500, 500], [5, -5]), { stiffness: 100, damping: 30 });
+  const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-5, 5]), { stiffness: 100, damping: 30 });
+
+  // Bloqueo de Scroll y Eventos Globales
   useEffect(() => {
     if (abierto) {
-      const preventDefault = (e) => e.preventDefault();
+      document.body.style.overflow = 'hidden';
+      
+      const handleMouseMove = (e) => {
+        mouseX.set(e.clientX - window.innerWidth / 2);
+        mouseY.set(e.clientY - window.innerHeight / 2);
+      };
       const handleKeyDown = (e) => {
-        const scrollKeys = [' ', 'ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'End', 'Home'];
-        if (scrollKeys.includes(e.key)) e.preventDefault();
         if (e.key === 'Escape') onClose();
-        if (e.key === 'ArrowRight') setIndice((p) => (p + 1) % imagenes.length);
-        if (e.key === 'ArrowLeft') setIndice((p) => (p - 1 + imagenes.length) % imagenes.length);
+        if (e.key === 'ArrowRight') changeImage((indice + 1) % imagenes.length);
+        if (e.key === 'ArrowLeft') changeImage((indice - 1 + imagenes.length) % imagenes.length);
       };
 
-      window.addEventListener('wheel', preventDefault, { passive: false });
-      window.addEventListener('touchmove', preventDefault, { passive: false });
-      window.addEventListener('keydown', handleKeyDown, { capture: true });
-
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('keydown', handleKeyDown);
 
       return () => {
-        window.removeEventListener('wheel', preventDefault);
-        window.removeEventListener('touchmove', preventDefault);
-        window.removeEventListener('keydown', handleKeyDown, { capture: true });
-        document.documentElement.style.overflow = 'auto';
         document.body.style.overflow = 'auto';
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('keydown', handleKeyDown);
       };
     }
-  }, [abierto, onClose, imagenes.length, setIndice]);
+  }, [abierto, indice]);
 
+  // Actualizar la posición del carrete físico
   useEffect(() => {
-    setScanning(true);
-    const timer = setTimeout(() => setScanning(false), 800);
-    return () => clearTimeout(timer);
-  }, [indice]);
+    // Calculamos el centro exacto del viewport para la miniatura activa
+    const containerWidth = containerRef.current?.offsetWidth || window.innerWidth;
+    const itemWidth = 140; // w-32 (128px) + gap-3 (12px)
+    const centerOffset = (containerWidth / 2) - (itemWidth / 2);
+    xOffset.set(centerOffset - (indice * itemWidth));
+  }, [indice, abierto]);
+
+  const changeImage = (newIndice) => {
+    setDirection(newIndice > indice ? 1 : -1);
+    setIndice(newIndice);
+  };
 
   if (!abierto) return null;
 
-  const themeStyles = {
-    backgroundColor: isDark ? 'rgba(2, 6, 23, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-    color: 'var(--color-text-card-base)'
-  };
-
-  return (
+  return createPortal(
     <AnimatePresence>
       <motion.div 
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-        style={themeStyles}
-        className="fixed inset-0 z-[99999] flex items-center justify-center p-4 md:p-8 backdrop-blur-2xl"
+        className={`fixed inset-0 z-[999999] flex flex-col justify-between overflow-hidden ${
+          isDark ? 'bg-[#08080A] text-white' : 'bg-[#F5F5F7] text-black'
+        }`}
       >
-        {/* Fondo cerrable */}
-        <div className="absolute inset-0 cursor-zoom-out" onClick={onClose} />
-
-        {/* HUD FRAME TÁCTICO (Fijo al centro) */}
-        <div className={`absolute inset-4 md:inset-10 pointer-events-none border ${isDark ? 'border-indigo-500/20' : 'border-indigo-600/30'} rounded-[3rem] transition-all`}>
-          <div className={`absolute -top-1 -left-1 w-12 h-12 border-t-4 border-l-4 ${isDark ? 'border-indigo-500' : 'border-indigo-600'} rounded-tl-3xl shadow-[0_0_15px_rgba(99,102,241,0.4)]`} />
-          <div className={`absolute -bottom-1 -right-1 w-12 h-12 border-b-4 border-r-4 ${isDark ? 'border-indigo-500' : 'border-indigo-600'} rounded-br-3xl shadow-[0_0_15px_rgba(99,102,241,0.4)]`} />
+        {/* --- Senior UI: Fondo de Exposición Atmosférica --- */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          <AnimatePresence mode="wait">
+            <motion.img 
+              key={`bg-${indice}`} src={imagenes[indice]}
+              initial={{ opacity: 0, filter: 'blur(100px) saturate(2)' }} 
+              animate={{ opacity: isDark ? 0.3 : 0.15, filter: 'blur(100px) saturate(2)' }} 
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              className="w-full h-full object-cover"
+            />
+          </AnimatePresence>
+          {/* Degradado de viñeta para centrar la atención */}
+          <div className={`absolute inset-0 ${isDark ? 'bg-[radial-gradient(circle_at_center,transparent_0%,#08080A_100%)]' : 'bg-[radial-gradient(circle_at_center,transparent_0%,#F5F5F7_100%)]'}`} />
         </div>
 
-        {/* CONTENEDOR PRINCIPAL: Centrado absoluto */}
-        <motion.div 
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.9, opacity: 0 }}
-          className="relative w-full max-w-5xl h-full max-h-[90vh] z-10 flex flex-col items-center justify-between py-6"
-          onClick={(e) => e.stopPropagation()}
-        >
-          
-          {/* 1. HEADER (Arriba) */}
-          <div className="w-full flex justify-between items-center px-4 shrink-0">
-            <div className={`flex items-center gap-6 ${isDark ? 'text-indigo-400/60' : 'text-indigo-600/70'}`}>
-              <FaCrosshairs size={20} className="animate-spin" style={{ animationDuration: '10s' }} />
-              <div className="hidden md:flex gap-1">
-                {[1, 2, 3].map(i => (
-                  <motion.div key={i} animate={{ opacity: [0.3, 1, 0.3] }} transition={{ repeat: Infinity, duration: 1.5, delay: i*0.3 }} 
-                    className="w-1 h-4 bg-current opacity-40 rounded-full" />
-                ))}
-              </div>
+        {/* --- Senior UX: Cierre por Gesto o Clic --- */}
+        <div className="absolute inset-0 z-10 cursor-zoom-out" onClick={onClose} />
+
+        {/* --- HEADER MINIMALISTA TÁCTICO --- */}
+        <header className="relative w-full flex justify-between items-center p-6 md:p-10 z-50 shrink-0 mix-blend-difference text-white">
+          <div className="flex flex-col gap-1.5">
+            {/* Indicador de progreso binario (Senior UI: Cero texto plano) */}
+            <div className="flex gap-1">
+              {imagenes.map((_, i) => (
+                <motion.div 
+                  key={i}
+                  animate={{ 
+                    width: i === indice ? 20 : 6,
+                    backgroundColor: i === indice ? '#fff' : 'rgba(255,255,255,0.2)'
+                  }}
+                  className="h-1 rounded-full transition-all duration-500"
+                />
+              ))}
             </div>
-            
-            <motion.button 
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={onClose}
-              className={`p-3 md:p-4 rounded-2xl border transition-all shadow-xl
-                ${isDark ? 'bg-white/5 border-white/10 text-white/50 hover:bg-red-500/20' : 'bg-slate-100 border-slate-200 text-slate-500 hover:bg-red-50'}`}
-            >
-              <FaTimes size={20} />
-            </motion.button>
           </div>
+          <motion.button 
+            whileHover={{ scale: 1.1, rotate: 90 }} whileTap={{ scale: 0.9 }}
+            onClick={onClose}
+            className="p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/10"
+          >
+            <CloseIcon />
+          </motion.button>
+        </header>
 
-          {/* 2. VISOR CENTRAL (Crece para ocupar el centro) */}
-          <div className="relative w-full flex-1 flex items-center justify-center min-h-0 my-4 md:my-8">
-            {imagenes.length > 1 && (
-              <>
-                <button 
-                  onClick={() => setIndice((indice - 1 + imagenes.length) % imagenes.length)}
-                  className={`absolute left-0 md:-left-4 z-20 p-4 transition-all transform hover:scale-125
-                    ${isDark ? 'text-white/20 hover:text-indigo-400' : 'text-slate-300 hover:text-indigo-600'}`}
-                >
-                  <FaChevronLeft size={40} />
-                </button>
-                <button 
-                  onClick={() => setIndice((indice + 1) % imagenes.length)}
-                  className={`absolute right-0 md:-right-4 z-20 p-4 transition-all transform hover:scale-125
-                    ${isDark ? 'text-white/20 hover:text-indigo-400' : 'text-slate-300 hover:text-indigo-600'}`}
-                >
-                  <FaChevronRight size={40} />
-                </button>
-              </>
-            )}
+        {/* --- VISOR CENTRAL (Área de Enfoque) --- */}
+        <main className="relative flex-1 flex items-center justify-center z-20 w-fullPerspective-[2000px]">
+          
+          {/* Senior UX: Cursor de navegación direccional */}
+          {imagenes.length > 1 && (
+            <>
+              <div className="absolute left-0 inset-y-0 w-1/4 z-50 cursor-w-resize" onClick={() => changeImage((indice - 1 + imagenes.length) % imagenes.length)} />
+              <div className="absolute right-0 inset-y-0 w-1/4 z-50 cursor-e-resize" onClick={() => changeImage((indice + 1) % imagenes.length)} />
+            </>
+          )}
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={indice}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 1.05 }}
-                className={`relative flex items-center justify-center overflow-hidden rounded-3xl border shadow-2xl h-full w-full
-                  ${isDark ? 'border-white/5 shadow-black bg-black/20' : 'border-slate-200 shadow-slate-200 bg-white/40'}`}
-              >
-                {scanning && (
-                  <motion.div 
-                    initial={{ top: "-10%" }} animate={{ top: "110%" }}
-                    className={`absolute inset-x-0 h-1 z-30 opacity-50 shadow-[0_0_15px]
-                      ${isDark ? 'bg-indigo-500 shadow-indigo-500' : 'bg-indigo-600 shadow-indigo-600'}`}
-                  />
-                )}
+          <AnimatePresence mode="wait" custom={direction}>
+            <motion.div
+              key={indice}
+              custom={direction}
+              // Senior UI: Animación de "carrete 3D" (desplazamiento lateral + rotación)
+              initial={(d) => ({
+                opacity: 0,
+                x: d > 0 ? '50%' : '-50%',
+                rotateY: d > 0 ? 30 : -30,
+                scale: 0.9,
+                filter: 'blur(10px) contrast(1.2)'
+              })}
+              animate={{
+                opacity: 1,
+                x: 0,
+                rotateY: 0,
+                scale: 1,
+                filter: 'blur(0px) contrast(1)'
+              }}
+              exit={(d) => ({
+                opacity: 0,
+                x: d > 0 ? '-50%' : '50%',
+                rotateY: d > 0 ? -30 : 30,
+                scale: 0.9,
+                filter: 'blur(10px) contrast(1.2)'
+              })}
+              transition={{
+                x: { type: "spring", stiffness: 200, damping: 25 },
+                rotateY: { duration: 0.6 },
+                filter: { duration: 0.6 },
+                default: { duration: 0.6 }
+              }}
+              style={{ rotateX, rotateY }} // Aplicamos Parallax 3D
+              className="absolute w-full max-w-6xl h-full flex items-center justify-center pointer-events-none"
+            >
+              {/* Marco de fotografía de Grado de Galería */}
+              <div className={`relative p-2 rounded-xl shadow-[0_50px_100px_rgba(0,0,0,0.5)] border ${
+                isDark ? 'bg-[#111] border-white/5' : 'bg-white border-black/5'
+              }`}>
+                {/* Micro-detalle UI: Perforaciones de negativo (Senior UI: Iconos reducidos al máximo) */}
+                <div className="absolute -inset-x-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 opacity-10">
+                    {[...Array(6)].map((_,i) => <div key={i} className={`w-3 h-5 rounded-sm ${isDark ? 'bg-white' : 'bg-black'}`} />)}
+                </div>
+
                 <img 
                   src={imagenes[indice]} 
-                  className="w-full h-full object-contain p-2" 
-                  alt="Visor" 
+                  className="max-w-[85vw] max-h-[60vh] object-contain rounded-lg shadow-inner"
+                  alt="Vista de inspección" 
                 />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          {/* 3. MINIATURAS (Abajo) */}
-          <div className="w-full flex flex-col items-center gap-6 shrink-0">
-            <div 
-              style={{ backgroundColor: 'var(--color-bg-card)', borderColor: 'var(--color-border)' }}
-              className="p-2 md:p-3 rounded-[2rem] border shadow-2xl backdrop-blur-2xl max-w-full overflow-x-auto"
-            >
-              <div className="flex gap-3 md:gap-4 p-1">
-                {imagenes.map((img, i) => (
-                  <motion.button 
-                    key={i} 
-                    whileHover={{ y: -5 }}
-                    onClick={() => setIndice(i)}
-                    className={`relative w-16 h-12 md:w-24 md:h-16 shrink-0 rounded-xl overflow-hidden transition-all duration-500 border-2
-                      ${i === indice 
-                        ? 'border-indigo-500 scale-105 shadow-lg' 
-                        : 'border-transparent opacity-40 hover:opacity-100'}`}
-                  >
-                    <img src={img} className="w-full h-full object-cover" alt="" />
-                  </motion.button>
-                ))}
+                
+                <div className="absolute -inset-x-6 top-1/2 -translate-y-1/2 flex flex-col gap-4 opacity-10 right-0 left-auto">
+                    {[...Array(6)].map((_,i) => <div key={i} className={`w-3 h-5 rounded-sm ${isDark ? 'bg-white' : 'bg-black'}`} />)}
+                </div>
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
+        </main>
 
-            {/* FOOTER */}
-            <div className={`flex items-center gap-8 md:gap-12 ${isDark ? 'opacity-20' : 'opacity-40'}`}>
-               <FaTerminal size={14} />
-               <FaFingerprint size={14} className="animate-pulse" />
-               <FaSatelliteDish size={14} />
-               <FaShieldAlt size={14} />
-            </div>
-          </div>
+        {/* --- CARRETE FÍSICO INFERIOR (FILM STRIP) --- */}
+        <footer 
+          ref={containerRef}
+          className="relative w-full h-40 shrink-0 flex items-center justify-center mb-6 md:mb-10 z-30"
+        >
+          {/* Lente central de enfoque (UI Anchor) */}
+          <div className={`absolute w-40 h-28 border-2 rounded-2xl pointer-events-none z-40 transition-colors ${
+            isDark ? 'border-white/10 bg-white/5 shadow-[0_0_30px_rgba(255,255,255,0.05)]' : 'border-black/10 bg-black/5 shadow-[0_0_30px_rgba(0,0,0,0.05)]'
+          }`} />
 
-        </motion.div>
+          {/* Senior UX: Carrete con física de resorte (useSpring) */}
+          <motion.div 
+            style={{ x: springX }}
+            className="flex gap-3 absolute left-0"
+          >
+            {imagenes.map((img, i) => (
+              <motion.div
+                key={i}
+                onClick={() => changeImage(i)}
+                whileHover={{ y: -10 }}
+                animate={{
+                  scale: i === indice ? 1.25 : 0.85,
+                  opacity: i === indice ? 1 : 0.4,
+                  rotateY: i === indice ? 0 : (i < indice ? 15 : -15),
+                }}
+                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} // Senior UX: Cubic Bezier suave
+                className={`relative w-32 h-24 shrink-0 cursor-pointer rounded-xl overflow-hidden border-2 transition-all ${
+                  i === indice ? 'border-current' : 'border-transparent'
+                }`}
+              >
+                <img src={img} className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0" alt="" />
+                {/* Fotograma ID (Mono font) */}
+                <div className="absolute bottom-1 right-2 bg-black/80 text-[9px] px-1.5 py-0.5 text-white font-mono rounded-sm opacity-60">
+                    {String(i + 1).padStart(2, '0')}
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </footer>
+
+        {/* --- OVERLAY DE GRANO DE PELÍCULA (Estética Cinemática) --- */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.015] mix-blend-overlay">
+           <div className="w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        </div>
       </motion.div>
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body // createPortal infalible
   );
 }
