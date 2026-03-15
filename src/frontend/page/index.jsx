@@ -1,10 +1,8 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion'; 
 import FondoAnimado from '../static/fondo';
-/*import ExperienciaSeccion2 from '../components/experienciaSeccion2'; 
-import SeccionProyectos from '../components/proyectoSeccion';*/
 import SeccionEducacion from '../components/estudiosSeccion';
 import Sidebar from '../layout/navbarMovil.jsx'; 
-/**/ 
 import SeccionProyectos from '../features/proyectos/seccionProyectos.jsx'
 import ExperienciaSeccion from '../features/experiencia/experienciaSeccion.jsx'
 import SeccionHerramientas from '../features/herramientas/seccionHerramienta.jsx'
@@ -12,97 +10,157 @@ import SeccionSobreMi from '../features/sobreMi/seccionSobreMi.jsx'
 import MiCartaPerfil from '../features/perfil/miCartaPerfil.jsx'
 import Footer from '../layout/footer.jsx'
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30, filter: "blur(10px)", scale: 0.98 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    filter: "blur(0px)",
+    scale: 1,
+    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } 
+  }
+};
+
 export default function Index() {
+  const [isLoading, setIsLoading] = useState(true);
   const observerRef = useRef(null);
 
   useEffect(() => {
-    const sections = document.querySelectorAll('.reveal-section');
+    const timer = setTimeout(() => setIsLoading(false), 2800);
     
-    // Observer para las animaciones de aparición (Fade In)
+    const sections = document.querySelectorAll('.reveal-section');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('active');
       });
     }, { threshold: 0.05 });
 
     sections.forEach(section => revealObserver.observe(section));
-    return () => revealObserver.disconnect();
+    return () => { clearTimeout(timer); revealObserver.disconnect(); };
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden text-main-text bg-screen-bg transition-colors duration-500">
-      <style>{`
-        /* Animación suave sin saltos de espacio */
-        .reveal-section { 
-          opacity: 0; 
-          transform: translateY(10px);
-          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-          margin: 0 !important;
-          padding: 0 !important;
-        }
-        .reveal-section.active { 
-          opacity: 1; 
-          transform: translateY(0);
-        }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      `}</style>
-
-      {/* 1. FONDOS */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div className="hidden lg:block h-full w-full">
-          <FondoAnimado isActive={true} />
-        </div>
-        <div className="block lg:hidden h-full w-full bg-card-bg" />
-      </div>
+    <div className="relative min-h-screen w-full overflow-x-hidden text-main-text bg-screen-bg selection:bg-indigo-500/30">
       
-      <div className="relative z-[100]">
-        <Sidebar />
+      {/* 1. FONDO PERSISTENTE (Base de la carga) */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <FondoAnimado isActive={true} />
+        {/* Capa de atmósfera que se aclara al cargar */}
+        <motion.div 
+          animate={{ 
+            opacity: isLoading ? 0.85 : 0,
+            backdropFilter: isLoading ? "blur(12px)" : "blur(0px)"
+          }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 bg-slate-950/80 z-[1]"
+        />
       </div>
 
-      <div className="relative z-10 flex flex-col lg:flex-row w-full bg-transparent">
-        
-        {/* 2. PANEL IZQUIERDO (CARTA) 
-            Pasamos el observerRef para que la barra azul sepa dónde mirar
-        */}
-        <div className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 pl-6 pr-20 lg:pr-0 lg:pl-0">
-          <MiCartaPerfil observerRef={observerRef} />
-        </div>
+      {/* 2. LOADER GEOMÉTRICO (Sin texto) */}
+      <AnimatePresence>
+        {isLoading && (
+          <motion.div 
+            key="loader"
+            exit={{ 
+              opacity: 0,
+              scale: 1.1,
+              filter: "blur(30px)",
+              transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } 
+            }}
+            className="fixed inset-0 z-[200] flex items-center justify-center pointer-events-none"
+          >
+            <div className="relative">
+              {/* Núcleo de luz */}
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.4, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute inset-0 bg-indigo-500 rounded-full blur-[60px]"
+              />
+              
+              {/* Geometría Cinética */}
+              <div className="flex gap-1.5 items-center">
+                {[0, 1, 2].map((i) => (
+                  <motion.div
+                    key={i}
+                    animate={{ 
+                      scaleY: [0.5, 2.5, 0.5],
+                      backgroundColor: ["#6366f1", "#a855f7", "#6366f1"],
+                    }}
+                    transition={{ 
+                      duration: 1, 
+                      repeat: Infinity, 
+                      delay: i * 0.15,
+                      ease: "easeInOut"
+                    }}
+                    className="w-1 h-8 rounded-full shadow-[0_0_20px_rgba(99,102,241,0.6)]"
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
-        {/* 3. PANEL DERECHO - FLUJO CONTINUO 
-            IMPORTANTE: lg:h-screen y lg:overflow-y-auto son vitales para que el Nav funcione
-        */}
-        <div 
-          ref={observerRef} 
-          className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
+      {/* 3. CONTENIDO DEL SITIO */}
+      {!isLoading && (
+        <motion.div 
+          initial="hidden" 
+          animate="visible" 
+          variants={containerVariants} 
+          className="relative z-10 flex flex-col lg:flex-row w-full bg-transparent"
         >
-          <section id="sobre-mi" className="reveal-section w-full">
-            <SeccionSobreMi />
-          </section>
-          
-          <section id="herramientas" className="reveal-section w-full">
-            <SeccionHerramientas />
-          </section>
-          
-          <section id="experiencia" className="reveal-section w-full">
-            <ExperienciaSeccion />
-          </section>
-          
-          <section id="proyectos" className="reveal-section w-full">
-            <SeccionProyectos />
-          </section>
-          
-          <section id="formacion" className="reveal-section w-full">
-            <SeccionEducacion />
-          </section>
-          
-          <section  className="reveal-section w-full">
-            <Footer />
-          </section>
-        </div>
-      </div>
+          <div className="relative z-[100]"><Sidebar /></div>
+
+          {/* PANEL IZQUIERDO */}
+          <motion.div 
+            variants={itemVariants} 
+            className="w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 pl-6 pr-20 lg:pr-0 lg:pl-0"
+          >
+            <MiCartaPerfil observerRef={observerRef} />
+          </motion.div>
+
+          {/* PANEL DERECHO */}
+          <div 
+            ref={observerRef} 
+            className="no-scrollbar w-full lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 bg-card-bg lg:bg-transparent h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
+          >
+            <motion.section variants={itemVariants} id="sobre-mi" className="reveal-section w-full">
+              <SeccionSobreMi />
+            </motion.section>
+            
+            <motion.section variants={itemVariants} id="herramientas" className="reveal-section w-full">
+              <SeccionHerramientas />
+            </motion.section>
+            
+            <motion.section variants={itemVariants} id="experiencia" className="reveal-section w-full">
+              <ExperienciaSeccion />
+            </motion.section>
+            
+            <motion.section variants={itemVariants} id="proyectos" className="reveal-section w-full">
+              <SeccionProyectos />
+            </motion.section>
+            
+            <motion.section variants={itemVariants} id="formacion" className="reveal-section w-full">
+              <SeccionEducacion />
+            </motion.section>
+            
+            <motion.section variants={itemVariants} className="reveal-section w-full">
+              <Footer />
+            </motion.section>
+          </div>
+        </motion.div>
+      )}
     </div>
   );
 }
