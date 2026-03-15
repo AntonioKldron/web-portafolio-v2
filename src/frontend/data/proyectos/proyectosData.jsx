@@ -83,8 +83,8 @@ export const proyectosData = {
         ],
         tecnologias: [dt.react, dt.supabase, dt.tailwind, dt.docker],
         imagenes: [],
-        urlSitio: "",
-        urlRepositorio: ""
+        urlSitio: "https://techani.net/",
+        urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git"
       }
     ]
   }

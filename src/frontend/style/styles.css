@@ -3,7 +3,7 @@
 @layer base {
   :root {
     /* --- 🧊 MODO CLARO --- */
-    --color-bg-screen: #0095ff;      /* Tu azul vibrante */
+    --color-bg-screen: #0095ff;      /* Azul vibrante */
     --bg-grad-1: #5f8cac;            
     --bg-grad-2: #0077ff;            
     --shadow-color: #e3e3e3;         
@@ -12,7 +12,7 @@
     --color-border: #e2e8f0;         
 
     /* Letras Lado Derecho (Sobre Azul) */
-    --color-text-right: #020154; 
+    --color-text-right: #020154;     /* Navy profundo */
     
     /* Letras Carta (Sobre Blanco) */
     --color-text-card-base: #001035;  /* Navy casi negro */
@@ -30,72 +30,76 @@
     --color-bg-card: #030712;        /* Carta Negra */
     --color-border: #1e293b; 
 
-    /* Letras Lado Derecho (Sobre Negro) */
-    --color-text-right: #b3b3b3; 
-    
-    /* Letras Carta (Sobre Negro) */
-    --color-text-card-base: #f1f5f9;  /* Blanco azulado */
-    --color-text-card-muted: #94a3b8; /* Gris plata */
-    --color-primary-accent: #6366f1;  /* Índigo neón */
+    /* CORRECCIÓN: Letras Blancas para visibilidad total */
+    --color-text-right: #ffffff;      /* Blanco puro para contenido derecho */
+    --color-text-card-base: #ffffff;   /* Blanco para la carta */
+    --color-text-card-muted: #cbd5e1;  /* Gris claro para textos secundarios */
+    --color-primary-accent: #6366f1;   /* Índigo neón */
   }
 
   /* --- APLICACIÓN EN LA CARTA (IZQUIERDA) --- */
   .informational-card-container {
-    background-color: var(--color-bg-card);
-    /* Usamos la variable de texto de la carta */
+    background-color: var(--color-bg-card) !important;
     color: var(--color-text-card-base);
   }
 
-  /* Títulos y Nombres en la carta */
   .informational-card-container h1,
   .informational-card-container .text-main-text {
     color: var(--color-text-card-base) !important;
   }
 
-  /* Menú y Redes Sociales en la carta */
   .informational-card-container nav a,
   .informational-card-container footer i,
   .informational-card-container p {
     color: var(--color-text-card-muted) !important;
   }
 
-  /* Sección Activa y Hovers en la carta */
-  .informational-card-container .text-primary-accent,
   .informational-card-container nav a:hover,
-  .informational-card-container footer i:hover {
+  .informational-card-container footer i:hover,
+  .informational-card-container .text-primary-accent {
     color: var(--color-primary-accent) !important;
   }
 
   /* --- APLICACIÓN EN EL CONTENIDO (DERECHA) --- */
-  /* Forzamos que todo lo que esté en la sección derecha sea legible sobre su fondo */
+  /* Forzamos que el texto use la variable que cambia según el modo */
   .reveal-section h1, 
   .reveal-section h2, 
   .reveal-section p, 
+  .reveal-section li,
   .reveal-section span:not(.text-transparent) {
     color: var(--color-text-right) !important;
   }
 
-  /* Highlights en los párrafos de la derecha (Strong/B) */
+  /* Highlights (Strong/B) */
   .reveal-section strong, 
   .reveal-section b {
     color: #ad0176 !important;
     font-weight: 700;
     filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
   }
+
+  /* --- AJUSTES MÓVIL: FONDO SÓLIDO --- */
+  @media (max-width: 1023px) {
+    .layout-principal-container {
+      background-color: var(--color-bg-card) !important;
+      position: relative;
+      z-index: 10;
+    }
+  }
 }
 
 @theme {
   --color-card-bg: var(--color-bg-card);
-  --color-main-bg: var(--color-bg-main);
   --color-main-border: var(--color-border);
-  --color-main-text: var(--color-text-base);
-  --color-muted-text: var(--color-text-muted);
-  --color-primary-accent: var(--color-accent);
+  --color-main-text: var(--color-text-right);
+  --color-card-text: var(--color-text-card-base);
+  --color-muted-text: var(--color-text-card-muted);
+  --color-primary-accent: var(--color-primary-accent);
   --color-screen-bg: var(--color-bg-screen);
 }
 
 /* =========================================================
-   TU ANIMACIÓN ORIGINAL (RESTAURADA ÍNTEGRAMENTE)
+   ANIMACIÓN ORIGINAL DE LUCES (RESTAURADA)
    ========================================================= */
 
 #floating-bg {
@@ -116,12 +120,11 @@
     opacity: 1;
 }
 
-/* Estilos de las partículas de luz */
 .light {
     position: absolute;
     width: 0px;
-    background-color: var(--color-text-muted); /* Usa la variable muted para el núcleo */
-    box-shadow: var(--shadow-color) 0px 0px 20px 2px; /* Usa shadow-color para el brillo */
+    background-color: var(--color-text-card-muted); 
+    box-shadow: var(--shadow-color) 0px 0px 20px 2px; 
     top: 100vh;
     bottom: 0;
     left: 0;
@@ -130,7 +133,7 @@
     opacity: 0.75;
 }
 
-/* Clases de animación individual para las 9 luces */
+/* Instancias de animación */
 .x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
 .x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
 .x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
@@ -141,7 +144,6 @@
 .x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
 .x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
 
-/* Keyframes de la animación de ascenso */
 @keyframes floatUp {
     0%   { top: 100vh; opacity: 0; }
     25%  { opacity: 1; }
