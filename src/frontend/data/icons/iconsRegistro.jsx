@@ -1,7 +1,8 @@
 import React from 'react';
 import { 
   FaFigma, FaGitAlt, FaTerminal, FaAngular, FaReact, 
-  FaJava, FaCode, FaCogs, FaDatabase, FaLaravel 
+  FaJava, FaCode, FaCogs, FaDatabase, FaLaravel,
+  FaHtml5, FaCss3Alt  
 } from 'react-icons/fa'; 
 import { VscAzure, VscVscodeInsiders } from "react-icons/vsc";
 import { 
@@ -11,7 +12,7 @@ import {
   SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux,
   SiLivewire
 } from "react-icons/si";
-import { TbSql } from "react-icons/tb";
+import { TbSql, TbBrandCSharp, TbFileTypeSql } from "react-icons/tb";
 import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; 
 import { RiTailwindCssFill } from "react-icons/ri";
 import { LiaConnectdevelop } from "react-icons/lia";
@@ -20,8 +21,8 @@ export const data = {
   // LENGUAJES
   javascript: { name: "JavaScript", icon: <SiJavascript />, primary: "text-yellow-400", secondary: "text-yellow-500/50" },
   python: { name: "Python", icon: <SiPython />, primary: "text-blue-500", secondary: "text-blue-600/50" },
-  sql: { name: "SQL", icon: <TbSql />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
-  csharp: { name: "C#", icon: <SiDotnet />, primary: "text-purple-500", secondary: "text-purple-600/50" },
+  sql: { name: "SQL", icon: <TbFileTypeSql />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
+  csharp: { name: "C#", icon: <TbBrandCSharp />, primary: "text-purple-500", secondary: "text-purple-600/50" },
   java: { name: "Java", icon: <FaJava />, primary: "text-red-500", secondary: "text-red-600/50" },
   php: { name: "PHP", icon: <SiPhp />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
   go: { name: "Go", icon: <SiGo />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
@@ -32,12 +33,15 @@ export const data = {
   fastapi: { name: "FastAPI", icon: <SiFastapi />, primary: "text-emerald-400", secondary: "text-emerald-500/50" },
   django: { name: "Django", icon: <SiDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
   springboot: { name: "Spring Boot", icon: <SiSpringboot />, primary: "text-green-500", secondary: "text-green-600/50" },
-  laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" }, 
+  laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" },
+  '.net': { name: "C#", icon: <SiDotnet />, primary: "text-purple-500", secondary: "text-purple-600/50" }, 
 
   // FRONTEND
   react: { name: "React", icon: <FaReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
   angular: { name: "Angular", icon: <FaAngular />, primary: "text-red-600", secondary: "text-red-700/50" },
   tailwind: { name: "Tailwind CSS", icon: <RiTailwindCssFill />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
+  html: { "name": "HTML5", "icon": <FaHtml5 />, "primary": "text-orange-500", "secondary": "text-orange-600/50" },
+  css: { "name": "CSS3", "icon": <FaCss3Alt />, "primary": "text-blue-400", "secondary": "text-blue-500/50" },
   bootstrap: { name: "Bootstrap", icon: <DiBootstrap />, primary: "text-purple-600", secondary: "text-purple-700/50" },
   livewire: { name: "Livewire", icon: <SiLivewire />, primary: "text-fuchsia-500", secondary: "text-fuchsia-500/50" },
 

@@ -1,12 +1,51 @@
-# React + Vite
+# Hola, soy José Antonio Cornelio Calderón 👋
+### Ingeniero en Sistemas Computacionales | Backend Developer | ERP Analyst
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Desarrollador enfocado en la creación de soluciones robustas y escalables. Cuento con experiencia sólida en el ecosistema de **Python (Django)**, **Java (Spring Boot)** y la gestión de sistemas empresariales complejos como **PeopleSoft**. Mi enfoque combina la eficiencia del backend con la precisión del análisis de datos en entornos ERP.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🚀 Sobre mí
 
-## Expanding the ESLint configuration
+- 💼 Actualmente trabajando como **ERP Analyst en Cinépolis**.
+- 🛠️ Experiencia previa como **Backend Developer** en Intelisis y **Full Stack** en IT Morelia.
+- 🎓 Egresado del **Instituto Tecnológico de Morelia**.
+- 🗣️ Nivel de Inglés: **B1** (MCER).
+- 📍 Morelia, Michoacán, México.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+### 🛠️ Stack Tecnológico
+
+| Categoría | Tecnologías |
+| :--- | :--- |
+| **Lenguajes** | Python, Java, SQL (PL/SQL, T-SQL) |
+| **Frameworks** | Django, Spring Boot, React |
+| **ERP & Enterprise** | PeopleSoft, Intelisis |
+| **Herramientas** | Git, Supabase, PostgreSQL, Docker |
+
+---
+
+### 📈 Mi Actividad en GitHub
+
+![Resumen de GitHub](https://github-readme-stats.vercel.app/api?username=TU_USUARIO_AQUÍ&show_icons=true&theme=radical)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=TU_USUARIO_AQUÍ&layout=compact&theme=radical)
+
+---
+
+### 📂 Proyectos Destacados
+
+- **Web Portfolio:** Desarrollado con React y Supabase, enfocado en una experiencia de usuario fluida y moderna.
+- **ERP Solutions:** Optimización de procesos y manejo de bases de datos a gran escala.
+- **Microservicios:** Implementación de APIs RESTful utilizando Spring Boot y Django.
+
+---
+
+### 📬 Contacto
+
+- **LinkedIn:** [linkedin.com/in/tu-perfil](https://linkedin.com/in/tu-perfil)
+- **Cédula Profesional:** 14917873
+- **Email:** tu-correo@ejemplo.com
+
+---
+*“El código limpio siempre parece que fue escrito por alguien a quien le importa.”*
