@@ -62,14 +62,15 @@ export default function ProyectoCarta({ data, isOpen, toggle }) {
           >
             <div className="pt-12 space-y-12">
               
-              {/* --- VISOR DE IMÁGENES --- */}
-              {/* Usamos 'hidden' por defecto y 'md:block' para escritorio */}
-              <div className="hidden md:block">
-                <VisorImagenes 
-                  imagenes={data.imagenes} 
-                  isDark={isDark} 
-                />
-              </div>
+              {/* --- VISOR DE IMÁGENES (Condicional) --- */}
+              {data.imagenes && data.imagenes.length > 0 && (
+                <div className="hidden md:block">
+                  <VisorImagenes 
+                    imagenes={data.imagenes} 
+                    isDark={isDark} 
+                  />
+                </div>
+              )}
 
               {/* Lógica de arquitectura y logs de ejecución */}
               <CartaCuerpo 
