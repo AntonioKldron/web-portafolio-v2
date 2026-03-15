@@ -1,6 +1,6 @@
-import cinepolis from '../../assets/img/cinepolis/cinepolis.png';
-import intelisis from '../../assets/img/intelisis/intelisis.png';
-import itmmorelia from '../../assets/img/itm/itmorelia.png';
+import cinepolis from '../../assets/img/experiencia/cinepolis/cinepolis.png';
+import intelisis from '../../assets/img/experiencia/intelisis/intelisis.png';
+import itmmorelia from '../../assets/img/experiencia/itm/itmorelia.png';
 import { data as dt } from '../icons/iconsRegistro';
 
 export const experienciaData = {
