@@ -7,7 +7,7 @@ import SeccionSobreMi from '../../features/sobreMi/seccionSobreMi.jsx';
 import SeccionHerramientas from '../../features/herramientas/seccionHerramienta.jsx';
 import ExperienciaSeccion from '../../features/experiencia/experienciaSeccion.jsx';
 import SeccionProyectos from '../../features/proyectos/seccionProyectos.jsx';
-import SeccionEducacion from '../../components/estudiosSeccion.jsx';
+import SeccionEducacion from '../../features/educacion/seccionEducacion.jsx';
 import Footer from '../footer.jsx';
 
 const SECCIONES = [
