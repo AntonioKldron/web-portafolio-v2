@@ -4,7 +4,7 @@ import { FaChevronDown, FaInfoCircle, FaTasks } from "react-icons/fa";
 import { useApp } from "../../../context/AppContext";
 
 // Importaciones de componentes
-import { MetaInfo } from "./MetaInfo";
+import { MetaInfo } from "./infoMeta";
 import { PuestosTimeline } from "./PuestosTimeline";
 import { DeploymentRegistry } from "./DeploymentRegistry";
 import { TechStackRegistry } from "./TechStackRegistry";
