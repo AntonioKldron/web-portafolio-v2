@@ -2,7 +2,7 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import CartaTecnologia from './cartaTecnologias';
 import CarruselInfinito from './carruselInfinito';
-import ConsolaHabilidades from './ConsolaHabilidades';
+import ConsolaHabilidades from './habilidadesConsola';
 
 export default function VisorTecnologico({ items, idCategoria, tituloCategoria }) {
   const LIMITE_CARRUSEL = 6;
