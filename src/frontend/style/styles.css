@@ -151,3 +151,34 @@
     75%  { opacity: 1; }
     100% { top: -10vh; opacity: 0; }
 }
+/* --- SCROLLBAR ULTRA-LIMPIA --- */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+/* Chrome, Edge y Safari */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px; /* Aún más delgada */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Sin rastro del camino */
+  margin-block: 40px; 
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  /* Usamos una opacidad mínima para que sea casi invisible */
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  transition: background 0.4s ease, opacity 0.4s ease;
+}
+
+/* Solo cobra un poco de vida cuando el usuario pasa el mouse sobre el área */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.3);
+}

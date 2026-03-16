@@ -21,27 +21,32 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full min-h-screen">
+    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full min-h-screen bg-transparent">
+      
+      {/* Sidebar para dispositivos móviles */}
       <div className="relative z-[100]"><Sidebar /></div>
 
-      {/* PANEL IZQUIERDO: Mantiene su estructura pero sin paddings verticales extra */}
+      {/* PANEL IZQUIERDO: CARTA DE PERFIL */}
       <motion.aside 
         className="informational-card-container w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 px-6 pr-20 lg:px-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
       >
         <MiCartaPerfil observerRef={observerRef} />
       </motion.aside>
 
-      {/* PANEL DERECHO: pl-6 pr-20 se mantienen para el aire lateral, pero quitamos alturas innecesarias */}
+      {/* PANEL DERECHO: CONTENIDO PRINCIPAL */}
       <main
         ref={observerRef} 
-        className="no-scrollbar lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
+        // Aplicamos la clase custom-scrollbar definida en el CSS
+        className="custom-scrollbar lg:w-[75%] lg:ml-[25%] pl-6 pr-20 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
       >
         {SECCIONES.map((sec) => (
           <section
             key={sec.id}
             id={sec.id}
-            // Reducido de py-8 a py-2 o incluso eliminarlo para control total desde los componentes
-            className="reveal-section w-full py-2" 
+            className="reveal-section w-full py-4" 
           >
             {sec.component}
           </section>
