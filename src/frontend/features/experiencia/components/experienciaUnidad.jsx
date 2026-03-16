@@ -5,9 +5,9 @@ import { useApp } from "../../../context/AppContext";
 
 // Importaciones de componentes
 import { MetaInfo } from "./infoMeta";
-import { PuestosTimeline } from "./PuestosTimeline";
-import { DeploymentRegistry } from "./DeploymentRegistry";
-import { TechStackRegistry } from "./TechStackRegistry";
+import { PuestosTimeline } from "./timeLinePuestos";
+import { DeploymentRegistry } from "./registryDeployment";
+import { TechStackRegistry } from "./stackTechRegistry";
 
 export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
   const { isDark } = useApp();
