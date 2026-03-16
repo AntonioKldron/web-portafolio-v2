@@ -1,90 +1,88 @@
+// src/data/sobreMi/sobreMiData.js
 import { data as dt } from '../icons/iconsRegistro';
 
 export const sobreMiContenido = {
   coreStack: [
-    { ...dt.javascript },
-    { ...dt.java },
+    { ...dt.csharp },
     { ...dt.python },
-    { ...dt.sql }
+    { ...dt.sql },
   ],
   es: {
     subtitulo: "Sobre mí",
-    tituloPrincipal: "Ingeniería de sistemas empresariales",
-    tituloHighlight: "integraciones, datos y arquitectura",
-    fraseCorta: "Diseño el motor invisible que conecta sistemas empresariales, automatiza procesos y transforma la lógica de negocio en software escalable.",
+    tituloPrincipal: "Ingeniería de Software Full Stack",
+    tituloHighlight: "Arquitectura & Extensibilidad",
+    fraseCorta: "Diseño y desarrollo el motor tecnológico que conecta la lógica de negocio compleja con interfaces modernas, optimizando sistemas core y arquitecturas de datos empresariales.",
     parrafos: [
       {
-        texto: "Como {ingeniero}, diseño arquitecturas de integración para sistemas críticos, transformando procesos de negocio complejos en {software}.",
+        texto: "Como {ingeniero}, participo en el ciclo de vida completo de aplicaciones escalables, logrando una integración fluida entre un {frontend} interactivo y arquitecturas de backend robustas diseñadas para el entorno corporativo.",
         highlights: {
-          ingeniero: "Software & Systems Engineer",
-          software: "software escalable, robusto y seguro"
+          ingeniero: "Ingeniero en Sistemas",
+          frontend: "React.js (Hooks y Gestión de Estado)"
         }
       },
       {
-        texto: "En mi rol como {rol}, desarrollo lógica avanzada en {plataforma} mediante {herramientas}, garantizando la interoperabilidad de {servicios}.",
+        texto: "Actualmente en {empresa}, enfoco mis esfuerzos en la optimización del ecosistema {plataforma}. Utilizo {herramientas} para desarrollar lógica de negocio avanzada y asegurar la interoperabilidad mediante {integraciones}.",
         highlights: {
-          rol: "Analista ERP en Cinépolis",
+          empresa: "Cinépolis",
           plataforma: "Oracle PeopleSoft",
           herramientas: "PeopleCode y Application Engine",
-          servicios: "servicios web corporativos"
+          integraciones: "servicios web REST y SOAP"
         }
       },
       {
-        texto: "Como {rolAnterior}, lideré el desarrollo de {tecnologias} con {seguridad} y optimicé procesos en {db} para entornos de misión crítica.",
+        texto: "Cuento con una especialización técnica en {extensibilidad}, donde desarrollo librerías en {java} y ensamblados en {csharp} para potenciar funcionalidades y resolver requerimientos que exceden las capacidades nativas de los sistemas ERP.",
         highlights: {
-          rolAnterior: "Backend Engineer en Intelisis",
-          tecnologias: "APIs REST (Django/FastAPI)",
-          seguridad: "protocolos OAuth2",
-          db: "SQL Server"
+          extensibilidad: "extensibilidad de sistemas",
+          java: "Java (.jar)",
+          csharp: "C# (.dll)"
         }
       },
       {
-        texto: "Mi stack combina {techs} con frameworks como {frameworks}, especializándome en {especialidad}.",
+        texto: "Durante mi trayectoria en {experienciaAnterior}, contribuí al diseño de {apis} seguras bajo estándares profesionales y a la optimización de {db} en entornos de misión crítica, garantizando siempre la integridad y el alto rendimiento.",
         highlights: {
-          techs: "Python, Java y SQL",
-          frameworks: "Django, FastAPI y React",
-          especialidad: "arquitecturas de integración enterprise"
+          experienciaAnterior: "Intelisis DMS",
+          apis: "APIs RESTful (Django/FastAPI)",
+          db: "SQL Server (Triggers y Stored Procedures)"
         }
       }
     ]
   },
   en: {
     subtitulo: "About me",
-    tituloPrincipal: "Enterprise Systems Engineering",
-    tituloHighlight: "integrations, data and architecture",
-    fraseCorta: "I design the invisible engine that connects enterprise systems, automates processes, and transforms business logic into scalable software.",
+    tituloPrincipal: "Full Stack Software Engineering",
+    tituloHighlight: "Architecture & Extensibility",
+    fraseCorta: "I design and develop the technological engine that connects complex business logic with modern interfaces, optimizing core systems and enterprise data architectures.",
     parrafos: [
       {
-        texto: "As a {ingeniero}, I design integration architectures for critical systems, transforming complex business processes into {software}.",
+        texto: "As a {ingeniero}, I participate in the full lifecycle of scalable applications, achieving a seamless integration between an interactive {frontend} and robust backend architectures designed for corporate environments.",
         highlights: {
-          ingeniero: "Software & Systems Engineer",
-          software: "scalable, robust, and secure software"
+          ingeniero: "Systems Engineer",
+          frontend: "React.js (Hooks & State Management)"
         }
       },
       {
-        texto: "In my role as {rol}, I develop advanced logic in {plataforma} using {herramientas}, ensuring the interoperability of {servicios}.",
+        texto: "Currently at {empresa}, I focus on optimizing the {plataforma} ecosystem. I use {herramientas} to develop advanced business logic and ensure interoperability through {integraciones}.",
         highlights: {
-          rol: "ERP Analyst at Cinépolis",
+          empresa: "Cinépolis",
           plataforma: "Oracle PeopleSoft",
-          herramientas: "PeopleCode and Application Engine",
-          servicios: "corporate web services"
+          herramientas: "PeopleCode & Application Engine",
+          integraciones: "REST & SOAP web services"
         }
       },
       {
-        texto: "As a {rolAnterior}, I led the development of {tecnologias} with {seguridad} and optimized processes in {db} for mission-critical environments.",
+        texto: "I possess technical expertise in {extensibilidad}, developing {java} libraries and {csharp} assemblies to power functionalities and resolve requirements that exceed native ERP system capabilities.",
         highlights: {
-          rolAnterior: "Backend Engineer at Intelisis",
-          tecnologias: "REST APIs (Django/FastAPI)",
-          seguridad: "OAuth2 protocols",
-          db: "SQL Server"
+          extensibilidad: "system extensibility",
+          java: "Java (.jar)",
+          csharp: "C# (.dll)"
         }
       },
       {
-        texto: "My stack combines {techs} with frameworks like {frameworks}, specializing in {especialidad}.",
+        texto: "Throughout my career at {experienciaAnterior}, I contributed to the design of secure {apis} under professional standards and {db} optimization in mission-critical environments, always ensuring integrity and high performance.",
         highlights: {
-          techs: "Python, Java and SQL",
-          frameworks: "Django, FastAPI and React",
-          especialidad: "enterprise integration architectures"
+          experienciaAnterior: "Intelisis DMS",
+          apis: "RESTful APIs (Django/FastAPI)",
+          db: "SQL Server (Triggers & Stored Procedures)"
         }
       }
     ]

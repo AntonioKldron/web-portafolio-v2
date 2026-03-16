@@ -10,7 +10,7 @@ import {
   SiNestjs, SiPython, SiPostgresql, SiDotnet, SiJavascript, 
   SiSupabase, SiGo, SiRust, SiPhp, SiMysql, SiRedis, 
   SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux,
-  SiLivewire
+  SiLivewire, SiVercel, SiN8N 
 } from "react-icons/si";
 import { TbSql, TbBrandCSharp, TbFileTypeSql } from "react-icons/tb";
 import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; 
@@ -40,8 +40,8 @@ export const data = {
   react: { name: "React", icon: <FaReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
   angular: { name: "Angular", icon: <FaAngular />, primary: "text-red-600", secondary: "text-red-700/50" },
   tailwind: { name: "Tailwind CSS", icon: <RiTailwindCssFill />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
-  html: { "name": "HTML5", "icon": <FaHtml5 />, "primary": "text-orange-500", "secondary": "text-orange-600/50" },
-  css: { "name": "CSS3", "icon": <FaCss3Alt />, "primary": "text-blue-400", "secondary": "text-blue-500/50" },
+  html: { name: "HTML5", icon: <FaHtml5 />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  css: { name: "CSS3", icon: <FaCss3Alt />, primary: "text-blue-400", secondary: "text-blue-500/50" },
   bootstrap: { name: "Bootstrap", icon: <DiBootstrap />, primary: "text-purple-600", secondary: "text-purple-700/50" },
   livewire: { name: "Livewire", icon: <SiLivewire />, primary: "text-fuchsia-500", secondary: "text-fuchsia-500/50" },
 
@@ -65,10 +65,12 @@ export const data = {
   docker: { name: "Docker", icon: <SiDocker />, primary: "text-blue-400", secondary: "text-blue-500/50" },
   linux: { name: "Linux", icon: <SiLinux />, primary: "text-gray-100", secondary: "text-gray-400/50" },
   nginx: { name: "Nginx", icon: <SiNginx />, primary: "text-green-500", secondary: "text-green-600/50" },
+  vercel: { name: "Vercel", icon: <SiVercel />, primary: "text-white", secondary: "text-white/40" },
   windows: { name: "Windows", icon: <DiWindows />, primary: "text-blue-600", secondary: "text-blue-700/50" },
 
   // HERRAMIENTAS
   vscode: { name: "VS Code", icon: <VscVscodeInsiders />, primary: "text-blue-500", secondary: "text-blue-600/50" },
+  n8n: { name: "n8n", icon: <SiN8N />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   cursor: { name: "Cursor IA", icon: <LiaConnectdevelop />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
   jetbrains: { name: "JetBrains", icon: <SiJetbrains />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   git: { name: "Git", icon: <FaGitAlt />, primary: "text-orange-600", secondary: "text-orange-700/50" },

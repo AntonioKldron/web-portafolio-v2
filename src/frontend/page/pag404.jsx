@@ -1,6 +1,5 @@
 import React from 'react';
 import FondoAnimado from '../static/fondo';
-import MouseLightSpot from '../components/SpotlightCard';
 import { FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
@@ -10,7 +9,6 @@ export default function Pagina404() {
   return (
     <div className="min-h-screen w-full text-indigo-100 animated-gradient relative overflow-hidden">
       <FondoAnimado isActive={true} />
-      <MouseLightSpot />
       
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 z-10 relative">
         <FaLock className="text-6xl text-red-400 mb-6 animate-pulse" />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown } from "react-icons/fa";
+import { FaChevronDown, FaInfoCircle, FaTasks } from "react-icons/fa";
 import { useApp } from "../../../context/AppContext";
 
 // Importaciones de componentes
@@ -85,13 +85,17 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                   ) : (
                     <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
                       <div className="lg:col-span-2 space-y-4">
-                        <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Info</p>
+                        <div className="text-indigo-400 text-lg">
+                          <FaInfoCircle />
+                        </div>
                         <p className={`text-[15px] leading-relaxed text-justify ${isDark ? 'text-gray-300' : 'text-slate-700'}`}>
                           {data.descripcion}
                         </p>
                       </div>
                       <div className="lg:col-span-3 space-y-4">
-                        <p className="text-[10px] font-black text-indigo-400 uppercase tracking-widest">Impact Logs</p>
+                        <div className="text-indigo-400 text-lg">
+                          <FaTasks />
+                        </div>
                         <ul className="grid grid-cols-1 gap-4">
                           {detalles.map((detalle, i) => (
                             <li key={i} className={`flex gap-5 p-4 rounded-2xl border text-[13px] ${isDark ? 'bg-white/[0.01] border-white/5 text-gray-400' : 'bg-slate-50 border-slate-200 text-slate-600'}`}>

@@ -1,13 +1,15 @@
 import React from 'react';
-import { FaTerminal, FaGithub, FaPlus, FaMinus } from "react-icons/fa";
+import { FaTerminal, FaGithub, FaPlus, FaMinus, FaRocket } from "react-icons/fa";
 
 export const DeploymentRegistry = ({ proyectos, visibleProjects, showAll, onToggle, isDark }) => (
   <div className="space-y-6">
     <div className={`flex justify-between items-center border-b pb-4 ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-      <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.4em]">Deployment Registry</p>
+      <div className="text-indigo-400 text-xl">
+        <FaRocket />
+      </div>
       {proyectos.length > 3 && (
         <button onClick={onToggle} className={`text-[10px] font-black uppercase flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${isDark ? 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' : 'text-indigo-600 bg-indigo-50 border-indigo-100'}`}>
-          {showAll ? <><FaMinus /> Less</> : <><FaPlus /> View All ({proyectos.length})</>}
+          {showAll ? <><FaMinus /></> : <><FaPlus />({proyectos.length})</>}
         </button>
       )}
     </div>
