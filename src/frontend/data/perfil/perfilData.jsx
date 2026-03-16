@@ -21,7 +21,7 @@ export const perfilData = {
       { id: "herramientas", label: "Herramientas" },
       { id: "experiencia", label: "Experiencia" },
       { id: "proyectos", label: "Proyectos" },
-      { id: "formacion", label: "Educación" },
+      { id: "educacion", label: "Educación" },
     ]
   },
   en: {
@@ -32,7 +32,7 @@ export const perfilData = {
       { id: "herramientas", label: "Stack" },
       { id: "experiencia", label: "Experience" },
       { id: "proyectos", label: "Projects" },
-      { id: "formacion", label: "Education" },
+      { id: "educacion", label: "Education" },
     ]
   }
 };

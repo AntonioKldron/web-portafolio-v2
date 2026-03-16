@@ -2,8 +2,8 @@
 import { data as dt } from '../icons/iconsRegistro';
 import website from "../../assets/img/proyect/website/website.png";
 
-const globImages = import.meta.glob('../../assets/img/proyect/website/carrusel/*.png', { eager: true, import: 'default' });
-const carruselWebsite = Object.values(globImages);
+const WebsiteImages = import.meta.glob('../../assets/img/proyect/website/carrusel/*.png', { eager: true, import: 'default' });
+const carruselWebsite = Object.values(WebsiteImages);
 
 export const proyectosData = {
   es: {
@@ -42,8 +42,8 @@ export const proyectosData = {
         ],
         tecnologias: [dt.react, dt.supabase, dt.tailwind, dt.docker],
         imagenes: [],
-        urlSitio: "",
-        urlRepositorio: ""
+        urlSitio: "https://techani.net/",
+        urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git"
       }
     ]
   },

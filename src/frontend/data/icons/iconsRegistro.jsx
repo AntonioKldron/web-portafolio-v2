@@ -34,7 +34,7 @@ export const data = {
   django: { name: "Django", icon: <SiDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
   springboot: { name: "Spring Boot", icon: <SiSpringboot />, primary: "text-green-500", secondary: "text-green-600/50" },
   laravel: { name: "Laravel", icon: <FaLaravel />, primary: "text-red-600", secondary: "text-red-700/50" },
-  '.net': { name: "C#", icon: <SiDotnet />, primary: "text-purple-500", secondary: "text-purple-600/50" }, 
+  net: { name: ".Net", icon: <SiDotnet />, primary: "text-purple-500", secondary: "text-purple-600/50" }, 
 
   // FRONTEND
   react: { name: "React", icon: <FaReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },

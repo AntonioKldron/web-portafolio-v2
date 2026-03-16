@@ -3,14 +3,14 @@ import { AnimatePresence } from 'framer-motion';
 
 import FondoAnimado from '../static/fondo';
 import Loader from '../layout/index/loader';
-import LayoutPrincipal from '../layout/index/LayoutPrincipal';
+import LayoutPrincipal from '../layout/index/layoutPrincipal';
 
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
   const observerRef = useRef(null);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3800);
+    const timer = setTimeout(() => setIsLoading(false), 3700);
     return () => clearTimeout(timer);
   }, []);
 

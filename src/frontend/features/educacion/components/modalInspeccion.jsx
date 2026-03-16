@@ -1,9 +1,8 @@
-// src/components/modals/ModalInspeccionEdicion.jsx
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
 import { useApp } from '../../../context/AppContext'; 
-import { HiX, HiOutlineZoomIn, HiOutlineDocumentSearch, HiOutlineShieldCheck } from 'react-icons/hi';
+import { HiX, HiOutlineDocumentSearch } from 'react-icons/hi';
 
 export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo }) {
   const { isDark } = useApp();
@@ -15,6 +14,8 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
   const rotateY = useSpring(useTransform(mouseX, [-500, 500], [-7, 7]), { stiffness: 80, damping: 25 });
   const glareX = useSpring(useTransform(mouseX, [-500, 500], ['0%', '100%']), { stiffness: 80, damping: 25 });
   const glareOpacity = useSpring(useTransform(mouseY, [-500, 500], [0.1, 0.4]), { stiffness: 80, damping: 25 });
+
+  const esPdf = imagenUrl?.toLowerCase().endsWith('.pdf');
 
   useEffect(() => {
     if (abierto) {
@@ -41,9 +42,12 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center p-4 ${isDark ? 'bg-black/90' : 'bg-white/90'}`}
     >
-      <div className="absolute inset-0 z-0 opacity-20 blur-[100px]">
-        <img src={imagenUrl} className="w-full h-full object-cover" />
-      </div>
+      {/* Fondo desenfocado (solo si no es PDF para evitar ruido visual) */}
+      {!esPdf && (
+        <div className="absolute inset-0 z-0 opacity-20 blur-[100px]">
+          <img src={imagenUrl} className="w-full h-full object-cover" alt="bg-blur" />
+        </div>
+      )}
 
       <div className="absolute inset-0 z-10 cursor-zoom-out" onClick={onClose} />
 
@@ -54,6 +58,7 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
             <h2 className="text-sm font-black tracking-tighter uppercase italic">{titulo}</h2>
             <div className="flex items-center gap-1.5 font-mono text-[8px] opacity-50">
               <div className="w-1 h-1 rounded-full bg-green-500 animate-pulse" />
+              <span>{esPdf ? 'DOCUMENTO PDF' : 'VISUALIZADOR'}</span>
             </div>
           </div>
         </div>
@@ -62,13 +67,26 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
         </button>
       </header>
 
-      <main className="relative z-20 perspective-[2000px]">
-        <motion.div style={{ rotateX, rotateY }} className="relative group">
-          <div className={`p-1 rounded-lg border shadow-2xl ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
-            <motion.div style={{ background: 'linear-gradient(135deg, transparent, rgba(255,255,255,0.3), transparent)', x: glareX, opacity: glareOpacity }} className="absolute inset-0 z-10 filter blur-md" />
-            <img src={imagenUrl} className="max-w-[90vw] max-h-[75vh] object-contain rounded shadow-inner" />
+      <main className="relative z-20 perspective-[2000px] w-full max-w-5xl flex justify-center">
+        {esPdf ? (
+          // Vista para PDF
+          <div className="w-full h-[80vh] bg-white rounded-lg overflow-hidden shadow-2xl border border-white/20">
+            <embed
+              src={`${imagenUrl}#toolbar=0&navpanes=0`}
+              type="application/pdf"
+              width="100%"
+              height="100%"
+            />
           </div>
-        </motion.div>
+        ) : (
+          // Vista para IMAGEN (con efecto 3D)
+          <motion.div style={{ rotateX, rotateY }} className="relative group">
+            <div className={`p-1 rounded-lg border shadow-2xl ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
+              <motion.div style={{ background: 'linear-gradient(135deg, transparent, rgba(255,255,255,0.3), transparent)', x: glareX, opacity: glareOpacity }} className="absolute inset-0 z-10 filter blur-md" />
+              <img src={imagenUrl} className="max-w-[90vw] max-h-[75vh] object-contain rounded shadow-inner" alt="preview" />
+            </div>
+          </motion.div>
+        )}
       </main>
 
     </motion.div>,

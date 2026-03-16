@@ -1,7 +1,14 @@
+import C_Solid from '../../../../public/doc/certificaciones/principios-solid-clean-code.pdf';
+import C_SQL_Cero_Profesional from '../../../../public/doc/certificaciones/sql_server_cero_a_profesional.pdf';
+import C_SQL_Cero_Avanzado from '../../../../public/doc/certificaciones/sql_server_avanzado.pdf';
+import C_JavaScript_Moderno from '../../../../public/doc/certificaciones/javascript_moderno.pdf';
+import C_GitGithub from '../../../../public/doc/certificaciones/git+github.pdf';
+
+
 export const educacionData = {
   es: {
     header: {
-      subtitulo: "Mi Formación",
+      subtitulo: "Educacion",
       titulo: "Trayectoria",
       highlight: "Académica"
     },
@@ -10,72 +17,64 @@ export const educacionData = {
     estudios: [
       {
         titulo: "Ingeniería en Sistemas Computacionales",
-        institucion: "IT Morelia (TECNM)",
+        institucion: "Instituto Tecnológico de Morelia (TECNM-ITM)",
         fecha: "2020 – 2024",
-        descripcion: "Graduado con especialidad en Desarrollo de Software de Alto Desempeño. Cédula Profesional: 14917873."
+        descripcion: "Especialidad en Tecnologías de Desarrollo de Software. Cédula Profesional: 14917873."
+      },
+      {
+        titulo: "Inglés – Nivel B1",
+        institucion: "Centro de Lenguas Extranjeras (CLE), Instituto Tecnológico de Morelia",
+        fecha: "2022 – 2024",
+        descripcion: "Certificado según el Marco Común Europeo de Referencia para las Lenguas (MCER)."
       },
       {
         titulo: "Bachillerato General",
-        institucion: "COBAEM Michoacán",
+        institucion: "COBAEM – Colegio de Bachilleres del Estado de Michoacán",
         fecha: "2015 – 2018",
-        descripcion: "Formación básica con énfasis en ciencias físico-matemáticas."
+        descripcion: "Bachilleratos en Físico-Matemática y Humanidades. Diplomado en Contabilidad."
       }
     ],
     certificaciones: [
       {
-        titulo: "Certificación de Inglés B1",
-        institucion: "CLE - IT Morelia",
-        fecha: "2023",
-        descripcion: "Acreditación de competencia lingüística intermedia según el MCER.",
-        imagen: "/certificados/ingles_b1.jpg"
-      },
-      {
-        titulo: "PeopleSoft Technical Training",
-        institucion: "Oracle Academy / Cinépolis",
-        fecha: "2026",
-        descripcion: "Desarrollo especializado en PeopleTools, PeopleCode y gestión de Application Engine para sistemas ERP.",
-        imagen: "/certificados/peoplesoft.jpg"
-      },
-      {
-        titulo: "Full Stack Web Development",
-        institucion: "Fábrica Académica de Software",
-        fecha: "2024",
-        descripcion: "Dominio de tecnologías modernas incluyendo React, Node.js y bases de datos relacionales.",
-        imagen: "/certificados/fullstack.jpg"
-      },
-      {
-        titulo: "Especialista en SQL y Optimización de Consultas",
-        institucion: "Udemy / Intelisis",
+        titulo: "SQL Server: Programación Avanzada 2025",
+        institucion: "Udemy",
         fecha: "2025",
-        descripcion: "Diseño de bases de datos complejas, optimización de queries y procedimientos almacenados.",
-        imagen: "/certificados/sql.jpg"
+        descripcion: "Optimización de consultas, procedimientos almacenados complejos y lógica avanzada de bases de datos.",
+        imagen: C_SQL_Cero_Avanzado
       },
       {
-        titulo: "Python for Data Science & Backend",
-        institucion: "Cisco Networking Academy",
-        fecha: "2024",
-        descripcion: "Programación avanzada en Python enfocada en automatización y desarrollo de APIs con Django.",
-        imagen: "/certificados/python.jpg"
-      },
-      {
-        titulo: "Spring Boot & Microservices",
-        institucion: "LinkedIn Learning",
+        titulo: "JavaScript Moderno: Guía para dominar el lenguaje",
+        institucion: "Udemy",
         fecha: "2025",
-        descripcion: "Arquitectura de microservicios escalables utilizando Java Spring Boot y Docker.",
-        imagen: "/certificados/springboot.jpg"
+        descripcion: "Dominio de ES6+, programación asíncrona, manipulación del DOM y closures.",
+        imagen: C_JavaScript_Moderno
       },
       {
-        titulo: "Supabase & Realtime Databases",
-        institucion: "Egghead.io",
-        fecha: "2026",
-        descripcion: "Implementación de Backend as a Service (BaaS) con autenticación y bases de datos en tiempo real.",
-        imagen: "/certificados/supabase.jpg"
+        titulo: "GIT+GitHub: Todo un sistema de control de versiones de cero",
+        institucion: "Udemy",
+        fecha: "2025",
+        descripcion: "Gestión de repositorios, flujos de trabajo colaborativos y GitFlow.",
+        imagen: C_GitGithub
+      },
+      {
+        titulo: "Máster en SQL Server: Desde Cero a Nivel Profesional",
+        institucion: "Udemy",
+        fecha: "2025",
+        descripcion: "Administración integral de bases de datos relacionales y manipulación de datos.",
+        imagen: C_SQL_Cero_Profesional
+      },
+      {
+        titulo: "Principios SOLID y Clean Code",
+        institucion: "Udemy",
+        fecha: "2025",
+        descripcion: "Buenas prácticas de desarrollo, arquitectura limpia y código altamente mantenible.",
+        imagen: C_Solid
       }
     ]
   },
   en: {
     header: {
-      subtitulo: "My Background",
+      subtitulo: "Education",
       titulo: "Academic",
       highlight: "Journey"
     },
@@ -84,66 +83,58 @@ export const educacionData = {
     estudios: [
       {
         titulo: "Computer Systems Engineering",
-        institucion: "Morelia Institute of Technology",
+        institucion: "Morelia Institute of Technology (TECNM-ITM)",
         fecha: "2020 – 2024",
-        descripcion: "Graduated with a specialty in High Performance Software Development. License: 14917873."
+        descripcion: "Specialization in Software Development Technologies. Professional License: 14917873."
+      },
+      {
+        titulo: "English – Level B1",
+        institucion: "Foreign Language Center (CLE), IT Morelia",
+        fecha: "2022 – 2024",
+        descripcion: "Certified according to the Common European Framework of Reference for Languages (CEFR)."
       },
       {
         titulo: "General Baccalaureate",
         institucion: "COBAEM Michoacán",
         fecha: "2015 – 2018",
-        descripcion: "Core education with emphasis on physical-mathematical sciences."
+        descripcion: "High School focus on Physics-Mathematics and Humanities. Diploma in Accounting."
       }
     ],
     certificaciones: [
       {
-        titulo: "English Proficiency B1",
-        institucion: "CLE - IT Morelia",
-        fecha: "2023",
-        descripcion: "Accreditation of intermediate linguistic competence according to the CEFR.",
-        imagen: "/certificados/ingles_b1.jpg"
-      },
-      {
-        titulo: "PeopleSoft Technical Training",
-        institucion: "Oracle Academy / Cinépolis",
-        fecha: "2026",
-        descripcion: "Specialized development in PeopleTools, PeopleCode, and Application Engine management for ERP systems.",
-        imagen: "/certificados/peoplesoft.jpg"
-      },
-      {
-        titulo: "Full Stack Web Development",
-        institucion: "Academic Software Factory",
-        fecha: "2024",
-        descripcion: "Mastery of modern technologies including React, Node.js, and relational databases.",
-        imagen: "/certificados/fullstack.jpg"
-      },
-      {
-        titulo: "SQL Specialist & Query Optimization",
-        institucion: "Udemy / Intelisis",
+        titulo: "Advanced SQL Server Programming 2025",
+        institucion: "Udemy",
         fecha: "2025",
-        descripcion: "Complex database design, query optimization, and stored procedures.",
-        imagen: "/certificados/sql.jpg"
+        descripcion: "Query optimization, complex stored procedures, and advanced database logic.",
+        imagen: C_SQL_Cero_Avanzado
       },
       {
-        titulo: "Python for Data Science & Backend",
-        institucion: "Cisco Networking Academy",
-        fecha: "2024",
-        descripcion: "Advanced Python programming focused on automation and API development with Django.",
-        imagen: "/certificados/python.jpg"
-      },
-      {
-        titulo: "Spring Boot & Microservices",
-        institucion: "LinkedIn Learning",
+        titulo: "Modern JavaScript: Mastery Guide",
+        institucion: "Udemy",
         fecha: "2025",
-        descripcion: "Scalable microservices architecture using Java Spring Boot and Docker.",
-        imagen: "/certificados/springboot.jpg"
+        descripcion: "ES6+ mastery, asynchronous programming, DOM manipulation, and closures.",
+        imagen: C_JavaScript_Moderno
       },
       {
-        titulo: "Supabase & Realtime Databases",
-        institucion: "Egghead.io",
-        fecha: "2026",
-        descripcion: "Implementing Backend as a Service (BaaS) with authentication and real-time databases.",
-        imagen: "/certificados/supabase.jpg"
+        titulo: "GIT+GitHub: Complete Version Control",
+        institucion: "Udemy",
+        fecha: "2024",
+        descripcion: "Repository management, collaborative workflows, and GitFlow.",
+        imagen: C_GitGithub
+      },
+      {
+        titulo: "Master in SQL Server: Zero to Pro",
+        institucion: "Udemy",
+        fecha: "2025",
+        descripcion: "Comprehensive relational database administration and data manipulation.",
+        imagen: C_SQL_Cero_Profesional
+      },
+      {
+        titulo: "SOLID Principles and Clean Code",
+        institucion: "Udemy",
+        fecha: "2025",
+        descripcion: "Development best practices, clean architecture, and highly maintainable code.",
+        imagen: C_Solid
       }
     ]
   }
