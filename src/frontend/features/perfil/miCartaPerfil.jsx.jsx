@@ -2,9 +2,9 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { useApp } from '../../context/AppContext'; 
 import { useTranslation } from '../../hooks/useTranslation';
 import { perfilData } from '../../data/perfil/perfilData';
-import { ProfileHeader } from './components/ProfileHeader';
-import { ProfileNav } from './components/ProfileNav';
-import { ProfileFooter } from './components/profileFooter';
+import { ProfileHeader } from './components/headerProfile';
+import { ProfileNav } from './components/navProfile';
+import { ProfileFooter } from './components/footerProfile';
 import { HiMoon, HiSun, HiTranslate } from 'react-icons/hi';
 
 export default function MiCartaPerfil({ observerRef }) {
