@@ -6,7 +6,7 @@ const sections = [
   { id: "herramientas", icon: AiOutlineTool,       label: "STACK" },
   { id: "experiencia",  icon: AiOutlineSchedule,   label: "EXPERIENCIA" },
   { id: "proyectos",    icon: AiOutlineFolderOpen, label: "PROYECTOS" },
-  { id: "formacion",    icon: AiOutlineRead,       label: "EDUCACIÓN" },
+  { id: "educacion",    icon: AiOutlineRead,       label: "EDUCACIÓN" },
 ];
 
 const Sidebar = () => {
