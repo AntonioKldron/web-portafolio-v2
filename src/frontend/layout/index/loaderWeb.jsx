@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Loader = ({ isVisible = true }) => {
+const LoaderWeb = ({ isVisible = true }) => {
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -303,4 +303,4 @@ const Loader = ({ isVisible = true }) => {
   );
 };
 
-export default Loader;
+export default LoaderWeb;

@@ -18,14 +18,14 @@ export const experienciaData = {
         logo: cinepolis,
         puesto: "Analista ERP",
         periodo: "Enero 2026 - Actualidad",
-        resumen_largo: "Diseño, desarrollo y optimización de soluciones robustas utilizando PeopleCode, Application Designer y componentes avanzados en sistemas ERP.",
-        descripcion: "Traducción de necesidades de negocio en las áreas de Finanzas, RH y Operaciones en soluciones tecnológicas escalables, asegurando la continuidad operativa.",
+        resumen_largo: "Ingeniero en Sistemas especializado en el ecosistema PeopleSoft. Desarrollo, optimización y mantenimiento de soluciones robustas en áreas clave (Finanzas, RH, Operaciones) mediante PeopleCode, integraciones Java y herramientas avanzadas del ERP.",
+        descripcion: "Como Ingeniero en Sistemas dentro del departamento Global IT (área AR and BI), mi rol principal consiste en el desarrollo, optimización y mantenimiento continuo de soluciones tecnológicas utilizando PeopleCode, Application Designer y componentes avanzados del ERP (Records, Fields, Pages, Components, Application Engine y Application Packages). Traduzco requerimientos complejos de las áreas de Finanzas, Recursos Humanos, Operaciones y Compras en soluciones robustas y escalables. Me especializo en la creación, integración y mantenimiento de librerías .jar en Java para extender las funcionalidades nativas de PeopleSoft, habilitando lógica avanzada de negocio. Además, gestiono integraciones mediante Integration Broker administrando servicios REST/SOAP, automatizo procesos con lógica orientada a eventos y realizo gestión avanzada de datos con SQL Oracle, Meta-SQL y BI Publisher. Mi responsabilidad abarca todo el ciclo de vida: diagnóstico y resolución de incidencias asegurando el cumplimiento de SLAs, participación en ciclos de liberación con pruebas exhaustivas (unitarias, integradas y de usuario), y elaboración de documentación técnica y funcional detallada para garantizar la trazabilidad de cada desarrollo.",
         detalles: [
-          "Diseño, desarrollo y optimización de soluciones robustas utilizando PeopleCode, Application Designer, Application Packages y Application Engine.",
-          "Integración de librerías Java (.jar) personalizadas para potenciar funcionalidades nativas de PeopleSoft y resolver requerimientos complejos.",
-          "Gestión y soporte de servicios web REST/SOAP mediante Integration Broker, garantizando la interoperabilidad entre sistemas críticos.",
-          "Análisis de datos y reporteo avanzado mediante SQL Oracle, Meta-SQL y herramientas de BI Publisher.",
-          "Consultoría técnico-funcional para áreas de Finanzas, RH y Operaciones, asegurando el cumplimiento de SLAs."
+          "Desarrollo y mantenimiento de soluciones con PeopleCode, Application Designer, Application Engine y Application Packages.",
+          "Creación e integración de librerías Java (.jar) para extender funcionalidades nativas de PeopleSoft y habilitar lógica avanzada de negocio.",
+          "Administración de Integration Broker para la gestión de servicios REST/SOAP, garantizando el flujo seguro de información entre sistemas.",
+          "Gestión avanzada de consultas, reportes y validaciones con SQL Oracle, Meta-SQL, Query Manager y BI Publisher.",
+          "Participación en ciclos de liberación, diagnóstico de incidencias (SLA) y elaboración de documentación técnico-funcional."
         ],
         tecnologias: [dt.oracle, dt.java, dt.peoplesoft],
         proyectos: []
@@ -37,34 +37,37 @@ export const experienciaData = {
         logo: intelisis,
         puesto: "Desarrollador Back-End",
         periodo: "Febrero 2024 - Enero 2026",
-        resumen_largo: "Evolución profesional desde la optimización técnica como becario hasta el desarrollo de APIs RESTful y arquitectura backend para el sector automotriz.",
+        resumen_largo: "Evolución de Becario a Desarrollador de Proyectos Especiales. Experiencia en arquitectura de APIs RESTful, integración de sistemas multiplataforma y administración avanzada de bases de datos SQL Server para el sector automotriz.",
+        descripcion: "Durante mi trayectoria en el departamento de TICS (área de Interfaces), evolucioné de Becario a Desarrollador de Proyectos Especiales, asumiendo la responsabilidad integral de la arquitectura backend y base de datos para el DMS automotriz. Diseñé y desarrollé APIs RESTful de alto rendimiento utilizando Django y FastAPI para gestionar flujos operativos críticos (citas, clientes, vehículos y órdenes de servicio), implementando protocolos de seguridad estrictos como OAuth2 y control de acceso granular. Lideré la automatización de procesos del ERP sincronizando información en tiempo real con sistemas externos y plataformas multiagencia. A nivel de base de datos, realicé desarrollo avanzado y administración en SQL Server, creando y optimizando procedimientos almacenados, funciones, triggers y ensamblados. Mi rol incluyó el consumo y exposición de servicios internos, despliegue en entornos controlados (incluyendo mi etapa inicial gestionando WAMP Server), pruebas, depuración y la creación de documentación técnica exhaustiva para garantizar la escalabilidad y estabilidad del ecosistema tecnológico.",
         puestos: [
           {
-            nombre: "Desarrollador Back-End",
+            nombre: "Desarrollador de Proyectos Especiales (Back-End)",
             fecha: "Julio 2024 – Enero 2026",
-            descripcion: "Arquitectura y despliegue de APIs RESTful empleando Django y FastAPI para la gestión integral de flujos operativos (clientes, vehículos y órdenes de servicio).",
+            descripcion: "Como Ingeniero en Sistemas en el área de Interfaces, lideré el diseño y desarrollo de APIs RESTful de alto rendimiento con Django y FastAPI, enfocadas en la gestión integral de módulos críticos del ERP (citas, clientes, vehículos y órdenes de servicio). Fui responsable de implementar protocolos de seguridad estrictos como OAuth2 y esquemas de control de acceso granular adaptados a la jerarquía de sucursales. Además, automaticé y optimicé procesos clave mediante integraciones en tiempo real con sistemas externos y plataformas multiagencia, asegurando un flujo de información ágil y seguro. Todo esto respaldado por una sólida administración y desarrollo avanzado en SQL Server, abarcando desde la creación de procedimientos almacenados hasta triggers y ensamblados.",
             detalles: [
-              "Implementación de protocolos de autenticación OAuth2 y esquemas de control de acceso granular para protección de activos.",
-              "Ingeniería de bases de datos senior en SQL Server: creación de procedimientos almacenados, triggers, funciones y ensamblados optimizados.",
-              "Sincronización en tiempo real entre el ERP e interfaces externas, incrementando la eficiencia operativa en entornos multiagencia.",
-              "Ejecución de fases de pruebas unitarias, despliegues controlados y elaboración de documentación técnica de alta calidad."
+              "Construcción de APIs RESTful para la gestión de citas, clientes, vehículos y órdenes de servicio.",
+              "Implementación de mecanismos de autenticación OAuth2 y control de acceso granular según normativas empresariales.",
+              "Desarrollo avanzado en bases de datos SQL Server: creación y mantenimiento de procedimientos almacenados, funciones, triggers y ensamblados.",
+              "Consumo y exposición de servicios internos para integraciones multiagencia y sincronización en tiempo real.",
+              "Despliegue de aplicaciones en entornos controlados y redacción de documentación técnica detallada."
             ]
           },
           {
             nombre: "Becario de Desarrollo",
             fecha: "Febrero 2024 – Julio 2024",
-            descripcion: "Optimización de Backend y gestión de infraestructura inicial para el DMS Intelisis, enfocado en rendimiento y estabilidad operativa.",
+            descripcion: "Durante mi etapa como Becario en el área web, brindé un soporte vital en la optimización del DMS Intelisis, centrándome en el desarrollo, mantenimiento y depuración de scripts, procedimientos almacenados y funciones en SQL Server para mejorar la gestión de datos. Participé activamente en la automatización de tareas recurrentes y en la integración inicial de módulos internos para agilizar la comunicación entre departamentos. Además, fui responsable de gestionar despliegues de aplicaciones y actualizaciones en entornos WAMP Server, asegurando transiciones suaves a producción. Esta experiencia me permitió aplicar metodologías ágiles en un entorno corporativo real, fortaleciendo mis habilidades técnicas y de trabajo colaborativo.",
             detalles: [
-              "Desarrollo y depuración de scripts SQL en SQL Server para la mejora del rendimiento en la gestión de datos del ERP.",
-              "Gestión de actualizaciones y puesta en producción de aplicaciones en entornos WAMP Server.",
-              "Colaboración activa bajo metodologías ágiles, integrando módulos internos y brindando soporte técnico-funcional."
+              "Desarrollo y optimización de procedimientos almacenados, funciones y consultas en SQL Server.",
+              "Automatización de procesos básicos y soporte en la integración inicial de módulos internos.",
+              "Realización de despliegues y actualizaciones de aplicaciones en entornos WAMP Server.",
+              "Depuración de scripts y aplicación de metodologías ágiles en el desarrollo corporativo."
             ]
           }
         ],
         tecnologias: [
           dt.python, dt.django, dt.fastapi, dt.sqlserver, 
           dt.postgresql, dt.docker, dt.linux, dt.git, 
-          dt.javascript, dt.angular
+          dt.javascript, dt.angular, dt.intelisis
         ],
         proyectos: [
           { nombre: "BYD Integración", descripcion: "Sincronización de agencias automotrices con sistemas CRM de la marca BYD.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
@@ -87,19 +90,19 @@ export const experienciaData = {
         ubicacion: "Morelia, Michoacán",
         logo: itmmorelia,
         puesto: "Desarrollador Full Stack Jr.",
-        periodo: "Enero 2023 - Enero 2024",
-        resumen_largo: "Desarrollo integral de aplicaciones web de extremo a extremo y modelado de bases de datos relacionales para proyectos institucionales.",
-        descripcion: "Construcción de aplicaciones web de extremo a extremo utilizando React.js en el frontend y Django en el backend, enfocadas en la optimización de procesos.",
+        periodo: "Enero 2023 - Octubre 2023",
+        resumen_largo: "Desarrollo Full Stack de aplicaciones web institucionales, integrando soluciones dinámicas desde el modelado de bases de datos hasta la implementación de interfaces de usuario modernas.",
+        descripcion: "En mi rol como Desarrollador Full Stack Jr., participé activamente en la construcción de aplicaciones web de extremo a extremo para proyectos institucionales y académicos. Mi enfoque abarcó tanto el desarrollo frontend, creando landing pages responsivas e interfaces de usuario dinámicas con React.js, PHP, HTML5 y CSS, como la arquitectura backend, diseñando y desarrollando APIs REST robustas utilizando Django y SQLite. Además, fui responsable del modelado, gestión y optimización de bases de datos relacionales en MariaDB, asegurando en todo momento la integridad referencial y la eficiencia en la ejecución de consultas. Trabajé en estrecha colaboración con equipos de diseño para conceptualizar y materializar prototipos y sistemas de diseño en Figma, logrando una experiencia de usuario (UX/UI) altamente optimizada y orientada a los objetivos de cada proyecto.",
         detalles: [
-          "Construcción de aplicaciones web de extremo a extremo utilizando React.js en el frontend y Django en el backend.",
-          "Modelado de prototipos y sistemas de diseño responsivos en Figma, enfocados en la mejora de la experiencia de usuario (UX/UI).",
-          "Diseño de esquemas de bases de datos relacionales en MariaDB y SQLite.",
-          "Aseguramiento de la integridad referencial y eficiencia en consultas REST."
+          "Implementación de interfaces de usuario dinámicas con React.js y creación de landing pages responsivas con PHP, HTML5 y CSS.",
+          "Diseño y desarrollo de APIs REST utilizando Django y SQLite para dar soporte a proyectos internos.",
+          "Modelado y gestión de bases de datos relacionales en MariaDB, garantizando la integridad de las consultas.",
+          "Colaboración en el diseño UX/UI mediante la creación de prototipos e interfaces gráficas en Figma."
         ],
-        tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git],
+        tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
           { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: ["React", "Supabase", "Tailwind"], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
-          { nombre: "Techani 1", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
+          { nombre: "Techani 1.0", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
           { nombre: "OMD System", descripcion: "Plataforma de gestión web para una organización sin fines de lucro.", tecnologias: ["PHP", "MariaDB"], repositorio: "/404" }
         ]
       }
@@ -119,14 +122,14 @@ export const experienciaData = {
         logo: cinepolis,
         puesto: "ERP Analyst",
         periodo: "January 2026 - Present",
-        resumen_largo: "Design, development, and optimization of robust solutions using PeopleCode, Application Designer, and advanced components in ERP systems.",
-        descripcion: "Translation of business needs in Finance, HR, and Operations into scalable technological solutions, ensuring operational continuity.",
+        resumen_largo: "Systems Engineer specialized in the PeopleSoft ecosystem. Development, optimization, and maintenance of robust solutions in key areas (Finance, HR, Operations) using PeopleCode, Java integrations, and advanced ERP tools.",
+        descripcion: "As a Systems Engineer within the Global IT department (AR and BI area), my primary role involves the continuous development, optimization, and maintenance of technological solutions using PeopleCode, Application Designer, and advanced ERP components (Records, Fields, Pages, Components, Application Engine, and Application Packages). I translate complex business requirements from Finance, Human Resources, Operations, and Procurement into robust and scalable solutions. I specialize in the creation, integration, and maintenance of Java (.jar) libraries to extend native PeopleSoft functionalities, enabling advanced business logic. Additionally, I manage integrations via Integration Broker by administrating REST/SOAP services, automate processes with event-driven logic, and perform advanced data management using Oracle SQL, Meta-SQL, and BI Publisher. My responsibilities span the entire lifecycle: diagnosing and resolving incidents ensuring SLA compliance, participating in release cycles with comprehensive testing (unit, integrated, and user acceptance), and drafting detailed technical and functional documentation to guarantee traceability.",
         detalles: [
-          "Design, development, and optimization of robust solutions using PeopleCode, Application Designer, Application Packages, and Application Engine.",
-          "Integration of custom Java libraries (.jar) to enhance native PeopleSoft functionalities and resolve complex requirements.",
-          "Management and support of REST/SOAP web services through Integration Broker, guaranteeing interoperability between critical systems.",
-          "Data analysis and advanced reporting via Oracle SQL, Meta-SQL, and BI Publisher tools.",
-          "Technical-functional consultancy for Finance, HR, and Operations areas, ensuring SLA compliance."
+          "Development and maintenance of solutions using PeopleCode, Application Designer, Application Engine, and Application Packages.",
+          "Creation and integration of Java libraries (.jar) to extend native PeopleSoft functionalities and enable advanced business logic.",
+          "Integration Broker administration for REST/SOAP services management, ensuring secure information flow between systems.",
+          "Advanced management of queries, reports, and validations with Oracle SQL, Meta-SQL, Query Manager, and BI Publisher.",
+          "Participation in release cycles, incident diagnostics (SLA compliance), and creation of technical-functional documentation."
         ],
         tecnologias: [dt.oracle, dt.java, dt.peoplesoft],
         proyectos: []
@@ -138,34 +141,37 @@ export const experienciaData = {
         logo: intelisis,
         puesto: "Back-End Developer",
         periodo: "February 2024 - January 2026",
-        resumen_largo: "Professional evolution from technical optimization as an intern to RESTful API development and backend architecture for the automotive sector.",
+        resumen_largo: "Evolution from Intern to Special Projects Developer. Experience in RESTful API architecture, multi-platform system integration, and advanced SQL Server database administration for the automotive sector.",
+        descripcion: "During my trajectory in the ICT department (Interfaces area), I evolved from an Intern to a Special Projects Developer, taking full responsibility for the backend architecture and database management of the automotive DMS. I designed and developed high-performance RESTful APIs using Django and FastAPI to manage critical operational flows (appointments, customers, vehicles, and service orders), implementing strict security protocols such as OAuth2 and granular access control. I led the automation of ERP processes by synchronizing real-time information with external systems and multi-agency platforms. At the database level, I performed advanced development and administration in SQL Server, creating and optimizing stored procedures, functions, triggers, and assemblies. My role also included the consumption and exposure of internal services, deployment in controlled environments (including my initial stage managing WAMP Server), testing, debugging, and the creation of exhaustive technical documentation to ensure the scalability and stability of the technological ecosystem.",
         puestos: [
           {
-            nombre: "Back-End Developer",
+            nombre: "Special Projects Developer (Back-End)",
             fecha: "July 2024 – January 2026",
-            descripcion: "Architecture and deployment of RESTful APIs using Django and FastAPI for comprehensive operational flow management (customers, vehicles, and service orders).",
+            descripcion: "As a Systems Engineer in the Interfaces area, I led the design and development of high-performance RESTful APIs using Django and FastAPI, focused on the comprehensive management of critical ERP modules (appointments, customers, vehicles, and service orders). I was responsible for implementing strict security protocols such as OAuth2 and granular access control schemes adapted to branch hierarchies. Furthermore, I automated and optimized key processes through real-time integrations with external systems and multi-agency platforms, ensuring an agile and secure information flow. All of this was supported by solid administration and advanced development in SQL Server, ranging from the creation of stored procedures to triggers and assemblies.",
             detalles: [
-              "Implementation of OAuth2 authentication protocols and granular access control schemes for asset protection.",
-              "Senior database engineering in SQL Server: creation of optimized stored procedures, triggers, functions, and assemblies.",
-              "Real-time synchronization between the ERP and external interfaces, increasing operational efficiency in multi-agency environments.",
-              "Execution of unit testing phases, controlled deployments, and high-quality technical documentation."
+              "Construction of RESTful APIs for the management of appointments, customers, vehicles, and service orders.",
+              "Implementation of OAuth2 authentication mechanisms and granular access control according to business regulations.",
+              "Advanced SQL Server database development: creation and maintenance of stored procedures, functions, triggers, and assemblies.",
+              "Consumption and exposure of internal services for multi-agency integrations and real-time synchronization.",
+              "Application deployment in controlled environments and drafting of detailed technical documentation."
             ]
           },
           {
             nombre: "Development Intern",
             fecha: "February 2024 – July 2024",
-            descripcion: "Backend optimization and initial infrastructure management for the Intelisis DMS, focused on performance and operational stability.",
+            descripcion: "During my time as an Intern in the web area, I provided vital support in optimizing the Intelisis DMS, focusing on the development, maintenance, and debugging of scripts, stored procedures, and functions in SQL Server to improve data management. I actively participated in the automation of recurring tasks and the initial integration of internal modules to streamline communication between departments. Additionally, I was responsible for managing application deployments and updates in WAMP Server environments, ensuring smooth transitions to production. This experience allowed me to apply agile methodologies in a real corporate setting, strengthening my technical problem-solving and collaborative teamwork skills.",
             detalles: [
-              "Development and debugging of SQL scripts in SQL Server to improve performance in data management.",
-              "Management of updates and production deployment of applications in WAMP Server environments.",
-              "Active collaboration under agile methodologies, integrating internal modules and providing technical-functional support."
+              "Development and optimization of stored procedures, functions, and queries in SQL Server.",
+              "Automation of basic processes and support in the initial integration of internal modules.",
+              "Execution of application deployments and updates in WAMP Server environments.",
+              "Script debugging and application of agile methodologies in corporate development."
             ]
           }
         ],
         tecnologias: [
           dt.python, dt.django, dt.fastapi, dt.sqlserver, 
           dt.postgresql, dt.docker, dt.linux, dt.git, 
-          dt.javascript, dt.angular
+          dt.javascript, dt.angular, dt.intelisis
         ],
         proyectos: [
           { nombre: "BYD Integration", descripcion: "Synchronization of automotive agencies with BYD brand CRM systems.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
@@ -188,19 +194,19 @@ export const experienciaData = {
         ubicacion: "Morelia, Mexico",
         logo: itmmorelia,
         puesto: "Jr. Full Stack Developer",
-        periodo: "January 2023 - January 2024",
-        resumen_largo: "End-to-end development of web applications and relational database modeling for institutional projects.",
-        descripcion: "Building end-to-end web applications using React.js for frontend and Django for backend, focused on process optimization.",
+        periodo: "January 2023 - October 2023",
+        resumen_largo: "Full Stack development of institutional web applications, integrating dynamic solutions from database modeling to the implementation of modern user interfaces.",
+        descripcion: "In my role as a Jr. Full Stack Developer, I actively participated in building end-to-end web applications for institutional and academic projects. My focus covered both frontend development, creating responsive landing pages and dynamic user interfaces with React.js, PHP, HTML5, and CSS, as well as backend architecture, designing and developing robust REST APIs using Django and SQLite. Furthermore, I was responsible for modeling, managing, and optimizing relational databases in MariaDB, always ensuring referential integrity and query execution efficiency. I worked closely with design teams to conceptualize and materialize prototypes and design systems in Figma, achieving a highly optimized user experience (UX/UI) aligned with the goals of each project.",
         detalles: [
-          "Building end-to-end web applications using React.js for the frontend and Django for the backend.",
-          "Modeling of prototypes and responsive design systems in Figma, focused on improving user experience (UX/UI).",
-          "Relational database design in MariaDB and SQLite.",
-          "Ensuring referential integrity and efficiency in REST queries."
+          "Implementation of dynamic user interfaces with React.js and creation of responsive landing pages using PHP, HTML5, and CSS.",
+          "Design and development of REST APIs using Django and SQLite to support internal projects.",
+          "Modeling and management of relational databases in MariaDB, ensuring query integrity.",
+          "Collaboration in UX/UI design by creating prototypes and graphical interfaces in Figma."
         ],
-        tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git],
+        tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
           { nombre: "Techani 2.0", descripcion: "Health management app for type 1 diabetes with real-time database.", tecnologias: ["React", "Supabase", "Tailwind"], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
-          { nombre: "Techani 1", descripcion: "Initial PHP version for monitoring and managing patients.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
+          { nombre: "Techani 1.0", descripcion: "Initial PHP version for monitoring and managing patients.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
           { nombre: "OMD System", descripcion: "Web management platform for a non-profit organization.", tecnologias: ["PHP", "MariaDB"], repositorio: "/404" }
         ]
       }

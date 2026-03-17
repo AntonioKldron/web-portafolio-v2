@@ -1,4 +1,3 @@
-// src/frontend/features/proyectos/components/CartaFooter.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaRocket } from 'react-icons/fa';
@@ -40,24 +39,33 @@ export default function CartaFooter({ data, isDark }) {
 
       {/* TECH STACK CHIPS */}
       <div className="flex flex-wrap gap-3 justify-center lg:justify-end">
-        {data.tecnologias.map((tech, i) => (
-          <div 
-            key={i} 
-            className={`flex items-center gap-3 px-4 py-2 rounded-xl border transition-all ${
-              isDark 
-                ? 'bg-black/50 border-white/5 text-slate-400 hover:text-white hover:border-indigo-500/50' 
-                : 'bg-white border-slate-200 text-slate-500 shadow-sm hover:shadow-md'
-            }`}
-          >
-            {/* Acceso a tech.primary y tech.icon de tu estructura de data */}
-            <span className={`${tech.primary} text-2xl drop-shadow-sm`}>
-              {tech.icon}
-            </span> 
-            <span className="text-[11px] font-black uppercase tracking-tight">
-              {tech.name}
-            </span>
-          </div>
-        ))}
+        {data.tecnologias.map((tech, i) => {
+          // Extraemos la clase de color, con un fallback por si alguna tecnología no lo tiene
+          const techPrimary = tech.primary || 'text-indigo-500';
+
+          return (
+            <div 
+              key={i} 
+              className={`flex items-center gap-3 px-4 py-2 rounded-xl border transition-all ${
+                isDark 
+                  ? 'bg-black/50 border-white/5 text-slate-400 hover:text-white hover:border-indigo-500/50' 
+                  : 'bg-white border-slate-200 text-slate-500 shadow-sm hover:shadow-md'
+              }`}
+            >
+              {/* Aplicamos la clase tanto al contenedor span como directamente al icono con cloneElement */}
+              <span className={`text-2xl drop-shadow-sm ${techPrimary}`}>
+                {React.isValidElement(tech.icon) 
+                  ? React.cloneElement(tech.icon, { 
+                      className: `${tech.icon.props.className || ''} ${techPrimary}`.trim() 
+                    }) 
+                  : tech.icon}
+              </span> 
+              <span className="text-[11px] font-black uppercase tracking-tight">
+                {tech.name}
+              </span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

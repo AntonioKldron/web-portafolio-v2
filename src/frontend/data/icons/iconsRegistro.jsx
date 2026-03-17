@@ -16,12 +16,18 @@ import { TbSql, TbBrandCSharp, TbFileTypeSql } from "react-icons/tb";
 import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; 
 import { RiTailwindCssFill } from "react-icons/ri";
 import { LiaConnectdevelop } from "react-icons/lia";
+/*
+icons img
+*/ 
+import intelisis from '../../assets/img/data-icons/intelisis.png';
+import peoplesoft from '../../assets/img/data-icons/peoplesoft.png';
+import cursor from '../../assets/img/data-icons/cursor-ai.png';
 
 export const data = {
   // LENGUAJES
   javascript: { name: "JavaScript", icon: <SiJavascript />, primary: "text-yellow-400", secondary: "text-yellow-500/50" },
   python: { name: "Python", icon: <SiPython />, primary: "text-blue-500", secondary: "text-blue-600/50" },
-  sql: { name: "SQL", icon: <TbFileTypeSql />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
+  sql: { name: "SQL", icon: <TbFileTypeSql />, primary: "text-amber-500", secondary: "text-amber-600/50" },
   csharp: { name: "C#", icon: <TbBrandCSharp />, primary: "text-purple-500", secondary: "text-purple-600/50" },
   java: { name: "Java", icon: <FaJava />, primary: "text-red-500", secondary: "text-red-600/50" },
   php: { name: "PHP", icon: <SiPhp />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
@@ -46,8 +52,8 @@ export const data = {
   livewire: { name: "Livewire", icon: <SiLivewire />, primary: "text-fuchsia-500", secondary: "text-fuchsia-500/50" },
 
   // ERP & ENTERPRISE
-  peoplesoft: { name: "PeopleSoft Dev", icon: <FaCogs />, primary: "text-blue-500", secondary: "text-blue-600/50" },
-  intelisis: { name: "Intelisis SDK", icon: <FaTerminal />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  peoplesoft: { name: "PeopleSoft Dev", icon: <img src={peoplesoft} alt="Intelisis" className="w-[1em] h-[1em] object-contain" />, primary: "text-blue-500", secondary: "text-blue-600/50" },
+  intelisis: { name: "Intelisis SDK", icon: <img src={intelisis} alt="Intelisis" className="w-[1em] h-[1em] object-contain" />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   enterprise: { name: "Enterprise", icon: <LiaConnectdevelop />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
 
   // BASES DE DATOS
@@ -71,7 +77,7 @@ export const data = {
   // HERRAMIENTAS
   vscode: { name: "VS Code", icon: <VscVscodeInsiders />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   n8n: { name: "n8n", icon: <SiN8N />, primary: "text-orange-500", secondary: "text-orange-600/50" },
-  cursor: { name: "Cursor IA", icon: <LiaConnectdevelop />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
+  cursor: { name: "Cursor IA", icon: <img src={cursor} alt="Intelisis" className="w-[1em] h-[1em] object-contain" />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
   jetbrains: { name: "JetBrains", icon: <SiJetbrains />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   git: { name: "Git", icon: <FaGitAlt />, primary: "text-orange-600", secondary: "text-orange-700/50" },
   github: { name: "GitHub", icon: <SiGithub />, primary: "text-white", secondary: "text-white/20" },
