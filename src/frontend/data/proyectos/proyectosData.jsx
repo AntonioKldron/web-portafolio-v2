@@ -55,7 +55,7 @@ export const proyectosData = {
         titulo: "My Web Portfolio",
         lanzamiento: "October 2025",
         descripcion_corta: "Professional portfolio built with React focused on modern frontend architecture.",
-        descripcion: "Web application developed with React that works as a professional portfolio to showcase projects, experience and technical skills.",
+        descripcion: "Web application developed with React that works as a professional portfolio to showcase projects, experience, and technical skills. The system is built with a modular architecture, resource optimization, and micro-animations that enhance the user experience, integrating TailwindCSS and Framer Motion to achieve a modern, fast, and scalable interface.",
         imagen: website,
         detalles: [
           "Design and implementation of a modular architecture based on reusable components.",
@@ -73,7 +73,7 @@ export const proyectosData = {
         titulo: "Techani v2",
         lanzamiento: "January 2024",
         descripcion_corta: "Application for monitoring and managing type 1 diabetes.",
-        descripcion: "Application developed with React for monitoring patients with type 1 diabetes.",
+        descripcion: "Application developed with React for monitoring patients with type 1 diabetes, allowing the registration of glucose levels, visualization of medical information, and facilitating treatment tracking through a modern interface connected to Supabase as a backend.",
         imagen: "",
         detalles: [
           "Integration and management of server state using Supabase as a Backend-as-a-Service.",
