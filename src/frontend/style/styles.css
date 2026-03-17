@@ -2,39 +2,42 @@
 
 @layer base {
   :root {
-    /* --- 🧊 MODO CLARO --- */
-    --color-bg-screen: #0095ff;      /* Azul vibrante */
-    --bg-grad-1: #5f8cac;            
-    --bg-grad-2: #0077ff;            
-    --shadow-color: #e3e3e3;         
+    /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
+    --color-bg-screen: #ffffff6c;      /* Gris perlado muy claro */
+    --bg-grad-1: #b3b3b3;            
+    --bg-grad-2: #e2dfdf;            
+    
+    /* Esta sombra es el "brillo" de tus luces originales. 
+       Usamos un azul suave translúcido para que se vean en el fondo claro */
+    --shadow-color: rgba(0, 57, 191, 0.792); 
 
     --color-bg-card: #ffffff;        /* Carta Blanca */
     --color-border: #e2e8f0;         
 
-    /* Letras Lado Derecho (Sobre Azul) */
-    --color-text-right: #020154;     /* Navy profundo */
+    /* Letras Lado Derecho (Sobre fondo claro) */
+    --color-text-right: #000560;     /* Gris pizarra oscuro (excelente lectura) */
     
     /* Letras Carta (Sobre Blanco) */
-    --color-text-card-base: #001035;  /* Navy casi negro */
-    --color-text-card-muted: #475569; /* Gris oscuro */
-    --color-primary-accent: #0077ff;  /* Azul para links/iconos */
+    --color-text-card-base: #0f172a;  /* Casi negro para buen contraste */
+    --color-text-card-muted: #64748b; /* Gris medio (también pinta el centro de tus luces) */
+    --color-primary-accent: #2563eb;  /* Azul profesional para links/iconos */
   }
 
   .dark {
-    /* --- 🌌 MODO OSCURO --- */
+    /* --- 🌌 MODO OSCURO (Profundo) --- */
     --color-bg-screen: #020617; 
-    --bg-grad-1: #030712; 
-    --bg-grad-2: #000000; 
-    --shadow-color: #6366f1; 
+    --bg-grad-1: #0f172a; 
+    --bg-grad-2: #020617; 
+    --shadow-color: #6366f1;         /* Brillo índigo neón original */
 
-    --color-bg-card: #030712;        /* Carta Negra */
+    --color-bg-card: #0f172a;        /* Carta oscura */
     --color-border: #1e293b; 
 
-    /* CORRECCIÓN: Letras Blancas para visibilidad total */
-    --color-text-right: #ffffff;      /* Blanco puro para contenido derecho */
-    --color-text-card-base: #ffffff;   /* Blanco para la carta */
-    --color-text-card-muted: #cbd5e1;  /* Gris claro para textos secundarios */
-    --color-primary-accent: #6366f1;   /* Índigo neón */
+    /* Letras Blancas para visibilidad total */
+    --color-text-right: #f8fafc;      
+    --color-text-card-base: #f8fafc;   
+    --color-text-card-muted: #cbd5e1;  
+    --color-primary-accent: #818cf8;   
   }
 
   /* --- APLICACIÓN EN LA CARTA (IZQUIERDA) --- */
@@ -61,7 +64,6 @@
   }
 
   /* --- APLICACIÓN EN EL CONTENIDO (DERECHA) --- */
-  /* Forzamos que el texto use la variable que cambia según el modo */
   .reveal-section h1, 
   .reveal-section h2, 
   .reveal-section p, 
@@ -70,12 +72,12 @@
     color: var(--color-text-right) !important;
   }
 
-  /* Highlights (Strong/B) */
+  /* Highlights (Strong/B) - Ahora usan un morado/azul acorde al tema para no desentonar */
   .reveal-section strong, 
   .reveal-section b {
-    color: #ad0176 !important;
+    color: var(--color-primary-accent) !important;
     font-weight: 700;
-    filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
+    filter: drop-shadow(0 0 5px rgba(100, 116, 139, 0.15));
   }
 
   /* --- AJUSTES MÓVIL: FONDO SÓLIDO --- */
@@ -99,7 +101,7 @@
 }
 
 /* =========================================================
-   ANIMACIÓN ORIGINAL DE LUCES (RESTAURADA)
+   ANIMACIÓN ORIGINAL DE LUCES (INTACTA)
    ========================================================= */
 
 #floating-bg {
@@ -154,31 +156,29 @@
 /* --- SCROLLBAR ULTRA-LIMPIA --- */
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
 }
 
 /* Chrome, Edge y Safari */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 3px; /* Aún más delgada */
+  width: 3px; 
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent; /* Sin rastro del camino */
+  background: transparent; 
   margin-block: 40px; 
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  /* Usamos una opacidad mínima para que sea casi invisible */
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(148, 163, 184, 0.2);
   border-radius: 20px;
   transition: background 0.4s ease, opacity 0.4s ease;
 }
 
-/* Solo cobra un poco de vida cuando el usuario pasa el mouse sobre el área */
 .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(148, 163, 184, 0.4);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:active {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(148, 163, 184, 0.6);
 }
