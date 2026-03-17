@@ -25,7 +25,7 @@ export const herramientasData = {
       { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
       { id: "cat-5", title: "Bases de Datos", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.supabase] },
       { id: "cat-6", title: "Infraestructura", items: [dt.docker, dt.linux, dt.windows, dt.vercel] },
-      { id: "cat-7", title: "Dev Tools", items: [dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
+      { id: "cat-7", title: "Dev Tools", items: [dt.powerbi ,dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
     ]
   },
   en: {
@@ -41,7 +41,7 @@ export const herramientasData = {
       { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
       { id: "cat-5", title: "Databases", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.supabase] },
       { id: "cat-6", title: "Infrastructure", items: [dt.docker, dt.linux, dt.windows, dt.vercel] },
-      { id: "cat-7", title: "Dev Tools", items: [dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
+      { id: "cat-7", title: "Dev Tools", items: [dt.powerbi, dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.github, dt.ssms, dt.trello, dt.figma, dt.azurest] }
     ]
   }
 };
