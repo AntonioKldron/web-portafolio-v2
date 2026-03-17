@@ -70,18 +70,18 @@ export const experienciaData = {
           dt.javascript, dt.angular, dt.intelisis
         ],
         proyectos: [
-          { nombre: "BYD Integración", descripcion: "Sincronización de agencias automotrices con sistemas CRM de la marca BYD.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Clear Mechanics", descripcion: "Sincronización de información técnica para soporte y diagnóstico vehicular.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "API Servicios", descripcion: "Exposición de servicios del DMS: citas, órdenes, clientes, inventario y VINs.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
-          { nombre: "API Prospectos", descripcion: "Gestión, creación y conversión de prospectos integrando sistemas externos.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
-          { nombre: "Geely Integración", descripcion: "Manejo de prospectos, inventarios y venta de unidades de la marca Geely.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Seekop Integration", descripcion: "Gestión de prospectos y venta de unidades mediante la plataforma Seekop.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Salesforce Mazda", descripcion: "Automatización de la gestión de prospectos del ecosistema Mazda.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Salesforce Daimler", descripcion: "Generación de KPIs para ventas, servicios e inventarios en Salesforce.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "7 Técnicas Mazda", descripcion: "Interfaz de KPIs para reportar el ciclo de vida completo de las unidades.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: ["Python", "Django"], repositorio: "/404" },
-          { nombre: "Xentry API", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "CRM Postventa Toyota", descripcion: "Desarrollo de CRM postventa integrando servicios nativos de Intelisis.", tecnologias: ["Angular", "TS"], repositorio: "/404" }
+          { nombre: "BYD Integración", descripcion: "Sincronización de agencias automotrices con sistemas CRM de la marca BYD.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Clear Mechanics", descripcion: "Sincronización de información técnica para soporte y diagnóstico vehicular.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "API Servicios", descripcion: "Exposición de servicios del DMS: citas, órdenes, clientes, inventario y VINs.", tecnologias: [dt.django, dt.python], repositorio: "/404" },
+          { nombre: "API Prospectos", descripcion: "Gestión, creación y conversión de prospectos integrando sistemas externos.", tecnologias: [dt.django, dt.python], repositorio: "/404" },
+          { nombre: "Geely Integración", descripcion: "Manejo de prospectos, inventarios y venta de unidades de la marca Geely.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Seekop Integration", descripcion: "Gestión de prospectos y venta de unidades mediante la plataforma Seekop.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Salesforce Mazda", descripcion: "Automatización de la gestión de prospectos del ecosistema Mazda.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Salesforce Daimler", descripcion: "Generación de KPIs para ventas, servicios e inventarios en Salesforce.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "7 Técnicas Mazda", descripcion: "Interfaz de KPIs para reportar el ciclo de vida completo de las unidades.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: [dt.python, dt.django], repositorio: "/404" },
+          { nombre: "Xentry API", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "CRM Postventa Toyota", descripcion: "Desarrollo de CRM postventa integrando servicios nativos de Intelisis.", tecnologias: [dt.angular, dt.typescript], repositorio: "/404" }
         ]
       },
       {
@@ -101,9 +101,9 @@ export const experienciaData = {
         ],
         tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
-          { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: ["React", "Supabase", "Tailwind"], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
-          { nombre: "Techani 1.0", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
-          { nombre: "OMD System", descripcion: "Plataforma de gestión web para una organización sin fines de lucro.", tecnologias: ["PHP", "MariaDB"], repositorio: "/404" }
+          { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: [dt.react, dt.supabase, dt.tailwind], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
+          { nombre: "Techani 1.0", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: [dt.php, dt.css], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
+          { nombre: "OMD System", descripcion: "Plataforma de gestión web para una organización sin fines de lucro.", tecnologias: [dt.php, dt.mysql], repositorio: "/404" }
         ]
       }
     ]
@@ -174,18 +174,18 @@ export const experienciaData = {
           dt.javascript, dt.angular, dt.intelisis
         ],
         proyectos: [
-          { nombre: "BYD Integration", descripcion: "Synchronization of automotive agencies with BYD brand CRM systems.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Clear Mechanics", descripcion: "Technical sync for support and vehicle diagnostic data.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Services API", descripcion: "DMS service exposure: appointments, orders, customers, and inventory.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
-          { nombre: "Leads API", descripcion: "Management, creation, and conversion of leads integrating external systems.", tecnologias: ["Django", "DRF"], repositorio: "/404" },
-          { nombre: "Geely Integration", descripcion: "Geely brand leads, inventory, and unit sales management.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Seekop Integration", descripcion: "Leads and sales management through the Seekop platform.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Mazda Salesforce", descripcion: "Automation of leads management for the Mazda ecosystem.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Daimler Salesforce", descripcion: "KPI generation for sales, services, and inventory in Salesforce.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "7 Mazda Techniques", descripcion: "KPI interface for reporting the full unit life cycle.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Fame API", descripcion: "REST API for administration and connection between FAME group CRMs.", tecnologias: ["Python", "Django"], repositorio: "/404" },
-          { nombre: "Xentry API", descripcion: "Consumption of services to facilitate automotive information transfer.", tecnologias: ["SQL", "C#"], repositorio: "/404" },
-          { nombre: "Toyota After-sales CRM", descripcion: "After-sales CRM development integrating native Intelisis services.", tecnologias: ["Angular", "TS"], repositorio: "/404" }
+          { nombre: "BYD Integration", descripcion: "Synchronization of automotive agencies with BYD brand CRM systems.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Clear Mechanics", descripcion: "Technical sync for support and vehicle diagnostic data.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Services API", descripcion: "DMS service exposure: appointments, orders, customers, and inventory.", tecnologias: [dt.django, dt.python], repositorio: "/404" },
+          { nombre: "Leads API", descripcion: "Management, creation, and conversion of leads integrating external systems.", tecnologias: [dt.django, dt.python], repositorio: "/404" },
+          { nombre: "Geely Integration", descripcion: "Geely brand leads, inventory, and unit sales management.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Seekop Integration", descripcion: "Leads and sales management through the Seekop platform.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Mazda Salesforce", descripcion: "Automation of leads management for the Mazda ecosystem.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Daimler Salesforce", descripcion: "KPI generation for sales, services, and inventory in Salesforce.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "7 Mazda Techniques", descripcion: "KPI interface for reporting the full unit life cycle.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Fame API", descripcion: "REST API for administration and connection between FAME group CRMs.", tecnologias: [dt.python, dt.django], repositorio: "/404" },
+          { nombre: "Xentry API", descripcion: "Consumption of services to facilitate automotive information transfer.", tecnologias: [dt.sqlserver, dt.csharp], repositorio: "/404" },
+          { nombre: "Toyota After-sales CRM", descripcion: "After-sales CRM development integrating native Intelisis services.", tecnologias: [dt.angular, dt.typescript], repositorio: "/404" }
         ]
       },
       {
@@ -205,9 +205,9 @@ export const experienciaData = {
         ],
         tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
-          { nombre: "Techani 2.0", descripcion: "Health management app for type 1 diabetes with real-time database.", tecnologias: ["React", "Supabase", "Tailwind"], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
-          { nombre: "Techani 1.0", descripcion: "Initial PHP version for monitoring and managing patients.", tecnologias: ["PHP", "CSS"], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
-          { nombre: "OMD System", descripcion: "Web management platform for a non-profit organization.", tecnologias: ["PHP", "MariaDB"], repositorio: "/404" }
+          { nombre: "Techani 2.0", descripcion: "Health management app for type 1 diabetes with real-time database.", tecnologias: [dt.react, dt.supabase, dt.tailwind], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
+          { nombre: "Techani 1.0", descripcion: "Initial PHP version for monitoring and managing patients.", tecnologias: [dt.php, dt.css], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
+          { nombre: "OMD System", descripcion: "Web management platform for a non-profit organization.", tecnologias: [dt.php, dt.mysql], repositorio: "/404" }
         ]
       }
     ]

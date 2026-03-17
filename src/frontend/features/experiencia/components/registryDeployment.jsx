@@ -24,11 +24,30 @@ export const DeploymentRegistry = ({ proyectos, visibleProjects, showAll, onTogg
             <a href={pro.repositorio} target="_blank" rel="noreferrer" className="p-2 text-gray-500 hover:text-indigo-400 transition-colors"><FaGithub size={18} /></a>
           </div>
           <p className="text-[11px] text-gray-400 leading-relaxed mb-6 italic flex-grow">{pro.descripcion}</p>
-          <div className="flex flex-wrap gap-1.5 mt-auto">
-            {pro.tecnologias?.map((t, idx) => (
-              <span key={idx} className={`text-[8px] px-2 py-1 rounded-md border font-mono uppercase ${isDark ? 'bg-white/5 text-gray-500 border-white/10' : 'bg-slate-100 text-slate-500 border-slate-200'}`}>[{t}]</span>
-            ))}
+          
+          <div className="flex flex-wrap gap-3 mt-auto items-center">
+            {pro.tecnologias?.map((t, idx) => {
+              if (!t || !t.icon) return null;
+              
+              const techPrimary = t.primary || 'text-gray-500';
+
+              return (
+                <span 
+                  key={idx} 
+                  title={t.name}
+                  className={`text-xl flex items-center justify-center transition-transform duration-200 hover:scale-110 ${techPrimary}`}
+                >
+                  {/* Aplicamos la misma solución: Inyectar la clase de color DIRECTAMENTE al icono */}
+                  {React.isValidElement(t.icon) 
+                    ? React.cloneElement(t.icon, { 
+                        className: `${t.icon.props.className || ''} ${techPrimary}`.trim() 
+                      }) 
+                    : t.icon}
+                </span>
+              );
+            })}
           </div>
+
         </div>
       ))}
     </div>

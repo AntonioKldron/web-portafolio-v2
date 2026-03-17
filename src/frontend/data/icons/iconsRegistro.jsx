@@ -10,7 +10,7 @@ import {
   SiNestjs, SiPython, SiPostgresql, SiDotnet, SiJavascript, 
   SiSupabase, SiGo, SiRust, SiPhp, SiMysql, SiRedis, 
   SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux,
-  SiLivewire, SiVercel, SiN8N 
+  SiLivewire, SiVercel, SiN8N, SiTypescript 
 } from "react-icons/si";
 import { TbSql, TbBrandCSharp, TbFileTypeSql } from "react-icons/tb";
 import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite } from "react-icons/di"; 
@@ -33,6 +33,7 @@ export const data = {
   php: { name: "PHP", icon: <SiPhp />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
   go: { name: "Go", icon: <SiGo />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
   rust: { name: "Rust", icon: <SiRust />, primary: "text-orange-700", secondary: "text-orange-800/50" },
+  typescript: { name: "TypeScript", icon: <SiTypescript />, primary: "text-blue-500", secondary: "text-blue-600/50" },
 
   // BACKEND & FRAMEWORKS
   nestjs: { name: "Nest.js", icon: <SiNestjs />, primary: "text-red-500", secondary: "text-red-600/50" },
