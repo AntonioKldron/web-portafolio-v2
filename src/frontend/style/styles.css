@@ -4,12 +4,12 @@
   :root {
     /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
     --color-bg-screen: #ffffff6c;      /* Gris perlado muy claro */
-    --bg-grad-1: #b3b3b3;            
-    --bg-grad-2: #e2dfdf;            
+    --bg-grad-1: #9b9898;            
+    --bg-grad-2: #d4d0d0;            
     
     /* Esta sombra es el "brillo" de tus luces originales. 
        Usamos un azul suave translúcido para que se vean en el fondo claro */
-    --shadow-color: rgba(0, 57, 191, 0.792); 
+    --shadow-color: rgba(255, 254, 254, 0.87); 
 
     --color-bg-card: #ffffff;        /* Carta Blanca */
     --color-border: #e2e8f0;         
