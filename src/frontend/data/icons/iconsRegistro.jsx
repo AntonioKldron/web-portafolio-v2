@@ -31,8 +31,6 @@ import intelisis from '../../assets/img/data-icons/intelisis.png';
 import peoplesoft from '../../assets/img/data-icons/peoplesoft.png';
 import cursor from '../../assets/img/data-icons/cursor-ai.png';
 import powerbi from '../../assets/img/data-icons/power-bi.png';
-import ssms from '../../assets/img/data-icons/ssms.png';
-import azurest from '../../assets/img/data-icons/azure-st.png';
 
 export const data = {
   // LENGUAJES
@@ -114,8 +112,6 @@ export const data = {
   jetbrains: { name: "JetBrains", icon: <SiJetbrains />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   git: { name: "Git", icon: <FaGitAlt />, primary: "text-orange-600", secondary: "text-orange-700/50" },
   github: { name: "GitHub", icon: <SiGithub />, primary: "text-white", secondary: "text-white/20" },
-  azurest: { name: "Azure Studio", icon: <img src={azurest} alt="PeopleSoft" className="w-[1em] h-[1em] object-contain" />, primary: "text-blue-400", secondary: "text-blue-500/50" },
-  ssms: { name: "SSMS", icon: <img src={ssms} alt="PeopleSoft" className="w-[1em] h-[1em] object-contain" />, primary: "text-amber-500", secondary: "text-amber-600/50" },
   trello: { name: "Trello", icon: <DiTrello />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   figma: { name: "Figma", icon: <FaFigma />, primary: "text-pink-400", secondary: "text-pink-500/50" },
   api: { name: "API REST", icon: <TbApi />, primary: "text-green-500", secondary: "text-green-600/50" },
