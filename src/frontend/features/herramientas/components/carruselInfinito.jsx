@@ -15,46 +15,38 @@ export default function CarruselInfinito({ listaItems, idCategoria }) {
     return () => window.removeEventListener('resize', comprobarResolucion);
   }, []);
 
-  // Determinar cuántas filas necesitamos
   const numFilas = esMovil ? 3 : 2;
-  
-  // Crear arreglos vacíos para nuestras filas
   const filasTemporales = Array.from({ length: numFilas }, () => []);
 
-  // 1. DISTRIBUCIÓN EQUITATIVA (Repartir uno por uno)
   if (listaItems && listaItems.length > 0) {
     listaItems.forEach((item, index) => {
       filasTemporales[index % numFilas].push(item);
     });
   }
 
-  // 2. FUNCIÓN DE RELLENO INTELIGENTE
   const rellenarFila = (arreglo) => {
-    // Si la fila quedó vacía (porque había muy pocos items), usamos la lista completa original
+    if (!arreglo) return [];
     let baseParaRellenar = arreglo.length > 0 ? arreglo : (listaItems || []);
-    
-    // Si no hay nada en absoluto, retornamos vacío
-    if (baseParaRellenar.length === 0) return [];
+    if (!baseParaRellenar || baseParaRellenar.length === 0) return [];
 
     let relleno = [...baseParaRellenar];
-    // Rellenamos hasta tener al menos 12 elementos para que la animación fluya bien
     while (relleno.length < 12) { 
       relleno = [...relleno, ...baseParaRellenar];
     }
     return relleno;
   };
 
-  // Asignar las filas ya rellenadas y listas
   const fila1 = rellenarFila(filasTemporales[0]);
   const fila2 = rellenarFila(filasTemporales[1]);
   const fila3 = esMovil ? rellenarFila(filasTemporales[2]) : [];
 
   return (
-    <div className="flex flex-col gap-8 md:gap-12 py-10">
+    // LA MAGIA ESTÁ AQUÍ: w-full max-w-[100vw] y overflow-hidden previenen que los elementos empujen la pantalla
+    <div className="flex flex-col gap-8 md:gap-12 py-10 w-full max-w-[100vw] overflow-hidden box-border">
       
-      {/* Fila 1 - Siempre visible */}
+      {/* Fila 1 */}
       {fila1.length > 0 && (
-        <div className="flex overflow-hidden">
+        <div className="flex w-full overflow-hidden">
           <motion.div 
             animate={{ x: [0, -1200] }} 
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
@@ -72,9 +64,9 @@ export default function CarruselInfinito({ listaItems, idCategoria }) {
         </div>
       )}
 
-      {/* Fila 2 - Siempre visible */}
+      {/* Fila 2 */}
       {fila2.length > 0 && (
-        <div className="flex overflow-hidden">
+        <div className="flex w-full overflow-hidden">
           <motion.div 
             animate={{ x: [-1200, 0] }} 
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
@@ -92,9 +84,9 @@ export default function CarruselInfinito({ listaItems, idCategoria }) {
         </div>
       )}
 
-      {/* Fila 3 - Se renderiza SOLO en móvil */}
+      {/* Fila 3 */}
       {esMovil && fila3.length > 0 && (
-        <div className="flex overflow-hidden">
+        <div className="flex w-full overflow-hidden">
           <motion.div 
             animate={{ x: [0, -1200] }} 
             transition={{ duration: 30, repeat: Infinity, ease: "linear" }} 
