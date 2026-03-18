@@ -8,10 +8,18 @@ export default function EncabezadoSeccion({
   align = "left" 
 }) {
   
+  // 1. Clases para el contenedor general
   const alignClasses = {
     left: "items-start text-left",
     center: "items-center text-center",
     right: "items-end text-right"
+  };
+
+  // 2. NUEVO: Clases de justificación para cuando el texto 'flex' salta de línea en móviles
+  const justifyClasses = {
+    left: "justify-start",
+    center: "justify-center",
+    right: "justify-end"
   };
 
   const lineOrigin = {
@@ -24,8 +32,9 @@ export default function EncabezadoSeccion({
     <div className={`flex flex-col mb-10 pointer-events-none select-none w-full relative ${alignClasses[align]}`}>
       
       {/* 1. SUBTÍTULO CON LÁSER MORADO OSCURO */}
-      <div className={`flex items-center gap-4 mb-2 ${align === "right" ? "flex-row-reverse" : ""}`}>
-        <div className="relative h-[1px] w-12 bg-main-border overflow-hidden hidden md:block">
+      {/* Añadimos justifyClasses para garantizar la alineación si el subtítulo llegara a ser muy largo */}
+      <div className={`flex items-center gap-4 mb-2 ${align === "right" ? "flex-row-reverse" : ""} ${justifyClasses[align]}`}>
+        <div className="relative h-[1px] w-12 bg-main-border overflow-hidden hidden md:block shrink-0">
           <motion.div 
             initial={{ left: "-100%" }}
             whileInView={{ left: "100%" }}
@@ -47,7 +56,6 @@ export default function EncabezadoSeccion({
           whileInView={{ opacity: 1, letterSpacing: "0.5em" }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          /* Morado fuerte para el subtítulo */
           className="text-[#a855f7] dark:text-purple-400 font-black uppercase text-[9px] tracking-[0.5em] relative"
         >
           {subtitulo}
@@ -60,16 +68,16 @@ export default function EncabezadoSeccion({
       </div>
 
       {/* 2. TÍTULO PRINCIPAL SIN LÍNEA DE ABAJO */}
-      <div className="relative group">
-        {/* pb-3 para dar espacio a la curva descendente de la 'g' */}
-        <div className="relative pb-3 overflow-hidden">
+      <div className="relative group w-full">
+        {/* pb-3 para dar espacio a la curva descendente de la 'g'. w-full para asegurar la alineación */}
+        <div className={`relative pb-3 overflow-hidden w-full flex ${justifyClasses[align]}`}>
           <motion.h2 
             initial={{ y: "100%", skewY: 5 }}
             whileInView={{ y: 0, skewY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            /* Blanco puro para el fondo azul vibrante */
-            className="text-2xl lg:text-[2.2rem] font-black text-white dark:text-main-text tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3 drop-shadow-md"
+            /* Aplicamos w-full y justifyClasses aquí también para controlar el salto de línea (wrap) */
+            className={`text-2xl lg:text-[2.2rem] font-black text-white dark:text-main-text tracking-tighter uppercase leading-tight flex flex-wrap gap-x-3 drop-shadow-md w-full ${justifyClasses[align]}`}
           >
             <span className="opacity-100 dark:opacity-90">
               {tituloPrincipal}
@@ -80,12 +88,9 @@ export default function EncabezadoSeccion({
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-              /* DEGRADADO MORADO OSCURO E INTENSO CON TEXTO GRUESO */
-              /* Cambiamos 'font-light' por 'font-bold' (o font-extrabold) */
               className="relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] via-[#c026d3] to-[#4c1d95] drop-shadow-[0_2px_12px_rgba(107,33,168,0.3)]"
             >
               {tituloHighlight}.
-              {/* LÍNEA DE ABAJO ELIMINADA AQUÍ */}
             </motion.span>
           </motion.h2>
         </div>
