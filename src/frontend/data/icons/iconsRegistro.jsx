@@ -11,7 +11,7 @@ import {
   SiSupabase, SiGo, SiRust, SiPhp, SiMysql, SiRedis, 
   SiNginx, SiAmazonwebservices, SiGithub, SiDocker, SiLinux,
   SiLivewire, SiVercel, SiN8N, SiTypescript, SiJquery, SiAstro,
-  SiNextdotjs, SiArduino, SiHibernate, SiFlutter         
+  SiNextdotjs, SiArduino, SiHibernate, SiFlutter, SiExpress          
 } from "react-icons/si";
 import { TbBrandCSharp, TbFileTypeSql, TbBrandNuxt, TbBrandReactNative, TbApi } from "react-icons/tb";
 import { DiBootstrap, DiMsqlServer, DiTrello, DiWindows, DiSqllite, DiCodeigniter, DiMongodb } from "react-icons/di"; 
@@ -29,8 +29,10 @@ icons img
 */ 
 import intelisis from '../../assets/img/data-icons/intelisis.png';
 import peoplesoft from '../../assets/img/data-icons/peoplesoft.png';
-import cursor from '../../assets/img/data-icons/cursor-ai.png';
-import powerbi from '../../assets/img/data-icons/power-bi.png';
+/*
+icons iconify
+*/ 
+import {IcoPowerBi,IcoCursor,IcoFigma} from './icon-iconify/dataIconify.jsx'
 
 export const data = {
   // LENGUAJES
@@ -48,6 +50,7 @@ export const data = {
 
   // BACKEND & FRAMEWORKS
   nodejs: { name: "Node.js", icon: <DiNodejs />, primary: "text-green-600", secondary: "text-green-700/50" },
+  express: { name: "Express", icon: <SiExpress />, primary: "text-gray-300", secondary: "text-gray-400/50" },
   nestjs: { name: "Nest.js", icon: <SiNestjs />, primary: "text-red-500", secondary: "text-red-600/50" },
   fastapi: { name: "FastAPI", icon: <SiFastapi />, primary: "text-emerald-400", secondary: "text-emerald-500/50" },
   django: { name: "Django", icon: <SiDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
@@ -108,17 +111,17 @@ export const data = {
   // HERRAMIENTAS & ARCHIVOS
   vscode: { name: "VS Code", icon: <VscVscodeInsiders />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   n8n: { name: "n8n", icon: <SiN8N />, primary: "text-orange-500", secondary: "text-orange-600/50" },
-  cursor: { name: "Cursor IA", icon: <img src={cursor} alt="Cursor AI" className="w-[1em] h-[1em] object-contain" />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
+  cursor: { name: "Cursor IA", icon: <IcoCursor />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
   jetbrains: { name: "JetBrains", icon: <SiJetbrains />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   git: { name: "Git", icon: <FaGitAlt />, primary: "text-orange-600", secondary: "text-orange-700/50" },
   github: { name: "GitHub", icon: <SiGithub />, primary: "text-white", secondary: "text-white/20" },
   trello: { name: "Trello", icon: <DiTrello />, primary: "text-blue-500", secondary: "text-blue-600/50" },
-  figma: { name: "Figma", icon: <FaFigma />, primary: "text-pink-400", secondary: "text-pink-500/50" },
+  figma: { name: "Figma", icon: <IcoFigma />, primary: "text-pink-400", secondary: "text-pink-500/50" },
   api: { name: "API REST", icon: <TbApi />, primary: "text-green-500", secondary: "text-green-600/50" },
   terminal: { name: "Terminal", icon: <FaTerminal />, primary: "text-gray-300", secondary: "text-gray-400/50" },
   json: { name: "JSON", icon: <LuFileJson2 />, primary: "text-yellow-400", secondary: "text-yellow-500/50" },
   xml: { name: "XML", icon: <BsFiletypeXml />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   code: { name: "Code", icon: <FaCode />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
   cogs: { name: "Cogs", icon: <FaCogs />, primary: "text-blue-400", secondary: "text-blue-500/50" },
-  powerbi: { name: "Power Bi", icon: <img src={powerbi} alt="Intelisis" className="w-[1em] h-[1em] object-contain" />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  powerbi: { name: "Power Bi", icon: <IcoPowerBi />, primary: "text-orange-500", secondary: "text-orange-600/50" },
 };
