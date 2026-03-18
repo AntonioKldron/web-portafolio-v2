@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { HiOutlineEye, HiOutlineDocumentText } from 'react-icons/hi';
+import { HiOutlineDocumentText } from 'react-icons/hi';
+import { FiArrowUpRight } from 'react-icons/fi';
 
 export default function EducacionItem({ item, index, isCert, onOpenCert }) {
   const tieneImagenValida = item.imagen && item.imagen.trim() !== "";
@@ -8,67 +9,75 @@ export default function EducacionItem({ item, index, isCert, onOpenCert }) {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, x: -15 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 15 }} 
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className={`
-        group relative w-full flex items-center gap-6 p-5 mb-3
-        rounded-xl border border-white/[0.04] bg-white/[0.01]
-        hover:bg-white/[0.03] hover:border-primary-accent/40
-        transition-all duration-400 backdrop-blur-md
-      `}
+      /* 🌟 CERO BORDES: Eliminamos las clases 'border'. 
+         La tarjeta se define puramente por su sombra suave y su fondo cristalino. */
+      className="group relative flex flex-col md:flex-row gap-5 p-5 md:p-6 mb-4 rounded-2xl bg-card-bg/30 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:bg-card-bg/60 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_15px_40px_rgba(var(--color-primary-accent-rgb),0.1)] transition-all duration-500 overflow-hidden"
     >
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-[9px] font-bold text-primary-accent bg-primary-accent/10 px-2 py-0.5 rounded tracking-tighter uppercase">
+      {/* 🌟 Acento luminoso (Aparece de la nada en hover, no es un borde, es un destello) */}
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 bg-primary-accent/80 rounded-r-full group-hover:h-[40%] transition-all duration-500 opacity-0 group-hover:opacity-100 shadow-[0_0_12px_var(--color-primary-accent)]"></div>
+
+      {/* 📚 SECCIÓN DE TEXTO */}
+      <div className="flex-1 min-w-0 flex flex-col justify-center pl-1">
+        
+        {/* Metadatos (Sin bordes tampoco) */}
+        <div className="flex items-center gap-3 mb-2.5">
+          <span className="text-primary-accent text-[10px] font-mono font-bold uppercase tracking-widest bg-primary-accent/10 px-2.5 py-1 rounded-md">
             {item.fecha}
           </span>
-          <p className="text-primary-accent/70 text-[10px] font-bold uppercase tracking-[0.15em]">
+          <span className="w-1 h-1 rounded-full bg-muted-text/20"></span>
+          <span className="text-muted-text/80 text-[11px] font-medium tracking-wide uppercase">
             {item.institucion}
-          </p>
+          </span>
         </div>
 
-        <h3 className="text-[15px] md:text-[17px] font-bold text-main-text leading-tight group-hover:text-primary-accent transition-colors">
+        {/* Título */}
+        <h3 className="text-[15px] md:text-base font-bold text-main-text leading-snug mb-2 group-hover:text-primary-accent transition-colors duration-300">
           {item.titulo}
         </h3>
 
-        <p className="mt-2 text-muted-text text-[12px] leading-snug opacity-60 group-hover:opacity-100 transition-opacity italic">
+        {/* Descripción */}
+        <p className="text-muted-text/80 text-[12.5px] md:text-[13px] font-medium leading-relaxed max-w-2xl">
           {item.descripcion}
         </p>
       </div>
 
+      {/* 🖼️ SECCIÓN DEL CERTIFICADO (Botón Flotante) */}
       {isCert && tieneImagenValida && (
-        <div className="shrink-0 flex items-center">
-          <motion.button 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+        <div className="shrink-0 mt-4 md:mt-0 flex items-center justify-end">
+          <button 
             onClick={() => onOpenCert(item)}
-            className="relative w-16 h-16 md:w-20 md:h-20 rounded-lg overflow-hidden border border-white/10 bg-black/40 shadow-2xl group/btn flex items-center justify-center"
+            /* CERO BORDES AQUÍ TAMBIÉN. Se separa por la sombra y al hacer hover "levita" (-translate-y-1) */
+            className="relative w-32 h-20 md:w-36 md:h-24 rounded-xl overflow-hidden bg-card-bg/40 shadow-sm hover:shadow-xl group/cert transition-all duration-500 hover:-translate-y-1"
           >
             {esPdf ? (
-              // Si es PDF, mostramos un icono representativo
-              <div className="flex flex-col items-center gap-1 opacity-60 group-hover/btn:opacity-100 transition-all">
-                <HiOutlineDocumentText size={30} className="text-primary-accent" />
-                <span className="text-[8px] font-bold">PDF</span>
+              // Diseño PDF
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-1.5 text-muted-text/60 group-hover/cert:text-primary-accent group-hover/cert:bg-primary-accent/10 transition-colors">
+                <HiOutlineDocumentText size={24} strokeWidth={1.5} />
+                <span className="text-[9px] font-bold tracking-widest uppercase">PDF</span>
               </div>
             ) : (
-              // Si es imagen, cargamos la miniatura
-              <img 
-                src={item.imagen} 
-                className="w-full h-full object-cover opacity-40 group-hover/btn:opacity-100 transition-all duration-500 grayscale group-hover/btn:grayscale-0" 
-                alt="cert-thumb" 
-              />
+              // Diseño Imagen
+              <>
+                <img 
+                  src={item.imagen} 
+                  className="w-full h-full object-cover grayscale-[30%] opacity-70 group-hover/cert:grayscale-0 group-hover/cert:opacity-100 group-hover/cert:scale-110 transition-all duration-700" 
+                  alt="Certificado" 
+                />
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover/cert:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-2 right-2 p-1.5 rounded-lg bg-black/50 backdrop-blur-md shadow-lg">
+                    <FiArrowUpRight size={14} className="text-white/90" />
+                  </div>
+                </div>
+              </>
             )}
-            
-            <div className="absolute inset-0 bg-primary-accent/30 opacity-0 group-hover/btn:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[1px]">
-              <HiOutlineEye size={16} className="text-white" />
-            </div>
-          </motion.button>
+          </button>
         </div>
       )}
-
-      <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-primary-accent/20 to-transparent" />
+      
     </motion.div>
   );
 }
