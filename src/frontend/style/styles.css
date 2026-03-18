@@ -4,22 +4,22 @@
   :root {
     /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
     --color-bg-screen: #ffffff6c;      /* Gris perlado muy claro */
-    --bg-grad-1: #9b9898;            
-    --bg-grad-2: #d4d0d0;            
+    --bg-grad-1: #e3e7ffba;            
+    --bg-grad-2: #a8bff8;            
     
     /* Esta sombra es el "brillo" de tus luces originales. 
        Usamos un azul suave translúcido para que se vean en el fondo claro */
-    --shadow-color: rgba(255, 254, 254, 0.87); 
+    --shadow-color: rgba(0, 61, 165, 0.87); 
 
     --color-bg-card: #ffffff;        /* Carta Blanca */
     --color-border: #e2e8f0;         
 
     /* Letras Lado Derecho (Sobre fondo claro) */
-    --color-text-right: #000560;     /* Gris pizarra oscuro (excelente lectura) */
+    --color-text-right: #08009a;     /* Gris pizarra oscuro (excelente lectura) */
     
     /* Letras Carta (Sobre Blanco) */
-    --color-text-card-base: #0f172a;  /* Casi negro para buen contraste */
-    --color-text-card-muted: #64748b; /* Gris medio (también pinta el centro de tus luces) */
+    --color-text-card-base: #031336;  /* Casi negro para buen contraste */
+    --color-text-card-muted: #001c44; /* Gris medio (también pinta el centro de tus luces) */
     --color-primary-accent: #2563eb;  /* Azul profesional para links/iconos */
   }
 

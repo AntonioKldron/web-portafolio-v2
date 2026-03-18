@@ -80,8 +80,9 @@ export default function EncabezadoSeccion({
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-              /* DEGRADADO MORADO OSCURO E INTENSO */
-              className="relative italic font-light lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] via-[#c026d3] to-[#4c1d95] drop-shadow-[0_2px_12px_rgba(107,33,168,0.3)]"
+              /* DEGRADADO MORADO OSCURO E INTENSO CON TEXTO GRUESO */
+              /* Cambiamos 'font-light' por 'font-bold' (o font-extrabold) */
+              className="relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] via-[#c026d3] to-[#4c1d95] drop-shadow-[0_2px_12px_rgba(107,33,168,0.3)]"
             >
               {tituloHighlight}.
               {/* LÍNEA DE ABAJO ELIMINADA AQUÍ */}

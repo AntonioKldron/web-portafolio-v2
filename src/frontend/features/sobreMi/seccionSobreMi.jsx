@@ -42,7 +42,7 @@ export default function SeccionSobreMi() {
                 Cambiamos 'text-main-text' por 'text-current' para asegurar que herede 
                 el blanco puro que definimos en el CSS global del dark mode.
             */}
-            <p className="text-lg lg:text-[1.35rem] font-extralight leading-[1.35] italic tracking-tight opacity-90">
+            <p className="text-lg lg:text-[1.35rem] font-medium leading-[1.35] italic tracking-tight opacity-90">
               {t.fraseCorta}
             </p>
           </div>
