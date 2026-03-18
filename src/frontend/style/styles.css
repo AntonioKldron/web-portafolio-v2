@@ -18,7 +18,7 @@
     --color-text-right: #08009a;     /* Gris pizarra oscuro (excelente lectura) */
     
     /* Letras Carta (Sobre Blanco) */
-    --color-text-card-base: #031336;  /* Casi negro para buen contraste */
+    --color-text-card-base: #002c8c;  /* Casi negro para buen contraste */
     --color-text-card-muted: #001c44; /* Gris medio (también pinta el centro de tus luces) */
     --color-primary-accent: #2563eb;  /* Azul profesional para links/iconos */
   }
