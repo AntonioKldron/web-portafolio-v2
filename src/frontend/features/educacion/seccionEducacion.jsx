@@ -26,7 +26,7 @@ export default function SeccionEducacion() {
 
   return (
     // Eliminado py-20 para pegar la sección a los bordes superior/inferior
-    <section className="bg-transparent relative w-full overflow-hidden">
+    <section className="bg-transparent relative w-full">
       <div className="max-w-7xl mx-auto px-6 py-10"> {/* Padding lateral mantenido, py reducido */}
         
         <EncabezadoSeccion 

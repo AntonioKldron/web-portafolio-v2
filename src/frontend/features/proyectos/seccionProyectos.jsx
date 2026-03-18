@@ -9,7 +9,7 @@ export default function SeccionProyectos() {
   const [openProject, setOpenProject] = useState(null);
 
   return (
-    <section className=" px-4 bg-transparent relative overflow-hidden font-sans">
+    <section className=" px-4 bg-transparent relative font-sans">
       <div className="max-w-7xl mx-auto space-y-12">
         <EncabezadoSeccion 
           subtitulo={t.header.subtitulo} 

@@ -17,7 +17,7 @@ export default function SeccionHerramientas() {
   const categoriaActual = categoriasConIconos[indiceCategoria];
 
   return (
-    <section className="py-12 px-4 bg-transparent relative font-sans w-full overflow-hidden">
+    <section className="py-12 px-4 bg-transparent relative font-sans w-full">
       <div className="max-w-7xl mx-auto space-y-10">
         
         <EncabezadoSeccion 

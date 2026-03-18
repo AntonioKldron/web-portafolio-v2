@@ -46,7 +46,7 @@ const LayoutPrincipal = ({ observerRef }) => {
           <section
             key={sec.id}
             id={sec.id}
-            className="reveal-section w-full py-4" 
+            className="w-full" 
           >
             {sec.component}
           </section>
