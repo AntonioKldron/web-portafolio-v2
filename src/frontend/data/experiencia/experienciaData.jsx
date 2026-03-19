@@ -82,7 +82,7 @@ export const experienciaData = {
           { nombre: "Salesforce Daimler", descripcion: "Generación de KPIs para ventas, servicios e inventarios en Salesforce.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "7 Técnicas Mazda", descripcion: "Interfaz de KPIs para reportar el ciclo de vida completo de las unidades.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
-          { nombre: "Xentry API", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
+          { nombre: "Xentry", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "CRM Postventa Toyota", descripcion: "Desarrollo de CRM postventa integrando servicios nativos de Intelisis.", tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css], repositorio: "/404" },
           { nombre: "API Pilot", descripcion: "API REST para administración y conexión entre CRM de Pilot e Intelisis.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Services Tablet", descripcion: "API REST para mostrar clientes e información de vehículos.", tecnologias: [dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.net], repositorio: "/404" },
