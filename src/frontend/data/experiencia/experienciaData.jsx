@@ -65,8 +65,8 @@ export const experienciaData = {
           }
         ],
         tecnologias: [
-          dt.python, dt.django, dt.fastapi, dt.sqlserver, 
-          dt.postgresql, dt.docker, dt.linux, dt.git, 
+          dt.python, dt.django, dt.djangorest, dt.fastapi, dt.sqlserver, 
+          dt.postgresql, dt.docker, dt.linux, dt.git, dt.gitlab, 
           dt.javascript, dt.angular, dt.intelisis, dt.json,
           dt.typescript, dt.xml, dt.api, dt.html, dt.css,
           dt.csharp, dt.net, dt.php, dt.codeigniter, dt.jquery
@@ -74,20 +74,20 @@ export const experienciaData = {
         proyectos: [
           { nombre: "BYD Integración", descripcion: "Sincronización de agencias automotrices con sistemas CRM de la marca BYD.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "Clear Mechanics", descripcion: "Sincronización de información técnica para soporte y diagnóstico vehicular.", tecnologias: [dt.sqlserver, dt.json, dt.api], repositorio: "/404" },
-          { nombre: "API Servicios", descripcion: "Exposición de servicios del DMS: citas, órdenes, clientes, inventario y VINs.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
-          { nombre: "API Prospectos", descripcion: "Gestión, creación y conversión de prospectos integrando sistemas externos.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.intelisis, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "API Servicios", descripcion: "Exposición de servicios del DMS: citas, órdenes, clientes, inventario y VINs.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "API Prospectos", descripcion: "Gestión, creación y conversión de prospectos integrando sistemas externos.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.intelisis, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Geely Integración", descripcion: "Manejo de prospectos, inventarios y venta de unidades de la marca Geely.", tecnologias: [dt.sqlserver, dt.json, dt.api], repositorio: "/404" },
           { nombre: "Seekop Integration", descripcion: "Gestión de prospectos y venta de unidades mediante la plataforma Seekop.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "Salesforce Mazda", descripcion: "Automatización de la gestión de prospectos del ecosistema Mazda.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "Salesforce Daimler", descripcion: "Generación de KPIs para ventas, servicios e inventarios en Salesforce.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "7 Técnicas Mazda", descripcion: "Interfaz de KPIs para reportar el ciclo de vida completo de las unidades.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
-          { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "API Fame", descripcion: "API REST para administración y conexión entre CRMs del grupo FAME.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Xentry API", descripcion: "Consumo de servicios para facilitar la transferencia de información automotriz.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "CRM Postventa Toyota", descripcion: "Desarrollo de CRM postventa integrando servicios nativos de Intelisis.", tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css], repositorio: "/404" },
-          { nombre: "API Pilot", descripcion: "API REST para administración y conexión entre CRM de Pilot e Intelisis.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "API Pilot", descripcion: "API REST para administración y conexión entre CRM de Pilot e Intelisis.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Services Tablet", descripcion: "API REST para mostrar clientes e información de vehículos.", tecnologias: [dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.net], repositorio: "/404" },
           { nombre: "Services Excellent", descripcion: "Portales web para mostrar servicios de Intelisis.", tecnologias: [dt.sqlserver, dt.php, dt.jquery, dt.javascript, dt.css, dt.html, dt.codeigniter], repositorio: "/404" },
-          { nombre: "ISAPI", descripcion: "Librería personalizada para la creación de APIs REST del ecosistema Intelisis (función creación de estimaciones).", tecnologias: [dt.postgresql, dt.django, dt.api, dt.python, dt.json], repositorio: "/404" },
+          { nombre: "ISAPI", descripcion: "Librería personalizada para la creación de APIs REST del ecosistema Intelisis (función creación de estimaciones).", tecnologias: [dt.sqlserver, dt.postgresql, dt.djangorest, dt.django, dt.api, dt.python, dt.json], repositorio: "/404" },
         ]
       },
       {
@@ -175,8 +175,8 @@ export const experienciaData = {
           }
         ],
         tecnologias: [
-          dt.python, dt.django, dt.fastapi, dt.sqlserver, 
-          dt.postgresql, dt.docker, dt.linux, dt.git, 
+          dt.python, dt.django, dt.djangorest, dt.fastapi, dt.sqlserver, 
+          dt.postgresql, dt.docker, dt.linux, dt.git, dt.gitlab,
           dt.javascript, dt.angular, dt.intelisis, dt.json,
           dt.typescript, dt.xml, dt.api, dt.html, dt.css,
           dt.csharp, dt.net, dt.php, dt.codeigniter, dt.jquery
@@ -184,20 +184,20 @@ export const experienciaData = {
         proyectos: [
           { nombre: "BYD Integration", descripcion: "Synchronization of automotive agencies with BYD brand CRM systems.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "Clear Mechanics", descripcion: "Technical sync for support and vehicle diagnostic data.", tecnologias: [dt.sqlserver, dt.json, dt.api], repositorio: "/404" },
-          { nombre: "Services API", descripcion: "DMS service exposure: appointments, orders, customers, inventory and VINs.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
-          { nombre: "Leads API", descripcion: "Management, creation, and conversion of leads integrating external systems.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.intelisis, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "Services API", descripcion: "DMS service exposure: appointments, orders, customers, inventory and VINs.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "Leads API", descripcion: "Management, creation, and conversion of leads integrating external systems.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.intelisis, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Geely Integration", descripcion: "Geely brand leads, inventory, and unit sales management.", tecnologias: [dt.sqlserver, dt.json, dt.api], repositorio: "/404" },
           { nombre: "Seekop Integration", descripcion: "Leads and sales management through the Seekop platform.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "Mazda Salesforce", descripcion: "Automation of leads management for the Mazda ecosystem.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "Daimler Salesforce", descripcion: "KPI generation for sales, services, and inventory in Salesforce.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
           { nombre: "7 Mazda Techniques", descripcion: "KPI interface for reporting the full unit life cycle.", tecnologias: [dt.sqlserver, dt.intelisis], repositorio: "/404" },
-          { nombre: "Fame API", descripcion: "REST API for administration and connection between FAME group CRMs.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "Fame API", descripcion: "REST API for administration and connection between FAME group CRMs.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Xentry", descripcion: "Consumption of services to facilitate automotive information transfer.", tecnologias: [dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
           { nombre: "Toyota After-sales CRM", descripcion: "After-sales CRM development integrating native Intelisis services.", tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css], repositorio: "/404" },
-          { nombre: "Pilot API", descripcion: "REST API for administration and connection between Pilot CRM and Intelisis.", tecnologias: [dt.sqlserver, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
+          { nombre: "Pilot API", descripcion: "REST API for administration and connection between Pilot CRM and Intelisis.", tecnologias: [dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
           { nombre: "Services Tablet", descripcion: "REST API to display customer and vehicle information.", tecnologias: [dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.net], repositorio: "/404" },
           { nombre: "Services Excellent", descripcion: "Web portals to display Intelisis services.", tecnologias: [dt.sqlserver, dt.php, dt.jquery, dt.javascript, dt.css, dt.html, dt.codeigniter], repositorio: "/404" },
-          { nombre: "ISAPI", descripcion: "Custom library for the creation of REST APIs in the Intelisis ecosystem (estimates creation function).", tecnologias: [dt.postgresql, dt.django, dt.api, dt.python, dt.json], repositorio: "/404" },
+          { nombre: "ISAPI", descripcion: "Custom library for the creation of REST APIs in the Intelisis ecosystem (estimates creation function).", tecnologias: [dt.sqlserver, dt.postgresql, dt.djangorest, dt.django, dt.api, dt.python, dt.json], repositorio: "/404" },
         ]
       },
       {
