@@ -107,7 +107,7 @@ export const experienciaData = {
         ],
         tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
-          { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
+          { nombre: "Techani 2.0", descripcion: "Aplicación para gestión de salud en diabetes tipo 1 con base de datos en tiempo real.", tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind, dt.docker], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
           { nombre: "Techani 1.0", descripcion: "Versión inicial en PHP para el monitoreo y gestión de pacientes diabéticos.", tecnologias: [dt.php, dt.css, dt.html, dt.javascript, dt.jquery, dt.mysql], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
           { nombre: "OMD System", descripcion: "Plataforma de gestión web para una organización sin fines de lucro.", tecnologias: [dt.php, dt.javascript, dt.html, dt.css, dt.mysql], repositorio: "/404" }
         ]
@@ -217,7 +217,7 @@ export const experienciaData = {
         ],
         tecnologias: [dt.react, dt.php, dt.laravel, dt.mysql, dt.sqlite, dt.git, dt.figma, dt.supabase, dt.docker, dt.django, dt.html, dt.css, dt.javascript, dt.tailwind],
         proyectos: [
-          { nombre: "Techani 2.0", descripcion: "Health management app for type 1 diabetes with real-time database.", tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
+          { nombre: "Techani 2.0", descripcion: "Health management app for type 1 diabetes with real-time database.", tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind, dt.docker], repositorio: "https://github.com/alfonsonadamas/Techani-2.0.git" },
           { nombre: "Techani 1.0", descripcion: "Initial PHP version for monitoring and managing patients.", tecnologias: [dt.php, dt.css, dt.html, dt.javascript, dt.jquery, dt.mysql], repositorio: "https://github.com/alfonsonadamas/Techani.git" },
           { nombre: "OMD System", descripcion: "Web management platform for a non-profit organization.", tecnologias: [dt.php, dt.javascript, dt.html, dt.css, dt.mysql], repositorio: "/404" }
         ]

@@ -40,7 +40,7 @@ export const proyectosData = {
           "Implementación de lógica de validación de registros de salud en tiempo real.",
           "Despliegue y containerización de la aplicación utilizando Docker para entornos de desarrollo y producción."
         ],
-        tecnologias: [dt.react, dt.supabase, dt.tailwind, dt.docker],
+        tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind, dt.docker],
         imagenes: [],
         urlSitio: "https://techani.net/",
         urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git"
@@ -81,7 +81,7 @@ export const proyectosData = {
           "Implementation of real-time health record validation logic.",
           "Deployment and containerization of the application using Docker for dev/prod environments."
         ],
-        tecnologias: [dt.react, dt.supabase, dt.tailwind, dt.docker],
+        tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind, dt.docker],
         imagenes: [],
         urlSitio: "https://techani.net/",
         urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git"
