@@ -5,13 +5,13 @@ import { perfilData } from '../../data/perfil/perfilData';
 import { ProfileHeader } from './components/headerProfile';
 import { ProfileNav } from './components/navProfile';
 import { ProfileFooter } from './components/footerProfile';
-import { HiMoon, HiSun, HiTranslate } from 'react-icons/hi';
 
 export default function MiCartaPerfil({ observerRef }) {
   const [activeSection, setActiveSection] = useState("");
-  const { lang, isDark, toggleLang, toggleTheme } = useApp();
   
-  // 't' obtiene automáticamente el objeto 'es' o 'en' según 'lang'
+  // Ya solo necesitamos 'lang' y 'isDark' de tu contexto, no las funciones de toggle
+  const { lang, isDark } = useApp(); 
+  
   const t = useTranslation(perfilData);
   const { nombre, apellido, foto, socials } = perfilData;
 
@@ -46,16 +46,9 @@ export default function MiCartaPerfil({ observerRef }) {
       overflow-hidden font-sans
       bg-card-bg text-main-text border-main-border
     ">
-      {/* CONTROLES */}
-      <div className="absolute top-4 right-4 z-50 flex gap-2">
-        <button onClick={toggleLang} className="flex items-center gap-1 text-[10px] font-mono px-3 py-1.5 rounded-full border border-main-border bg-main-bg text-main-text hover:border-primary-accent transition-all uppercase">
-          <HiTranslate size={14} className="text-primary-accent" />
-          {lang === 'es' ? 'EN' : 'ES'}
-        </button>
-        <button onClick={toggleTheme} className="p-2 rounded-full border border-main-border bg-main-bg text-main-text hover:border-primary-accent transition-all">
-          {isDark ? <HiSun size={16} className="text-yellow-400" /> : <HiMoon size={16} className="text-primary-accent" />}
-        </button>
-      </div>
+      
+      {/* ¡Los botones fueron robados de aquí exitosamente! 
+      */}
 
       <ProfileHeader foto={foto} nombre={nombre} apellido={apellido} rol={t.rol} />
 
@@ -63,7 +56,6 @@ export default function MiCartaPerfil({ observerRef }) {
         <ProfileNav menuItems={t.menuItems} activeSection={activeSection} onScrollTo={scrollTo} />
       </div>
 
-      {/* Dinámico: Pasamos t.cv (archivo) */}
       <ProfileFooter socials={socials} cv={t.cv} />
     </div>
   );
