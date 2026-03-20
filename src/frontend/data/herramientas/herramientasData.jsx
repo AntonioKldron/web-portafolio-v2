@@ -1,11 +1,11 @@
 import React from 'react';
 import { data as dt } from '../icons/iconsRegistro';
-// Importamos los íconos desde react-icons (puedes usar la familia que prefieras, aquí usé FontAwesome)
 import { FaCode, FaCogs, FaReact, FaDatabase, FaAws, FaGitAlt } from 'react-icons/fa';
 import { AiOutlineGold } from "react-icons/ai";
+import { TbBrandOpenai } from "react-icons/tb";
+import { IoIosDocument } from "react-icons/io";
 
 export const herramientasData = {
-  // Datos comunes que no cambian (ahora usando react-icons)
   iconosCategorias: {
     cat1: <FaCode />,
     cat2: <FaCogs />,

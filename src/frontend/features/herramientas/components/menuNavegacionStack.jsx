@@ -22,6 +22,9 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
     visible: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 300 } }
   };
 
+  // NUEVA FÍSICA DE ANIMACIÓN (Más elástica y satisfactoria)
+  const springFisica = { type: "spring", stiffness: 350, damping: 28, mass: 0.8 };
+
   return (
     <>
       {/* MÓVIL */}
@@ -44,7 +47,7 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
               </span>
             </div>
           </div>
-          <motion.div animate={{ rotate: estaAbierto ? 180 : 0 }} transition={{ type: "spring", stiffness: 200 }}>
+          <motion.div animate={{ rotate: estaAbierto ? 180 : 0 }} transition={springFisica}>
             <FaChevronDown className={`${isDark ? 'text-emerald-400' : 'text-indigo-600'} text-sm`} />
           </motion.div>
         </motion.button>
@@ -63,17 +66,19 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
                     variants={itemVariantes}
                     key={cat.id} 
                     onClick={() => { alSeleccionar(idx); setEstaAbierto(false); }} 
-                    className={`w-full flex items-center gap-4 p-3.5 rounded-xl transition-all relative overflow-hidden mb-1 last:mb-0
+                    // Añadimos 'layout' al botón padre para que el cambio de tamaño se anime fluidamente
+                    layout
+                    className={`w-full flex items-center px-4 gap-4 rounded-xl transition-all duration-300 relative overflow-hidden mb-1 last:mb-0
                       ${esActivo 
-                        ? (isDark ? 'text-white' : 'text-slate-900') 
-                        : (isDark ? 'text-slate-400 hover:text-white hover:bg-slate-800/50' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100')
+                        ? `py-3.5 ${isDark ? 'text-white' : 'text-slate-900'}` 
+                        : `py-2 opacity-70 ${isDark ? 'text-slate-400 hover:text-white hover:bg-slate-800/50 hover:opacity-100' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100 hover:opacity-100'}`
                       }`}
                   >
                     {esActivo && (
                       <motion.div 
                         layoutId="mobile-active-bg"
                         className={`absolute inset-0 ${isDark ? 'bg-indigo-500/20' : 'bg-indigo-50'}`}
-                        initial={false} transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        initial={false} transition={springFisica}
                       />
                     )}
                     <div className={`text-xl relative z-10 ${esActivo ? (isDark ? 'text-emerald-400' : 'text-indigo-600') : ''}`}>
@@ -90,14 +95,14 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
         </AnimatePresence>
       </div>
 
-      {/* ESCRITORIO (Sidebar Estandarizada) */}
+      {/* ESCRITORIO */}
       <div className={`hidden lg:flex flex-col gap-2 p-2 border rounded-2xl backdrop-blur-md z-30 max-w-[260px] shrink-0 transition-all duration-700
         ${isDark 
           ? 'bg-slate-950/40 border-indigo-500/30 shadow-[0_0_40px_-15px_rgba(79,70,229,0.4)]' 
           : 'bg-white/40 border-slate-200 shadow-xl'}`}
       >
         
-        {/* Encabezado IDÉNTICO a la consola */}
+        {/* Encabezado */}
         <div className={`flex items-center justify-between px-4 py-3 border-b mb-1 
           ${isDark ? 'border-indigo-500/20' : 'border-slate-200'}`}>
           <div className="flex gap-2">
@@ -111,16 +116,22 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
           </span>
         </div>
 
-        <div className="flex flex-col gap-1 px-1 pb-1 relative">
+        <div className="flex flex-col px-1 pb-1 relative">
           {categorias.map((cat, idx) => {
             const esActivo = indiceActivo === idx;
             return (
               <motion.button 
                 key={cat.id} 
                 onClick={() => alSeleccionar(idx)} 
-                className="group relative flex items-center gap-4 p-3.5 transition-all rounded-xl w-full"
+                // AÑADIDO: Atributo 'layout' vital para que la expansión del alto sea animada suavemente
+                layout
+                className={`group relative flex items-center w-full px-4 gap-4 transition-all duration-200 rounded-xl
+                  ${esActivo 
+                    ? 'py-3.5 my-1.5' // Un pelín más de margen para que la expansión se note mejor
+                    : 'py-2 my-0 opacity-60 hover:opacity-100'
+                  }`}
               >
-                {/* Fondo Deslizante */}
+                {/* Fondo Deslizante (Magia de Framer Motion) */}
                 {esActivo && (
                   <motion.div 
                     layoutId="desktop-active-bg"
@@ -130,44 +141,52 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
                         : 'bg-white border-slate-200/60 shadow-sm'
                     }`}
                     initial={false}
-                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                    transition={springFisica}
                   />
                 )}
 
-                {/* Línea indicadora (Emerald para igualar la consola) */}
+                {/* Línea indicadora */}
                 {esActivo && (
                   <motion.div 
                     layoutId="desktop-active-indicator"
-                    className={`absolute left-0 top-[20%] h-[60%] w-1 rounded-r-full ${
+                    className={`absolute left-0 top-[20%] h-[60%] w-1 rounded-r-full z-10 ${
                       isDark ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.8)]' : 'bg-indigo-600'
                     }`}
                     initial={false}
-                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                    transition={springFisica}
                   />
                 )}
 
                 {/* Ícono */}
-                <div className={`text-[1.35rem] relative z-10 transition-transform duration-300 group-hover:scale-110 ${
-                  esActivo 
-                    ? (isDark ? 'text-emerald-400' : 'text-indigo-600') 
-                    : (isDark ? 'text-slate-500 group-hover:text-indigo-300' : 'text-slate-400 group-hover:text-indigo-500')
-                }`}>
+                <motion.div 
+                  layout="position" // Para que el icono no brinque bruscamente al cambiar el padding
+                  className={`text-[1.35rem] relative z-20 transition-transform duration-300 group-hover:scale-110 ${
+                    esActivo 
+                      ? (isDark ? 'text-emerald-400' : 'text-indigo-600') 
+                      : (isDark ? 'text-slate-500 group-hover:text-indigo-300' : 'text-slate-400 group-hover:text-indigo-500')
+                  }`}
+                >
                   {cat.icon}
-                </div>
+                </motion.div>
 
                 {/* Título */}
-                <h3 className={`text-[10px] font-mono font-bold uppercase tracking-[0.15em] relative z-10 transition-colors ${
-                  esActivo 
-                    ? (isDark ? 'text-white' : 'text-slate-900') 
-                    : (isDark ? 'text-slate-400' : 'text-slate-500')
-                }`}>
+                <motion.h3 
+                  layout="position" // Para que el texto fluya con el cambio de alto
+                  className={`text-[10px] font-mono font-bold uppercase tracking-[0.15em] relative z-20 transition-colors ${
+                    esActivo 
+                      ? (isDark ? 'text-white' : 'text-slate-900') 
+                      : (isDark ? 'text-slate-400' : 'text-slate-500')
+                  }`}
+                >
                   {cat.title}
-                </h3>
+                </motion.h3>
 
                 {/* Hover Glow */}
-                <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  <div className={`absolute inset-0 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-900/5'}`}></div>
-                </div>
+                {!esActivo && (
+                  <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className={`absolute inset-0 rounded-xl ${isDark ? 'bg-white/5' : 'bg-slate-900/5'}`}></div>
+                  </div>
+                )}
               </motion.button>
             );
           })}
