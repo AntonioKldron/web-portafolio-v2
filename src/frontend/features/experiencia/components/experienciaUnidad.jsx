@@ -179,7 +179,6 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                               ${isDark ? 'bg-indigo-500/10 text-indigo-400' : 'bg-indigo-50 text-indigo-600'}`}>
                               <FaInfoCircle size={14} />
                             </div>
-                            <h4 className={`font-bold text-xs uppercase tracking-widest ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>Rol & Visión</h4>
                           </div>
                           <p className={`text-[13.5px] leading-relaxed text-justify break-words
                             ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
@@ -194,7 +193,6 @@ export const ExperienciaUnidad = ({ data, isOpen, toggle }) => {
                               ${isDark ? 'bg-purple-500/10 text-purple-400' : 'bg-purple-50 text-purple-600'}`}>
                               <FaTasks size={14} />
                             </div>
-                            <h4 className={`font-bold text-xs uppercase tracking-widest ${isDark ? 'text-slate-300' : 'text-slate-800'}`}>Logros Clave</h4>
                           </div>
                           <ul className="grid grid-cols-1 gap-2.5">
                             {detalles.map((detalle, i) => (
