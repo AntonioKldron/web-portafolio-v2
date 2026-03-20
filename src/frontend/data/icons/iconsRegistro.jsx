@@ -3,7 +3,7 @@ import React from 'react';
 // LENGUAJES
 import {
   IcoJavascript, IcoPython, IcoSql, IcoCsharp, IcoJava, IcoPhp, IcoGo, 
-  IcoRust, IcoTypescript, IcoDart, IcoSwift
+  IcoRust, IcoTypescript, IcoDart, IcoSwift, IcoKotlin
 } from './icon-iconify/dataIconify.jsx';
 
 // BACKEND & FRAMEWORKS
@@ -20,7 +20,7 @@ import {
 
 // MÓVIL
 import {
-  IcoAndroid, IcoFlutter, IcoReactnative
+  IcoAndroid, IcoFlutter, IcoReactnative, IcoJetpackcompose
 } from './icon-iconify/dataIconify.jsx';
 
 // ERP & ENTERPRISE
@@ -44,7 +44,7 @@ import {
 import {
   IcoVscode, IcoN8n, IcoJetbrains, IcoGit, IcoGitlab, IcoGithub, 
   IcoTrello, IcoApi, IcoTerminal, IcoJson, IcoXml, IcoCode, 
-  IcoCogs, IcoPowerBi, IcoCursor, IcoFigma
+  IcoCogs, IcoPowerBi, IcoCursor, IcoFigma, IcoVstudio
 } from './icon-iconify/dataIconify.jsx';
 
 
@@ -61,6 +61,7 @@ export const data = {
   typescript: { name: "TypeScript", icon: <IcoTypescript />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   dart: { name: "Dart", icon: <IcoDart />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
   swift: { name: "Swift", icon: <IcoSwift />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  kotlin: { name: "Kotlin", icon: <IcoKotlin />, primary: "text-purple-500", secondary: "text-purple-600/50" }, // <-- AGREGADO
 
   // BACKEND & FRAMEWORKS
   nodejs: { name: "Node.js", icon: <IcoNodejs />, primary: "text-green-600", secondary: "text-green-700/50" },
@@ -95,6 +96,7 @@ export const data = {
   android: { name: "Android", icon: <IcoAndroid />, primary: "text-green-500", secondary: "text-green-600/50" },
   flutter: { name: "Flutter", icon: <IcoFlutter />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
   reactnative: { name: "React Native", icon: <IcoReactnative />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
+  jetpackcompose: { name: "Jetpack Compose", icon: <IcoJetpackcompose />, primary: "text-green-500", secondary: "text-green-600/50" }, // <-- AGREGADO
 
   // ERP & ENTERPRISE
   peoplesoft: { name: "PeopleSoft Tools", icon: <IcoPeoplesoft />, primary: "text-blue-500", secondary: "text-blue-600/50" },
@@ -140,4 +142,5 @@ export const data = {
   code: { name: "Code", icon: <IcoCode />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
   cogs: { name: "Cogs", icon: <IcoCogs />, primary: "text-blue-400", secondary: "text-blue-500/50" },
   powerbi: { name: "Power Bi", icon: <IcoPowerBi />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  vstudio: { name: "Visual Studio", icon: <IcoVstudio />, primary: "text-purple-600", secondary: "text-purple-700/50" }, // <-- AGREGADO
 };
