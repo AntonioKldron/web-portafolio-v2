@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import CartaTecnologia from './cartaTecnologias';
+// ✨ IMPORTAMOS EL CONTEXTO (Ajusta la ruta si ConsolaHabilidades está en otra carpeta)
+import { ConsolaContext } from './habilidadesConsola'; 
 
 export default function CarruselInfinito({ listaItems = [], idCategoria }) {
   const [esMovil, setEsMovil] = useState(false);
+  
+  // ✨ LEEMOS LA VELOCIDAD DIRECTO DEL CONTEXTO (10 por defecto si hay algún error)
+  const velocidadContexto = useContext(ConsolaContext);
+  const velocidad = velocidadContexto !== undefined ? velocidadContexto : 10;
 
-  // Necesitamos detectar la pantalla para saber en cuántos grupos dividir las cartas
   useEffect(() => {
     const comprobarResolucion = () => setEsMovil(window.innerWidth < 768);
     
@@ -16,8 +21,6 @@ export default function CarruselInfinito({ listaItems = [], idCategoria }) {
 
   if (!listaItems || listaItems.length === 0) return null;
 
-  // 1. REPARTIR CARTAS DINÁMICAMENTE
-  // Si es móvil, dividimos en 3 grupos. Si es PC, en 2 grupos.
   const baseFila1 = [];
   const baseFila2 = [];
   const baseFila3 = [];
@@ -33,22 +36,19 @@ export default function CarruselInfinito({ listaItems = [], idCategoria }) {
     }
   });
 
-  // 2. Helper de renderizado
   const renderFila = (baseFila, direccion, keyPrefix) => {
     if (baseFila.length === 0) return null;
 
-    // Duplicamos estrictamente UNA SOLA VEZ para que funcione el loop de Framer Motion.
     const fila = [...baseFila, ...baseFila];
 
-    // 3. VELOCIDAD UNIFORME: 
-    // Le tomará 12 segundos a cada carta atravesar la pantalla.
-    // Al multiplicar por baseFila.length, garantizamos que sin importar si la fila
-    // tiene 2 cartas o 10 cartas, la velocidad visual (píxeles por segundo) sea idéntica.
-    const duracionDinamica = baseFila.length * 12;
+    // Cálculos matemáticos usando la velocidad del contexto
+    const tiempoPorCarta = 21 - velocidad; 
+    const duracionDinamica = baseFila.length * tiempoPorCarta;
 
     return (
-      <div className="flex overflow-hidden">
+      <div className="flex overflow-hidden w-full">
         <motion.div 
+          key={`animacion-${keyPrefix}-${velocidad}`}
           animate={{ x: direccion === 1 ? ["0%", "-50%"] : ["-50%", "0%"] }} 
           transition={{ duration: duracionDinamica, repeat: Infinity, ease: "linear" }} 
           className="flex gap-6 md:gap-12 shrink-0 w-max"
@@ -68,17 +68,10 @@ export default function CarruselInfinito({ listaItems = [], idCategoria }) {
   };
 
   return (
-    <div className="relative flex flex-col gap-6 md:gap-12 py-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
-      
-      {/* Fila 1 - Izquierda */}
+    <div className="w-full h-full flex flex-col justify-center gap-6 md:gap-12 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
       {renderFila(baseFila1, 1, 'f1')}
-
-      {/* Fila 2 - Derecha */}
       {renderFila(baseFila2, -1, 'f2')}
-
-      {/* Fila 3 - Izquierda (Solo se llena y renderiza si estamos en móvil) */}
       {esMovil && renderFila(baseFila3, 1, 'f3')}
-      
     </div>
   );
 }
