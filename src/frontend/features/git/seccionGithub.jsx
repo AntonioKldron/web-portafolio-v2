@@ -97,7 +97,7 @@ export default function SeccionGithub() {
           subtitulo={t.header.subtitulo} 
           tituloPrincipal={t.header.titulo} 
           tituloHighlight={t.header.highlight} 
-          align="left" 
+          align="right" 
         />
 
         <motion.div 
@@ -108,13 +108,13 @@ export default function SeccionGithub() {
           className="grid grid-cols-1 lg:grid-cols-12 gap-6"
         >
           {/* PERFIL */}
-          <motion.div variants={itemVariants} className="lg:col-span-4 flex">
-            <PerfilGithub perfil={githubData} totalCommits={calendario.totalContributions} isDark={isDark} username={username} t={t.profile} />
+          <motion.div variants={itemVariants} className="lg:col-span-8 flex">
+            <LenguajesGithub reposStats={statsRepos} isDark={isDark} t={t.stack} />
           </motion.div>
 
           {/* LENGUAJES CON ICONOS REALES */}
-          <motion.div variants={itemVariants} className="lg:col-span-8 flex">
-            <LenguajesGithub reposStats={statsRepos} isDark={isDark} t={t.stack} />
+          <motion.div variants={itemVariants} className="lg:col-span-4 flex">
+            <PerfilGithub perfil={githubData} totalCommits={calendario.totalContributions} isDark={isDark} username={username} t={t.profile} />
           </motion.div>
 
           {/* CALENDARIO */}

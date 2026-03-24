@@ -33,7 +33,7 @@ export default function SeccionEducacion() {
           subtitulo={t.header?.subtitulo} 
           tituloPrincipal={t.header?.titulo} 
           tituloHighlight={t.header?.highlight} 
-          align="left" 
+          align="right" 
         />
 
         {/* mt-10 en lugar de mt-20 para reducir espacio tras el header */}

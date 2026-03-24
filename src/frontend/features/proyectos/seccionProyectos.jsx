@@ -15,7 +15,7 @@ export default function SeccionProyectos() {
           subtitulo={t.header.subtitulo} 
           tituloPrincipal={t.header.tituloPrincipal} 
           tituloHighlight={t.header.tituloHighlight} 
-          align="right" 
+          align="left" 
         />
         <div className="space-y-6">
           {t.proyectos.map((pro, idx) => (
