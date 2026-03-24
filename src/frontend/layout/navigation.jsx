@@ -7,7 +7,7 @@ import {
 import { FaGithub } from 'react-icons/fa';
 
 // 1. IMPORTAMOS TU CONTEXTO, TU DATA Y LOS BOTONES
-import { useApp } from '../context/appContext.jsx'; // Ajusta la ruta a tu AppContext
+import { useApp } from '../context/AppContext.jsx'; // Ajusta la ruta a tu AppContext
 import { perfilData } from '../data/perfil/perfilData.jsx'; // Ajusta la ruta a tu perfilData
 import { UtilityButtons } from '../features/components/utilityButtons.jsx'; // Ajusta la ruta a tus botones
 

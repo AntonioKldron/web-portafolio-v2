@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useApp } from '../../context/appContext.jsx'; 
+import { useApp } from '../../context/AppContext.jsx'; 
 import { useTranslation } from '../../hooks/useTranslation.js'; 
 import { githubData as dictData } from '../../data/git/gitHubData.jsx'; 
 import { perfilData } from '../../data/perfil/perfilData.jsx'; 

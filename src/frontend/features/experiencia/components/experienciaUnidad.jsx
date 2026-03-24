@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaInfoCircle, FaTasks } from "react-icons/fa";
-import { useApp } from "../../../context/appContext";
+import { useApp } from "../../../context/AppContext";
 
 // Importaciones de tus otros componentes
 import { MetaInfo } from "./infoMeta";

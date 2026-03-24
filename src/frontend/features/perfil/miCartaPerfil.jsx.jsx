@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { useApp } from '../../context/appContext'; 
+import { useApp } from '../../context/AppContext'; 
 import { useTranslation } from '../../hooks/useTranslation';
 import { perfilData } from '../../data/perfil/perfilData';
 import { ProfileHeader } from './components/headerProfile';
