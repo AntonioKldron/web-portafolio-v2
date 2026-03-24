@@ -80,9 +80,9 @@ export const data = {
   // FRONTEND
   react: { name: "React", icon: <IcoReact />, primary: "text-cyan-400", secondary: "text-cyan-500/50" },
   angular: { name: "Angular", icon: <IcoAngular />, primary: "text-red-600", secondary: "text-red-700/50" },
-  vue: { name: "Vue.js", icon: <IcoVue />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
+  vue: { name: "Vue", icon: <IcoVue />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
   svelte: { name: "Svelte", icon: <IcoSvelte />, primary: "text-orange-500", secondary: "text-orange-600/50" },
-  nextjs: { name: "Next.js", icon: <IcoNextjs />, primary: "text-white", secondary: "text-white/50" },
+  nextjs: { name: "Next", icon: <IcoNextjs />, primary: "text-white", secondary: "text-white/50" },
   nuxtjs: { name: "Nuxt", icon: <IcoNuxtjs />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
   astro: { name: "Astro", icon: <IcoAstro />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   jquery: { name: "jQuery", icon: <IcoJquery />, primary: "text-blue-500", secondary: "text-blue-600/50" },
