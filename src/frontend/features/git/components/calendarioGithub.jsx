@@ -36,7 +36,7 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
 
   // Escala de colores para la leyenda (basada en los niveles de GitHub)
   const escalaColores = [
-    { level: 0, color: isDark ? '#161b22' : '#ebedf0' },
+    { level: 0, color: isDark ? '#ebedf0' : '#ebedf0' },
     { level: 1, color: '#9be9a8' },
     { level: 2, color: '#40c463' },
     { level: 3, color: '#30a14e' },
