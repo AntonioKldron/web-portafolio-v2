@@ -24,7 +24,7 @@ export const herramientasData = {
     },
     categorias: [
       { id: "cat-1", title: "Lenguajes", items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java, dt.typescript] },
-      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.fastapi, dt.django, dt.djangorest] },
+      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.nodejs, dt.fastapi, dt.django, dt.djangorest] },
       { id: "cat-3", title: "Frontend", items: [dt.html, dt.css, dt.astro, dt.react, dt.vue, dt.tailwind, dt.bootstrap] },
       { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
       { id: "cat-5", title: "Bases de Datos", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.sqlite, dt.mysql, dt.supabase, dt.firebase] },
@@ -40,7 +40,7 @@ export const herramientasData = {
     },
     categorias: [
       { id: "cat-1", title: "Languages", items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java, dt.typescript] },
-      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.fastapi, dt.django, dt.djangorest] },
+      { id: "cat-2", title: "Backend", items: [dt.nestjs, dt.nodejs, dt.fastapi, dt.django, dt.djangorest] },
       { id: "cat-3", title: "Frontend", items: [dt.html, dt.css, dt.astro, dt.react, dt.vue, dt.tailwind, dt.bootstrap] },
       { id: "cat-4", title: "ERP Solutions", items: [dt.peoplesoft, dt.intelisis] },
       { id: "cat-5", title: "Databases", items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.sqlite, dt.mysql, dt.supabase, dt.firebase] },

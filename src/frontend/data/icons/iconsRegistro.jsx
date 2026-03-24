@@ -64,9 +64,9 @@ export const data = {
   kotlin: { name: "Kotlin", icon: <IcoKotlin />, primary: "text-purple-500", secondary: "text-purple-600/50" }, 
 
   // BACKEND & FRAMEWORKS
-  nodejs: { name: "Node.js", icon: <IcoNodejs />, primary: "text-green-600", secondary: "text-green-700/50" },
+  nodejs: { name: "Node", icon: <IcoNodejs />, primary: "text-green-600", secondary: "text-green-700/50" },
   express: { name: "Express", icon: <IcoExpress />, primary: "text-gray-300", secondary: "text-gray-400/50" },
-  nestjs: { name: "Nest.js", icon: <IcoNestjs />, primary: "text-red-500", secondary: "text-red-600/50" },
+  nestjs: { name: "Nest", icon: <IcoNestjs />, primary: "text-red-500", secondary: "text-red-600/50" },
   fastapi: { name: "FastAPI", icon: <IcoFastapi />, primary: "text-emerald-400", secondary: "text-emerald-500/50" },
   django: { name: "Django", icon: <IcoDjango />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
   djangorest: { name: "Rest Framework", icon: <IcoDjangorest />, primary: "text-emerald-700", secondary: "text-emerald-800/50" },
