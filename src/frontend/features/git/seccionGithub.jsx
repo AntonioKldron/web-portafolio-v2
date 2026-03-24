@@ -80,7 +80,6 @@ export default function SeccionGithub() {
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
   };
 
-  // ✨ CAMBIO: Si no hay datos aún, simplemente retornamos null (no se renderiza nada hasta que estén listos)
   if (!githubData) return null;
 
   const { statsRepos, contributionsCollection } = githubData;
@@ -104,20 +103,15 @@ export default function SeccionGithub() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6"
         >
-          {/* LENGUAJES CON ICONOS REALES */}
-          <motion.div variants={itemVariants} className="lg:col-span-8 flex">
-            <LenguajesGithub reposStats={statsRepos} isDark={isDark} t={t.stack} />
-          </motion.div>
-
-          {/* PERFIL */}
           <motion.div variants={itemVariants} className="lg:col-span-4 flex">
             <PerfilGithub perfil={githubData} totalCommits={calendario.totalContributions} isDark={isDark} username={username} t={t.profile} />
           </motion.div>
 
-          {/* CALENDARIO */}
+          <motion.div variants={itemVariants} className="lg:col-span-8 flex">
+            <LenguajesGithub reposStats={statsRepos} isDark={isDark} t={t.stack} />
+          </motion.div>
+
           <motion.div variants={itemVariants} className="lg:col-span-12 relative">
-            {/* ✨ NOTA: Dejé este overlay pequeñito para el calendario, por si el usuario cambia el año. 
-                Solo bloquea el calendario mientras busca la nueva data, no la página entera. */}
             {cargando && (
               <div className="absolute inset-0 z-20 backdrop-blur-md bg-slate-900/20 rounded-[2rem] flex justify-center items-center">
                 <div className="bg-white/90 dark:bg-black/80 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 shadow-2xl backdrop-blur-xl">
