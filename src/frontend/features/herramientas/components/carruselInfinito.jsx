@@ -5,11 +5,10 @@ import CartaTecnologia from './cartaTecnologias';
 export default function CarruselInfinito({ listaItems = [], idCategoria }) {
   const [esMovil, setEsMovil] = useState(false);
 
+  // Necesitamos detectar la pantalla para saber en cuántos grupos dividir las cartas
   useEffect(() => {
-    const comprobarResolucion = () => {
-      setEsMovil(window.innerWidth < 768);
-    };
-
+    const comprobarResolucion = () => setEsMovil(window.innerWidth < 768);
+    
     comprobarResolucion();
     window.addEventListener('resize', comprobarResolucion);
     return () => window.removeEventListener('resize', comprobarResolucion);
@@ -17,11 +16,11 @@ export default function CarruselInfinito({ listaItems = [], idCategoria }) {
 
   if (!listaItems || listaItems.length === 0) return null;
 
-  // 1. Distribuir como "baraja de cartas"
-  // Repartimos una por una a cada fila para asegurar variedad absoluta en las columnas
-  let baseFila1 = [];
-  let baseFila2 = [];
-  let baseFila3 = [];
+  // 1. REPARTIR CARTAS DINÁMICAMENTE
+  // Si es móvil, dividimos en 3 grupos. Si es PC, en 2 grupos.
+  const baseFila1 = [];
+  const baseFila2 = [];
+  const baseFila3 = [];
 
   listaItems.forEach((item, index) => {
     if (esMovil) {
@@ -34,56 +33,52 @@ export default function CarruselInfinito({ listaItems = [], idCategoria }) {
     }
   });
 
-  // 2. Función para alargar la fila y prepararla para el loop infinito
-  const prepararFila = (filaBase) => {
-    if (filaBase.length === 0) return [];
-    
-    let filaExtendida = [...filaBase];
-    // Rellenamos hasta tener al menos 15 elementos para asegurar que cubra toda la pantalla
-    // Esto evita que el ciclo se repita en el rango visual de inmediato
-    while (filaExtendida.length < 15) {
-      filaExtendida = [...filaExtendida, ...filaBase];
-    }
-    
-    // Duplicamos el arreglo final para el truco de la animación al -50%
-    return [...filaExtendida, ...filaExtendida];
+  // 2. Helper de renderizado
+  const renderFila = (baseFila, direccion, keyPrefix) => {
+    if (baseFila.length === 0) return null;
+
+    // Duplicamos estrictamente UNA SOLA VEZ para que funcione el loop de Framer Motion.
+    const fila = [...baseFila, ...baseFila];
+
+    // 3. VELOCIDAD UNIFORME: 
+    // Le tomará 12 segundos a cada carta atravesar la pantalla.
+    // Al multiplicar por baseFila.length, garantizamos que sin importar si la fila
+    // tiene 2 cartas o 10 cartas, la velocidad visual (píxeles por segundo) sea idéntica.
+    const duracionDinamica = baseFila.length * 12;
+
+    return (
+      <div className="flex overflow-hidden">
+        <motion.div 
+          animate={{ x: direccion === 1 ? ["0%", "-50%"] : ["-50%", "0%"] }} 
+          transition={{ duration: duracionDinamica, repeat: Infinity, ease: "linear" }} 
+          className="flex gap-6 md:gap-12 shrink-0 w-max"
+        >
+          {fila.map((item, i) => (
+            <div key={`${keyPrefix}-${idCategoria}-${i}`} className="transition-transform duration-300 hover:scale-105">
+              <CartaTecnologia 
+                icono={item?.icon} 
+                nombre={item?.name} 
+                colorMarca={item?.primary} 
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    );
   };
 
-  const fila1 = prepararFila(baseFila1);
-  const fila2 = prepararFila(baseFila2);
-  const fila3 = esMovil ? prepararFila(baseFila3) : [];
-
-  // 3. Helper de renderizado para simplificar el JSX
-  const renderFila = (fila, direccion, keyPrefix) => (
-    <div className="flex overflow-hidden">
-      <motion.div 
-        animate={{ x: direccion === 1 ? ["0%", "-50%"] : ["-50%", "0%"] }} 
-        // DURATION: 80. Entre más alto sea este número, más lento irá el carrusel.
-        transition={{ duration: 80, repeat: Infinity, ease: "linear" }} 
-        className="flex gap-8 md:gap-16 shrink-0 w-max"
-      >
-        {fila.map((item, i) => (
-          <CartaTecnologia 
-            key={`${keyPrefix}-${idCategoria}-${i}`} 
-            icono={item?.icon} 
-            nombre={item?.name} 
-            colorMarca={item?.primary} 
-          />
-        ))}
-      </motion.div>
-    </div>
-  );
-
   return (
-    <div className="flex flex-col gap-8 md:gap-12 py-10 overflow-hidden">
+    <div className="relative flex flex-col gap-6 md:gap-12 py-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+      
       {/* Fila 1 - Izquierda */}
-      {renderFila(fila1, 1, 'f1')}
+      {renderFila(baseFila1, 1, 'f1')}
 
       {/* Fila 2 - Derecha */}
-      {renderFila(fila2, -1, 'f2')}
+      {renderFila(baseFila2, -1, 'f2')}
 
-      {/* Fila 3 - Izquierda (Solo móvil) */}
-      {esMovil && renderFila(fila3, 1, 'f3')}
+      {/* Fila 3 - Izquierda (Solo se llena y renderiza si estamos en móvil) */}
+      {esMovil && renderFila(baseFila3, 1, 'f3')}
+      
     </div>
   );
 }
