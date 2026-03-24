@@ -34,6 +34,15 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
     visible: { scale: 1, opacity: 1 }
   };
 
+  // Escala de colores para la leyenda (basada en los niveles de GitHub)
+  const escalaColores = [
+    { level: 0, color: isDark ? '#161b22' : '#ebedf0' },
+    { level: 1, color: '#9be9a8' },
+    { level: 2, color: '#40c463' },
+    { level: 3, color: '#30a14e' },
+    { level: 4, color: '#216e39' },
+  ];
+
   return (
     <motion.div 
       initial={{ y: 20, opacity: 0 }}
@@ -91,7 +100,7 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
       </div>
       
       {/* ZONA DE LA GRÁFICA */}
-      <div className={`w-full overflow-x-auto pt-8 pb-4 custom-scrollbar rounded-2xl px-2 md:px-4 relative z-10
+      <div className={`w-full overflow-x-auto pt-8 pb-2 custom-scrollbar rounded-2xl px-2 md:px-4 relative z-10
         ${isDark ? 'bg-black/20 border border-white/5' : 'bg-slate-50 border border-slate-100'}`}>
         
         <div className="flex gap-2 min-w-max items-start">
@@ -145,7 +154,6 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
                             ${isDark ? 'hover:shadow-[0_0_15px_rgba(139,92,246,0.6)] hue-rotate-[70deg]' : 'hover:shadow-[0_0_10px_rgba(99,102,241,0.5)]'}`}
                           style={{ backgroundColor: dia.color }} 
                         >
-                          {/* ✨ TOOLTIP MEJORADO (Cyber Style) */}
                           <div className={`absolute opacity-0 group-hover:opacity-100 -top-10 left-1/2 -translate-x-1/2 px-3 py-1.5 
                             bg-slate-900 text-white text-[9px] font-mono font-bold rounded-lg shadow-2xl transition-all 
                             whitespace-nowrap z-[100] pointer-events-none border border-white/10 flex flex-col items-center 
@@ -161,6 +169,21 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
               </motion.div>
             </AnimatePresence>
           </div>
+        </div>
+
+        {/* ✨ LEYENDA / ESCALA DE COLORES */}
+        <div className="flex justify-end items-center gap-2 mt-4 pr-2 pb-2">
+          <span className={`text-[8px] font-mono font-bold uppercase ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>-</span>
+          <div className="flex gap-1">
+            {escalaColores.map((item, index) => (
+              <div 
+                key={index}
+                className={`w-2.5 h-2.5 md:w-3 md:h-3 rounded-[1px] md:rounded-[2px] ${isDark && item.level > 0 ? 'hue-rotate-[70deg]' : ''}`}
+                style={{ backgroundColor: item.color }}
+              />
+            ))}
+          </div>
+          <span className={`text-[8px] font-mono font-bold uppercase ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>+</span>
         </div>
       </div>
 
