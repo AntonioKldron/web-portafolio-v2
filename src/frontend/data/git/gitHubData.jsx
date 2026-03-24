@@ -12,6 +12,7 @@ export const githubIconMap = {
   "vue": dt?.vue,
   "php": dt?.php,
   "tsql": dt?.sql,
+  "jupyter notebook": dt?.jupyter,
 };
 
 export const githubData = {

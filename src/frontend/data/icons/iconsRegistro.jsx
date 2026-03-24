@@ -44,7 +44,8 @@ import {
 import {
   IcoVscode, IcoN8n, IcoJetbrains, IcoGit, IcoGitlab, IcoGithub, 
   IcoTrello, IcoApi, IcoTerminal, IcoJson, IcoXml, IcoCode, 
-  IcoCogs, IcoPowerBi, IcoCursor, IcoFigma, IcoVstudio, IcoTermius
+  IcoCogs, IcoPowerBi, IcoCursor, IcoFigma, IcoVstudio, IcoTermius,
+  IcoJupyter
 } from './icon-iconify/dataIconify.jsx';
 
 
@@ -126,6 +127,7 @@ export const data = {
   azure: { name: "Azure", icon: <IcoAzure />, primary: "text-blue-400", secondary: "text-blue-500/50" },
 
   // HERRAMIENTAS & ARCHIVOS
+  jupyter: { name: "Jupyter", icon: <IcoJupyter />, primary: "text-amber-500", secondary: "text-amber-600/50" },
   vscode: { name: "VS Code", icon: <IcoVscode />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   n8n: { name: "n8n", icon: <IcoN8n />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   cursor: { name: "Cursor IA", icon: <IcoCursor />, primary: "text-cyan-100", secondary: "text-cyan-400/50" },
