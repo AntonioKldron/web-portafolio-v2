@@ -6,7 +6,6 @@ import { githubData as dictData } from '../../data/git/gitHubData.jsx';
 import { perfilData } from '../../data/perfil/perfilData.jsx'; 
 import EncabezadoSeccion from '../components/encabezadoSeccion.jsx'; 
 
-import CargandoGithub from './components/cargandoGithub';
 import PerfilGithub from './components/perfilGithub';
 import LenguajesGithub from './components/lenguajesGithub';
 import CalendarioGithub from './components/calendarioGithub';
@@ -81,15 +80,13 @@ export default function SeccionGithub() {
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 15 } }
   };
 
-  if (cargando && !githubData) return <CargandoGithub isDark={isDark} text={t.loading} />;
+  // ✨ CAMBIO: Si no hay datos aún, simplemente retornamos null (no se renderiza nada hasta que estén listos)
   if (!githubData) return null;
 
   const { statsRepos, contributionsCollection } = githubData;
   const calendario = contributionsCollection.contributionCalendar;
 
   return (
-    // ✨ CAMBIO: Se eliminaron pt-10 y pb-20. 
-    // Ahora la sección solo ocupa el espacio necesario.
     <section className="relative w-full h-full">
       <div className="w-full max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-10">
         
@@ -107,18 +104,20 @@ export default function SeccionGithub() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-6"
         >
-          {/* PERFIL */}
+          {/* LENGUAJES CON ICONOS REALES */}
           <motion.div variants={itemVariants} className="lg:col-span-8 flex">
             <LenguajesGithub reposStats={statsRepos} isDark={isDark} t={t.stack} />
           </motion.div>
 
-          {/* LENGUAJES CON ICONOS REALES */}
+          {/* PERFIL */}
           <motion.div variants={itemVariants} className="lg:col-span-4 flex">
             <PerfilGithub perfil={githubData} totalCommits={calendario.totalContributions} isDark={isDark} username={username} t={t.profile} />
           </motion.div>
 
           {/* CALENDARIO */}
           <motion.div variants={itemVariants} className="lg:col-span-12 relative">
+            {/* ✨ NOTA: Dejé este overlay pequeñito para el calendario, por si el usuario cambia el año. 
+                Solo bloquea el calendario mientras busca la nueva data, no la página entera. */}
             {cargando && (
               <div className="absolute inset-0 z-20 backdrop-blur-md bg-slate-900/20 rounded-[2rem] flex justify-center items-center">
                 <div className="bg-white/90 dark:bg-black/80 px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 shadow-2xl backdrop-blur-xl">
