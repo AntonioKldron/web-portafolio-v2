@@ -1,7 +1,7 @@
 import React from "react";
 import { HiMoon, HiSun, HiTranslate } from 'react-icons/hi';
 // Asegúrate de que la ruta a tu AppContext sea correcta desde donde guardes esto
-import { useApp } from '../../context/AppContext'; 
+import { useApp } from '../../context/appContext'; 
 
 export const UtilityButtons = ({ customClasses }) => {
   // Tomamos toda la lógica de tu contexto

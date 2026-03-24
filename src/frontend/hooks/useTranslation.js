@@ -1,4 +1,4 @@
-import { useApp } from '../context/AppContext';
+import { useApp } from '../context/appContext';
 
 export const useTranslation = (dataObject) => {
   const { lang } = useApp();

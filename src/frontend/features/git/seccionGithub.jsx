@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useApp } from '../../context/AppContext'; 
+import { useApp } from '../../context/appContext.jsx'; 
 import { useTranslation } from '../../hooks/useTranslation.js'; 
 import { githubData as dictData } from '../../data/git/gitHubData.jsx'; 
 import { perfilData } from '../../data/perfil/perfilData.jsx'; 
 import EncabezadoSeccion from '../components/encabezadoSeccion.jsx'; 
 
-import CargandoGithub from './components/CargandoGithub';
-import PerfilGithub from './components/PerfilGithub';
-import LenguajesGithub from './components/LenguajesGithub';
-import CalendarioGithub from './components/CalendarioGithub';
+import CargandoGithub from './components/cargandoGithub';
+import PerfilGithub from './components/perfilGithub';
+import LenguajesGithub from './components/lenguajesGithub';
+import CalendarioGithub from './components/calendarioGithub';
 
 export default function SeccionGithub() {
   const { isDark } = useApp();

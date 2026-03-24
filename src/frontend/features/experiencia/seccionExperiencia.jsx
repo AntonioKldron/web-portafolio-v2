@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "../../hooks/useTranslation.js";
 import { experienciaData } from "../../data/experiencia/experienciaData.jsx";
 import { ExperienciaUnidad } from "./components/experienciaUnidad.jsx";
-import { useApp } from "../../context/AppContext.jsx";
+import { useApp } from "../../context/appContext.jsx";
 import EncabezadoSeccion from '../components/encabezadoSeccion.jsx';
 
 export default function ExperienciaSeccion() {

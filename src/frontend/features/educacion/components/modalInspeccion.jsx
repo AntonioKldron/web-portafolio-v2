@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
-import { useApp } from '../../../context/AppContext'; 
+import { useApp } from '../../../context/appContext'; 
 import { HiX, HiOutlineDocumentSearch } from 'react-icons/hi';
 
 export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo }) {

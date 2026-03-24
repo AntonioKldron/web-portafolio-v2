@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useApp } from '../../../context/AppContext';
+import { useApp } from '../../../context/appContext';
 
 // Importación de sub-componentes atómicos
 import CartaCabecera from './cartaCabecera';

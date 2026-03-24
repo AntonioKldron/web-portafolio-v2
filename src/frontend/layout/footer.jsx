@@ -1,5 +1,5 @@
 import React from 'react';
-import { useApp } from '../context/AppContext'; 
+import { useApp } from '../context/appContext'; 
 import { useTranslation } from '../hooks/useTranslation';
 import { footerData } from '../data/footer/footerData';
 
