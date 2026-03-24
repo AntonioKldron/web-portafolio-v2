@@ -20,6 +20,7 @@ export const perfilData = {
       { id: "sobre-mi", label: "Sobre mí" },
       { id: "herramientas", label: "Herramientas" },
       { id: "experiencia", label: "Experiencia" },
+      { id: "git", label: "Métricas Git" },
       { id: "proyectos", label: "Proyectos" },
       { id: "educacion", label: "Educación" },
     ]
@@ -31,6 +32,7 @@ export const perfilData = {
       { id: "sobre-mi", label: "About me" },
       { id: "herramientas", label: "Stack" },
       { id: "experiencia", label: "Experience" },
+      { id: "git", label: "Git Metrics" },
       { id: "proyectos", label: "Projects" },
       { id: "educacion", label: "Education" },
     ]

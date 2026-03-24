@@ -2,8 +2,9 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { 
   AiOutlineUser, AiOutlineTool, AiOutlineSchedule, 
   AiOutlineFolderOpen, AiOutlineRead, AiOutlineMenu, 
-  AiOutlineClose 
+  AiOutlineClose
 } from "react-icons/ai";
+import { FaGithub } from 'react-icons/fa';
 
 // 1. IMPORTAMOS TU CONTEXTO, TU DATA Y LOS BOTONES
 import { useApp } from '../context/AppContext.jsx'; // Ajusta la ruta a tu AppContext
@@ -15,6 +16,7 @@ const iconMap = {
   "sobre-mi": AiOutlineUser,
   "herramientas": AiOutlineTool,
   "experiencia": AiOutlineSchedule,
+  "git": FaGithub,
   "proyectos": AiOutlineFolderOpen,
   "educacion": AiOutlineRead,
 };

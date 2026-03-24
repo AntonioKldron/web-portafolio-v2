@@ -7,6 +7,7 @@ import MiCartaPerfil from '../../features/perfil/miCartaPerfil.jsx';
 import SeccionSobreMi from '../../features/sobreMi/seccionSobreMi.jsx';
 import SeccionHerramientas from '../../features/herramientas/seccionHerramienta.jsx';
 import ExperienciaSeccion from '../../features/experiencia/seccionExperiencia.jsx';
+import SeccionGithub from '../../features/git/seccionGithub.jsx';
 import SeccionProyectos from '../../features/proyectos/seccionProyectos.jsx';
 import SeccionEducacion from '../../features/educacion/seccionEducacion.jsx';
 import Footer from '../footer.jsx';
@@ -15,6 +16,7 @@ const SECCIONES = [
   { id: 'sobre-mi', component: <SeccionSobreMi /> },
   { id: 'herramientas', component: <SeccionHerramientas /> },
   { id: 'experiencia', component: <ExperienciaSeccion /> },
+  { id: 'git', component: <SeccionGithub /> },
   { id: 'proyectos', component: <SeccionProyectos /> },
   { id: 'educacion', component: <SeccionEducacion /> },
   { id: 'footer', component: <Footer /> }
