@@ -11,6 +11,7 @@ export const githubIconMap = {
   "sql": dt?.sql,
   "vue": dt?.vue,
   "php": dt?.php,
+  "tsql": dt?.sql,
 };
 
 export const githubData = {
