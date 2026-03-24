@@ -13,7 +13,7 @@ const FilaAnimada = ({ baseFila, direccion, velocidad, idCategoria, keyPrefix })
   const fila = [...baseExpandida, ...baseExpandida];
 
   useAnimationFrame((t, delta) => {
-    const moveBy = direccion * (velocidad * 0.0005) * delta;
+    const moveBy = direccion * (velocidad * 0.00009) * delta;
     
     let newX = baseX.get() + moveBy;
 
