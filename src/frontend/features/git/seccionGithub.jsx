@@ -75,14 +75,11 @@ export default function SeccionGithub() {
   const stats = githubData.contributionsCollection;
 
   return (
-    /* Reducido py-2 a py-0 para eliminar aire arriba y abajo */
     <section className="w-full py-0 overflow-hidden relative">
       <div className="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/10 via-transparent to-transparent" />
       
-      {/* Reducido gap-5 a gap-3 para compactar elementos hijos */}
       <div className="max-w-7xl mx-auto px-4 flex flex-col gap-3 relative z-10">
         
-        {/* Encabezado sin margen inferior extra */}
         <div className="mb-[-10px]"> 
           <EncabezadoSeccion 
             subtitulo={t.header.subtitulo} 
@@ -92,19 +89,25 @@ export default function SeccionGithub() {
           />
         </div>
 
-        {/* BENTO GRID: Fila 1 - Reducido gap a 3 */}
+        {/* BENTO GRID: Fila 1 - REORDENADO */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
-          <div className="lg:col-span-4 flex">
-            <PerfilGithub perfil={githubData} isDark={isDark} username={username} t={t.profile} />
-          </div>
-          <div className="lg:col-span-8 flex">
+          
+          {/* LENGUAJES: Segundo en móvil (order-2), Primero en Web (lg:order-1) */}
+          <div className="lg:col-span-8 flex order-2 lg:order-1">
             <LenguajesGithub reposStats={githubData.statsRepos} isDark={isDark} t={t.stack} />
           </div>
+
+          {/* PERFIL: Primero en móvil (order-1), Segundo en Web (lg:order-2) */}
+          <div className="lg:col-span-4 flex order-1 lg:order-2">
+            <PerfilGithub perfil={githubData} isDark={isDark} username={username} t={t.profile} />
+          </div>
+          
         </div>
 
-        {/* BENTO GRID: Fila 2 - Reducido gap a 3 */}
+        {/* BENTO GRID: Fila 2 */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
-          <div className="lg:col-span-4 flex">
+          {/* Métricas: order-3 en móvil, lg:order-1 en web */}
+          <div className="lg:col-span-4 flex order-3 lg:order-1">
             <MetricasGithub 
               commits={stats.totalCommitContributions} 
               prs={stats.totalPullRequestContributions} 
@@ -112,14 +115,16 @@ export default function SeccionGithub() {
               isDark={isDark} 
             />
           </div>
-          <div className={`lg:col-span-8 overflow-hidden rounded-[2rem] backdrop-blur-md shadow-lg flex items-center transition-all duration-500
+          
+          {/* Carrusel: order-4 en móvil, lg:order-2 en web */}
+          <div className={`lg:col-span-8 overflow-hidden rounded-[2rem] backdrop-blur-md shadow-lg flex items-center transition-all duration-500 order-4 lg:order-2
             ${isDark ? 'bg-slate-900/40 border border-white/5' : 'bg-white/60 border border-slate-200'}`}>
               <RepositoriosCarrusel repos={githubData.repositories.nodes} isDark={isDark} username={username} />
           </div>
         </div>
 
-        {/* Calendario sin margen superior extra */}
-        <div className="w-full mt-[-5px]">
+        {/* Calendario */}
+        <div className="w-full mt-[-5px] order-5">
           <CalendarioGithub 
             calendario={stats.contributionCalendar} 
             isDark={isDark} 
