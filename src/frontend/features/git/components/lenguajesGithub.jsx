@@ -111,7 +111,7 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
             <div className="text-3xl md:text-4xl mb-2 drop-shadow-lg" style={{ color: lang.color }}>
               {lang.iconoData?.icon || <FaCode />}
             </div>
-            <span className={`text-[10px] md:text-xs font-black uppercase tracking-tighter ${isDark ? 'text-white' : 'text-slate-800'}`}>
+            <span className={`text-[10px] md:text-xs text-align: justify font-black uppercase tracking-tighter ${isDark ? 'text-white' : 'text-slate-800'}`}>
               {lang.name}
             </span>
             <span className={`text-[10px] md:text-xs font-black uppercase tracking-tighter ${isDark ? 'text-white' : 'text-slate-800'}`}>
@@ -141,7 +141,7 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
                 <span className="text-xs" style={{ color: lang.color }}>
                   {lang.iconoData?.icon || '•'}
                 </span>
-                <span className={isDark ? 'text-slate-200' : 'text-slate-700'}>{lang.name}</span>
+                <span className={isDark ? 'text-slate-200 text-align: justify' : 'text-slate-700 text-align: justify'}>{lang.name}</span>
                 <span className="font-mono opacity-40 ml-auto">{lang.porcentaje}%</span>
               </motion.div>
             ))}
