@@ -114,6 +114,9 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
             <span className={`text-[10px] md:text-xs font-black uppercase tracking-tighter ${isDark ? 'text-white' : 'text-slate-800'}`}>
               {lang.name}
             </span>
+            <span className={`text-[10px] md:text-xs font-black uppercase tracking-tighter ${isDark ? 'text-white' : 'text-slate-800'}`}>
+              {lang.porcentaje}%
+            </span>            
           </motion.div>
         ))}
       </div>
