@@ -1,6 +1,6 @@
 import React from "react";
 // Importa el nuevo componente (ajusta la ruta según dónde lo guardaste)
-import { UtilityButtons } from "../../components/utilityButtons"; 
+import { UtilityButtons } from "@shared/components/utilityButtons"; 
 
 export const ProfileHeader = ({ foto, nombre, apellido, rol }) => {
   return (

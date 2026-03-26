@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useApp } from '../../../context/AppContext';
+import { useApp } from '@app/context/appContext';
 
 // Importación de sub-componentes atómicos
-import CartaCabecera from './cartaCabecera';
-import VisorImagenes from './visorImagenes'; 
-import CartaCuerpo from './cartaCuerpo';
-import CartaFooter from './cartaFooter';
+import CartaCabecera from '@features/proyectos/components/cartaCabecera';
+import VisorImagenes from '@features/proyectos/components/visorImagenes'; 
+import CartaCuerpo from '@features/proyectos/components/cartaCuerpo';
+import CartaFooter from '@features/proyectos/components/cartaFooter';
 
 /**
  * ProyectoCarta - Orquestador modular

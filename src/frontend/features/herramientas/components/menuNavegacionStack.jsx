@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa';
-import { useApp } from '../../../context/AppContext';
+import { useApp } from '@app/context/appContext';
 
 export default function MenuNavegacionStack({ categorias, indiceActivo, alSeleccionar }) {
   const [estaAbierto, setEstaAbierto] = useState(false);

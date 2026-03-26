@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useApp } from '../../../context/AppContext';
+import { useApp } from '@app/context/appContext';
 
 export default function CartaTecnologia({ icono, nombre, colorMarca }) {
   const { isDark } = useApp();

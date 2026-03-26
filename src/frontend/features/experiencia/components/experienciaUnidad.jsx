@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaInfoCircle, FaTasks } from "react-icons/fa";
-import { useApp } from "../../../context/AppContext";
+import { useApp } from "@app/context/appContext";
 
 // Importaciones de tus otros componentes
-import { MetaInfo } from "./infoMeta";
-import { PuestosTimeline } from "./timeLinePuestos";
-import { DeploymentRegistry } from "./registryDeployment";
-import { TechStackRegistry } from "./stackTechRegistry";
+import { MetaInfo } from "@features/experiencia/components/infoMeta";
+import { PuestosTimeline } from "@features/experiencia/components/timeLinePuestos";
+import { DeploymentRegistry } from "@features/experiencia/components/registryDeployment";
+import { TechStackRegistry } from "@features/experiencia/components/stackTechRegistry";
 
 // --- VARIANTES DE ANIMACIÓN ---
 const containerVariants = {

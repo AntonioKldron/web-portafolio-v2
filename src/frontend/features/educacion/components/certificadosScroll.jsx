@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import EducacionItem from './educacionItem';
+import EducacionItem from '@features/educacion/components/educacionItem';
 
 export default function CertificadosScroll({ certificaciones, onOpenCert }) {
   const [isMobile, setIsMobile] = useState(false);

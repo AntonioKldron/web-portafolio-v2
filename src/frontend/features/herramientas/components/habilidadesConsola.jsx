@@ -1,6 +1,6 @@
 import React, { useState, createContext } from 'react';
 import { motion } from 'framer-motion';
-import { useApp } from '../../../context/AppContext';
+import { useApp } from '@app/context/appContext';
 
 // ✨ CREAMOS UN CONTEXTO: Esto permite que cualquier componente hijo lea la velocidad sin importar cómo esté envuelto.
 export const ConsolaContext = createContext();

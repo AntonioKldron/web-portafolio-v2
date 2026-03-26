@@ -1,12 +1,19 @@
 import React from 'react';
-import { useTranslation } from '../../hooks/useTranslation';
-import { sobreMiContenido } from '../../data/sobreMi/sobreMiData';
-import ItemParrafoSobreMi from './components/itemParrafoSobreMi';
-import CoreStack from './components/coreStack';
-import EncabezadoSeccion from '../components/encabezadoSeccion';
+import { useSobreMiData } from '@backend/data/sobreMi/sobreMiData';
+import ItemParrafoSobreMi from '@features/sobreMi/components/itemParrafoSobreMi';
+import CoreStack from '@features/sobreMi/components/coreStack';
+import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
 
 export default function SeccionSobreMi() {
-  const t = useTranslation(sobreMiContenido);
+  const { data: t, isLoading } = useSobreMiData();
+
+  if (isLoading || !t) {
+    return (
+      <div className="mt-4 pt-0 bg-transparent w-full min-h-[50vh] flex items-center justify-center">
+        <div className="animate-pulse h-64 bg-gray-500/20 rounded w-full max-w-4xl"></div>
+      </div>
+    );
+  }
 
   return (
     /* Añadimos 'text-main-text' que ahora apunta a blanco en modo oscuro 
@@ -47,7 +54,7 @@ export default function SeccionSobreMi() {
             </p>
           </div>
 
-          <CoreStack skills={sobreMiContenido.coreStack} />
+          <CoreStack skills={t.coreStack || []} />
         </div>
 
         <div className="lg:col-span-8 w-full">
