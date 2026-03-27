@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
-import { githubIconMap } from '@data/git/gitHubData';
+import { githubIconMap } from '@data/proyectos/proyectosData';
 
 export default function RepositoriosCarrusel({ repos, isDark, username }) {
   const infiniteRepos = [...repos, ...repos];

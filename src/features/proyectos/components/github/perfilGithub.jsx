@@ -49,9 +49,6 @@ export default function PerfilGithub({ perfil, isDark, username, t }) {
         <span className={`text-xs font-mono font-bold uppercase tracking-widest ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
           @{username}
         </span>
-        <p className={`mt-2 text-xs leading-relaxed line-clamp-2 px-2 italic ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-          {bio || t.bioFallback}
-        </p>
       </div>
 
       <div className="flex gap-2 w-full mt-auto z-10">

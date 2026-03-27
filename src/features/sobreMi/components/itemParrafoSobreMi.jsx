@@ -1,5 +1,5 @@
 import React from 'react';
-import TextoConHighlights from './textoConHighlights';
+import TextoConHighlights from '@features/sobreMi/components/textoConHighlights';
 
 export default function ItemParrafoSobreMi({ texto, highlights }) {
   return (

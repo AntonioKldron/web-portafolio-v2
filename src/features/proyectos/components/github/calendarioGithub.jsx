@@ -1,30 +1,30 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCalendarAlt, FaChevronDown, FaCheck } from 'react-icons/fa';
 
 export default function CalendarioGithub({ calendario, isDark, anioSeleccionado, setAnioSeleccionado, t }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [isChangingYear, setIsChangingYear] = useState(false); // <--- NUEVO ESTADO
   const currentYear = new Date().getFullYear();
   const anios = Array.from({ length: 5 }, (_, i) => currentYear - i);
   const semanas = calendario?.weeks || [];
 
-  // Escala de Azules Neón (Modo Oscuro)
-  const neonBlueScale = {
-    level0: "#e2e8f0", 
-    level1: "#99e9ff", 
-    level2: "#33ccff", 
-    level3: "#268ebf", 
-    level4: "#1a5a78", 
+  // EFECTO PARA QUITAR EL LOADER CUANDO LLEGAN NUEVOS DATOS
+  useEffect(() => {
+    setIsChangingYear(false);
+  }, [calendario]); // Cuando el objeto calendario cambia, apagamos el loader
+
+  const handleYearChange = (anio) => {
+    if (anio !== anioSeleccionado) {
+      setIsChangingYear(true); // Encendemos el loader
+      setAnioSeleccionado(anio);
+    }
+    setIsOpen(false);
   };
 
-  // Escala de Verdes (Modo Claro - Tradicional GitHub)
-  const classicGreenScale = {
-    level0: "#ebedf0",
-    level1: "#9be9a8",
-    level2: "#40c463",
-    level3: "#30a14e",
-    level4: "#216e39",
-  };
+  // Escalas de colores
+  const neonBlueScale = { level0: "#e2e8f0", level1: "#99e9ff", level2: "#33ccff", level3: "#268ebf", level4: "#1a5a78" };
+  const classicGreenScale = { level0: "#ebedf0", level1: "#9be9a8", level2: "#40c463", level3: "#30a14e", level4: "#216e39" };
 
   const mesesAlineados = useMemo(() => {
     let mesActual = -1;
@@ -42,8 +42,6 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
 
   const getBoxColor = (dia) => {
     const count = dia.contributionCount;
-    
-    // Si estamos en Modo Oscuro (Azules Neón manuales)
     if (isDark) {
       if (count === 0) return neonBlueScale.level0;
       if (count >= 10) return neonBlueScale.level4;
@@ -51,8 +49,6 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
       if (count >= 3) return neonBlueScale.level2;
       return neonBlueScale.level1;
     }
-
-    // Si estamos en Modo Claro (Verdes clásicos)
     return dia.color; 
   };
 
@@ -63,16 +59,18 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
       className={`w-full relative p-6 rounded-[2rem] border flex flex-col transition-all shadow-xl overflow-visible
         ${isDark ? 'bg-slate-900/50 border-white/10 shadow-blue-900/20' : 'bg-white/80 border-slate-200 shadow-indigo-500/10'}`}
     >
+      {/* HEADER */}
       <div className="flex justify-between items-center mb-6 relative z-[100]">
         <div className="flex items-center gap-3">
           <div className={`p-2 rounded-lg ${isDark ? 'bg-blue-500/20 text-blue-400' : 'bg-indigo-100 text-indigo-600'}`}>
             <FaCalendarAlt className="text-lg" />
           </div>
           <span className={`text-sm font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>
-            {t.title}
+            {t?.title || 'GitHub'}
           </span>
         </div>
 
+        {/* SELECTOR DE AÑO */}
         <div className="relative">
           <button
             type="button"
@@ -99,7 +97,7 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
                   <button
                     key={anio}
                     type="button"
-                    onClick={() => { setAnioSeleccionado(anio); setIsOpen(false); }}
+                    onClick={() => handleYearChange(anio)}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-[10px] font-bold transition-colors
                       ${anioSeleccionado === anio 
                         ? (isDark ? 'bg-blue-500 text-white' : 'bg-indigo-600 text-white')
@@ -115,10 +113,27 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
         </div>
       </div>
       
-      <div className="w-full overflow-x-auto pb-4 custom-scrollbar relative z-10">
-        <div className="flex gap-1.5 min-w-max">
+      {/* CUERPO DEL CALENDARIO */}
+      <div className="w-full overflow-x-auto pb-4 custom-scrollbar relative">
+        
+        {/* LOADER OVERLAY */}
+        <AnimatePresence>
+          {isChangingYear && (
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 z-50 flex items-center justify-center rounded-xl backdrop-blur-[2px] bg-inherit/10"
+            >
+              <div className={`w-8 h-8 border-2 border-t-transparent animate-spin rounded-full 
+                ${isDark ? 'border-blue-500' : 'border-indigo-600'}`} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <div className={`flex gap-1.5 min-w-max transition-opacity duration-300 ${isChangingYear ? 'opacity-30' : 'opacity-100'}`}>
           <div className="flex flex-col gap-[3px] mt-[20px] shrink-0 pr-2">
-            {t.days.map((dia, i) => (
+            {t?.days?.map((dia, i) => (
               <div key={i} className="h-3 md:h-3.5 flex items-center justify-end">
                 <span className="text-[8px] font-mono font-bold uppercase text-slate-500">{dia}</span>
               </div>
@@ -134,42 +149,40 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
               ))}
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div key={anioSeleccionado} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex gap-[3px]">
-                {semanas.map((semana, i) => (
-                  <div key={i} className="flex flex-col gap-[3px]">
-                    {Array.from({ length: 7 }).map((_, diaIndex) => {
-                      const dia = semana.contributionDays.find(d => new Date(d.date).getUTCDay() === diaIndex);
-                      if (!dia) return <div key={`empty-${i}-${diaIndex}`} className="w-3 h-3 md:w-3.5 md:h-3.5 opacity-0" />;
+            <div className="flex gap-[3px]">
+              {semanas.map((semana, i) => (
+                <div key={i} className="flex flex-col gap-[3px]">
+                  {Array.from({ length: 7 }).map((_, diaIndex) => {
+                    const dia = semana.contributionDays.find(d => new Date(d.date).getUTCDay() === diaIndex);
+                    if (!dia) return <div key={`empty-${i}-${diaIndex}`} className="w-3 h-3 md:w-3.5 md:h-3.5 opacity-0" />;
 
-                      const color = getBoxColor(dia);
+                    const color = getBoxColor(dia);
 
-                      return (
-                        <div key={dia.date} className="relative group z-0 hover:z-50">
-                          <motion.div 
-                            whileHover={{ scale: 1.5, filter: isDark ? 'brightness(1.2)' : 'brightness(1)' }}
-                            className="w-3 h-3 md:w-3.5 md:h-3.5 rounded-[2px] cursor-pointer transition-all duration-300"
-                            style={{ 
-                              backgroundColor: color,
-                              boxShadow: isDark && dia.contributionCount > 0 ? `0 0 6px ${color}33` : 'none'
-                            }} 
-                          />
-                          <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap rounded-md text-[10px] font-mono font-bold shadow-xl border
-                            ${isDark ? 'bg-slate-800 border-white/10 text-white' : 'bg-white border-slate-200 text-slate-800'}`}>
-                            {dia.contributionCount} commits <span className="opacity-50 mx-1">•</span> {dia.date}
-                          </div>
+                    return (
+                      <div key={dia.date} className="relative group z-0 hover:z-50">
+                        <motion.div 
+                          whileHover={{ scale: 1.5, filter: isDark ? 'brightness(1.2)' : 'brightness(1)' }}
+                          className="w-3 h-3 md:w-3.5 md:h-3.5 rounded-[2px] cursor-pointer transition-all duration-300"
+                          style={{ 
+                            backgroundColor: color,
+                            boxShadow: isDark && dia.contributionCount > 0 ? `0 0 6px ${color}33` : 'none'
+                          }} 
+                        />
+                        <div className={`absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap rounded-md text-[10px] font-mono font-bold shadow-xl border
+                          ${isDark ? 'bg-slate-800 border-white/10 text-white' : 'bg-white border-slate-200 text-slate-800'}`}>
+                          {dia.contributionCount} commits <span className="opacity-50 mx-1">•</span> {dia.date}
                         </div>
-                      );
-                    })}
-                  </div>
-                ))}
-              </motion.div>
-            </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* LEYENDA DINÁMICA */}
+      {/* LEYENDA */}
       <div className="flex items-center gap-2 mt-4 self-end">
         <span className="text-[10px] text-slate-500 font-mono uppercase font-bold">Less</span>
         <div className="flex gap-1">

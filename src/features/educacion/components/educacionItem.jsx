@@ -15,10 +15,8 @@ export default function EducacionItem({ item, index, isCert, onOpenCert }) {
       transition={{ duration: 0.4, delay: index * 0.05 }}
       className="group relative block p-5 md:p-6 mb-4 rounded-2xl bg-card-bg/30 backdrop-blur-md shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:bg-card-bg/60 hover:shadow-[0_15px_40px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.2)] dark:hover:shadow-[0_15px_40px_rgba(var(--color-primary-accent-rgb),0.1)] transition-all duration-500 overflow-hidden"
     >
-      {/* Acento luminoso izquierdo */}
       <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-0 bg-primary-accent/80 rounded-r-full group-hover:h-[40%] transition-all duration-500 opacity-0 group-hover:opacity-100 shadow-[0_0_12px_var(--color-primary-accent)]"></div>
 
-      {/* 🖼️ SECCIÓN DEL CERTIFICADO (Float-right) */}
       {mostrarCertificado && (
         <div className="float-right ml-4 mb-2">
           <button 
@@ -48,31 +46,24 @@ export default function EducacionItem({ item, index, isCert, onOpenCert }) {
         </div>
       )}
 
-      {/* 📚 CONTENIDO DE TEXTO */}
       <div className="pl-1">
         
-        {/* METADATOS: Alineación forzada a la parte superior */}
         <div className="flex items-start gap-3 mb-3">
-          {/* Fecha: shrink-0 para que no se aplaste */}
           <span className="shrink-0 text-primary-accent text-[10px] font-mono font-bold uppercase tracking-widest bg-primary-accent/10 px-2.5 py-1 rounded-md">
             {item.fecha}
           </span>
           
-          {/* Punto separador: mt-2 para centrarlo visualmente con la primera línea de texto */}
           <span className="hidden sm:block w-1.5 h-1.5 shrink-0 rounded-full bg-muted-text/20 mt-1.5"></span>
           
-          {/* Institución: Sin truncate, alineado arriba y con interlineado ajustado */}
           <span className="text-muted-text/80 text-[10px] md:text-[11px] font-semibold tracking-wide uppercase leading-tight pt-0.5">
             {item.institucion}
           </span>
         </div>
 
-        {/* Título */}
         <h3 className="text-[15px] md:text-base font-bold text-main-text leading-snug mb-2 group-hover:text-primary-accent transition-colors duration-300">
           {item.titulo}
         </h3>
 
-        {/* Descripción: Justify para envolver el float limpiamente */}
         <p className="text-muted-text/80 text-[12.5px] md:text-[13px] font-medium leading-relaxed text-justify">
           {item.descripcion}
         </p>

@@ -6,8 +6,7 @@ import MiCartaPerfil from '@features/perfil/miCartaPerfil';
 import SeccionSobreMi from '@features/sobreMi/seccionSobreMi';
 import SeccionHerramientas from '@features/herramientas/seccionHerramienta';
 import ExperienciaSeccion from '@features/experiencia/seccionExperiencia';
-import SeccionGithub from '@features/git/seccionGithub';
-import SeccionProyectos from '@features/proyectos/seccionProyectos';
+import SeccionGitProyectos from '@features/proyectos/seccionGitProyectos';
 import SeccionEducacion from '@features/educacion/seccionEducacion';
 import Footer from './footer';
 
@@ -16,8 +15,7 @@ const SECCIONES = [
   { id: 'sobre-mi', component: <SeccionSobreMi /> },
   { id: 'herramientas', component: <SeccionHerramientas /> },
   { id: 'experiencia', component: <ExperienciaSeccion /> },
-  { id: 'git', component: <SeccionGithub /> },
-  { id: 'proyectos', component: <SeccionProyectos /> },
+  { id: 'proyectos', component: <SeccionGitProyectos /> },
   { id: 'educacion', component: <SeccionEducacion /> },
   { id: 'footer', component: <Footer /> }
 ];

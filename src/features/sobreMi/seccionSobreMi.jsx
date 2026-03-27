@@ -1,17 +1,23 @@
-import React from 'react';
-import { useTranslation } from '@shared/hooks/useTranslation';
-import { sobreMiContenido } from '@data/sobreMi/sobreMiData';
-import ItemParrafoSobreMi from './components/itemParrafoSobreMi';
-import CoreStack from './components/coreStack';
+import React, { useMemo } from 'react';
+import { useApp } from '@app/context/appContext'; 
+import { sobreMiData } from '@data/sobreMi/sobreMiData';
+import ItemParrafoSobreMi from '@features/sobreMi/components/itemParrafoSobreMi';
+import CoreStack from '@features/sobreMi/components/coreStack';
 import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
 
 export default function SeccionSobreMi() {
-  const t = useTranslation(sobreMiContenido);
+  const { lang } = useApp();
+
+  // 1. Obtenemos la traducción correcta basada en el idioma actual
+  // Usamos useMemo para evitar recalcular a menos que cambie el idioma
+  const t = useMemo(() => {
+    return sobreMiData[lang] || sobreMiData.es;
+  }, [lang]);
+
+  // Ya no necesitas el "if (isLoading)" porque los datos son locales/estáticos
+  if (!t) return null;
 
   return (
-    /* Añadimos 'text-main-text' que ahora apunta a blanco en modo oscuro 
-       gracias a tu configuración de CSS global. 
-    */
     <div className="mt-4 pt-0 bg-transparent relative font-sans w-full text-main-text">
       <style>
         {`@keyframes verticalFlow { 0% { top: -20%; opacity: 0; } 50% { opacity: 0.8; } 100% { top: 100%; opacity: 0; } }
@@ -38,20 +44,16 @@ export default function SeccionSobreMi() {
               <div className="animate-flow-slim" />
             </div>
             
-            {/* FRASE CORTA: 
-                Cambiamos 'text-main-text' por 'text-current' para asegurar que herede 
-                el blanco puro que definimos en el CSS global del dark mode.
-            */}
             <p className="text-lg lg:text-[1.35rem] font-medium leading-[1.35] italic tracking-tight opacity-90">
               {t.fraseCorta}
             </p>
           </div>
 
-          <CoreStack skills={sobreMiContenido.coreStack} />
+          <CoreStack skills={t.coreStack || []} />
         </div>
 
         <div className="lg:col-span-8 w-full">
-          <div className="flex flex-col space-y-6"> {/* Añadido espacio entre párrafos */}
+          <div className="flex flex-col space-y-6"> 
             {t.parrafos.map((p, i) => (
               <ItemParrafoSobreMi 
                 key={i} 

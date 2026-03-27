@@ -1,20 +1,26 @@
-import React, { useState } from "react";
-import { useTranslation } from "@shared/hooks/useTranslation";
+import React, { useState, useMemo } from "react";
+import { useApp } from "@app/context/appContext"; 
 import { experienciaData } from "@data/experiencia/experienciaData";
-import { ExperienciaUnidad } from "./components/experienciaUnidad";
-import { useApp } from "@context/appContext";
+import { ExperienciaUnidad } from "@features/experiencia/components/experienciaUnidad";
 import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
 
 export default function ExperienciaSeccion() {
   const [openUnit, setOpenUnit] = useState(null);
-  const t = useTranslation(experienciaData);
-  const { isDark } = useApp();
+  const { lang } = useApp(); // Obtenemos el idioma global
+
+  // 1. Obtenemos la traducción correcta (es/en)
+  const t = useMemo(() => {
+    return experienciaData[lang] || experienciaData.es;
+  }, [lang]);
+
+  // Si no hay data, evitamos el renderizado
+  if (!t) return null;
 
   return (
     <section className="px-4 bg-transparent relative w-full h-full">
       <div className="max-w-7xl mx-auto">
         
-        {/* Ajustado con mb-6 para reducir espacio con las cartas */}
+        {/* Encabezado con textos dinámicos según el idioma */}
         <div className="mb-6">
           <EncabezadoSeccion 
             subtitulo={t.header.subtitulo} 
@@ -24,6 +30,7 @@ export default function ExperienciaSeccion() {
           />
         </div>
 
+        {/* Listado de experiencias laborales */}
         <div className="relative flex flex-col md:ml-12">
           {t.items?.map((exp, idx) => (
             <ExperienciaUnidad 

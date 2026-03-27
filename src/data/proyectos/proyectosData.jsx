@@ -1,116 +1,163 @@
-// ─────────────────────────────────────────────────────────────────────────────
-//  DATOS DE PROYECTOS — src/data/proyectos/proyectosData.jsx
-//
-//  📌 CÓMO AGREGAR UN PROYECTO:
-//  1. Crea una nueva constante PROYECTO_XX_ES y PROYECTO_XX_EN debajo.
-//  2. Añade ambas constantes al array dentro de proyectosData.es.proyectos
-//     y proyectosData.en.proyectos respectivamente.
-//  3. Los campos obligatorios son: id, titulo, lanzamiento, descripcion_corta,
-//     descripcion, imagen, detalles[], tecnologias[], imagenes[],
-//     urlSitio, urlRepositorio.
-// ─────────────────────────────────────────────────────────────────────────────
+// src/data/proyectos/proyectosData.js
+import { data as dt } from '../icons/iconsRegistro';
 
-import { data as dt } from '@data/icons/iconsRegistro';
-import website from "@img/proyect/website/website.png";
+// ─── ASSETS E IMÁGENES ──────────────────────────────────────────────────
+import website from "../../assets/img/proyect/website/website.png";
 
-// ── Carrusel de imágenes (Vite glob import) ──────────────────────────────────
+// Importación dinámica de carrusel mediante Vite
 const WebsiteImages = import.meta.glob(
-  '@img/proyect/website/carrusel/*.png',
+  '../../assets/img/proyect/website/carrusel/*.png', 
   { eager: true, import: 'default' }
 );
 const carruselWebsite = Object.values(WebsiteImages);
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  PROYECTO 01 — Mi Portafolio Web
-// ─────────────────────────────────────────────────────────────────────────────
-const PROY_01_ES = {
-  id: "PROY_01",
-  titulo: "Mi Portafolio Web",
-  lanzamiento: "Octubre 2025",
-  descripcion_corta: "Portafolio profesional desarrollado con React enfocado en arquitectura frontend moderna.",
-  descripcion: "Aplicación web desarrollada con React que funciona como portafolio profesional para presentar proyectos, experiencia y habilidades técnicas. El sistema está construido con una arquitectura modular, optimización de recursos y micro-animaciones que mejoran la experiencia de usuario, integrando TailwindCSS y Framer Motion para lograr una interfaz moderna, rápida y escalable.",
-  imagen: website,
-  detalles: [
-    "Diseño e implementación de una arquitectura modular basada en componentes reutilizables.",
-    "Desarrollo de una interfaz de usuario fluida mediante el uso avanzado de Framer Motion para micro-interacciones.",
-    "Optimización del rendimiento mediante Lazy Loading y manejo eficiente de assets multimedia.",
-    "Configuración y personalización de estilos globales con TailwindCSS para garantizar consistencia visual.",
-  ],
-  tecnologias: [dt.react, dt.tailwind, dt.vercel],
-  imagenes: carruselWebsite,
-  urlSitio: "/",
-  urlRepositorio: "https://github.com/AntonioKldron/web-portafolio-v2.git",
+/**
+ * 1. MAPEO DE ICONOS PARA GITHUB
+ * Vincula lenguajes de la API con componentes de iconos locales.
+ */
+export const githubIconMap = {
+  javascript: dt?.javascript,
+  typescript: dt?.typescript,
+  python: dt?.python,
+  html: dt?.html,
+  css: dt?.css,
+  'c#': dt?.csharp,
+  java: dt?.java,
+  sql: dt?.sql,
+  vue: dt?.vue,
+  php: dt?.php,
+  tsql: dt?.sql,
+  'jupyter notebook': dt?.jupyter,
 };
 
-const PROY_01_EN = {
-  ...PROY_01_ES,
-  titulo: "My Web Portfolio",
-  lanzamiento: "October 2025",
-  descripcion_corta: "Professional portfolio built with React focused on modern frontend architecture.",
-  descripcion: "Web application developed with React that works as a professional portfolio to showcase projects, experience, and technical skills. The system is built with a modular architecture, resource optimization, and micro-animations that enhance the user experience, integrating TailwindCSS and Framer Motion to achieve a modern, fast, and scalable interface.",
-  detalles: [
-    "Design and implementation of a modular architecture based on reusable components.",
-    "Development of a fluid UI using Framer Motion for high-end micro-interactions.",
-    "Performance optimization via Lazy Loading and efficient multimedia asset management.",
-    "Custom styling and configuration with TailwindCSS to ensure visual consistency.",
-  ],
-};
+/**
+ * 2. ITEMS TÉCNICOS (Lógica y Assets)
+ * Datos estructurales persistentes (URLs, IDs, Assets Técnicos).
+ */
+const proyectosItems = [
+  {
+    id: 'PROY_01',
+    imagen: website,
+    imagenes: carruselWebsite,
+    tecnologias: [dt.react, dt.tailwind, dt.vercel, dt.framer].filter(Boolean),
+    urlSitio: '/',
+    urlRepositorio: 'https://github.com/AntonioKldron/web-portafolio-v2.git',
+    deploy: { estado: 'live', url: 'https://antoniokldron.vercel.app' },
+  },
+  {
+    id: 'PROY_02',
+    imagen: '', 
+    imagenes: [],
+    tecnologias: [dt.react, dt.supabase, dt.nodejs, dt.tailwind, dt.docker, dt.javascript].filter(Boolean),
+    urlSitio: 'https://techani.net/',
+    urlRepositorio: 'https://github.com/alfonsonadamas/Techani-2.0.git',
+    deploy: { estado: 'live', url: 'https://techani.net/' },
+  },
+];
 
-// ─────────────────────────────────────────────────────────────────────────────
-//  PROYECTO 02 — Techani v2
-// ─────────────────────────────────────────────────────────────────────────────
-const PROY_02_ES = {
-  id: "PROY_02",
-  titulo: "Techani v2",
-  lanzamiento: "Enero 2024",
-  descripcion_corta: "Aplicación para monitoreo y control de diabetes tipo 1.",
-  descripcion: "Aplicación desarrollada con React para el monitoreo de pacientes con diabetes tipo 1, permitiendo registrar niveles de glucosa, visualizar información médica y facilitar el seguimiento del tratamiento mediante una interfaz moderna conectada a Supabase como backend.",
-  imagen: "",
-  detalles: [
-    "Integración y gestión del estado del servidor utilizando Supabase como Backend-as-a-Service.",
-    "Desarrollo de módulos de visualización de datos médicos y gráficas de niveles de glucosa.",
-    "Implementación de lógica de validación de registros de salud en tiempo real.",
-    "Despliegue y containerización de la aplicación utilizando Docker para entornos de desarrollo y producción.",
-  ],
-  tecnologias: [dt.react, dt.javascript, dt.html, dt.css, dt.nodejs, dt.supabase, dt.tailwind, dt.docker],
-  imagenes: [],
-  urlSitio: "https://techani.net/",
-  urlRepositorio: "https://github.com/alfonsonadamas/Techani-2.0.git",
-};
-
-const PROY_02_EN = {
-  ...PROY_02_ES,
-  lanzamiento: "January 2024",
-  descripcion_corta: "Application for monitoring and managing type 1 diabetes.",
-  descripcion: "Application developed with React for monitoring patients with type 1 diabetes, allowing the registration of glucose levels, visualization of medical information, and facilitating treatment tracking through a modern interface connected to Supabase as a backend.",
-  detalles: [
-    "Integration and management of server state using Supabase as a Backend-as-a-Service.",
-    "Development of medical data visualization modules and glucose level charts.",
-    "Implementation of real-time health record validation logic.",
-    "Deployment and containerization of the application using Docker for dev/prod environments.",
-  ],
-};
-
-// ─────────────────────────────────────────────────────────────────────────────
-//  EXPORT PRINCIPAL — Datos i18n completos
-// ─────────────────────────────────────────────────────────────────────────────
-export const proyectosData = {
+/**
+ * 3. DATA ESTÁTICA (Traducciones con Finalidad Estratégica)
+ */
+export const proyectosStaticData = {
   es: {
-    header: {
-      subtitulo: "Proyectos",
-      tituloPrincipal: "Desarrollos",
-      tituloHighlight: "Realizados",
+    github: {
+      header: { subtitulo: 'Ecosistema de Desarrollo', titulo: 'Productividad y Código en', highlight: 'GitHub' },
+      profile: { bioFallback: 'Ingeniero de Software especializado en sistemas de misión crítica y arquitecturas extensibles.', repos: 'Proyectos', followers: 'Red', commits: 'Actividad' },
+      stack: { title: 'Stack Tecnológico Dominante', subtitle: 'Análisis basado en los últimos 50 repositorios' },
+      calendar: { title: 'Ciclo de Contribución Anual', updating: 'Sincronizando métricas...', days: ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'] },
+      loading: 'Iniciando_Dashboard_Métricas...',
     },
-    // 📌 Agrega nuevos proyectos aquí: ..., PROY_03_ES
-    proyectos: [PROY_01_ES, PROY_02_ES],
+    titles: { projects: 'Sistemas & Desarrollos Core' },
+    header: { subtitulo: 'Portfolio & Case Studies', tituloPrincipal: 'Ingeniería de', tituloHighlight: 'Software' },
+    proyectos: [
+      {
+        id: 'PROY_01',
+        titulo: 'Professional Engine Portfolio',
+        lanzamiento: 'Edición 2025',
+        descripcion_corta: 'Infraestructura de marca personal diseñada para la validación técnica de arquitecturas frontend.',
+        descripcion: 'La finalidad de este proyecto es establecer un estándar de ingeniería para mi marca personal. Más que un catálogo, es un ecosistema de alto rendimiento que sirve como prueba de concepto para demostrar el dominio en la optimización de Web Vitals, gestión de estado compleja y despliegue automatizado, garantizando una interfaz que proyecta solvencia técnica y profesionalismo.',
+        detalles: [
+          'Arquitectura modular escalable que facilita la mantenibilidad y el testing unitario.',
+          'Optimización agresiva de Web Vitals (LCP, FID, CLS) mediante lazy-loading y purga de assets.',
+          'Sistema de diseño atómico implementado con TailwindCSS para garantizar consistencia visual absoluta.',
+          'Pipeline de CI/CD automatizado para despliegues atómicos y alta disponibilidad.'
+        ],
+      },
+      {
+        id: 'PROY_02',
+        titulo: 'Techani Health Ecosystem v2',
+        lanzamiento: 'Enero 2024',
+        descripcion_corta: 'Plataforma de e-Health diseñada para optimizar el control clínico de la Diabetes Tipo 1.',
+        descripcion: 'Este proyecto nace con la finalidad de transformar la gestión diaria de la salud en un proceso basado en datos precisos. El sistema centraliza métricas biométricas críticas para reducir el margen de error en el tratamiento, proporcionando a pacientes y médicos una herramienta de trazabilidad en tiempo real que facilita decisiones clínicas informadas.',
+        detalles: [
+          'Integración de servicios Backend-as-a-Service (BaaS) con Supabase para persistencia reactiva de datos.',
+          'Desarrollo de dashboards analíticos con procesamiento dinámico de métricas glucémicas.',
+          'Implementación de lógica de negocio en el borde (Edge) para validación de registros en tiempo real.',
+          'Contenerización completa mediante Docker para garantizar la paridad absoluta entre entornos.'
+        ],
+      },
+    ],
   },
   en: {
-    header: {
-      subtitulo: "Projects",
-      tituloPrincipal: "Featured",
-      tituloHighlight: "Works",
+    github: {
+      header: { subtitulo: 'Development Ecosystem', titulo: 'Code Productivity on', highlight: 'GitHub' },
+      profile: { bioFallback: 'Software Engineer specialized in mission-critical systems and extensible backend architectures.', repos: 'Projects', followers: 'Network', commits: 'Activity' },
+      stack: { title: 'Dominant Tech Stack', subtitle: 'Language analysis based on the last 50 repositories' },
+      calendar: { title: 'Annual Contribution Cycle', updating: 'Syncing real-time metrics...', days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'] },
+      loading: 'Initializing_Metrics_Dashboard...',
     },
-    // 📌 Agrega nuevos proyectos aquí: ..., PROY_03_EN
-    proyectos: [PROY_01_EN, PROY_02_EN],
+    titles: { projects: 'Core Systems & Development' },
+    header: { subtitulo: 'Portfolio & Case Studies', tituloPrincipal: 'Software', tituloHighlight: 'Engineering' },
+    proyectos: [
+      {
+        id: 'PROY_01',
+        titulo: 'Professional Engine Portfolio',
+        lanzamiento: '2025 Edition',
+        descripcion_corta: 'Personal branding infrastructure designed for technical validation of frontend architectures.',
+        descripcion: 'The purpose of this project is to establish an engineering standard for my personal brand. Far from being a simple catalog, it is a high-performance ecosystem serving as a proof-of-concept to demonstrate mastery in Web Vitals optimization, complex state management, and automated deployment, ensuring an interface that projects technical solvency.',
+        detalles: [
+          'Scalable modular architecture facilitating maintainability and unit testing.',
+          'Aggressive Web Vitals optimization (LCP, FID, CLS) via lazy-loading and asset purging.',
+          'Atomic design system implemented with TailwindCSS for absolute visual consistency.',
+          'Automated CI/CD pipeline for atomic deployments and high availability.'
+        ],
+      },
+      {
+        id: 'PROY_02',
+        titulo: 'Techani Health Ecosystem v2',
+        lanzamiento: 'January 2024',
+        descripcion_corta: 'e-Health platform designed to optimize clinical control of Type 1 Diabetes.',
+        descripcion: 'This project was created with the purpose of transforming daily health management into a data-driven process. The system centralizes critical biometric metrics to reduce treatment error margins, providing patients and physicians with a real-time traceability tool that facilitates informed clinical decisions.',
+        detalles: [
+          'Backend-as-a-Service (BaaS) integration with Supabase for reactive data persistence.',
+          'Development of analytical dashboards with dynamic processing of glycemic metrics.',
+          'Implementation of business logic at the Edge for real-time health record validation.',
+          'Full containerization via Docker to ensure absolute parity across environments.'
+        ],
+      },
+    ],
   },
+};
+
+/**
+ * 4. EXPORTACIÓN UNIFICADA
+ */
+export const proyectosData = {
+  getMerged: (lang = 'es') => {
+    const texts = proyectosStaticData[lang]?.proyectos || [];
+    return proyectosItems.map(item => ({
+      ...item,
+      ...(texts.find(t => t.id === item.id) || {})
+    }));
+  },
+  es: { 
+    header: proyectosStaticData.es.header, 
+    github: proyectosStaticData.es.github,
+    titles: proyectosStaticData.es.titles
+  },
+  en: { 
+    header: proyectosStaticData.en.header, 
+    github: proyectosStaticData.en.github,
+    titles: proyectosStaticData.en.titles
+  }
 };

@@ -16,8 +16,7 @@ const iconMap = {
   "sobre-mi": AiOutlineUser,
   "herramientas": AiOutlineTool,
   "experiencia": AiOutlineSchedule,
-  "git": FaGithub,
-  "proyectos": AiOutlineFolderOpen,
+  "proyectos": FaGithub,
   "educacion": AiOutlineRead,
 };
 

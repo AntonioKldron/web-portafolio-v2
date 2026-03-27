@@ -1,23 +1,27 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useApp } from '@context/appContext'; 
-import { useTranslation } from '@shared/hooks/useTranslation';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import { useApp } from '@app/context/appContext'; 
 import { perfilData } from '@data/perfil/perfilData';
-import { ProfileHeader } from './components/headerProfile';
-import { ProfileNav } from './components/navProfile';
-import { ProfileFooter } from './components/footerProfile';
+import { ProfileHeader } from '@features/perfil/components/headerProfile';
+import { ProfileNav } from '@features/perfil/components/navProfile';
+import { ProfileFooter } from '@features/perfil/components/footerProfile';
 
 export default function MiCartaPerfil({ observerRef }) {
   const [activeSection, setActiveSection] = useState("");
-  
-  // Ya solo necesitamos 'lang' y 'isDark' de tu contexto, no las funciones de toggle
-  const { lang, isDark } = useApp(); 
-  
-  const t = useTranslation(perfilData);
-  const { nombre, apellido, foto, socials } = perfilData;
+  const { lang } = useApp(); 
+
+  // Combinamos la base con la traducción actual (es/en)
+  const currentData = useMemo(() => {
+    const translation = perfilData[lang] || perfilData.es;
+    return { ...perfilData, ...translation };
+  }, [lang]);
+
+  // Desestructuramos la data combinada
+  const { nombre, apellido, foto, socials, rol, cv, menuItems } = currentData;
 
   useEffect(() => {
     const container = observerRef?.current || null;
     const sections = document.querySelectorAll("section[id]");
+    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) setActiveSection(entry.target.id);
@@ -46,17 +50,28 @@ export default function MiCartaPerfil({ observerRef }) {
       overflow-hidden font-sans
       bg-card-bg text-main-text border-main-border
     ">
-      
-      {/* ¡Los botones fueron robados de aquí exitosamente! 
-      */}
+      {/* Header: Foto, Nombre y Rol dinámico */}
+      <ProfileHeader 
+        foto={foto} 
+        nombre={nombre} 
+        apellido={apellido} 
+        rol={rol} 
+      />
 
-      <ProfileHeader foto={foto} nombre={nombre} apellido={apellido} rol={t.rol} />
-
+      {/* Navegación: Items de menú traducidos */}
       <div className="hidden lg:block">
-        <ProfileNav menuItems={t.menuItems} activeSection={activeSection} onScrollTo={scrollTo} />
+        <ProfileNav 
+          menuItems={menuItems} 
+          activeSection={activeSection} 
+          onScrollTo={scrollTo} 
+        />
       </div>
 
-      <ProfileFooter socials={socials} cv={t.cv} />
+      {/* Footer: Redes y CV (español o inglés) */}
+      <ProfileFooter 
+        socials={socials} 
+        cv={cv} 
+      />
     </div>
   );
 }

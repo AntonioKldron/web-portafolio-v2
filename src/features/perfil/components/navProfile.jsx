@@ -11,13 +11,11 @@ export const ProfileNav = ({ menuItems, activeSection, onScrollTo }) => (
             isActive ? "translate-x-3" : "opacity-60 hover:opacity-100"
           }`}
         >
-          {/* Línea que ahora sí tiene contraste */}
           <span className={`h-[2px] transition-all duration-500 ${
             isActive 
               ? "w-10 bg-primary-accent" 
               : "w-4 bg-gray-300 dark:bg-gray-700"
           }`} />
-          
           <span className={`text-[10px] uppercase tracking-[0.4em] transition-colors ${
             isActive ? "text-primary-accent font-black" : "text-card-muted"
           }`}>

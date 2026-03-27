@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, useSpring, useMotionValue, useTransform } from 'framer-motion';
-import { useApp } from '@context/appContext'; 
+import { useApp } from '@app/context/appContext'; 
 import { HiX, HiOutlineDocumentSearch } from 'react-icons/hi';
 
 export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo }) {
@@ -42,7 +42,6 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className={`fixed inset-0 z-[99999] flex flex-col items-center justify-center p-4 ${isDark ? 'bg-black/90' : 'bg-white/90'}`}
     >
-      {/* Fondo desenfocado (solo si no es PDF para evitar ruido visual) */}
       {!esPdf && (
         <div className="absolute inset-0 z-0 opacity-20 blur-[100px]">
           <img src={imagenUrl} className="w-full h-full object-cover" alt="bg-blur" />
@@ -69,7 +68,7 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
 
       <main className="relative z-20 perspective-[2000px] w-full max-w-5xl flex justify-center">
         {esPdf ? (
-          // Vista para PDF
+
           <div className="w-full h-[80vh] bg-white rounded-lg overflow-hidden shadow-2xl border border-white/20">
             <embed
               src={`${imagenUrl}#toolbar=0&navpanes=0`}
@@ -79,7 +78,6 @@ export default function ModalInspeccion({ abierto, onClose, imagenUrl, titulo })
             />
           </div>
         ) : (
-          // Vista para IMAGEN (con efecto 3D)
           <motion.div style={{ rotateX, rotateY }} className="relative group">
             <div className={`p-1 rounded-lg border shadow-2xl ${isDark ? 'bg-white/5 border-white/10' : 'bg-black/5 border-black/10'}`}>
               <motion.div style={{ background: 'linear-gradient(135deg, transparent, rgba(255,255,255,0.3), transparent)', x: glareX, opacity: glareOpacity }} className="absolute inset-0 z-10 filter blur-md" />

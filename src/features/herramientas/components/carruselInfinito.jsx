@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion, useAnimationFrame, useMotionValue, useTransform } from 'framer-motion';
-import CartaTecnologia from './cartaTecnologias';
-import { ConsolaContext } from './habilidadesConsola'; 
+import CartaTecnologia from '@features/herramientas/components/cartaTecnologias';
+import { ConsolaContext } from '@features/herramientas/components/habilidadesConsola'; 
 
 const FilaAnimada = ({ baseFila, direccion, velocidad, idCategoria, keyPrefix }) => {
   const baseX = useMotionValue(0);

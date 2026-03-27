@@ -4,41 +4,41 @@ import React from 'react';
 import {
   IcoJavascript, IcoPython, IcoSql, IcoCsharp, IcoJava, IcoPhp, IcoGo, 
   IcoRust, IcoTypescript, IcoDart, IcoSwift, IcoKotlin
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // BACKEND & FRAMEWORKS
 import {
   IcoNodejs, IcoExpress, IcoNestjs, IcoFastapi, IcoDjango, IcoDjangorest, 
   IcoSpring, IcoSpringboot, IcoLaravel, IcoCodeigniter, IcoNet, IcoHibernate
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // FRONTEND
 import {
   IcoReact, IcoAngular, IcoVue, IcoSvelte, IcoNextjs, IcoNuxtjs, IcoAstro, 
   IcoJquery, IcoTailwind, IcoHtml, IcoCss, IcoBootstrap, IcoLivewire
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // MÓVIL
 import {
   IcoAndroid, IcoFlutter, IcoReactnative, IcoJetpackcompose
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // ERP & ENTERPRISE
 import {
   IcoIntelisis, IcoPeoplesoft
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // BASES DE DATOS & BAAS
 import {
   IcoSqlserver, IcoOracle, IcoPostgresql, IcoMysql, IcoMongodb, 
   IcoSupabase, IcoFirebase, IcoRedis, IcoDatabase, IcoSqlite
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // INFRAESTRUCTURA & HARDWARE
 import {
   IcoAws, IcoDocker, IcoKubernetes, IcoLinux, IcoNginx, 
   IcoVercel, IcoWindows, IcoArduino, IcoAzure
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 // HERRAMIENTAS & ARCHIVOS
 import {
@@ -46,7 +46,7 @@ import {
   IcoTrello, IcoApi, IcoTerminal, IcoJson, IcoXml, IcoCode, 
   IcoCogs, IcoPowerBi, IcoCursor, IcoFigma, IcoVstudio, IcoTermius,
   IcoJupyter
-} from './dataIconify';
+} from './icon-iconify/dataIconify.jsx';
 
 
 export const data = {
