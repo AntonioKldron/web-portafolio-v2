@@ -34,11 +34,11 @@ export default function SeccionGitProyectos() {
   const stats = githubData?.contributionsCollection;
 
   return (
-    <section className="w-full py-12 overflow-hidden relative">
+    <section className="w-full overflow-hidden relative">
       {/* ── AMBIENT GLOW PREMIUM ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[600px] pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/20 via-blue-900/5 to-transparent blur-3xl" />
 
-      <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col gap-10 relative z-10">
+      <div className="max-w-[90rem] mx-auto flex flex-col relative z-10">
 
         {/* ── HEADER DE SECCIÓN ── */}
         <EncabezadoSeccion
@@ -67,7 +67,7 @@ export default function SeccionGitProyectos() {
 
         {/* ── BLOQUE 3: CALENDARIO ── */}
         {!githubLoading && githubData && (
-          <div className="flex flex-col gap-4 w-full mt-2">
+          <div className="flex flex-col w-full">
             <div className="w-full drop-shadow-2xl">
               <CalendarioGithub 
                 calendario={stats?.contributionCalendar ?? { weeks: [], totalContributions: 0 }} 
