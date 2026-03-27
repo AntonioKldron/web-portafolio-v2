@@ -34,7 +34,7 @@ export default function SeccionGitProyectos() {
   const stats = githubData?.contributionsCollection;
 
   return (
-    <section className="w-full overflow-hidden relative">
+    <section className="w-full relative">
       {/* ── AMBIENT GLOW PREMIUM ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[600px] pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/20 via-blue-900/5 to-transparent blur-3xl" />
 
