@@ -68,11 +68,11 @@ export const proyectosStaticData = {
       loading: 'Iniciando_Dashboard_Métricas...',
     },
     titles: { projects: 'Sistemas & Desarrollos Core' },
-    header: { subtitulo: 'Portfolio & Case Studies', tituloPrincipal: 'Ingeniería de', tituloHighlight: 'Software' },
+    header: { subtitulo: 'Git & Proyectos', tituloPrincipal: 'Ingeniería de', tituloHighlight: 'Software' },
     proyectos: [
       {
         id: 'PROY_01',
-        titulo: 'Professional Engine Portfolio',
+        titulo: 'Portfolio',
         lanzamiento: 'Edición 2025',
         descripcion_corta: 'Infraestructura de marca personal diseñada para la validación técnica de arquitecturas frontend.',
         descripcion: 'La finalidad de este proyecto es establecer un estándar de ingeniería para mi marca personal. Más que un catálogo, es un ecosistema de alto rendimiento que sirve como prueba de concepto para demostrar el dominio en la optimización de Web Vitals, gestión de estado compleja y despliegue automatizado, garantizando una interfaz que proyecta solvencia técnica y profesionalismo.',
@@ -85,7 +85,7 @@ export const proyectosStaticData = {
       },
       {
         id: 'PROY_02',
-        titulo: 'Techani Health Ecosystem v2',
+        titulo: 'Techani v2',
         lanzamiento: 'Enero 2024',
         descripcion_corta: 'Plataforma de e-Health diseñada para optimizar el control clínico de la Diabetes Tipo 1.',
         descripcion: 'Este proyecto nace con la finalidad de transformar la gestión diaria de la salud en un proceso basado en datos precisos. El sistema centraliza métricas biométricas críticas para reducir el margen de error en el tratamiento, proporcionando a pacientes y médicos una herramienta de trazabilidad en tiempo real que facilita decisiones clínicas informadas.',
@@ -107,11 +107,11 @@ export const proyectosStaticData = {
       loading: 'Initializing_Metrics_Dashboard...',
     },
     titles: { projects: 'Core Systems & Development' },
-    header: { subtitulo: 'Portfolio & Case Studies', tituloPrincipal: 'Software', tituloHighlight: 'Engineering' },
+    header: { subtitulo: 'Git & Projects', tituloPrincipal: 'Software', tituloHighlight: 'Engineering' },
     proyectos: [
       {
         id: 'PROY_01',
-        titulo: 'Professional Engine Portfolio',
+        titulo: 'Portfolio',
         lanzamiento: '2025 Edition',
         descripcion_corta: 'Personal branding infrastructure designed for technical validation of frontend architectures.',
         descripcion: 'The purpose of this project is to establish an engineering standard for my personal brand. Far from being a simple catalog, it is a high-performance ecosystem serving as a proof-of-concept to demonstrate mastery in Web Vitals optimization, complex state management, and automated deployment, ensuring an interface that projects technical solvency.',
@@ -124,7 +124,7 @@ export const proyectosStaticData = {
       },
       {
         id: 'PROY_02',
-        titulo: 'Techani Health Ecosystem v2',
+        titulo: 'Techani v2',
         lanzamiento: 'January 2024',
         descripcion_corta: 'e-Health platform designed to optimize clinical control of Type 1 Diabetes.',
         descripcion: 'This project was created with the purpose of transforming daily health management into a data-driven process. The system centralizes critical biometric metrics to reduce treatment error margins, providing patients and physicians with a real-time traceability tool that facilitates informed clinical decisions.',

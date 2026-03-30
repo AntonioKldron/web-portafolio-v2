@@ -37,14 +37,14 @@ export default function EcosistemaGithub({ isLoading, githubData, username, isDa
           </div>
         </div>
       </div>
-
-      {/* FILA 2: Repositorios */}
+      {/*
+      FILA 2: Repositorios 
       <div className={`w-full overflow-hidden rounded-[2rem] backdrop-blur-xl shadow-2xl transition-all duration-500 border group
         ${isDark ? 'bg-slate-900/40 border-white/5 hover:border-blue-500/30' : 'bg-white/60 border-slate-200/80 hover:border-blue-400/30'}`}>
         <div className="p-1">
           <RepositoriosCarrusel repos={githubData.repositories?.nodes || []} isDark={isDark} username={username} />
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }
