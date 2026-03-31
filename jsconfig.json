@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@data/*":      [  "src/data/*"],
+      "@context/*":   [  "src/app/context/*"],
+      "@router/*":    [  "src/app/router/*"],
+      "@features/*":  [  "src/features/*"],
+      "@shared/*":    [  "src/shared/*"],
+      "@page/*":      [  "src/page/*"],
+      "@app/*":       [  "src/app/*"],
+      "@img/*":       [  "src/assets/img/*"],
+      "@doc/*":       [  "src/assets/doc/*"],
+      "@services/*":  [  "src/services/*"]
+    }
+  }
+}

@@ -1,0 +1,56 @@
+import React, { useRef, useEffect, useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
+
+import FondoAnimado from '../shared/static/fondo';
+import LoaderWeb from '../shared/components/loader/loaderWeb';
+import LoaderMobile from '../shared/components/loader/loaderMobile';
+import LayoutPrincipal from './layout/layoutPrincipal';
+
+// IMPORTAMOS EL PROVEEDOR DEL CONTEXTO GLOBAL
+import { AppProvider } from '@context/appContext';
+
+export default function Index() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const observerRef = useRef(null);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      // Ajustado a 1024px para coincidir con el comportamiento de Tailwind "lg"
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+
+    const timer = setTimeout(() => setIsLoading(false), 3700);
+
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    // ENVOLVEMOS TODA LA APLICACIÓN CON EL PROVEEDOR GLOBAL
+    <AppProvider>
+      <div className="relative min-h-screen w-full overflow-x-hidden font-sans">
+
+        <FondoAnimado isActive={true} />
+
+        <AnimatePresence mode="wait">
+          {isLoading ? (
+            isMobile ? (
+              <LoaderMobile key="loader-mobile" />
+            ) : (
+              <LoaderWeb key="loader-web" />
+            )
+          ) : (
+            <LayoutPrincipal key="content" observerRef={observerRef} />
+          )}
+        </AnimatePresence>
+
+      </div>
+    </AppProvider>
+  );
+}
