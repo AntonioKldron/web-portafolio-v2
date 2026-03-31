@@ -14,15 +14,16 @@ export default function EcosistemaGithub({ isLoading, githubData, username, isDa
     <div className="flex flex-col gap-4 w-full">
       {/* FILA 1: Grid Asimétrico */}
       <div className="grid grid-cols-1 xl:grid-cols-[2.2fr_1fr] gap-4 items-stretch">
-        {/* Columna Izquierda: Stack */}
-        <div className="h-full w-full flex flex-col">
+        
+        {/* Columna Izquierda: Stack (Segundo en móvil, Primero en desktop) */}
+        <div className="h-full w-full flex flex-col order-2 xl:order-1">
           <div className="flex-grow">
             <LenguajesGithub reposStats={githubData.statsRepos} isDark={isDark} t={txtGit.stack || {}} />
           </div>
         </div>
         
-        {/* Columna Derecha: Perfil + Métricas */}
-        <div className="flex flex-col gap-4 h-full w-full justify-between">
+        {/* Columna Derecha: Perfil + Métricas (Primero en móvil, Segundo en desktop) */}
+        <div className="flex flex-col gap-4 h-full w-full justify-between order-1 xl:order-2">
           <div className="flex-shrink-0">
             <PerfilGithub perfil={githubData} isDark={isDark} username={username} t={txtGit.profile || {}} />
           </div>
@@ -37,6 +38,7 @@ export default function EcosistemaGithub({ isLoading, githubData, username, isDa
           </div>
         </div>
       </div>
+      
       {/*
       FILA 2: Repositorios 
       <div className={`w-full overflow-hidden rounded-[2rem] backdrop-blur-xl shadow-2xl transition-all duration-500 border group
