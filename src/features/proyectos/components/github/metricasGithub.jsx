@@ -13,7 +13,7 @@ export default function MetricasGithub({ commits, prs, issues, isDark }) {
     <motion.div 
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      className={`w-full p-4 rounded-[2rem] border flex justify-around items-center h-full shadow-xl
+      className={`w-full p-4 flex justify-around items-center h-full shadow-xl
         ${isDark ? 'bg-slate-900/50 border-white/10 shadow-indigo-900/20' : 'bg-white/80 border-slate-200 shadow-indigo-500/10'}`}
     >
       {stats.map((s, i) => (

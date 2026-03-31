@@ -9,7 +9,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15, // Efecto cascada entre los elementos
+      staggerChildren: 0.15,
       delayChildren: 0.1,
     },
   },
@@ -71,7 +71,7 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      className={`w-full h-full flex flex-col p-6 md:p-8 rounded-[2rem] border overflow-hidden relative shadow-2xl transition-colors duration-500
+      className={`w-full h-full flex flex-col p-6 md:p-8 overflow-hidden relative shadow-2xl transition-colors duration-500
       ${isDark ? 'bg-slate-900/60 border-white/10 shadow-indigo-900/20' : 'bg-white/90 border-slate-200 shadow-indigo-500/10'}`}
     >
       {/* Background Glow Dinámico y Palpitante */}

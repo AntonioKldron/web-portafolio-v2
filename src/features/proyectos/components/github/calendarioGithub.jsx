@@ -56,7 +56,7 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
     <motion.div 
       initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      className={`w-full relative p-6 rounded-[2rem] border flex flex-col transition-all shadow-xl overflow-visible
+      className={`w-full relative p-6 flex flex-col transition-all shadow-xl overflow-visible
         ${isDark ? 'bg-slate-900/50 border-white/10 shadow-blue-900/20' : 'bg-white/80 border-slate-200 shadow-indigo-500/10'}`}
     >
       {/* HEADER */}

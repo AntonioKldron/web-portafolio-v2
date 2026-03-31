@@ -15,8 +15,8 @@ export default function ProyectosLocales({ proyectos, isDark, titles }) {
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true }}
-        className={`w-full relative p-6 rounded-[2rem] border flex flex-col transition-all shadow-xl overflow-visible
-          ${isDark ? 'bg-slate-900/50 border-white/10 shadow-indigo-900/20' : 'bg-white/80 border-slate-200 shadow-indigo-500/10'}`}
+        className={`w-full relative p-6  flex flex-col transition-all  overflow-visible
+          ${isDark ? 'bg-slate-900/50 shadow-indigo-900/20' : 'bg-white/80 -slate-200 shadow-indigo-500/10'}`}
       >
         <div className="flex justify-between items-center mb-6 relative z-50">
           <div className="flex items-center gap-3">
@@ -29,11 +29,11 @@ export default function ProyectosLocales({ proyectos, isDark, titles }) {
           </div>
           
           <div className={`
-            inline-flex items-center justify-center min-w-[24px] h-6 px-1.5 rounded border-b-2
+            inline-flex items-center justify-center min-w-[24px] h-6 px-1.5 rounded -b-2
             text-[11px] font-black font-mono
             ${isDark 
-              ? 'bg-slate-800 border-indigo-500 text-indigo-300' 
-              : 'bg-slate-100 border-slate-300 text-slate-700'}
+              ? 'bg-slate-800 -indigo-500 text-indigo-300' 
+              : 'bg-slate-100 -slate-300 text-slate-700'}
           `}>
             {proyectos.length.toString().padStart(2, '0')}
           </div>
