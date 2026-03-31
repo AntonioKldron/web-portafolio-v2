@@ -4,8 +4,8 @@ import { HiOutlineDocumentText } from 'react-icons/hi';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 export default function EducacionItem({ item, index, isCert, onOpenCert }) {
-  const mostrarCertificado = isCert && item.imagen && item.imagen.trim() !== "";
-  const esPdf = item.imagen?.toLowerCase().endsWith('.pdf');
+  const mostrarCertificado = isCert && item.imagen && typeof item.imagen === 'string' && item.imagen.trim() !== "";
+  const esPdf = typeof item.imagen === 'string' && item.imagen.toLowerCase().endsWith('.pdf');
 
   return (
     <motion.div 
@@ -48,16 +48,27 @@ export default function EducacionItem({ item, index, isCert, onOpenCert }) {
 
       <div className="pl-1">
         
-        <div className="flex items-start gap-3 mb-3">
+        <div className="flex items-center gap-3 mb-3">
           <span className="shrink-0 text-primary-accent text-[10px] font-mono font-bold uppercase tracking-widest bg-primary-accent/10 px-2.5 py-1 rounded-md">
             {item.fecha}
           </span>
           
-          <span className="hidden sm:block w-1.5 h-1.5 shrink-0 rounded-full bg-muted-text/20 mt-1.5"></span>
+          <span className="hidden sm:block w-1.5 h-1.5 shrink-0 rounded-full bg-muted-text/20"></span>
           
-          <span className="text-muted-text/80 text-[10px] md:text-[11px] font-semibold tracking-wide uppercase leading-tight pt-0.5">
-            {item.institucion}
+          {/* --- AQUÍ ESTÁ LA CORRECCIÓN --- */}
+          <span className="text-muted-text/80 text-[10px] md:text-[11px] font-semibold tracking-wide uppercase leading-tight flex items-center gap-1.5">
+            {typeof item.institucion === 'object' && item.institucion !== null ? (
+              <>
+                <span className={`text-sm ${item.institucion.primary}`}>
+                  {item.institucion.icon}
+                </span>
+                <span>{item.institucion.name}</span>
+              </>
+            ) : (
+              <span>{item.institucion}</span>
+            )}
           </span>
+          {/* ------------------------------- */}
         </div>
 
         <h3 className="text-[15px] md:text-base font-bold text-main-text leading-snug mb-2 group-hover:text-primary-accent transition-colors duration-300">

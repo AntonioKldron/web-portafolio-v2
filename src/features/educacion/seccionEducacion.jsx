@@ -12,9 +12,11 @@ import CertificadosScroll  from '@features/educacion/components/certificadosScro
 
 export default function SeccionEducacion() {
   const { lang } = useApp();
-  const [modalInfo, setModalInfo] = useState({ abierto: false, url: '', titulo: '' });
+  
+  // Estado inicial correcto
+  const [modalInfo, setModalInfo] = useState({ abierto: false, item: null });
 
-  // 1. Obtenemos la data traducida (es/en)
+  // Obtenemos la data traducida (es/en)
   const t = useMemo(() => {
     return educacionData[lang] || educacionData.es;
   }, [lang]);
@@ -26,8 +28,13 @@ export default function SeccionEducacion() {
   const isCarousel = certificaciones.length > 3;
 
   const abrirCertificado = (cert) => {
-    if (cert.imagen && cert.imagen.trim() !== "") {
-      setModalInfo({ abierto: true, url: cert.imagen, titulo: cert.titulo });
+    // Verificamos que sea un string antes de usar .trim() para evitar errores con los imports de PDF
+    if (cert.imagen && typeof cert.imagen === 'string' && cert.imagen.trim() !== "") {
+      // CORRECCIÓN AQUÍ: Guardamos el item completo
+      setModalInfo({ 
+        abierto: true, 
+        item: cert 
+      });
     }
   };
 
@@ -102,9 +109,8 @@ export default function SeccionEducacion() {
         {modalInfo.abierto && (
           <ModalInspeccion
             abierto={modalInfo.abierto}
-            onClose={() => setModalInfo({ ...modalInfo, abierto: false })}
-            imagenUrl={modalInfo.url}
-            titulo={modalInfo.titulo}
+            onClose={() => setModalInfo({ abierto: false, item: null })}
+            item={modalInfo.item} 
           />
         )}
       </AnimatePresence>

@@ -48,6 +48,12 @@ import {
   IcoJupyter
 } from './icon-iconify/dataIconify.jsx';
 
+// ACADEMIAS & CERTIFICACIONES
+import {
+  IcoAcademyCisco, IcoAcademyAzure, IcoAcademyAws, IcoAcademyOracle,
+  IcoAcademyIbm, IcoAcademyGoogle, IcoAcademyUdemy, IcoAcademyPlatzi,
+  IcoAcademyFreecodecamp, IcoAcademyLinkedin
+} from './icon-iconify/dataIconify.jsx';
 
 export const data = {
   // LENGUAJES
@@ -146,4 +152,16 @@ export const data = {
   powerbi: { name: "Power Bi", icon: <IcoPowerBi />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   vstudio: { name: "Visual Studio", icon: <IcoVstudio />, primary: "text-purple-600", secondary: "text-purple-700/50" },
   termius: { name: "Termius SSH", icon: <IcoTermius />, primary: "text-gray-300", secondary: "text-gray-400/50" },
+  
+  // ACADEMIAS & CERTIFICACIONES
+  eduCisco: { name: "Cisco", icon: <IcoAcademyCisco />, primary: "text-cyan-500", secondary: "text-cyan-600/50" },
+  eduAzure: { name: "Azure", icon: <IcoAcademyAzure />, primary: "text-blue-500", secondary: "text-blue-600/50" },
+  eduAws: { name: "AWS", icon: <IcoAcademyAws />, primary: "text-orange-500", secondary: "text-orange-600/50" },
+  eduOracle: { name: "Oracle", icon: <IcoAcademyOracle />, primary: "text-red-600", secondary: "text-red-700/50" },
+  eduIbm: { name: "IBM", icon: <IcoAcademyIbm />, primary: "text-blue-600", secondary: "text-blue-700/50" },
+  eduGoogle: { name: "Google", icon: <IcoAcademyGoogle />, primary: "text-blue-500", secondary: "text-blue-600/50" },
+  eduUdemy: { name: "Udemy", icon: <IcoAcademyUdemy />, primary: "text-purple-600", secondary: "text-purple-700/50" },
+  eduPlatzi: { name: "Platzi", icon: <IcoAcademyPlatzi />, primary: "text-green-500", secondary: "text-green-600/50" },
+  eduFreecodecamp: { name: "FreeCodeCamp", icon: <IcoAcademyFreecodecamp />, primary: "text-slate-800", secondary: "text-slate-900/50" },
+  eduLinkedin: { name: "LinkedIn", icon: <IcoAcademyLinkedin />, primary: "text-blue-700", secondary: "text-blue-800/50" },
 };
