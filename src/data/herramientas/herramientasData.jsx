@@ -10,7 +10,7 @@ export const herramientasCategorias = [
   { id: 'cat-4', icon: <AiOutlineGold />,  items: [dt.peoplesoft, dt.intelisis] },
   { id: 'cat-5', icon: <FaDatabase />,     items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.supabase, dt.sqlite] },
   { id: 'cat-6', icon: <FaAws />,          items: [dt.docker, dt.linux, dt.windows, dt.vercel] },
-  { id: 'cat-7', icon: <FaGitAlt />,       items: [dt.terminal, dt.vstudio, dt.powerbi ,dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.gitlab, dt.github, dt.trello, dt.figma, dt.termius] },
+  { id: 'cat-7', icon: <FaGitAlt />,       items: [dt.postman, dt.terminal, dt.vstudio, dt.powerbi ,dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.gitlab, dt.github, dt.trello, dt.figma, dt.termius] },
 ];
 
 const categoriaTitulos = {

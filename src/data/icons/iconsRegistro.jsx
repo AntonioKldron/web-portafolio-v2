@@ -45,7 +45,7 @@ import {
   IcoVscode, IcoN8n, IcoJetbrains, IcoGit, IcoGitlab, IcoGithub, 
   IcoTrello, IcoApi, IcoTerminal, IcoJson, IcoXml, IcoCode, 
   IcoCogs, IcoPowerBi, IcoCursor, IcoFigma, IcoVstudio, IcoTermius,
-  IcoJupyter
+  IcoJupyter, IcoPostman
 } from './icon-iconify/dataIconify.jsx';
 
 // ACADEMIAS & CERTIFICACIONES
@@ -146,6 +146,7 @@ export const data = {
   api: { name: "API REST", icon: <IcoApi />, primary: "text-green-500", secondary: "text-green-600/50" },
   terminal: { name: "Terminal", icon: <IcoTerminal />, primary: "text-gray-300", secondary: "text-gray-400/50" },
   json: { name: "JSON", icon: <IcoJson />, primary: "text-yellow-400", secondary: "text-yellow-500/50" },
+  postman: { name: "Postman", icon: <IcoPostman />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   xml: { name: "XML", icon: <IcoXml />, primary: "text-orange-500", secondary: "text-orange-600/50" },
   code: { name: "Code", icon: <IcoCode />, primary: "text-indigo-400", secondary: "text-indigo-500/50" },
   cogs: { name: "Cogs", icon: <IcoCogs />, primary: "text-blue-400", secondary: "text-blue-500/50" },
