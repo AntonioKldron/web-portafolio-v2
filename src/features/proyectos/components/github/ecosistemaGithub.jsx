@@ -3,7 +3,7 @@ import LenguajesGithub from '@features/proyectos/components/github/lenguajesGith
 import PerfilGithub from '@features/proyectos/components/github/perfilGithub';
 import MetricasGithub from '@features/proyectos/components/github/metricasGithub';
 import RepositoriosCarrusel from '@features/proyectos/components/github/repositoriosCarrusel';
-import SkeletonGithub from './SkeletonGithub'; // Asegúrate de ajustar la ruta
+import SkeletonGithub from './skeletonGithub'; // Asegúrate de ajustar la ruta
 
 export default function EcosistemaGithub({ isLoading, githubData, username, isDark, txtGit, stats }) {
   if (isLoading || !githubData) {
