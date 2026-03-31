@@ -8,7 +8,7 @@ const baseData = {
   EXP_00: {
     empresa: "Cinépolis",
     logo: cinepolis,
-    tecnologias: [dt.oracle, dt.java, dt.peoplesoft],
+    tecnologias: [dt.oracle, dt.java, dt.peoplesoft, dt.postman],
     proyectos: []
   },
   EXP_01: {
@@ -17,7 +17,7 @@ const baseData = {
     tecnologias: [
       dt.python, dt.django, dt.djangorest, dt.fastapi, dt.sqlserver, 
       dt.postgresql, dt.docker, dt.linux, dt.git, dt.gitlab, 
-      dt.javascript, dt.angular, dt.intelisis, dt.json,
+      dt.javascript, dt.angular, dt.intelisis, dt.json, dt.postman,
       dt.typescript, dt.xml, dt.api, dt.html, dt.css,
       dt.csharp, dt.net, dt.php, dt.codeigniter, dt.jquery
     ],
@@ -47,7 +47,7 @@ tecnologias: [
       dt.javascript, dt.php, dt.java, dt.csharp, dt.python,
       dt.html, dt.css, dt.react, dt.jquery, dt.tailwind, dt.bootstrap,
       dt.nodejs, dt.django, dt.djangorest, dt.laravel, dt.livewire,
-      dt.api, dt.json,
+      dt.api, dt.json, dt.postman,
       dt.sql, dt.mysql, dt.postgresql, dt.sqlite, dt.firebase, dt.supabase,
       dt.git, dt.github, dt.docker, dt.figma, dt.powerbi
     ],
