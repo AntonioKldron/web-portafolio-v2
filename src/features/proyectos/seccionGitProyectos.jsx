@@ -3,16 +3,15 @@ import { useApp } from '@app/context/appContext';
 import { proyectosData } from '@data/proyectos/proyectosData';
 import { useGithubData } from '@services/useGithubData';
 
-// Componentes extraídos
 import EcosistemaGithub from './components/github/ecosistemaGithub';
 import ProyectosLocales from './components/locales/proyectosLocales';
 import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
 import CalendarioGithub from '@features/proyectos/components/github/calendarioGithub';
+import TerminalWrapper from '@features/proyectos/components/ui/terminalWrapper'; 
 
 export default function SeccionGitProyectos() {
   const { isDark, lang } = useApp();
 
-  // 1. OBTENER DATA ESTÁTICA
   const t = useMemo(() => {
     return {
       proyectos: proyectosData.getMerged(lang),
@@ -22,25 +21,20 @@ export default function SeccionGitProyectos() {
     };
   }, [lang]);
 
-  // 2. OBTENER DATA DINÁMICA
   const {
-    githubData,
-    username,
-    isLoading: githubLoading,
-    anioSeleccionado,
-    setAnioSeleccionado,
+    githubData, username, isLoading: githubLoading,
+    anioSeleccionado, setAnioSeleccionado,
   } = useGithubData();
 
   const stats = githubData?.contributionsCollection;
 
   return (
-    <section className="w-full relative">
-      {/* ── AMBIENT GLOW PREMIUM ── */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[600px] pointer-events-none opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-500/20 via-blue-900/5 to-transparent blur-3xl" />
+    <section className="w-full relative py-12 font-mono">
+      {/* ── GLOW DE FONDO (Deep Blue / Purple) ── */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[800px] pointer-events-none opacity-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e1b4b] via-[#0b0f19] to-transparent blur-3xl z-0" />
 
-      <div className="max-w-[90rem] mx-auto flex flex-col relative z-10">
-
-        {/* ── HEADER DE SECCIÓN ── */}
+      <div className="max-w-[90rem] mx-auto flex flex-col relative z-10 px-4 xl:px-0">
+        
         <EncabezadoSeccion
           subtitulo={t.header.subtitulo}
           tituloPrincipal={t.header.tituloPrincipal}
@@ -48,37 +42,44 @@ export default function SeccionGitProyectos() {
           align="right" 
         />
 
-        {/* ── BLOQUE 1: ECOSISTEMA GITHUB ── */}
-        <EcosistemaGithub 
-          isLoading={githubLoading}
-          githubData={githubData}
-          username={username}
-          isDark={isDark}
-          txtGit={t.github}
-          stats={stats}
-        />
-
-        {/* ── BLOQUE 2: PROYECTOS LOCALES ── */}
-        <ProyectosLocales 
-          proyectos={t.proyectos}
-          isDark={isDark}
-          titles={t.titles}
-        />
-
-        {/* ── BLOQUE 3: CALENDARIO ── */}
-        {!githubLoading && githubData && (
-          <div className="flex flex-col w-full">
-            <div className="w-full drop-shadow-2xl">
-              <CalendarioGithub 
-                calendario={stats?.contributionCalendar ?? { weeks: [], totalContributions: 0 }} 
-                isDark={isDark} 
-                anioSeleccionado={anioSeleccionado} 
-                setAnioSeleccionado={setAnioSeleccionado} 
-                t={t.github.calendar || {}} 
+        <div className="mt-8 w-full">
+          {/* ✨ USAMOS EL NUEVO WRAPPER (Modo Estático) ✨ */}
+          <TerminalWrapper 
+            isDark={isDark} 
+            path="dashboard" 
+            hasSlider={false} // Apagamos el Slider
+            heightClass="h-auto" // Que crezca según su contenido (las 3 filas)
+            titleRight="ONLINE"
+          >
+            
+            {/* FILA 1: Ecosistema Github (Edge-to-edge) */}
+            <div className={`w-full border-b ${isDark ? 'border-[#1e293b]' : 'border-slate-200'}`}>
+              <EcosistemaGithub 
+                isLoading={githubLoading} githubData={githubData} username={username} 
+                isDark={isDark} txtGit={t.github} stats={stats}
               />
             </div>
-          </div>
-        )}
+
+            {/* FILA 2: Proyectos Locales (Edge-to-edge) */}
+            <div className={`w-full border-b ${isDark ? 'border-[#1e293b]' : 'border-slate-200'}`}>
+              <ProyectosLocales 
+                proyectos={t.proyectos} isDark={isDark} titles={t.titles}
+              />
+            </div>
+
+            {/* FILA 3: Calendario de Github (Edge-to-edge) */}
+            {!githubLoading && githubData && (
+              <div className="w-full">
+                <CalendarioGithub 
+                  calendario={stats?.contributionCalendar ?? { weeks: [], totalContributions: 0 }} 
+                  isDark={isDark} anioSeleccionado={anioSeleccionado} 
+                  setAnioSeleccionado={setAnioSeleccionado} t={t.github.calendar || {}} 
+                />
+              </div>
+            )}
+
+          </TerminalWrapper>
+        </div>
 
       </div>
     </section>

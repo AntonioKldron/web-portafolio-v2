@@ -21,7 +21,7 @@ export default function PerfilGithub({ perfil, isDark, username, t }) {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      className={`w-full relative p-6 rounded-[2rem] border flex flex-col items-center justify-center gap-4 transition-all shadow-xl overflow-hidden
+      className={`w-full relative p-6 flex flex-col items-center justify-center gap-4 transition-all shadow-xl overflow-hidden
       ${isDark ? 'bg-slate-900/50 border-white/10 shadow-indigo-900/20' : 'bg-white/80 border-slate-200 shadow-indigo-500/10'}`}
     >
       {/* Glow de fondo */}
