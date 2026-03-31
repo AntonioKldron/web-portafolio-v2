@@ -4,7 +4,6 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'es');
-  // Detecta preferencia del sistema o guardada
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
