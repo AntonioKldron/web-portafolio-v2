@@ -4,34 +4,37 @@ import { FaCalendarAlt, FaChevronDown, FaCheck } from 'react-icons/fa';
 
 export default function CalendarioGithub({ calendario, isDark, anioSeleccionado, setAnioSeleccionado, t }) {
   const [isOpen, setIsOpen] = useState(false);
-  const [isChangingYear, setIsChangingYear] = useState(false); // <--- NUEVO ESTADO
+  const [isChangingYear, setIsChangingYear] = useState(false);
   const currentYear = new Date().getFullYear();
   const anios = Array.from({ length: 5 }, (_, i) => currentYear - i);
   const semanas = calendario?.weeks || [];
 
-  // EFECTO PARA QUITAR EL LOADER CUANDO LLEGAN NUEVOS DATOS
   useEffect(() => {
     setIsChangingYear(false);
-  }, [calendario]); // Cuando el objeto calendario cambia, apagamos el loader
+  }, [calendario]);
 
   const handleYearChange = (anio) => {
     if (anio !== anioSeleccionado) {
-      setIsChangingYear(true); // Encendemos el loader
+      setIsChangingYear(true);
       setAnioSeleccionado(anio);
     }
     setIsOpen(false);
   };
 
-  // Escalas de colores
   const neonBlueScale = { level0: "#e2e8f0", level1: "#99e9ff", level2: "#33ccff", level3: "#268ebf", level4: "#1a5a78" };
   const classicGreenScale = { level0: "#ebedf0", level1: "#9be9a8", level2: "#40c463", level3: "#30a14e", level4: "#216e39" };
 
+  // 1. CORRECCIÓN: Manejo de fechas seguro para evitar saltos por Zona Horaria
   const mesesAlineados = useMemo(() => {
     let mesActual = -1;
     return semanas.map((semana) => {
       if (!semana.contributionDays.length) return "";
-      const fecha = new Date(semana.contributionDays[0].date);
-      const mesDeEstaSemana = fecha.getUTCMonth();
+      
+      const fechaStr = semana.contributionDays[0].date;
+      const [year, month, day] = fechaStr.split('-');
+      const fecha = new Date(year, month - 1, day);
+      const mesDeEstaSemana = fecha.getMonth();
+      
       if (mesDeEstaSemana !== mesActual) {
         mesActual = mesDeEstaSemana;
         return fecha.toLocaleString(undefined, { month: 'short' });
@@ -49,7 +52,7 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
       if (count >= 3) return neonBlueScale.level2;
       return neonBlueScale.level1;
     }
-    return dia.color; 
+    return dia.color || classicGreenScale.level0; 
   };
 
   return (
@@ -115,8 +118,6 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
       
       {/* CUERPO DEL CALENDARIO */}
       <div className="w-full overflow-x-auto pb-4 custom-scrollbar relative">
-        
-        {/* LOADER OVERLAY */}
         <AnimatePresence>
           {isChangingYear && (
             <motion.div 
@@ -132,29 +133,43 @@ export default function CalendarioGithub({ calendario, isDark, anioSeleccionado,
         </AnimatePresence>
 
         <div className={`flex gap-1.5 min-w-max transition-opacity duration-300 ${isChangingYear ? 'opacity-30' : 'opacity-100'}`}>
-          <div className="flex flex-col gap-[3px] mt-[20px] shrink-0 pr-2">
+          
+          {/* 2. CORRECCIÓN: Margen top sincronizado con el alto de la fila de meses (16px height + 6px mb = 22px) */}
+          <div className="flex flex-col gap-[3px] mt-[22px] shrink-0 pr-2">
             {t?.days?.map((dia, i) => (
               <div key={i} className="h-3 md:h-3.5 flex items-center justify-end">
-                <span className="text-[8px] font-mono font-bold uppercase text-slate-500">{dia}</span>
+                <span className="text-[9px] font-mono font-bold uppercase text-slate-500">{dia}</span>
               </div>
             ))}
           </div>
 
           <div className="flex flex-col">
-            <div className="flex gap-[3px] mb-1.5 h-4">
+            {/* Fila de Meses */}
+            <div className="flex gap-[3px] mb-1.5 h-4 relative">
               {mesesAlineados.map((mes, index) => (
-                <div key={`mes-${index}`} className="w-3 md:w-3.5 shrink-0 flex items-end">
-                  {mes && <span className="text-[9px] font-mono font-bold text-slate-500 uppercase">{mes}</span>}
+                // 3. CORRECCIÓN: Usar position absolute y whitespace-nowrap para que el mes no expanda el grid
+                <div key={`mes-${index}`} className="w-3 md:w-3.5 shrink-0 relative">
+                  {mes && (
+                    <span className="absolute bottom-0 left-0 text-[10px] font-mono font-bold text-slate-500 uppercase whitespace-nowrap z-10">
+                      {mes}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
 
+            {/* Cuadrícula de Contribuciones */}
             <div className="flex gap-[3px]">
               {semanas.map((semana, i) => (
                 <div key={i} className="flex flex-col gap-[3px]">
                   {Array.from({ length: 7 }).map((_, diaIndex) => {
-                    const dia = semana.contributionDays.find(d => new Date(d.date).getUTCDay() === diaIndex);
-                    if (!dia) return <div key={`empty-${i}-${diaIndex}`} className="w-3 h-3 md:w-3.5 md:h-3.5 opacity-0" />;
+                    // 4. CORRECCIÓN: Parseo seguro para empatar el día exacto de la semana (Domingo=0, Sábado=6)
+                    const dia = semana.contributionDays.find(d => {
+                      const [year, month, dayStr] = d.date.split('-');
+                      return new Date(year, month - 1, dayStr).getDay() === diaIndex;
+                    });
+
+                    if (!dia) return <div key={`empty-${i}-${diaIndex}`} className="w-3 h-3 md:w-3.5 md:h-3.5 rounded-[2px] opacity-0" />;
 
                     const color = getBoxColor(dia);
 
