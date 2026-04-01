@@ -29,7 +29,7 @@ export default function SeccionGitProyectos() {
   const stats = githubData?.contributionsCollection;
 
   return (
-    <section className="w-full relative py-12 font-mono">
+    <section className="w-full relative py-12">
       {/* ── GLOW DE FONDO (Deep Blue / Purple) ── */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[800px] pointer-events-none opacity-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e1b4b] via-[#0b0f19] to-transparent blur-3xl z-0" />
 
