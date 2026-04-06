@@ -1,68 +1,116 @@
 import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { useApp } from '@app/context/appContext'; 
 import { sobreMiData } from '@data/sobreMi/sobreMiData';
 import ItemParrafoSobreMi from '@features/sobreMi/components/itemParrafoSobreMi';
 import CoreStack from '@features/sobreMi/components/coreStack';
 import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
 
+// --- Variantes de Animación ---
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Retardo entre cada párrafo
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const fadeUpVariant = {
+  hidden: { opacity: 0, y: 30, filter: 'blur(5px)' },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    filter: 'blur(0px)',
+    transition: { duration: 0.8, ease: "easeOut" } 
+  },
+};
+
 export default function SeccionSobreMi() {
   const { lang } = useApp();
 
-  // 1. Obtenemos la traducción correcta basada en el idioma actual
-  // Usamos useMemo para evitar recalcular a menos que cambie el idioma
   const t = useMemo(() => {
     return sobreMiData[lang] || sobreMiData.es;
   }, [lang]);
 
-  // Ya no necesitas el "if (isLoading)" porque los datos son locales/estáticos
   if (!t) return null;
 
   return (
-    <div className="mt-4 pt-0 bg-transparent relative font-sans w-full text-main-text">
-      <style>
-        {`@keyframes verticalFlow { 0% { top: -20%; opacity: 0; } 50% { opacity: 0.8; } 100% { top: 100%; opacity: 0; } }
-          .animate-flow-slim { 
-            position: absolute; width: 100%; height: 30%; 
-            background: linear-gradient(to bottom, transparent, var(--color-primary-accent), transparent); 
-            animation: verticalFlow 5s linear infinite; 
-          }`}
-      </style>
+    // Agregamos max-w-7xl y mx-auto para asegurar que no se deforme
+    <div className="max-w-7xl mx-auto relative font-sans w-full text-main-text mt-4 pt-0">
+      
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        variants={fadeUpVariant}
+      >
+        <EncabezadoSeccion 
+          subtitulo={t.subtitulo} 
+          tituloPrincipal={t.tituloPrincipal} 
+          tituloHighlight={t.tituloHighlight}
+          align="left"
+        />
+      </motion.div>
 
-      <EncabezadoSeccion 
-        subtitulo={t.subtitulo} 
-        tituloPrincipal={t.tituloPrincipal} 
-        tituloHighlight={t.tituloHighlight}
-        align="left"
-      />
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-start w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full mt-8">
         
-        <div className="lg:col-span-4 flex flex-col space-y-10 w-full">
-          <div className="relative pl-6 group">
-            {/* Línea vertical decorativa */}
-            <div className="absolute left-0 top-0 h-full w-[1px] bg-white/10 dark:bg-slate-800 rounded-full overflow-hidden">
-              <div className="animate-flow-slim" />
+        {/* COLUMNA IZQUIERDA: Frase y CoreStack */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpVariant}
+          className="lg:col-span-5 flex flex-col space-y-12 w-full"
+        >
+          {/* Tarjeta de Frase Premium con Glow */}
+          <div className="relative pl-8 py-2 group">
+            {/* Línea vertical base */}
+            <div className="absolute left-0 top-0 h-full w-[3px] bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden">
+              {/* Gota de luz animada con Framer Motion */}
+              <motion.div 
+                className="w-full h-1/2 bg-gradient-to-b from-transparent via-blue-500 to-orange-500 rounded-full"
+                animate={{ y: ["-100%", "200%"] }}
+                transition={{ 
+                  repeat: Infinity, 
+                  duration: 2.5, 
+                  ease: "linear" 
+                }}
+              />
             </div>
             
-            <p className="text-lg lg:text-[1.35rem] font-medium leading-[1.35] italic tracking-tight opacity-90">
-              {t.fraseCorta}
+            <p className="text-xl lg:text-[1.45rem] font-medium leading-relaxed italic tracking-tight opacity-90 text-slate-800 dark:text-slate-200">
+              "{t.fraseCorta}"
             </p>
           </div>
 
-          <CoreStack skills={t.coreStack || []} />
-        </div>
+          <div className="w-full">
+            <CoreStack skills={t.coreStack || []} />
+          </div>
+        </motion.div>
 
-        <div className="lg:col-span-8 w-full">
-          <div className="flex flex-col space-y-6"> 
+        {/* COLUMNA DERECHA: Párrafos en Cascada */}
+        <motion.div 
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="lg:col-span-7 w-full"
+        >
+          <div className="flex flex-col space-y-8"> 
             {t.parrafos.map((p, i) => (
-              <ItemParrafoSobreMi 
-                key={i} 
-                texto={p.texto} 
-                highlights={p.highlights} 
-              />
+              <motion.div key={i} variants={fadeUpVariant}>
+                <ItemParrafoSobreMi 
+                  texto={p.texto} 
+                  highlights={p.highlights} 
+                />
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
+
       </div>
     </div>
   );

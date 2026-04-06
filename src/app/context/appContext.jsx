@@ -3,7 +3,9 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  // Inicializamos leyendo el localStorage
   const [lang, setLang] = useState(localStorage.getItem('lang') || 'es');
+  
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme');
     return saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -19,6 +21,10 @@ export const AppProvider = ({ children }) => {
       localStorage.setItem('theme', 'light');
     }
   }, [isDark]);
+
+  useEffect(() => {
+    localStorage.setItem('lang', lang);
+  }, [lang]);
 
   const toggleLang = () => setLang(prev => (prev === 'es' ? 'en' : 'es'));
   const toggleTheme = () => setIsDark(prev => !prev);
