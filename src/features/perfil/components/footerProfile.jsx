@@ -3,7 +3,6 @@ import React from 'react';
 export const ProfileFooter = ({ socials, cv }) => (
   <footer className="pt-8 border-t border-main-border space-y-8 relative z-10">
     <div className="flex items-center justify-between">
-      {/* Iconos Sociales */}
       <div className="flex gap-6 text-xl">
         {socials.map(social => (
           <a 
@@ -17,8 +16,6 @@ export const ProfileFooter = ({ socials, cv }) => (
           </a>
         ))}
       </div>
-
-      {/* Botón de Descarga de CV Dinámico */}
       <a 
         href={cv} 
         download 

@@ -1,9 +1,32 @@
 import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import { motion } from 'framer-motion';
 import { useApp } from '@app/context/appContext'; 
 import { perfilData } from '@data/perfil/perfilData';
 import { ProfileHeader } from '@features/perfil/components/headerProfile';
 import { ProfileNav } from '@features/perfil/components/navProfile';
 import { ProfileFooter } from '@features/perfil/components/footerProfile';
+
+// --- Variantes de Animación para los elementos internos ---
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3, // Espera a que la carta aterrice antes de mostrar el contenido
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -20, filter: 'blur(4px)' },
+  visible: { 
+    opacity: 1, 
+    x: 0, 
+    filter: 'blur(0px)',
+    transition: { type: "spring", stiffness: 120, damping: 14 } 
+  },
+};
 
 export default function MiCartaPerfil({ observerRef }) {
   const [activeSection, setActiveSection] = useState("");
@@ -28,7 +51,8 @@ export default function MiCartaPerfil({ observerRef }) {
       });
     }, { 
       root: container, 
-      rootMargin: '-49% 0px -49% 0px', 
+      // Ajustamos el margen para que el detector sea más preciso en el centro de la pantalla
+      rootMargin: '-30% 0px -60% 0px', 
       threshold: 0 
     });
 
@@ -42,36 +66,33 @@ export default function MiCartaPerfil({ observerRef }) {
   }, []);
 
   return (
-    <div className="
-      informational-card-container
-      flex flex-col justify-between relative z-20 
-      h-auto w-full p-6 border-b gap-6
-      lg:h-full lg:p-12 lg:border-r lg:border-b-0 lg:gap-0
-      overflow-hidden font-sans
-      bg-card-bg text-main-text border-main-border
-    ">
-      {/* Header: Foto, Nombre y Rol dinámico */}
-      <ProfileHeader 
-        foto={foto} 
-        nombre={nombre} 
-        apellido={apellido} 
-        rol={rol} 
-      />
-
-      {/* Navegación: Items de menú traducidos */}
-      <div className="hidden lg:block">
+    <motion.div 
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className="flex flex-col justify-between relative z-20 h-auto lg:h-full w-full p-8 lg:p-12 gap-10 lg:gap-0 font-sans text-main-text bg-transparent"
+    >
+      <motion.div variants={itemVariants} className="w-full">
+        <ProfileHeader 
+          foto={foto} 
+          nombre={nombre} 
+          apellido={apellido} 
+          rol={rol} 
+        />
+      </motion.div>
+      <motion.div variants={itemVariants} className="hidden lg:block w-full">
         <ProfileNav 
           menuItems={menuItems} 
           activeSection={activeSection} 
           onScrollTo={scrollTo} 
         />
-      </div>
-
-      {/* Footer: Redes y CV (español o inglés) */}
-      <ProfileFooter 
-        socials={socials} 
-        cv={cv} 
-      />
-    </div>
+      </motion.div>
+      <motion.div variants={itemVariants} className="w-full">
+        <ProfileFooter 
+          socials={socials} 
+          cv={cv} 
+        />
+      </motion.div>
+    </motion.div>
   );
 }

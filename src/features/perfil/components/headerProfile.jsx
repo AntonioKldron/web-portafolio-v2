@@ -14,7 +14,6 @@ export const ProfileHeader = ({ foto, nombre, apellido, rol }) => {
         </div>
 
         <UtilityButtons customClasses="hidden lg:flex gap-2 scale-75 opacity-30 hover:opacity-100 transition-all duration-500 origin-top-right" />
-        
       </div>
 
       <div className="space-y-1 text-center lg:text-left">

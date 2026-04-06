@@ -6,8 +6,8 @@ import LoaderWeb from '../shared/components/loader/loaderWeb';
 import LoaderMobile from '../shared/components/loader/loaderMobile';
 import LayoutPrincipal from './layout/layoutPrincipal';
 
-// IMPORTAMOS EL PROVEEDOR DEL CONTEXTO GLOBAL
-import { AppProvider } from '@context/appContext';
+// ❌ ELIMINA ESTA LÍNEA: 
+// import { AppProvider } from '@context/appContext';
 
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,7 +16,6 @@ export default function Index() {
 
   useEffect(() => {
     const checkDevice = () => {
-      // Ajustado a 1024px para coincidir con el comportamiento de Tailwind "lg"
       setIsMobile(window.innerWidth < 1024);
     };
 
@@ -32,25 +31,19 @@ export default function Index() {
   }, []);
 
   return (
-    // ENVOLVEMOS TODA LA APLICACIÓN CON EL PROVEEDOR GLOBAL
-    <AppProvider>
-      <div className="relative min-h-screen w-full overflow-x-hidden font-sans">
-
-        <FondoAnimado isActive={true} />
-
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            isMobile ? (
-              <LoaderMobile key="loader-mobile" />
-            ) : (
-              <LoaderWeb key="loader-web" />
-            )
+    <div className="relative min-h-screen w-full overflow-x-hidden font-sans">
+      <FondoAnimado isActive={true} />
+      <AnimatePresence mode="wait">
+        {isLoading ? (
+          isMobile ? (
+            <LoaderMobile key="loader-mobile" />
           ) : (
-            <LayoutPrincipal key="content" observerRef={observerRef} />
-          )}
-        </AnimatePresence>
-
-      </div>
-    </AppProvider>
+            <LoaderWeb key="loader-web" />
+          )
+        ) : (
+          <LayoutPrincipal key="content" observerRef={observerRef} />
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

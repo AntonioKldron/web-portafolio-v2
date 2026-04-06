@@ -210,8 +210,8 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
 
         {/* Otros Lenguajes - Píldoras Elásticas */}
         {others.length > 0 && (
-          <motion.div variants={itemVariants} className="flex-1 overflow-y-auto custom-scrollbar pr-2">
-            <div className="flex flex-wrap gap-2.5">
+          <motion.div variants={itemVariants} className="flex-1 overflow-y-auto custom-scrollbar pr-2 pb-4">
+            <div className="flex flex-wrap gap-3 p-3">
               {others.map((lang) => {
                 const isSelected = hoveredLang === lang.name;
                 const isDimmed = isSomethingHovered && !isSelected;
@@ -225,9 +225,9 @@ export default function LenguajesGithub({ reposStats, isDark, t }) {
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     animate={{ opacity: isDimmed ? 0.3 : 1 }}
-                    className={`flex items-center gap-2 px-3.5 py-2 rounded-xl border text-[11px] font-bold uppercase cursor-pointer transition-colors duration-300
+                    className={`relative flex items-center gap-2 px-3.5 py-2 rounded-xl border text-[11px] font-bold uppercase cursor-pointer transition-colors duration-300
                       ${isDark ? 'bg-white/[0.03] border-white/5' : 'bg-slate-50 border-slate-200'}
-                      ${isSelected ? 'shadow-lg' : ''}`}
+                      ${isSelected ? 'shadow-lg z-10' : 'z-0'}`}
                     style={{ 
                       borderLeft: `4px solid ${lang.color}`,
                       backgroundColor: isSelected ? `${lang.color}15` : undefined,

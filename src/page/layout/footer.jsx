@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     // Se eliminó cualquier rastro de bg o bordes estructurales
-    <footer className="w-full pt-20 pb-16 flex flex-col items-center gap-6 relative overflow-hidden group bg-transparent">
+    <footer className="w-full pt-20 pb-16 flex flex-col items-center gap-6 relative group">
       
       {/* 1. Línea decorativa: Gradiente sutil sin bordes */}
       <div className={`w-full h-[1px] bg-gradient-to-r from-transparent 
@@ -45,8 +45,7 @@ const Footer = () => {
           </span>
           
           <span className={isDark ? "text-purple-600" : "text-white/40"}>//</span>
-          
-          {/* Rol: Se eliminó el 'border-b' en modo Light */}
+
           <span className={isDark 
             ? "bg-gradient-to-r from-cyan-300 to-blue-600 bg-clip-text text-transparent drop-shadow-[0_0_8px_rgba(34,211,238,0.3)]"
             : "text-white"
@@ -56,7 +55,6 @@ const Footer = () => {
         </p>
       </div>
 
-      {/* 4. Resplandores de fondo: Se mantienen mínimos para dar profundidad sin ser un "fondo" sólido */}
       <div className={`absolute -bottom-12 left-1/2 -translate-x-1/2 w-full max-w-3xl h-40 blur-[130px] pointer-events-none transition-all duration-700
         ${isDark ? 'bg-purple-900/10' : 'bg-white/5'}`} 
       />
