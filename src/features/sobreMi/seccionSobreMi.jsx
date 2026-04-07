@@ -38,7 +38,6 @@ export default function SeccionSobreMi() {
   if (!t) return null;
 
   return (
-    // Agregamos max-w-7xl y mx-auto para asegurar que no se deforme
     <div className="max-w-7xl mx-auto relative font-sans w-full text-main-text mt-4 pt-0">
       
       <motion.div
@@ -57,7 +56,6 @@ export default function SeccionSobreMi() {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start w-full mt-8">
         
-        {/* COLUMNA IZQUIERDA: Frase y CoreStack */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -65,11 +63,8 @@ export default function SeccionSobreMi() {
           variants={fadeUpVariant}
           className="lg:col-span-5 flex flex-col space-y-12 w-full"
         >
-          {/* Tarjeta de Frase Premium con Glow */}
           <div className="relative pl-8 py-2 group">
-            {/* Línea vertical base */}
             <div className="absolute left-0 top-0 h-full w-[3px] bg-slate-200/50 dark:bg-slate-800/50 rounded-full overflow-hidden">
-              {/* Gota de luz animada con Framer Motion */}
               <motion.div 
                 className="w-full h-1/2 bg-gradient-to-b from-transparent via-blue-500 to-orange-500 rounded-full"
                 animate={{ y: ["-100%", "200%"] }}
@@ -91,7 +86,6 @@ export default function SeccionSobreMi() {
           </div>
         </motion.div>
 
-        {/* COLUMNA DERECHA: Párrafos en Cascada */}
         <motion.div 
           variants={staggerContainer}
           initial="hidden"

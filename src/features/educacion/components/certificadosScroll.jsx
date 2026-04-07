@@ -76,17 +76,19 @@ export default function CertificadosScroll({ certificaciones, onOpenCert }) {
         <button
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
           className={`w-full flex items-center justify-between pl-4 pr-5 py-3.5 bg-card-bg/40 hover:bg-card-bg/60 backdrop-blur-md border transition-all shadow-lg rounded-xl ${
-            isDropdownOpen ? 'border-primary-accent/50 shadow-[0_0_20px_rgba(var(--color-primary-accent-rgb),0.15)]' : 'border-white/10 hover:border-white/20'
+            isDropdownOpen 
+              ? 'border-primary-accent/50 shadow-[0_0_20px_rgba(var(--color-primary-accent-rgb),0.15)]' 
+              : 'border-main-border hover:border-main-border/80'
           }`}
         >
           <div className="flex items-center gap-3">
             <HiOutlineFilter size={18} className="text-primary-accent opacity-90" />
-            <span className="text-sm font-semibold text-main-text/90">
+            <span className="text-sm font-semibold text-main-text">
               {filtro || 'Todas las plataformas'}
             </span>
           </div>
           <motion.div animate={{ rotate: isDropdownOpen ? 180 : 0 }} transition={{ duration: 0.2 }}>
-            <HiChevronDown size={18} className="text-muted-text/70" />
+            <HiChevronDown size={18} className="text-muted-text" />
           </motion.div>
         </button>
 
@@ -98,27 +100,31 @@ export default function CertificadosScroll({ certificaciones, onOpenCert }) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute top-full left-1 right-1 mt-2 py-2 bg-[#121212]/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.7)] overflow-hidden"
+              className="absolute top-full left-1 right-1 mt-2 py-2 bg-card-bg/95 backdrop-blur-xl border border-main-border rounded-xl shadow-xl overflow-hidden z-50"
             >
               <ul className="max-h-[250px] overflow-y-auto custom-scrollbar flex flex-col px-1">
                 <li 
                   onClick={() => handleSelect('')}
                   className={`flex items-center justify-between px-4 py-2.5 mx-1 rounded-lg cursor-pointer transition-colors text-sm font-medium ${
-                    filtro === '' ? 'bg-primary-accent/10 text-primary-accent' : 'text-white/70 hover:bg-white/5 hover:text-white'
+                    filtro === '' 
+                      ? 'bg-primary-accent/10 text-primary-accent' 
+                      : 'text-muted-text hover:bg-main-border/30 hover:text-main-text'
                   }`}
                 >
                   <span>Todas las plataformas</span>
                   {filtro === '' && <HiCheck size={16} />}
                 </li>
                 
-                <div className="h-[1px] w-full bg-white/5 my-1" />
+                <div className="h-[1px] w-[calc(100%-2rem)] mx-auto bg-main-border/50 my-1 rounded-full" />
 
                 {institucionesUnicas.map((inst, idx) => (
                   <li 
                     key={idx}
                     onClick={() => handleSelect(inst)}
                     className={`flex items-center justify-between px-4 py-2.5 mx-1 rounded-lg cursor-pointer transition-colors text-sm font-medium ${
-                      filtro === inst ? 'bg-primary-accent/10 text-primary-accent' : 'text-white/70 hover:bg-white/5 hover:text-white'
+                      filtro === inst 
+                        ? 'bg-primary-accent/10 text-primary-accent' 
+                        : 'text-muted-text hover:bg-main-border/30 hover:text-main-text'
                     }`}
                   >
                     <span>{inst}</span>
@@ -135,7 +141,7 @@ export default function CertificadosScroll({ certificaciones, onOpenCert }) {
       <div className="relative flex-1 overflow-y-auto lg:overflow-hidden group rounded-2xl p-1 custom-scrollbar">
         
         {certificacionesFiltradas.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-muted-text/50 gap-3 opacity-80">
+          <div className="flex flex-col items-center justify-center h-full text-muted-text gap-3 opacity-80">
             <HiOutlineFilter size={40} className="opacity-50" />
             <p className="text-sm font-medium tracking-wide">No hay certificados en esta categoría.</p>
           </div>
@@ -162,11 +168,11 @@ export default function CertificadosScroll({ certificaciones, onOpenCert }) {
           </motion.div>
         )}
         
-        {/* Gradientes (Solo si hace scroll infinito para efecto de túnel) */}
+        {/* Gradientes (Fundiéndose con tu color de fondo principal para el efecto de túnel) */}
         {shouldScroll && (
           <>
-            <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-main-bg via-main-bg/90 to-transparent z-10 pointer-events-none" />
-            <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-main-bg via-main-bg/90 to-transparent z-10 pointer-events-none" />
+            <div className="absolute top-0 inset-x-0 h-24 bg-gradient-to-b from-card-bg via-card-bg/90 to-transparent z-10 pointer-events-none" />
+            <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-card-bg via-card-bg/90 to-transparent z-10 pointer-events-none" />
           </>
         )}
       </div>

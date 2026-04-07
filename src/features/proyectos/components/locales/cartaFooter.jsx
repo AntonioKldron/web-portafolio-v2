@@ -5,77 +5,98 @@ import DeployBadge from '@features/proyectos/components/locales/deployBadge';
 
 export default function CartaFooter({ data, isDark }) {
   return (
-    <div className="flex flex-col lg:flex-row justify-between items-center gap-10 pt-10 border-t border-white/10">
+    <div className={`flex flex-col xl:flex-row justify-between items-start xl:items-center gap-6 pt-6 border-t transition-colors duration-500 ${isDark ? 'border-white/10' : 'border-slate-200'}`}>
 
-      {/* BOTONES DE ACCIÓN + DEPLOY BADGE */}
-      <div className="flex flex-col gap-3 items-start">
-        <div className="flex gap-4">
+      {/* SECCIÓN IZQUIERDA: Barra de herramientas (Botones + Badge) */}
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 w-full xl:w-auto">
+        
+        {/* Contenedor de botones */}
+        <div className="flex items-center gap-3">
+          
+          {/* Botón de Código (GitHub) */}
           <motion.a
-            whileHover={{ y: -5, scale: 1.05 }}
+            whileHover={{ y: -2 }}
             whileTap={{ scale: 0.95 }}
             href={data.urlRepositorio}
             target="_blank"
             rel="noreferrer"
-            className="p-5 bg-indigo-600 text-white rounded-2xl shadow-xl shadow-indigo-600/20 hover:bg-indigo-500 transition-colors"
+            className={`group flex items-center gap-2.5 px-4 py-2 rounded-full transition-all duration-300 ${
+              isDark
+                ? 'bg-white/5 text-slate-300 hover:bg-white/10 hover:text-white'
+                : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
+            }`}
           >
-            <FaGithub size={24} />
+            <FaGithub size={15} className="transition-transform duration-300 group-hover:scale-110" />
+            <span className="text-[9px] font-bold tracking-[0.2em] uppercase">Código</span>
           </motion.a>
 
+          {/* Botón de Sitio Vivo (Rocket) */}
           {data.urlSitio && (
             <motion.a
-              whileHover={{ y: -5, scale: 1.05 }}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
               href={data.urlSitio}
               target="_blank"
               rel="noreferrer"
-              className={`p-5 rounded-2xl border-2 transition-all ${
+              className={`group flex items-center gap-2.5 px-4 py-2 rounded-full transition-all duration-300 ${
                 isDark
-                  ? 'bg-white/5 border-white/10 text-white hover:bg-white/10'
-                  : 'bg-slate-900 border-slate-800 text-white hover:bg-slate-800'
+                  ? 'bg-indigo-500/10 text-indigo-400 hover:bg-indigo-500/20 hover:text-indigo-300'
+                  : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100'
               }`}
             >
-              <FaRocket size={24} />
+              <FaRocket size={13} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="text-[9px] font-bold tracking-[0.2em] uppercase">Visitar</span>
             </motion.a>
           )}
         </div>
 
-        {/* Deploy badge */}
+        {/* Separador y Badge de Deploy (Solo si existe deploy y en pantallas medianas o mayores) */}
         {data.deploy && (
-          <DeployBadge
-            estado={data.deploy.estado}
-            url={data.deploy.url}
-            isDark={isDark}
-          />
+          <div className="flex items-center gap-4 mt-2 sm:mt-0">
+            {/* Separador vertical "hairline" */}
+            <div className={`hidden sm:block w-px h-5 ${isDark ? 'bg-white/10' : 'bg-slate-200'}`} />
+            
+            <DeployBadge
+              estado={data.deploy.estado}
+              url={data.deploy.url}
+              isDark={isDark}
+            />
+          </div>
         )}
       </div>
 
-      {/* TECH STACK CHIPS */}
-      <div className="flex flex-wrap gap-3 justify-center lg:justify-end">
+      {/* SECCIÓN DERECHA: Tech Stack Chips */}
+      <div className="flex flex-wrap gap-2 justify-start xl:justify-end w-full xl:w-auto">
         {data.tecnologias.map((tech, i) => {
           const techPrimary = tech.primary || 'text-indigo-500';
+          
           return (
             <div
               key={i}
-              className={`flex items-center gap-3 px-4 py-2 rounded-xl border transition-all ${
+              // Diseño exacto de "etiquetas fantasma" (Sin bordes, colores planos en hover)
+              className={`group/t flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors duration-300 cursor-default ${
                 isDark
-                  ? 'bg-black/50 border-white/5 text-slate-400 hover:text-white hover:border-indigo-500/50'
-                  : 'bg-white border-slate-200 text-slate-500 shadow-sm hover:shadow-md'
+                  ? 'bg-white/5 hover:bg-white/10'
+                  : 'bg-slate-50 hover:bg-slate-100/80'
               }`}
             >
-              <span className={`text-2xl drop-shadow-sm ${techPrimary}`}>
+              <span className={`text-[14px] transition-transform duration-300 group-hover/t:scale-110 ${techPrimary}`}>
                 {React.isValidElement(tech.icon)
                   ? React.cloneElement(tech.icon, {
                       className: `${tech.icon.props.className || ''} ${techPrimary}`.trim(),
                     })
                   : tech.icon}
               </span>
-              <span className="text-[11px] font-black uppercase tracking-tight">
+              <span className={`text-[9px] font-bold uppercase tracking-[0.15em] transition-colors duration-300 ${
+                isDark ? 'text-slate-400 group-hover/t:text-slate-200' : 'text-slate-500 group-hover/t:text-slate-800'
+              }`}>
                 {tech.name}
               </span>
             </div>
           );
         })}
       </div>
+      
     </div>
   );
 }

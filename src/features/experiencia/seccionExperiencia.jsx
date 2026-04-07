@@ -17,7 +17,7 @@ export default function ExperienciaSeccion() {
   if (!t) return null;
 
   return (
-    <section className="px-4 bg-transparent relative w-full h-full">
+    <section className="px-4 bg-transparent relative w-full">
       <div className="max-w-7xl mx-auto">
         
         {/* Encabezado con textos dinámicos según el idioma */}

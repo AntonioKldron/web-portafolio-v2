@@ -39,10 +39,10 @@ const proyectosItems = [
     id: 'PROY_01',
     imagen: website,
     imagenes: carruselWebsite,
-    tecnologias: [dt.react, dt.tailwind, dt.vercel, dt.framer].filter(Boolean),
+    tecnologias: [dt.react, dt.tailwind, dt.vercel, dt.json, dt.nodejs].filter(Boolean),
     urlSitio: '/',
     urlRepositorio: 'https://github.com/AntonioKldron/web-portafolio-v2.git',
-    deploy: { estado: 'live', url: 'https://antoniokldron.vercel.app' },
+    deploy: { estado: 'live', url: '/' },
   },
   {
     id: 'PROY_02',
