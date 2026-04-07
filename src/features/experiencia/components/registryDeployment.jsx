@@ -2,50 +2,75 @@ import React from 'react';
 import { FaTerminal, FaGithub, FaPlus, FaMinus, FaRocket } from "react-icons/fa";
 
 export const DeploymentRegistry = ({ proyectos, visibleProjects, showAll, onToggle, isDark }) => (
-  <div className="space-y-6">
-    <div className={`flex justify-between items-center border-b pb-4 ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-      <div className="text-indigo-400 text-xl">
-        <FaRocket />
-      </div>
+  <div className="space-y-1">
+    <div className={`flex justify-between items-center pb-2 border-b transition-colors duration-500 ${isDark ? 'border-white/5 hover:border-white/10' : 'border-slate-100 hover:border-slate-200'}`}>
+      <div className={`flex items-center gap-2 transition-transform duration-500 hover:translate-x-1 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`}>
+        <FaRocket size={14} />
+      </div>  
       {proyectos.length > 3 && (
-        <button onClick={onToggle} className={`text-[10px] font-black uppercase flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${isDark ? 'text-indigo-400 bg-indigo-500/10 border-indigo-500/20' : 'text-indigo-600 bg-indigo-50 border-indigo-100'}`}>
-          {showAll ? <><FaMinus /></> : <><FaPlus />({proyectos.length})</>}
+        <button 
+          onClick={onToggle} 
+          className={`group text-[9px] font-bold tracking-[0.15em] uppercase flex items-center gap-1.5 px-2 py-1 transition-colors duration-300
+            ${isDark ? 'text-slate-500 hover:text-white' : 'text-slate-400 hover:text-indigo-600'}`}
+        >
+          {showAll ? (
+            <><FaMinus size={9} className="transition-transform duration-300 group-hover:-rotate-180" />  </>
+          ) : (
+            <><FaPlus size={9} className="transition-transform duration-300 group-hover:rotate-90" /> ({proyectos.length})</>
+          )}
         </button>
       )}
     </div>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div className="flex flex-col pt-1 group/lista hover:[&>div]:opacity-30 transition-opacity duration-500">
       {visibleProjects.map((pro, i) => (
-        <div key={i} className={`p-5 rounded-2xl border transition-all flex flex-col h-full shadow-2xl group/card ${isDark ? 'bg-gradient-to-br from-white/[0.05] to-transparent border-white/5 hover:border-indigo-500/40' : 'bg-white border-slate-200 hover:border-indigo-300'}`}>
-          <div className="flex justify-between items-start mb-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-indigo-500/10 text-indigo-400"><FaTerminal size={12} /></div>
-              <h4 className={`text-[12px] font-black uppercase italic ${isDark ? 'text-white' : 'text-slate-800'}`}>{pro.nombre}</h4>
-            </div>
-            <a href={pro.repositorio} target="_blank" rel="noreferrer" className="p-2 text-gray-500 hover:text-indigo-400 transition-colors"><FaGithub size={18} /></a>
+        <div 
+          key={i} 
+          className={`group/card relative py-2.5 px-2 md:px-3 rounded-lg transition-all duration-300 ease-out grid grid-cols-1 md:grid-cols-[160px_1fr_auto] lg:grid-cols-[180px_1fr_auto] gap-2 md:gap-8 items-center hover:!opacity-100
+            ${isDark ? 'hover:bg-white/[0.03]' : 'hover:bg-slate-50/80'}`}
+        >
+          <div className="flex items-center gap-3">
+            <span className={`transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-12 ${isDark ? 'text-indigo-500/50 group-hover/card:text-indigo-400' : 'text-indigo-200 group-hover/card:text-indigo-500'}`}>
+              <FaTerminal size={12} />
+            </span>
+            <h4 className={`text-[10px] font-bold tracking-[0.15em] uppercase truncate transition-colors duration-300 
+              ${isDark ? 'text-slate-400 group-hover/card:text-slate-100' : 'text-slate-500 group-hover/card:text-slate-900'}`}>
+              {pro.nombre}
+            </h4>
           </div>
-          <p className="text-[11px] text-gray-400 leading-relaxed mb-6 italic flex-grow">{pro.descripcion}</p>
-          
-          <div className="flex flex-wrap gap-3 mt-auto items-center">
-            {pro.tecnologias?.map((t, idx) => {
-              if (!t || !t.icon) return null;
-              
-              const techPrimary = t.primary || 'text-gray-500';
-
-              return (
-                <span 
-                  key={idx} 
-                  title={t.name}
-                  className={`text-xl flex items-center justify-center transition-transform duration-200 hover:scale-110 ${techPrimary}`}
-                >
-                  {/* Aplicamos la misma solución: Inyectar la clase de color DIRECTAMENTE al icono */}
-                  {React.isValidElement(t.icon) 
-                    ? React.cloneElement(t.icon, { 
-                        className: `${t.icon.props.className || ''} ${techPrimary}`.trim() 
-                      }) 
-                    : t.icon}
-                </span>
-              );
-            })}
+          <div>
+            <p className={`text-[11px] font-light leading-snug transition-colors duration-300 
+              ${isDark ? 'text-slate-500 group-hover/card:text-slate-300' : 'text-slate-400 group-hover/card:text-slate-700'}`}>
+              {pro.descripcion}
+            </p>
+          </div>
+          <div className="flex items-center gap-4 justify-start md:justify-end mt-1 md:mt-0">
+            <div className="flex items-center gap-2.5">
+              {pro.tecnologias?.map((t, idx) => {
+                if (!t || !t.icon) return null;
+                const techPrimary = t.primary || 'text-gray-500';
+                return (
+                  <span 
+                    key={idx} 
+                    title={t.name}
+                    className={`text-[14px] transition-all duration-300 hover:!scale-125 ${techPrimary}`}
+                  >
+                    {React.isValidElement(t.icon) 
+                      ? React.cloneElement(t.icon, { className: `${t.icon.props.className || ''} ${techPrimary}`.trim() }) 
+                      : t.icon}
+                  </span>
+                );
+              })}
+            </div>
+            <div className={`w-[1px] h-3 transition-colors duration-300 ${isDark ? 'bg-white/10' : 'bg-slate-200'}`} />
+            <a 
+              href={pro.repositorio} 
+              target="_blank" 
+              rel="noreferrer" 
+              className={`transition-all duration-300 hover:scale-110 opacity-50 group-hover/card:opacity-100
+                ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-400 hover:text-indigo-600'}`}
+            >
+              <FaGithub size={15} />
+            </a>
           </div>
 
         </div>

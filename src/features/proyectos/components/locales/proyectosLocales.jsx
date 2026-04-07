@@ -10,7 +10,7 @@ export default function ProyectosLocales({ proyectos, isDark, titles }) {
   if (!proyectos || proyectos.length === 0) return null;
 
   return (
-    <div className="flex flex-col gap-4 w-full mt-2">
+    <div className="flex flex-col gap-4 w-full">
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}

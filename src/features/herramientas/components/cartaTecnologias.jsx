@@ -21,20 +21,6 @@ export default function CartaTecnologia({ icono, nombre, colorMarca }) {
         ${isDark ? 'text-slate-500 group-hover:text-slate-200' : 'text-slate-400 group-hover:text-slate-700'}`}>
         {nombre}
       </p>
-
-      {/* Puntitos decorativos sutiles */}
-      <div className="mt-3 flex gap-1.5 overflow-hidden opacity-40 group-hover:opacity-100 transition-opacity duration-300">
-        {[...Array(3)].map((_, i) => (
-          <motion.div 
-            key={i} 
-            animate={{ 
-              backgroundColor: isDark ? ["#475569", "#94a3b8", "#475569"] : ["#cbd5e1", "#64748b", "#cbd5e1"]
-            }} 
-            transition={{ repeat: Infinity, duration: 2, delay: i * 0.3 }} 
-            className="w-1 h-1 rounded-full" 
-          />
-        ))}
-      </div>
     </motion.div>
   );
 }
