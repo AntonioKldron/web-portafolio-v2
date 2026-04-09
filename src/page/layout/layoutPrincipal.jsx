@@ -22,8 +22,12 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    // ✨ CAMBIO AQUÍ: Agregamos `lg:h-screen lg:overflow-hidden` para matar el scroll del "body" en PC.
-    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full lg:h-screen lg:overflow-hidden bg-transparent">
+    /* ✨ CAMBIOS APLICADOS:
+       1. 'max-w-full': Alternativa sólida a overflow-x para asegurar que nada desborde.
+       2. 'overscroll-x-none': Evita el rebote (bounce) horizontal en dispositivos móviles.
+       3. 'contain-paint': (Opcional pero potente) asegura que el renderizado se quede dentro de los límites.
+    */
+    <div className="layout-principal-container informational-card-container relative flex flex-col lg:flex-row w-full max-w-full min-h-[100dvh] lg:h-screen lg:overflow-hidden overscroll-x-none [contain:paint]">
       <Navigation />
 
       {/* PANEL IZQUIERDO: CARTA DE PERFIL */}
@@ -39,7 +43,7 @@ const LayoutPrincipal = ({ observerRef }) => {
       {/* PANEL DERECHO: CONTENIDO PRINCIPAL */}
       <main
         ref={observerRef} 
-        className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
+        className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col bg-transparent flex-grow"
       >
         {SECCIONES.map((sec) => (
           <section
