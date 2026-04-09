@@ -31,7 +31,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="relative min-h-screen w-full overflow-x-hidden font-sans">
+    <div className="relative min-h-[100dvh] w-full font-sans ">
       <FondoAnimado isActive={true} />
       <AnimatePresence mode="wait">
         {isLoading ? (

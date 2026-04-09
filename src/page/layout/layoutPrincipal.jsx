@@ -22,12 +22,11 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full min-h-screen bg-transparent overflow-x-hidden">
-      
+    // ✨ CAMBIO AQUÍ: Agregamos `lg:h-screen lg:overflow-hidden` para matar el scroll del "body" en PC.
+    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full lg:h-screen lg:overflow-hidden bg-transparent">
       <Navigation />
 
       {/* PANEL IZQUIERDO: CARTA DE PERFIL */}
-      {/* Eliminamos el 'pr-20' que te robaba espacio en móvil. Ahora usa 'px-4' (padding simétrico en móvil) */}
       <motion.aside 
         className="informational-card-container w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 px-4 sm:px-8 lg:px-0"
         initial={{ opacity: 0 }}
@@ -38,7 +37,6 @@ const LayoutPrincipal = ({ observerRef }) => {
       </motion.aside>
 
       {/* PANEL DERECHO: CONTENIDO PRINCIPAL */}
-      {/* Reemplazamos 'pl-6 pr-20' por 'px-4 sm:px-8' para que ocupe todo el ancho en celulares sin salirse */}
       <main
         ref={observerRef} 
         className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col"
