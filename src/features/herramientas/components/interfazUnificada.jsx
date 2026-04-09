@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useApp } from '@app/context/appContext';
 import CartaTecnologia from './cartaTecnologias';
 import CarruselInfinito from './carruselInfinito';
-import TerminalHeader from './TerminalHeader';
-import TerminalNavigation from './TerminalNavigation';
-import TerminalFooter from './TerminalFooter';
+import TerminalHeader from './terminalHeader';
+import TerminalNavigation from './terminalNavigation';
+import TerminalFooter from './terminalFooter';
 
 export const ConsolaContext = createContext();
 
