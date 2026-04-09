@@ -22,15 +22,8 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    /* ✨ CAMBIOS APLICADOS:
-       1. 'max-w-full': Alternativa sólida a overflow-x para asegurar que nada desborde.
-       2. 'overscroll-x-none': Evita el rebote (bounce) horizontal en dispositivos móviles.
-       3. 'contain-paint': (Opcional pero potente) asegura que el renderizado se quede dentro de los límites.
-    */
-    <div className="layout-principal-container informational-card-container relative flex flex-col lg:flex-row w-full max-w-full min-h-[100dvh] lg:h-screen lg:overflow-hidden overscroll-x-none [contain:paint]">
+    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full max-w-full min-h-[100dvh] lg:h-screen lg:overflow-hidden overscroll-x-none [contain:paint] bg-[var(--color-bg-card)] lg:bg-transparent">
       <Navigation />
-
-      {/* PANEL IZQUIERDO: CARTA DE PERFIL */}
       <motion.aside 
         className="informational-card-container w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 px-4 sm:px-8 lg:px-0"
         initial={{ opacity: 0 }}
@@ -39,8 +32,6 @@ const LayoutPrincipal = ({ observerRef }) => {
       >
         <MiCartaPerfil observerRef={observerRef} />
       </motion.aside>
-
-      {/* PANEL DERECHO: CONTENIDO PRINCIPAL */}
       <main
         ref={observerRef} 
         className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 sm:px-8 md:px-16 lg:px-20 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth relative z-10 flex flex-col bg-transparent flex-grow"
