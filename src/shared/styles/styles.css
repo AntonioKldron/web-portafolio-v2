@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+/* =========================================================
+   1. BASE LAYER: Variables y Reseteos Globales
+   ========================================================= */
 @layer base {
   :root {
     /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
-    --color-bg-screen: #ffffff6c;      /* Gris perlado muy claro */
+    --color-bg-screen: #ffffff6c;      
     --bg-grad-1: #e3e7ffba;            
     --bg-grad-2: #a8bff8;            
-    
-    /* Esta sombra es el "brillo" de tus luces originales. 
-       Usamos un azul suave translúcido para que se vean en el fondo claro */
     --shadow-color: rgba(0, 61, 165, 0.87); 
 
-    --color-bg-card: #ffffff;        /* Carta Blanca */
+    --color-bg-card: #ffffff;        
     --color-border: #e2e8f0;         
 
-    /* Letras Lado Derecho (Sobre fondo claro) */
-    --color-text-right: #08009a;     /* Gris pizarra oscuro (excelente lectura) */
-    
-    /* Letras Carta (Sobre Blanco) */
-    --color-text-card-base: #002c8c;  /* Casi negro para buen contraste */
-    --color-text-card-muted: #001c44; /* Gris medio (también pinta el centro de tus luces) */
-    --color-primary-accent: #2563eb;  /* Azul profesional para links/iconos */
+    --color-text-right: #08009a;     
+    --color-text-card-base: #002c8c;  
+    --color-text-card-muted: #001c44; 
+    --color-primary-accent: #2563eb;  
   }
 
   .dark {
@@ -28,18 +29,50 @@
     --color-bg-screen: #020617; 
     --bg-grad-1: #0f172a; 
     --bg-grad-2: #020617; 
-    --shadow-color: #6366f1;         /* Brillo índigo neón original */
+    --shadow-color: #6366f1;         
 
-    --color-bg-card: #0f172a;        /* Carta oscura */
+    --color-bg-card: #0f172a;        
     --color-border: #1e293b; 
 
-    /* Letras Blancas para visibilidad total */
     --color-text-right: #f8fafc;      
     --color-text-card-base: #f8fafc;   
     --color-text-card-muted: #cbd5e1;  
     --color-primary-accent: #818cf8;   
   }
 
+  /* ✅ AGREGADO: Aseguramos que React y el body no rompan tu layout ni generen scroll fantasma */
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* NO ponemos overflow aquí, dejamos que tus divs controlen eso */
+  }
+
+  #root {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   2. THEME: Conexión de variables a Tailwind
+   ========================================================= */
+@theme {
+  --color-card-bg: var(--color-bg-card);
+  --color-main-border: var(--color-border);
+  --color-main-text: var(--color-text-right);
+  --color-card-text: var(--color-text-card-base);
+  --color-muted-text: var(--color-text-card-muted);
+  --color-primary-accent: var(--color-primary-accent);
+  --color-screen-bg: var(--color-bg-screen);
+}
+
+/* =========================================================
+   3. COMPONENTS LAYER: Estilos específicos de tus componentes
+   ========================================================= */
+@layer components {
   /* --- APLICACIÓN EN LA CARTA (IZQUIERDA) --- */
   .informational-card-container {
     background-color: var(--color-bg-card) !important;
@@ -72,7 +105,6 @@
     color: var(--color-text-right) !important;
   }
 
-  /* Highlights (Strong/B) - Ahora usan un morado/azul acorde al tema para no desentonar */
   .reveal-section strong, 
   .reveal-section b {
     color: var(--color-primary-accent) !important;
@@ -88,23 +120,9 @@
       z-index: 10;
     }
   }
-}
 
-@theme {
-  --color-card-bg: var(--color-bg-card);
-  --color-main-border: var(--color-border);
-  --color-main-text: var(--color-text-right);
-  --color-card-text: var(--color-text-card-base);
-  --color-muted-text: var(--color-text-card-muted);
-  --color-primary-accent: var(--color-primary-accent);
-  --color-screen-bg: var(--color-bg-screen);
-}
-
-/* =========================================================
-   ANIMACIÓN ORIGINAL DE LUCES (INTACTA)
-   ========================================================= */
-
-#floating-bg {
+  /* --- ANIMACIÓN ORIGINAL DE LUCES --- */
+  #floating-bg {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -116,13 +134,13 @@
     transition: opacity 0.8s ease;
     background: radial-gradient(circle at center, var(--bg-grad-1), var(--bg-grad-2));
     overflow: hidden;
-}
+  }
 
-#floating-bg.active {
+  #floating-bg.active {
     opacity: 1;
-}
+  }
 
-.light {
+  .light {
     position: absolute;
     width: 0px;
     background-color: var(--color-text-card-muted); 
@@ -133,52 +151,57 @@
     right: 0;
     margin: auto;
     opacity: 0.75;
+  }
+
+  .x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
+  .x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
+  .x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
+  .x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
+  .x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
+  .x6 { animation: floatUp 3s infinite linear; transform: scale(0.8); left: -81%; }
+  .x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
+  .x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
+  .x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
 }
 
-/* Instancias de animación */
-.x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
-.x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
-.x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
-.x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
-.x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
-.x6 { animation: floatUp 3s infinite linear; transform: scale(0.8); left: -81%; }
-.x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
-.x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
-.x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
-
-@keyframes floatUp {
+/* =========================================================
+   4. UTILITIES LAYER: Clases de utilidad
+   ========================================================= */
+@layer utilities {
+  @keyframes floatUp {
     0%   { top: 100vh; opacity: 0; }
     25%  { opacity: 1; }
     50%  { top: 50vh; opacity: 0.8; }
     75%  { opacity: 1; }
     100% { top: -10vh; opacity: 0; }
-}
-/* --- SCROLLBAR ULTRA-LIMPIA --- */
-.custom-scrollbar {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
-}
+  }
 
-/* Chrome, Edge y Safari */
-.custom-scrollbar::-webkit-scrollbar {
-  width: 3px; 
-}
+  /* --- SCROLLBAR ULTRA-LIMPIA --- */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent; 
-  margin-block: 40px; 
-}
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px; 
+  }
 
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.2);
-  border-radius: 20px;
-  transition: background 0.4s ease, opacity 0.4s ease;
-}
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; 
+    margin-block: 40px; 
+  }
 
-.custom-scrollbar:hover::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.4);
-}
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    transition: background 0.4s ease, opacity 0.4s ease;
+  }
 
-.custom-scrollbar::-webkit-scrollbar-thumb:active {
-  background: rgba(148, 163, 184, 0.6);
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.4);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:active {
+    background: rgba(148, 163, 184, 0.6);
+  }
 }

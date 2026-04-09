@@ -23,6 +23,15 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
 
   const springFisica = { type: "spring", stiffness: 350, damping: 28, mass: 0.8 };
 
+  // Scrollbar minimalista para que no estorbe si hay muchas categorías
+  const slimScrollbar = `
+    [&::-webkit-scrollbar]:w-1 
+    [&::-webkit-scrollbar-track]:bg-transparent 
+    [&::-webkit-scrollbar-thumb]:rounded-full 
+    [&::-webkit-scrollbar-thumb]:bg-slate-300/50 hover:[&::-webkit-scrollbar-thumb]:bg-slate-400/80
+    ${isDark ? 'dark:[&::-webkit-scrollbar-thumb]:bg-cyan-500/20 dark:hover:[&::-webkit-scrollbar-thumb]:bg-cyan-500/40' : ''}
+  `;
+
   return (
     <>
       {/* MÓVIL */}
@@ -36,7 +45,6 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
               : 'bg-white/40 border-slate-200 shadow-xl'}`}
         >
           <div className="flex items-center gap-3">
-            {/* ✨ COLOR CAMBIADO A CYAN NEÓN */}
             <div className={`text-2xl drop-shadow-[0_0_8px_rgba(6,182,212,0.6)] ${isDark ? 'text-cyan-400' : 'text-indigo-600'}`}>
               {categorias[indiceActivo]?.icon}
             </div>
@@ -55,10 +63,12 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
           {estaAbierto && (
             <motion.div 
               variants={contenedorVariantes} initial="hidden" animate="visible" exit="exit"
-              className={`absolute top-[110%] left-2 right-2 rounded-2xl backdrop-blur-xl overflow-hidden z-50 p-2 border
+              className={`absolute top-[110%] left-2 right-2 rounded-2xl backdrop-blur-xl overflow-y-auto z-50 p-2 border max-h-[60vh] ${slimScrollbar}
                 ${isDark ? 'bg-slate-900/95 border-cyan-500/30 shadow-2xl' : 'bg-white/95 border-slate-200 shadow-xl'}`}
             >
               {categorias.map((cat, idx) => {
+                if (!cat.items || cat.items.length === 0) return null;
+
                 const esActivo = indiceActivo === idx;
                 return (
                   <motion.button 
@@ -94,17 +104,17 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
       </div>
 
       {/* ESCRITORIO */}
-      <div className={`hidden lg:flex flex-col gap-2 p-2 border rounded-2xl backdrop-blur-md z-30 max-w-[260px] shrink-0 transition-all duration-700
+      {/* ✨ Cambio clave 1: `h-full` en lugar de `max-h-[85vh]` para que tome el alto del padre */}
+      <div className={`hidden lg:flex flex-col gap-1 p-1.5 border rounded-2xl backdrop-blur-md z-30 max-w-[200px] w-full shrink-0 h-full transition-all duration-700
         ${isDark 
           ? 'bg-slate-950/40 border-cyan-500/30 shadow-[0_0_40px_-15px_rgba(6,182,212,0.3)]' 
           : 'bg-white/40 border-slate-200 shadow-xl'}`}
       >
-        <div className={`flex items-center justify-between px-4 py-3 border-b mb-1 
+        <div className={`flex items-center justify-between px-3 py-2 border-b shrink-0
           ${isDark ? 'border-cyan-500/20' : 'border-slate-200'}`}>
-          <div className="flex gap-2">
+          <div className="flex gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full bg-red-500/50" />
             <div className="w-2.5 h-2.5 rounded-full bg-amber-500/50" />
-            {/* ✨ CIRCULITO DE VENTANA TAMBIÉN EN CYAN */}
             <div className={`w-2.5 h-2.5 rounded-full ${isDark ? 'bg-cyan-500/50 shadow-[0_0_5px_rgba(6,182,212,0.5)]' : 'bg-emerald-500/50'}`} />
           </div>
           <span className={`text-[8px] font-mono uppercase tracking-[0.3em] font-bold 
@@ -113,18 +123,21 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
           </span>
         </div>
 
-        <div className="flex flex-col px-1 pb-1 relative">
+        {/* ✨ Cambio clave 2: `flex-1 min-h-0` fuerza al contenedor interno a hacer scroll sin empujar la altura del padre */}
+        <div className={`flex-1 min-h-0 flex flex-col px-1 py-1 relative overflow-y-auto ${slimScrollbar} pr-1`}>
           {categorias.map((cat, idx) => {
+            if (!cat.items || cat.items.length === 0) return null;
+
             const esActivo = indiceActivo === idx;
             return (
               <motion.button 
                 key={cat.id} 
                 onClick={() => alSeleccionar(idx)} 
                 layout
-                className={`group relative flex items-center w-full px-4 gap-4 transition-all duration-200 rounded-xl
+                className={`group relative flex items-center w-full px-3 gap-3 transition-all duration-200 rounded-xl shrink-0
                   ${esActivo 
-                    ? 'py-3.5 my-1.5' 
-                    : 'py-2 my-0 opacity-60 hover:opacity-100'
+                    ? 'py-2 my-0.5' 
+                    : 'py-1 my-0 opacity-60 hover:opacity-100'
                   }`}
               >
                 {esActivo && (
@@ -153,7 +166,7 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
 
                 <motion.div 
                   layout="position"
-                  className={`text-[1.35rem] relative z-20 transition-transform duration-300 group-hover:scale-110 ${
+                  className={`text-lg relative z-20 transition-transform duration-300 group-hover:scale-110 ${
                     esActivo 
                       ? (isDark ? 'text-cyan-400' : 'text-indigo-600') 
                       : (isDark ? 'text-slate-500 group-hover:text-cyan-300' : 'text-slate-400 group-hover:text-indigo-500')
@@ -164,7 +177,7 @@ export default function MenuNavegacionStack({ categorias, indiceActivo, alSelecc
 
                 <motion.h3 
                   layout="position"
-                  className={`text-[10px] font-mono font-bold uppercase tracking-[0.15em] relative z-20 transition-colors ${
+                  className={`text-[9px] font-mono font-bold uppercase tracking-[0.1em] text-left truncate relative z-20 transition-colors ${
                     esActivo 
                       ? (isDark ? 'text-white' : 'text-slate-900') 
                       : (isDark ? 'text-slate-400' : 'text-slate-500')

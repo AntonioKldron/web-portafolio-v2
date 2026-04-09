@@ -1,21 +1,100 @@
 import React from 'react';
 import { data as dt } from '@data/icons/iconsRegistro';
-import { FaCode, FaCogs, FaReact, FaDatabase, FaAws, FaGitAlt } from 'react-icons/fa';
+
+// Importamos íconos representativos para cada categoría (usando react-icons)
+import { 
+  FaCode, FaCogs, FaReact, FaLayerGroup, FaMobileAlt, 
+  FaDatabase, FaCloud, FaGitAlt, FaLaptopCode, FaUsers, 
+  FaRobot, FaGamepad, FaMicrochip, FaGraduationCap 
+} from 'react-icons/fa';
 import { AiOutlineGold } from 'react-icons/ai';
 
 export const herramientasCategorias = [
-  { id: 'cat-1', icon: <FaCode />,         items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] },
-  { id: 'cat-2', icon: <FaCogs />,         items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest] },
-  { id: 'cat-3', icon: <FaReact />,        items: [dt.html, dt.css, dt.astro, dt.react, dt.tailwind, dt.bootstrap] },
-  { id: 'cat-4', icon: <AiOutlineGold />,  items: [dt.peoplesoft, dt.intelisis] },
-  { id: 'cat-5', icon: <FaDatabase />,     items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.supabase, dt.sqlite] },
-  { id: 'cat-6', icon: <FaAws />,          items: [dt.docker, dt.linux, dt.windows, dt.vercel] },
-  { id: 'cat-7', icon: <FaGitAlt />,       items: [dt.postman, dt.terminal, dt.vstudio, dt.powerbi ,dt.vscode, dt.cursor, dt.jetbrains, dt.git, dt.gitlab, dt.github, dt.trello, dt.figma, dt.termius] },
+  { 
+    id: 'cat-1-lenguajes', 
+    icon: <FaCode />, 
+    items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] 
+  },
+  { 
+    id: 'cat-2-backend', 
+    icon: <FaCogs />, 
+    items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest] 
+  },
+  { 
+    id: 'cat-3-frontend', 
+    icon: <FaReact />, 
+    items: [dt.react, dt.vue, dt.tailwind, dt.html, dt.css, dt.bootstrap, dt.astro] 
+  },
+  { 
+    id: 'cat-4-meta-frameworks', 
+    icon: <FaLayerGroup />, 
+    items: [] 
+  },
+  { 
+    id: 'cat-5-movil', 
+    icon: <FaMobileAlt />, 
+    items: [] 
+  },
+  { 
+    id: 'cat-6-bases-de-datos', 
+    icon: <FaDatabase />, 
+    items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.sqlite] 
+  },
+  { 
+    id: 'cat-7-cloud-baas', 
+    icon: <FaCloud />, 
+    items: [dt.vercel, dt.firebase, dt.supabase] 
+  },
+  { 
+    id: 'cat-8-devops', 
+    icon: <FaGitAlt />, 
+    items: [dt.docker, dt.git, dt.gitlab, dt.github] 
+  },
+  { 
+    id: 'cat-9-dev-tools', 
+    icon: <FaLaptopCode />, 
+    items: [dt.vscode, dt.vstudio, dt.jetbrains, dt.antigravity, dt.cursor, dt.jupyter, dt.postman, dt.termius, dt.terminal, dt.figma, dt.api, dt.json, dt.xml, dt.markdown, dt.powerbi] 
+  },
+  { 
+    id: 'cat-10-productividad', 
+    icon: <FaUsers />, 
+    items: [dt.teams, dt.discord, dt.trello, dt.office365] 
+  },
+  { 
+    id: 'cat-11-ia', 
+    icon: <FaRobot />, 
+    items: [dt.gemini, dt.openia, dt.copilot] 
+  },
+  { 
+    id: 'cat-12-game-dev', 
+    icon: <FaGamepad />, 
+    items: [] 
+  },
+  { 
+    id: 'cat-13-erp-cms', 
+    icon: <AiOutlineGold />, 
+    items: [dt.peoplesoft, dt.intelisis] 
+  },
+  { 
+    id: 'cat-14-os-hardware', 
+    icon: <FaMicrochip />, 
+    items: [dt.linux, dt.windows] 
+  }
 ];
 
 const categoriaTitulos = {
-  es: ['Lenguajes', 'Backend',  'Frontend', 'ERP Solutions', 'Bases de Datos', 'Infraestructura', 'Dev Tools'],
-  en: ['Languages', 'Backend',  'Frontend', 'ERP Solutions', 'Databases',      'Infrastructure',  'Dev Tools'],
+  es: [
+    'Lenguajes', 'Backend', 'Frontend', 'Meta-Frameworks', 'Móvil', 
+    'Bases de Datos', 'Cloud & BAAS', 'DevOps', 'Dev Tools', 
+    'Productividad', 'IA', 'Game Dev', 'ERP & CMS', 
+    'OS & Hardware'
+  ],
+  en: [
+    'Languages', 'Backend', 'Frontend', 'Meta-Frameworks', 'Mobile', 
+    'Databases', 'Cloud & BAAS', 'DevOps', 'Dev Tools', 
+    'Productivity', 'AI', 'Game Dev', 'ERP & CMS', 
+    'OS & Hardware'
+  ],
 };
 
 export const herramientasStaticData = {

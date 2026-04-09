@@ -1,59 +1,52 @@
 import React, { useState, useMemo } from 'react';
 import { useApp } from '@app/context/appContext'; 
 import { herramientasData } from '@data/herramientas/herramientasData';
-import MenuNavegacionStack from '@features/herramientas/components/menuNavegacionStack';
-import VisorTecnologico from '@features/herramientas/components/visorTecnologico';
 import EncabezadoSeccion from '@shared/components/encabezadoSeccion';
+import InterfazUnificada from '@features/herramientas/components/interfazUnificada';
+import TerminalNavigation from '@features/herramientas/components/TerminalNavigation'; 
 
 export default function SeccionHerramientas() {
   const [indiceCategoria, setIndiceCategoria] = useState(0);
-  const { lang } = useApp();
+  const { lang, isDark } = useApp();
 
-  // 1. Obtenemos la traducción correcta basada en el idioma actual
-  const t = useMemo(() => {
-    return herramientasData[lang] || herramientasData.es;
-  }, [lang]);
+  const t = useMemo(() => herramientasData[lang] || herramientasData.es, [lang]);
 
-  // Si no hay data por alguna razón, no renderizamos nada para evitar errores
   if (!t) return null;
 
-  // Las categorías ya vienen filtradas por idioma dentro de 't'
   const categoriasConIconos = t.categorias || [];
-  const categoriaActual = categoriasConIconos[indiceCategoria];
 
   return (
-    <section className="py-12 px-4 bg-transparent relative font-sans w-full">
-      <div className="max-w-7xl mx-auto space-y-10">
-
-        {/* Encabezado con textos traducidos */}
+    /* ✅ Quitamos py-20 para eliminar el espacio arriba y abajo de la sección */
+    /* ✅ Usamos h-auto en lugar de min-h-screen para que no fuerce un tamaño gigante si no es necesario */
+    <section className="px-4 bg-transparent relative font-sans w-full h-auto flex flex-col justify-center">
+      
+      {/* ✅ Reducimos space-y-12 a space-y-6 o eliminamos si quieres pegarlo más al encabezado */}
+      <div className="max-w-7xl mx-auto w-full space-y-6 py-10">
+        
         <EncabezadoSeccion
           subtitulo={t.header.subtitulo}
           tituloPrincipal={t.header.tituloPrincipal}
           tituloHighlight={t.header.tituloHighlight}
-          align="right"
+          align="right" 
         />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-
-          {/* VISOR (Consola) - Muestra las herramientas de la categoría seleccionada */}
-          <div className="lg:col-span-8 order-last lg:order-first h-full flex items-center">
-            <VisorTecnologico
-              items={categoriaActual?.items || []}
-              idCategoria={categoriaActual?.id}
-              tituloCategoria={categoriaActual?.title}
-            />
-          </div>
-
-          {/* NAVEGACIÓN - El menú de la derecha para cambiar de categoría */}
-          <div className="lg:col-span-4 order-first lg:order-last flex justify-center lg:justify-end">
-            <MenuNavegacionStack
-              categorias={categoriasConIconos}
-              indiceActivo={indiceCategoria}
-              alSeleccionar={setIndiceCategoria}
-            />
-          </div>
-
+        {/* --- SELECT PARA MÓVIL --- */}
+        <div className="md:hidden w-full">
+          <TerminalNavigation 
+            categorias={categoriasConIconos}
+            indiceCategoria={indiceCategoria}
+            setIndiceCategoria={setIndiceCategoria}
+            isDark={isDark}
+            mobileMode="select" 
+          />
         </div>
+
+        <InterfazUnificada 
+          categorias={categoriasConIconos}
+          indiceCategoria={indiceCategoria}
+          setIndiceCategoria={setIndiceCategoria}
+        />
+
       </div>
     </section>
   );

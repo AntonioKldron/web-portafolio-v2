@@ -19,7 +19,7 @@ const baseData = {
       dt.postgresql, dt.docker, dt.linux, dt.git, dt.gitlab, 
       dt.javascript, dt.angular, dt.intelisis, dt.json, dt.postman,
       dt.typescript, dt.xml, dt.api, dt.html, dt.css,
-      dt.csharp, dt.net, dt.php, dt.codeigniter, dt.jquery
+      dt.csharp, dt.netframework, dt.php, dt.codeigniter, dt.jquery
     ],
     proyectos: [ 
       { tecnologias: [dt.sql, dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
@@ -35,7 +35,7 @@ const baseData = {
       { tecnologias: [dt.sql,dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
       { tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
-      { tecnologias: [dt.sql, dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.net], repositorio: "/404" },
+      { tecnologias: [dt.sql, dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.netframework], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.php, dt.jquery, dt.javascript, dt.css, dt.html, dt.codeigniter], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.postgresql, dt.djangorest, dt.django, dt.api, dt.python, dt.json], repositorio: "/404" },
     ]
