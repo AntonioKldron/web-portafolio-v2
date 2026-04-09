@@ -63,7 +63,7 @@ export const herramientasCategorias = [
   { 
     id: 'cat-11-ia', 
     icon: <FaRobot />, 
-    items: [dt.gemini, dt.openia, dt.copilot] 
+    items: [] 
   },
   { 
     id: 'cat-12-game-dev', 
