@@ -6,14 +6,13 @@ import { ProfileHeader } from '@features/perfil/components/headerProfile';
 import { ProfileNav } from '@features/perfil/components/navProfile';
 import { ProfileFooter } from '@features/perfil/components/footerProfile';
 
-// --- Variantes de Animación para los elementos internos ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
       staggerChildren: 0.2,
-      delayChildren: 0.3, // Espera a que la carta aterrice antes de mostrar el contenido
+      delayChildren: 0.3, 
     },
   },
 };
@@ -30,15 +29,13 @@ const itemVariants = {
 
 export default function MiCartaPerfil({ observerRef }) {
   const [activeSection, setActiveSection] = useState("");
-  const { lang } = useApp(); 
+  const { lang, isDark } = useApp(); 
 
-  // Combinamos la base con la traducción actual (es/en)
   const currentData = useMemo(() => {
     const translation = perfilData[lang] || perfilData.es;
     return { ...perfilData, ...translation };
   }, [lang]);
 
-  // Desestructuramos la data combinada
   const { nombre, apellido, foto, socials, rol, cv, menuItems } = currentData;
 
   useEffect(() => {
@@ -51,7 +48,6 @@ export default function MiCartaPerfil({ observerRef }) {
       });
     }, { 
       root: container, 
-      // Ajustamos el margen para que el detector sea más preciso en el centro de la pantalla
       rootMargin: '-30% 0px -60% 0px', 
       threshold: 0 
     });
@@ -70,7 +66,8 @@ export default function MiCartaPerfil({ observerRef }) {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
-      className="flex flex-col justify-between relative z-20 h-auto lg:h-full w-full p-8 lg:p-12 gap-10 lg:gap-0 font-sans text-main-text bg-transparent"
+      className={`flex flex-col justify-between relative z-20 h-auto lg:h-full w-full p-8 lg:p-12 gap-10 lg:gap-0 font-sans text-main-text transition-colors duration-500 rounded-none bg-transparent lg:shadow-2xl lg:border
+        ${isDark ? 'lg:bg-slate-900 lg:border-slate-800' : 'lg:bg-white lg:border-slate-100'}`}
     >
       <motion.div variants={itemVariants} className="w-full">
         <ProfileHeader 

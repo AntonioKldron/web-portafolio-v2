@@ -10,7 +10,6 @@ import SeccionGitProyectos from '@features/proyectos/seccionGitProyectos';
 import SeccionEducacion from '@features/educacion/seccionEducacion';
 import Footer from './footer';
 
-
 const SECCIONES = [
   { id: 'sobre-mi', component: <SeccionSobreMi /> },
   { id: 'herramientas', component: <SeccionHerramientas /> },
@@ -22,26 +21,32 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="relative flex flex-col lg:flex-row w-full min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--color-bg-card)] lg:bg-transparent">
+    <div className="relative flex flex-col lg:flex-row w-full lg:h-screen lg:overflow-hidden bg-transparent">
+      
       <div className="z-50">
         <Navigation />
       </div>
       <motion.aside 
         className="w-full lg:w-[25%] lg:fixed lg:h-screen z-20"
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1 }}
       >
         <MiCartaPerfil observerRef={observerRef} />
       </motion.aside>
+      
+      {/* Contenedor Main: h-auto y overflow-visible en móvil */}
       <main
         ref={observerRef} 
-        className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 md:px-16 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth z-10 flex flex-col flex-grow"
+        className="custom-scrollbar w-full lg:w-[75%] lg:ml-[25%] px-4 md:px-16 xl:px-32 h-auto lg:h-screen overflow-visible lg:overflow-y-auto scroll-smooth z-10 flex flex-col flex-grow"
       >
         {SECCIONES.map(({ id, component }) => (
-          <section key={id} id={id} className="reveal-section w-full py-4 overflow-x-hidden">
+          <section key={id} id={id} className="reveal-section w-full py-4">
             {component}
           </section>
         ))}
       </main>
+      
     </div>
   );
 };

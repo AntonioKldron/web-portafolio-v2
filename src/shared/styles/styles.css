@@ -4,6 +4,15 @@
    1. BASE LAYER: Variables y Reseteos Globales
    ========================================================= */
 @layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* ✅ Usa clip en lugar de hidden. Clip corta sin crear barras de scroll */
+    overflow-x: clip; 
+    /* ✅ Evita el efecto rebote "goma" en iOS que parece un doble scroll */
+    overscroll-behavior-y: none; 
+  }
   :root {
     /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
     --color-bg-screen: #ffffff6c;      
@@ -34,21 +43,6 @@
     --color-text-card-base: #f8fafc;   
     --color-text-card-muted: #cbd5e1;  
     --color-primary-accent: #818cf8;   
-  }
-
-  /* ✅ AGREGADO: Aseguramos que React y el body no rompan tu layout ni generen scroll fantasma */
-  html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    /* NO ponemos overflow aquí, dejamos que tus divs controlen eso */
-  }
-
-  #root {
-    min-height: 100dvh;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
   }
 }
 
@@ -120,7 +114,8 @@
   /* --- ANIMACIÓN ORIGINAL DE LUCES --- */
   #floating-bg {
     position: fixed;
-    width: 100vw;
+    /* ✅ CAMBIO CLAVE: 100vw causa scroll horizontal. 100% se adapta perfectamente al contenedor padre */
+    width: 100%;
     height: 100vh;
     top: 0;
     left: 0;
@@ -128,8 +123,16 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.8s ease;
-    background: radial-gradient(circle at center, var(--bg-grad-1), var(--bg-grad-2));
+    /* ✅ COLOR SÓLIDO POR DEFECTO (Aplica en Móvil) */
+    background: var(--color-bg-screen);
     overflow: hidden;
+  }
+
+  /* ✅ DEGRADADO SÓLO EN PANTALLAS GRANDES (PC) */
+  @media (min-width: 1024px) {
+    #floating-bg {
+      background: radial-gradient(circle at center, var(--bg-grad-1), var(--bg-grad-2));
+    }
   }
 
   #floating-bg.active {
@@ -163,6 +166,9 @@
 /* =========================================================
    4. UTILITIES LAYER: Clases de utilidad
    ========================================================= */
+/* =========================================================
+   4. UTILITIES LAYER: Clases de utilidad
+   ========================================================= */
 @layer utilities {
   @keyframes floatUp {
     0%   { top: 100vh; opacity: 0; }
@@ -172,32 +178,34 @@
     100% { top: -10vh; opacity: 0; }
   }
 
-  /* --- SCROLLBAR ULTRA-LIMPIA --- */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
-  }
+  /* ✅ ENVOLVEMOS EL SCROLLBAR PARA QUE SOLO EXISTA EN PC (lg: 1024px+) */
+  @media (min-width: 1024px) {
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
+    }
 
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 3px; 
-  }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 3px; 
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent; 
-    margin-block: 40px; 
-  }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent; 
+      margin-block: 40px; 
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.2);
-    border-radius: 20px;
-    transition: background 0.4s ease, opacity 0.4s ease;
-  }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.2);
+      border-radius: 20px;
+      transition: background 0.4s ease, opacity 0.4s ease;
+    }
 
-  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    background: rgba(148, 163, 184, 0.4);
-  }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.4);
+    }
 
-  .custom-scrollbar::-webkit-scrollbar-thumb:active {
-    background: rgba(148, 163, 184, 0.6);
+    .custom-scrollbar::-webkit-scrollbar-thumb:active {
+      background: rgba(148, 163, 184, 0.6);
+    }
   }
 }
