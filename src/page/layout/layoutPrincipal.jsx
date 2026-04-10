@@ -22,7 +22,7 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="relative flex flex-col lg:flex-row w-full min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--color-bg-card)] lg:bg-transparent">
+    <div className="relative flex flex-col lg:flex-row w-full min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--color-bg-card)] lg:bg-transparent overflow-x-hidden">
       
       {/* Navigation siempre visible y por encima */}
       <div className="z-50">
