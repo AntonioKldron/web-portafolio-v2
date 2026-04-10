@@ -28,7 +28,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-full min-h-[100dvh] font-sans overflow-x-hidden flex flex-col">
+    <div className="relative w-full max-w-full min-h-[100dvh] font-sans flex flex-col">
       <FondoAnimado isActive={true} />
       <AnimatePresence mode="wait">
         {isLoading ? (
