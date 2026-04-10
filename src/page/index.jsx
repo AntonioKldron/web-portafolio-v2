@@ -6,9 +6,6 @@ import LoaderWeb from '../shared/components/loader/loaderWeb';
 import LoaderMobile from '../shared/components/loader/loaderMobile';
 import LayoutPrincipal from './layout/layoutPrincipal';
 
-// ❌ ELIMINA ESTA LÍNEA: 
-// import { AppProvider } from '@context/appContext';
-
 export default function Index() {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -31,7 +28,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="relative min-h-[100dvh] w-full font-sans ">
+    <div className="font-sans">
       <FondoAnimado isActive={true} />
       <AnimatePresence mode="wait">
         {isLoading ? (
