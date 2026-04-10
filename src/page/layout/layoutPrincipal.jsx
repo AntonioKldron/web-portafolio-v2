@@ -22,28 +22,22 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="relative flex flex-col lg:flex-row w-full min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--color-bg-card)] lg:bg-transparent overflow-x-hidden">
-      
-      {/* Navigation siempre visible y por encima */}
+    <div className="relative flex flex-col lg:flex-row w-full min-h-screen lg:h-screen lg:overflow-hidden bg-[var(--color-bg-card)] lg:bg-transparent">
       <div className="z-50">
         <Navigation />
       </div>
-
       <motion.aside 
         className="w-full lg:w-[25%] lg:fixed lg:h-screen z-20"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
       >
         <MiCartaPerfil observerRef={observerRef} />
       </motion.aside>
-
       <main
         ref={observerRef} 
-        /* h-auto en móvil permite que el body detecte el scroll y anime las luces.
-           lg:h-screen activa el scroll interno solo en PC. */
         className="custom-scrollbar lg:w-[75%] lg:ml-[25%] px-4 md:px-16 xl:px-32 h-auto lg:h-screen lg:overflow-y-auto scroll-smooth z-10 flex flex-col flex-grow"
       >
         {SECCIONES.map(({ id, component }) => (
-          <section key={id} id={id} className="reveal-section w-full py-4">
+          <section key={id} id={id} className="reveal-section w-full py-4 overflow-x-hidden">
             {component}
           </section>
         ))}
