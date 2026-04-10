@@ -22,10 +22,12 @@ const SECCIONES = [
 
 const LayoutPrincipal = ({ observerRef }) => {
   return (
-    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full max-w-full min-h-[100dvh] lg:h-screen lg:overflow-hidden overscroll-x-none [contain:paint] bg-[var(--color-bg-card)] lg:bg-transparent">
-      <Navigation />
+    <div className="layout-principal-container relative flex flex-col lg:flex-row w-full max-w-full min-h-screen lg:h-screen lg:overflow-hidden overscroll-x-none bg-[var(--color-bg-card)] lg:bg-transparent">
+      <div className="relative z-50">
+        <Navigation />
+      </div>
       <motion.aside 
-        className="informational-card-container w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 px-4 sm:px-8 lg:px-0"
+        className="informational-card-container w-full lg:w-[25%] flex flex-col lg:fixed lg:left-0 lg:top-0 lg:h-screen z-20 px-4 sm:px-8 lg:px-0 bg-[var(--color-bg-card)]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
