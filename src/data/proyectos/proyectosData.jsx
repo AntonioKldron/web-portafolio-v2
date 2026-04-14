@@ -28,6 +28,8 @@ export const githubIconMap = {
   php: dt?.php,
   tsql: dt?.sql,
   'jupyter notebook': dt?.jupyter,
+  astro: dt?.astro,
+  hack: dt?.terminal,
 };
 
 /**
