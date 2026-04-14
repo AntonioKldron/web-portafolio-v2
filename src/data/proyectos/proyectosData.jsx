@@ -30,6 +30,7 @@ export const githubIconMap = {
   'jupyter notebook': dt?.jupyter,
   astro: dt?.astro,
   hack: dt?.terminal,
+  plpgsql: dt?.postgresql,
 };
 
 /**
