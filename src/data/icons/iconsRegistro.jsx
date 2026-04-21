@@ -32,7 +32,7 @@ import {
   // PRODUCTIVIDAD
   IcoTrello, IcoAntigravity, IcoTeams, IcoDiscord, IcoOffice365, IcoSalesforce,
   // IA
-  IcoGemini, IcoOpenia, IcoCopilot,
+  IcoGemini, IcoOpenia, IcoCopilot,IcoClaude,
   // GAME DEV
   IcoUnity, IcoUnreal,
   // ENTERPRISE & CMS
@@ -159,6 +159,7 @@ export const data = {
   gemini: { name: "Google Gemini", icon: <IcoGemini />, primary: "text-blue-500", secondary: "text-blue-600/50" },
   openia: { name: "OpenAI", icon: <IcoOpenia />, primary: "text-emerald-500", secondary: "text-emerald-600/50" },
   copilot: { name: "GitHub Copilot", icon: <IcoCopilot />, primary: "text-blue-400", secondary: "text-blue-500/50" },
+  claude: { name: "Claude AI", icon: <IcoClaude />, primary: "text-orange-200", secondary: "text-stone-400/50" },
 
   // 12. GAME DEVELOPMENT
   unity: { name: "Unity", icon: <IcoUnity />, primary: "text-gray-100", secondary: "text-gray-300/50" },
