@@ -1,7 +1,12 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+// 1. Importamos tu contexto
+import { useApp } from '@context/appContext'; 
 
 const LoaderMobile = ({ isVisible = true }) => {
+  // 2. Extraemos el estado del tema
+  const { isDark } = useApp();
+
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -73,8 +78,9 @@ const LoaderMobile = ({ isVisible = true }) => {
             transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
           }}
         >
+          {/* Fondo desenfocado dinámico: negro para oscuro, blanco para claro */}
           <motion.div 
-            className="absolute inset-0 bg-black/10"
+            className={`absolute inset-0 ${isDark ? 'bg-black/20' : 'bg-white/40'}`}
             initial={{ backdropFilter: "blur(0px)" }}
             animate={{ backdropFilter: isComplete ? "blur(0px)" : "blur(20px)" }}
             transition={{ duration: 1 }}
@@ -84,10 +90,10 @@ const LoaderMobile = ({ isVisible = true }) => {
             
             {isComplete && (
               <motion.div
-                initial={{ scale: 0, opacity: 1, border: "2px solid #00f6ff" }}
+                initial={{ scale: 0, opacity: 1, border: `2px solid ${isDark ? '#00f6ff' : '#2563eb'}` }}
                 animate={{ scale: 4, opacity: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="absolute w-40 h-40 rounded-full z-50 shadow-[0_0_50px_10px_#00f6ff]"
+                className={`absolute w-40 h-40 rounded-full z-50 ${isDark ? 'shadow-[0_0_50px_10px_#00f6ff]' : 'shadow-[0_0_50px_10px_#2563eb]'}`}
               />
             )}
 
@@ -95,7 +101,7 @@ const LoaderMobile = ({ isVisible = true }) => {
               {geometry.centralParticles.map((p) => (
                 <motion.div
                   key={`spark-${p.id}`}
-                  className="absolute top-1/2 left-1/2 rounded-full bg-[#00f6ff]"
+                  className={`absolute top-1/2 left-1/2 rounded-full ${isDark ? 'bg-[#00f6ff]' : 'bg-blue-600'}`}
                   style={{ width: p.size, height: p.size, filter: 'blur(1px)' }}
                   animate={{
                     x: [0, Math.cos(p.angle) * p.distance],
@@ -119,7 +125,7 @@ const LoaderMobile = ({ isVisible = true }) => {
                   <motion.line
                     key={`radar-${tick.id}`}
                     x1="0" y1="-95" x2="0" y2="-100"
-                    stroke="#22d3ee"
+                    stroke={isDark ? "#22d3ee" : "#3b82f6"}
                     strokeWidth={tick.id % 9 === 0 ? "0.4" : "0.1"}
                     transform={`rotate(${tick.rotate})`}
                     animate={{ opacity: [0.2, 0.8, 0.2] }}
@@ -133,7 +139,11 @@ const LoaderMobile = ({ isVisible = true }) => {
               {geometry.orbitalParticles.map((bit) => (
                 <motion.div
                   key={`particle-${bit.id}`}
-                  className="absolute top-1/2 left-1/2 rounded-full bg-[#00f6ff] shadow-[0_0_15px_rgba(0,246,255,0.9)]"
+                  className={`absolute top-1/2 left-1/2 rounded-full ${
+                    isDark 
+                      ? 'bg-[#00f6ff] shadow-[0_0_15px_rgba(0,246,255,0.9)]' 
+                      : 'bg-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.9)]'
+                  }`}
                   style={{ width: bit.size, height: bit.size }}
                   animate={{
                     x: [Math.cos(bit.angle) * bit.radius, 0],
@@ -158,18 +168,23 @@ const LoaderMobile = ({ isVisible = true }) => {
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
                 
-                {/* Nuevo Gradiente Azul Neón */}
+                {/* Gradiente Dinámico */}
                 <linearGradient id="neonBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#1e3a8a" stopOpacity={0.3} />
-                  <stop offset="45%" stopColor="#00f6ff" stopOpacity={1} />
-                  <stop offset="55%" stopColor="#22d3ee" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#1e3a8a" stopOpacity={0.3} />
+                  <stop offset="0%" stopColor={isDark ? "#1e3a8a" : "#93c5fd"} stopOpacity={0.3} />
+                  <stop offset="45%" stopColor={isDark ? "#00f6ff" : "#2563eb"} stopOpacity={1} />
+                  <stop offset="55%" stopColor={isDark ? "#22d3ee" : "#1d4ed8"} stopOpacity={1} />
+                  <stop offset="100%" stopColor={isDark ? "#1e3a8a" : "#93c5fd"} stopOpacity={0.3} />
                 </linearGradient>
               </defs>
 
               <g transform="translate(200, 200)">
                 <g transform="rotate(-90)">
-                  <circle r={RADIUS_MAIN} fill="none" stroke="rgba(0,246,255,0.05)" strokeWidth="12" />
+                  <circle 
+                    r={RADIUS_MAIN} 
+                    fill="none" 
+                    stroke={isDark ? "rgba(0,246,255,0.05)" : "rgba(37,99,235,0.1)"} 
+                    strokeWidth="12" 
+                  />
                   <motion.circle
                     r={RADIUS_MAIN}
                     fill="none"
@@ -200,7 +215,10 @@ const LoaderMobile = ({ isVisible = true }) => {
                     <path
                       d="M 60 0 L 30 52 L -30 52 L -60 0 L -30 -52 L 30 -52 Z"
                       fill="none"
-                      stroke={`rgba(0,246,255,${0.1 + (progress/100) * 0.4})`}
+                      stroke={isDark 
+                        ? `rgba(0,246,255,${0.1 + (progress/100) * 0.4})` 
+                        : `rgba(37,99,235,${0.1 + (progress/100) * 0.4})`
+                      }
                       strokeWidth="2"
                       transform={`scale(${1 + i * 0.3})`}
                     />
@@ -213,16 +231,18 @@ const LoaderMobile = ({ isVisible = true }) => {
                   }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <circle r="8" fill="#00f6ff" filter="url(#ultraGlow)" />
+                  <circle r="8" fill={isDark ? "#00f6ff" : "#2563eb"} filter="url(#ultraGlow)" />
                   <motion.line 
                     x1="-200" y1="0" x2="200" y2="0" 
-                    stroke="rgba(0,246,255,0.4)" strokeWidth="0.5" 
+                    stroke={isDark ? "rgba(0,246,255,0.4)" : "rgba(37,99,235,0.4)"} 
+                    strokeWidth="0.5" 
                     animate={{ opacity: [0.2, 0.8, 0.2] }}
                     transition={{ duration: 0.1, repeat: Infinity }}
                   />
                   <motion.line 
                     x1="0" y1="-200" x2="0" y2="200" 
-                    stroke="rgba(0,246,255,0.4)" strokeWidth="0.5"
+                    stroke={isDark ? "rgba(0,246,255,0.4)" : "rgba(37,99,235,0.4)"} 
+                    strokeWidth="0.5"
                     animate={{ opacity: [0.2, 0.8, 0.2] }}
                     transition={{ duration: 0.1, repeat: Infinity, delay: 0.05 }}
                   />

@@ -2,6 +2,7 @@ import React from 'react';
 import FondoAnimado from '../shared/static/fondo';
 import { FaLock } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+// Importamos tu contexto
 import { useApp } from '@context/appContext'; 
 
 const translations = {
@@ -19,27 +20,55 @@ const translations = {
 
 export default function Pagina404() {
   const navigate = useNavigate();
-  const { lang } = useApp(); 
+  // Extraemos lang y isDark de tu contexto
+  const { lang, isDark } = useApp(); 
 
   const t = translations[lang] || translations.es;
 
   return (
-    <div className="min-h-screen w-full text-slate-800 dark:text-indigo-100 relative overflow-hidden transition-colors duration-300">
+    <div className="min-h-screen w-full text-slate-800 dark:text-cyan-50 relative overflow-hidden transition-colors duration-300">
       <FondoAnimado isActive={true} />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full md:w-3/4 h-3/4 bg-[#581c87] opacity-10 dark:opacity-30 blur-[120px] pointer-events-none -z-0 rounded-full animate-pulse" />
+      
       <div className="flex flex-col items-center justify-center min-h-screen text-center px-6 z-10 relative">
-        <FaLock className="text-6xl text-[#d946ef] mb-6 animate-[pulse_2s_infinite] drop-shadow-[0_0_15px_rgba(217,70,239,0.8)] transition-colors duration-300" />
-        <h1 className="text-5xl md:text-6xl font-black mb-4 tracking-tighter uppercase text-transparent bg-clip-text bg-gradient-to-r from-[#6b21a8] via-[#c026d3] to-[#4c1d95] dark:from-[#a855f7] dark:via-[#d946ef] dark:to-[#7e22ce] drop-shadow-[0_2px_12px_rgba(107,33,168,0.5)]">
+        
+        {/* Candado con resplandor neón dinámico */}
+        <FaLock className={`text-6xl mb-6 animate-[pulse_2s_infinite] transition-colors duration-300 ${
+          isDark 
+            ? 'text-[#00f6ff] drop-shadow-[0_0_15px_rgba(0,246,255,0.8)]' 
+            : 'text-blue-700 drop-shadow-[0_0_15px_rgba(29,78,216,0.6)]'
+        }`} />
+        
+        {/* Título Gradient Dinámico */}
+        <h1 className={`text-5xl md:text-6xl font-black mb-4 tracking-tighter uppercase text-transparent bg-clip-text transition-all duration-300 bg-gradient-to-r ${
+          isDark 
+            ? 'from-[#3b82f6] via-[#00f6ff] to-[#2563eb] drop-shadow-[0_0_12px_rgba(0,246,255,0.4)]' 
+            : 'from-blue-800 via-blue-600 to-indigo-900 drop-shadow-sm'
+        }`}>
           {t.title}
         </h1>
-        <p className="text-lg text-slate-700 dark:text-[#e9d5ff] font-medium max-w-xl mb-8 tracking-wide transition-colors duration-300 drop-shadow-sm">
+        
+        {/* Mensaje de texto */}
+        <p className={`text-lg font-medium max-w-xl mb-8 tracking-wide transition-colors duration-300 drop-shadow-sm ${
+          isDark ? 'text-cyan-100/80' : 'text-slate-700'
+        }`}>
           {t.message}
         </p>
+        
+        {/* Botón Animado Dinámico */}
         <button
           onClick={() => navigate('/')}
-          className="group relative px-8 py-3.5 bg-[#6b21a8] rounded-full text-white font-black uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 shadow-[0_0_15px_rgba(107,33,168,0.6)] hover:shadow-[0_0_30px_rgba(217,70,239,0.8)] hover:-translate-y-1 hover:scale-105"
+          className={`group relative px-8 py-3.5 rounded-full font-black uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:scale-105 backdrop-blur-sm ${
+            isDark 
+              ? 'bg-slate-900/60 border border-[#00f6ff]/50 text-white shadow-[0_0_15px_rgba(0,246,255,0.4)] hover:shadow-[0_0_30px_rgba(0,246,255,0.7)]' 
+              : 'bg-blue-600 border border-transparent text-white shadow-[0_0_15px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]'
+          }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#7e22ce] via-[#d946ef] to-[#c026d3] opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
+          {/* Fondo gradiente de hover */}
+          <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0 bg-gradient-to-r ${
+            isDark 
+              ? 'from-[#2563eb] via-[#00f6ff] to-[#3b82f6]' 
+              : 'from-blue-800 via-blue-700 to-indigo-800'
+          }`} />
           <span className="relative z-10 drop-shadow-md">
             {t.buttonText}
           </span>
