@@ -75,7 +75,7 @@ export default function EncabezadoSeccion({
           align === "left" ? "-left-2 md:-left-6" : align === "right" ? "-right-2 md:-right-6" : "left-1/2 -translate-x-1/2"
         }`}>
           
-          {/* Capa 0: Halo volumétrico (Opacidad muy baja para que no manche en modo claro) */}
+          {/* Capa 0: Halo volumétrico */}
           <motion.div 
             animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.05, 0.15, 0.05] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -89,7 +89,7 @@ export default function EncabezadoSeccion({
             className="absolute w-24 h-24 md:w-28 md:h-28 rounded-full opacity-30 bg-[conic-gradient(from_0deg,transparent_0%,rgba(34,211,238,0.4)_40%,transparent_60%)]"
           />
 
-          {/* Capa 2: Órbita con 2 Satélites (Puntos limpios, sin glow) */}
+          {/* Capa 2: Órbita con 2 Satélites */}
           <motion.div 
             animate={{ rotate: -360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -130,7 +130,7 @@ export default function EncabezadoSeccion({
             className="absolute w-4 h-4 bg-[#22d3ee] rounded-full blur-[1px]"
           />
 
-          {/* Capa 7: Núcleo (Color cyan para verse en fondos claros, en vez de blanco puro) */}
+          {/* Capa 7: Núcleo */}
           <motion.div 
             animate={{ scale: [0.7, 1.2, 0.7], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
@@ -140,14 +140,16 @@ export default function EncabezadoSeccion({
         {/* ======================================================== */}
 
         {/* CONTENEDOR DEL TEXTO */}
-        <div className={`relative py-2 overflow-hidden w-full flex ${justifyClasses[align]} z-10`}>
+        {/* Cambié overflow-hidden por overflow-visible y agregué pb-2 para darle espacio a las letras largas hacia abajo */}
+        <div className={`relative py-2 pb-4 overflow-visible w-full flex ${justifyClasses[align]} z-10`}>
           <motion.h2 
-            initial={{ y: "100%", skewY: 5 }}
-            whileInView={{ y: 0, skewY: 0 }}
+            /* Se redujo la Y inicial a 50% y el opacidad a 0 para que la animación se vea bien sin necesitar clip o hidden en el padre */
+            initial={{ y: "50%", opacity: 0, skewY: 5 }}
+            whileInView={{ y: 0, opacity: 1, skewY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            // text-gray-900 para modo claro, text-white para dark mode
-            className={`text-3xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tighter uppercase leading-[1.1] flex flex-wrap gap-x-3 w-full ${justifyClasses[align]}`}
+            /* Cambié leading-[1.1] por leading-snug para que las letras no choquen arriba/abajo */
+            className={`text-3xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tighter uppercase leading-snug flex flex-wrap gap-x-3 w-full ${justifyClasses[align]}`}
           >
             <span className="opacity-100 relative z-20">
               {tituloPrincipal}
@@ -158,7 +160,6 @@ export default function EncabezadoSeccion({
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-              // Gradiente mantenido sin el drop-shadow
               className="relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] via-[#00f6ff] to-[#2563eb] z-20"
             >
               {tituloHighlight}.
