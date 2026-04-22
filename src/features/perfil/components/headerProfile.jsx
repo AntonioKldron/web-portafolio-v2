@@ -109,21 +109,27 @@ export const ProfileHeader = ({ foto, nombre, apellido, rol }) => {
             {nombre}
           </motion.span> 
           
-          {/* Apellido con Gradiente Azul Neón y Flujo Continuo */}
+          {/* Apellido con Gradiente Dinámico según isDark */}
           <motion.span 
             variants={itemVariants} 
-            className="not-italic font-light animate-neon-flow bg-clip-text text-transparent bg-gradient-to-r from-[#3b82f6] via-[#00f6ff] to-[#2563eb] drop-shadow-[0_0_12px_rgba(0,246,255,0.4)] inline-block pb-1 mt-1.5"
+            className={`not-italic font-light animate-neon-flow bg-clip-text text-transparent inline-block pb-1 mt-1.5 transition-all duration-300 bg-gradient-to-r ${
+              isDark 
+                ? 'from-[#3b82f6] via-[#00f6ff] to-[#2563eb] drop-shadow-[0_0_12px_rgba(0,246,255,0.4)]' 
+                : 'from-blue-800 via-blue-600 to-indigo-900'
+            }`}
           >
             {apellido}
           </motion.span>
         </h1>
         
-        {/* Rol con Neón Líquido más fino */}
+        {/* Rol con Gradiente Dinámico según isDark */}
         <motion.span 
           variants={itemVariants} 
-          className="text-[10px] md:text-[11px] font-mono tracking-[0.4em] uppercase pt-4 block font-bold 
-            bg-clip-text text-transparent animate-neon-flow
-            bg-gradient-to-r from-[#60a5fa] via-[#22d3ee] to-[#3b82f6] drop-shadow-[0_0_6px_rgba(34,211,238,0.3)]"
+          className={`text-[10px] md:text-[11px] font-mono tracking-[0.4em] uppercase pt-4 block font-bold bg-clip-text text-transparent animate-neon-flow transition-all duration-300 bg-gradient-to-r ${
+            isDark
+              ? 'from-[#60a5fa] via-[#22d3ee] to-[#3b82f6] drop-shadow-[0_0_6px_rgba(34,211,238,0.3)]'
+              : 'from-indigo-700 via-blue-800 to-indigo-900'
+          }`}
         >
           {rol}
         </motion.span>

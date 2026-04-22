@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+// Importamos tu contexto
+import { useApp } from '@app/context/appContext';
 
 export default function EncabezadoSeccion({ 
   subtitulo, 
@@ -7,7 +9,9 @@ export default function EncabezadoSeccion({
   tituloHighlight,
   align = "left" 
 }) {
-  
+  // Extraemos el estado del tema
+  const { isDark } = useApp();
+
   const alignClasses = {
     left: "items-start text-left",
     center: "items-center text-center",
@@ -56,7 +60,6 @@ export default function EncabezadoSeccion({
           className="text-[#22d3ee] font-bold uppercase text-[10px] tracking-[0.5em] relative flex items-center"
         >
           {subtitulo}
-          {/* Punto sin sombra */}
           <motion.span 
             animate={{ opacity: [0, 1, 0] }}
             transition={{ duration: 0.5, repeat: Infinity, repeatDelay: 3 }}
@@ -69,27 +72,24 @@ export default function EncabezadoSeccion({
       <div className="relative group w-full flex flex-col">
         
         {/* ======================================================== */}
-        {/* ANIMACIÓN CIRCULAR SCI-FI (SIN SOMBRAS PARA MODO CLARO) */}
+        {/* ANIMACIÓN CIRCULAR SCI-FI */}
         {/* ======================================================== */}
         <div className={`absolute top-1/2 -translate-y-1/2 flex justify-center items-center -z-10 mix-blend-screen dark:mix-blend-screen ${
           align === "left" ? "-left-2 md:-left-6" : align === "right" ? "-right-2 md:-right-6" : "left-1/2 -translate-x-1/2"
         }`}>
           
-          {/* Capa 0: Halo volumétrico */}
           <motion.div 
             animate={{ scale: [0.8, 1.3, 0.8], opacity: [0.05, 0.15, 0.05] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             className="absolute w-32 h-32 bg-[#1d4ed8] rounded-full blur-[25px]"
           />
 
-          {/* Capa 1: Escáner de Radar */}
           <motion.div 
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             className="absolute w-24 h-24 md:w-28 md:h-28 rounded-full opacity-30 bg-[conic-gradient(from_0deg,transparent_0%,rgba(34,211,238,0.4)_40%,transparent_60%)]"
           />
 
-          {/* Capa 2: Órbita con 2 Satélites */}
           <motion.div 
             animate={{ rotate: -360 }}
             transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
@@ -99,7 +99,6 @@ export default function EncabezadoSeccion({
             <div className="absolute bottom-0 left-1/2 w-1 h-1 bg-blue-500 rounded-full -translate-x-1/2 translate-y-1/2 opacity-80" />
           </motion.div>
 
-          {/* Capa 3: Anillo Exterior Punteado */}
           <motion.div 
             animate={{ rotate: 360, scale: [1, 1.05, 1] }}
             transition={{ 
@@ -109,28 +108,24 @@ export default function EncabezadoSeccion({
             className="absolute w-20 h-20 md:w-24 md:h-24 rounded-full border-[1.5px] border-dashed border-[#22d3ee]/70"
           />
 
-          {/* Capa 4: Anillo Giroscópico */}
           <motion.div 
             animate={{ rotateZ: -360, scaleX: [1, 0.85, 1, 0.85, 1], scaleY: [0.85, 1, 0.85, 1, 0.85] }}
             transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
             className="absolute w-14 h-14 md:w-16 md:h-16 rounded-full border-y-[2px] border-x-[1px] border-t-[#00f6ff] border-b-[#3b82f6] border-x-transparent"
           />
 
-          {/* Capa 5: Marcador Interno de Alta Velocidad */}
           <motion.div 
             animate={{ rotate: 360, opacity: [0.4, 0.8, 0.4] }}
             transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
             className="absolute w-10 h-10 md:w-12 md:h-12 rounded-full border-[2px] border-dotted border-[#3b82f6]/80"
           />
 
-          {/* Capa 6: Escudo del Núcleo */}
           <motion.div 
             animate={{ scale: [0.5, 1.5], opacity: [0.6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
             className="absolute w-4 h-4 bg-[#22d3ee] rounded-full blur-[1px]"
           />
 
-          {/* Capa 7: Núcleo */}
           <motion.div 
             animate={{ scale: [0.7, 1.2, 0.7], opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
@@ -140,27 +135,30 @@ export default function EncabezadoSeccion({
         {/* ======================================================== */}
 
         {/* CONTENEDOR DEL TEXTO */}
-        {/* Cambié overflow-hidden por overflow-visible y agregué pb-2 para darle espacio a las letras largas hacia abajo */}
         <div className={`relative py-2 pb-4 overflow-visible w-full flex ${justifyClasses[align]} z-10`}>
           <motion.h2 
-            /* Se redujo la Y inicial a 50% y el opacidad a 0 para que la animación se vea bien sin necesitar clip o hidden en el padre */
             initial={{ y: "50%", opacity: 0, skewY: 5 }}
             whileInView={{ y: 0, opacity: 1, skewY: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            /* Cambié leading-[1.1] por leading-snug para que las letras no choquen arriba/abajo */
-            className={`text-3xl lg:text-5xl font-black text-gray-900 dark:text-white tracking-tighter uppercase leading-snug flex flex-wrap gap-x-3 w-full ${justifyClasses[align]}`}
+            className={`text-3xl lg:text-5xl font-black tracking-tighter uppercase leading-snug flex flex-wrap gap-x-3 w-full transition-colors duration-300 ${justifyClasses[align]}`}
           >
-            <span className="opacity-100 relative z-20">
+            {/* Título Principal */}
+            <span className={`opacity-100 relative z-20 ${isDark ? 'text-white' : 'text-blue-950'}`}>
               {tituloPrincipal}
             </span>
             
+            {/* Título Highlight - Gradiente dinámico según isDark */}
             <motion.span 
               initial={{ opacity: 0, filter: "blur(12px)", x: 20 }}
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-              className="relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text bg-gradient-to-r from-[#3b82f6] via-[#00f6ff] to-[#2563eb] z-20"
+              className={`relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text z-20 transition-all duration-300 bg-gradient-to-r ${
+                isDark 
+                  ? 'from-[#3b82f6] via-[#00f6ff] to-[#2563eb]' // Modo Oscuro: Neón Brillante
+                  : 'from-blue-800 via-blue-600 to-indigo-900' // Modo Claro: Azules profundos y vibrantes
+              }`}
             >
               {tituloHighlight}.
             </motion.span>
