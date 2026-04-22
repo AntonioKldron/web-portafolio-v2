@@ -13,72 +13,72 @@ export const herramientasCategorias = [
   { 
     id: 'cat-1-lenguajes', 
     icon: <FaCode />, 
-    items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java] 
+    items: [dt.javascript, dt.python, dt.sql, dt.csharp, dt.java].filter(Boolean) 
   },
   { 
     id: 'cat-2-backend', 
     icon: <FaCogs />, 
-    items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest] 
+    items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest].filter(Boolean) 
   },
   { 
     id: 'cat-3-frontend', 
     icon: <FaReact />, 
-    items: [dt.react, dt.vue, dt.tailwind, dt.html, dt.css, dt.bootstrap, dt.astro] 
+    items: [dt.react, dt.vue, dt.tailwind, dt.html, dt.css, dt.bootstrap, dt.astro].filter(Boolean) 
   },
   { 
     id: 'cat-4-meta-frameworks', 
     icon: <FaLayerGroup />, 
-    items: [] 
+    items: [].filter(Boolean)
   },
   { 
     id: 'cat-5-movil', 
     icon: <FaMobileAlt />, 
-    items: [] 
+    items: [].filter(Boolean) 
   },
   { 
     id: 'cat-6-bases-de-datos', 
     icon: <FaDatabase />, 
-    items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.sqlite] 
+    items: [dt.sqlserver, dt.oracle, dt.postgresql, dt.mysql, dt.sqlite].filter(Boolean)
   },
   { 
     id: 'cat-7-cloud-baas', 
     icon: <FaCloud />, 
-    items: [dt.vercel, dt.firebase, dt.supabase] 
+    items: [dt.vercel, dt.firebase, dt.supabase].filter(Boolean) 
   },
   { 
     id: 'cat-8-devops', 
     icon: <FaGitAlt />, 
-    items: [dt.docker, dt.git, dt.gitlab, dt.github] 
+    items: [dt.docker, dt.git, dt.gitlab, dt.github].filter(Boolean) 
   },
   { 
     id: 'cat-9-dev-tools', 
     icon: <FaLaptopCode />, 
-    items: [dt.vscode, dt.vstudio, dt.jetbrains, dt.antigravity, dt.cursor, dt.jupyter, dt.postman, dt.termius, dt.terminal, dt.figma, dt.api, dt.json, dt.xml, dt.markdown, dt.powerbi] 
+    items: [dt.vscode, dt.vstudio, dt.jetbrains, dt.antigravity, dt.cursor, dt.jupyter, dt.postman, dt.termius, dt.terminal, dt.figma, dt.api, dt.json, dt.xml, dt.markdown, dt.powerbi].filter(Boolean) 
   },
   { 
     id: 'cat-10-productividad', 
     icon: <FaUsers />, 
-    items: [dt.teams, dt.discord, dt.trello, dt.office365] 
+    items: [dt.teams, dt.discord, dt.trello, dt.office365].filter(Boolean) 
   },
   { 
     id: 'cat-11-ia', 
     icon: <FaRobot />, 
-    items: [] 
+    items: [].filter(Boolean) 
   },
   { 
     id: 'cat-12-game-dev', 
     icon: <FaGamepad />, 
-    items: [] 
+    items: [].filter(Boolean)  
   },
   { 
     id: 'cat-13-erp-cms', 
     icon: <AiOutlineGold />, 
-    items: [dt.peoplesoft, dt.intelisis] 
+    items: [dt.peoplesoft, dt.intelisis].filter(Boolean)  
   },
   { 
     id: 'cat-14-os-hardware', 
     icon: <FaMicrochip />, 
-    items: [dt.linux, dt.windows] 
+    items: [dt.linux, dt.windows].filter(Boolean)  
   }
 ];
 

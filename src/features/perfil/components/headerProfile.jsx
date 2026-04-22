@@ -49,11 +49,11 @@ export const ProfileHeader = ({ foto, nombre, apellido, rol }) => {
             <img 
               src={foto} 
               alt={nombre} 
-              // La imagen recupera su color y se acerca ligeramente
-              className="w-full h-full object-cover grayscale-[40%] group-hover/avatar:grayscale-0 transition-all duration-700 ease-out transform scale-100 group-hover/avatar:scale-110" 
+              // Se añadieron 'rounded-full' y 'aspect-square' para forzar el círculo perfecto siempre
+              className="w-full h-full aspect-square rounded-full object-cover grayscale-[40%] group-hover/avatar:grayscale-0 transition-all duration-700 ease-out transform scale-100 group-hover/avatar:scale-110" 
             />
             {/* Overlay sutil de cristal sobre la foto */}
-            <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-700 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-0 group-hover/avatar:opacity-100 transition-opacity duration-700 pointer-events-none rounded-full" />
           </div>
         </div>
 

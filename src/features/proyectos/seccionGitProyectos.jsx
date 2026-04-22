@@ -28,6 +28,10 @@ export default function SeccionGitProyectos() {
 
   const stats = githubData?.contributionsCollection;
 
+  // Evaluamos si debemos mostrar las secciones de Github.
+  // Se muestran si está cargando (para ver el esqueleto) o si hay datos válidos.
+  const showGithubSections = githubLoading || Boolean(githubData);
+
   return (
     <section className="w-full relative py-12 w-full">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-[800px] pointer-events-none opacity-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#1e1b4b] via-[#0b0f19] to-transparent blur-3xl z-0" />
@@ -50,22 +54,25 @@ export default function SeccionGitProyectos() {
             titleRight="ONLINE"
           >
             
-            {/* FILA 1: Ecosistema Github (Edge-to-edge) */}
-            <div className={`w-full border-b ${isDark ? 'border-[#1e293b]' : 'border-slate-200'}`}>
-              <EcosistemaGithub 
-                isLoading={githubLoading} githubData={githubData} username={username} 
-                isDark={isDark} txtGit={t.github} stats={stats}
-              />
-            </div>
+            {/* FILA 1: Ecosistema Github (Oculto si la carga falla o no hay datos) */}
+            {showGithubSections && (
+              <div className={`w-full border-b ${isDark ? 'border-[#1e293b]' : 'border-slate-200'}`}>
+                <EcosistemaGithub 
+                  isLoading={githubLoading} githubData={githubData} username={username} 
+                  isDark={isDark} txtGit={t.github} stats={stats}
+                />
+              </div>
+            )}
 
-            {/* FILA 2: Proyectos Locales (Edge-to-edge) */}
-            <div className={`w-full border-b ${isDark ? 'border-[#1e293b]' : 'border-slate-200'}`}>
+            {/* FILA 2: Proyectos Locales (Siempre visible) */}
+            {/* Ajuste UX: Si no hay datos de Github, quitamos el border-b inferior para que el Terminal cierre limpio */}
+            <div className={`w-full ${showGithubSections ? (isDark ? 'border-b border-[#1e293b]' : 'border-b border-slate-200') : ''}`}>
               <ProyectosLocales 
                 proyectos={t.proyectos} isDark={isDark} titles={t.titles}
               />
             </div>
 
-            {/* FILA 3: Calendario de Github (Edge-to-edge) */}
+            {/* FILA 3: Calendario de Github (Edge-to-edge - Solo visible si hay datos) */}
             {!githubLoading && githubData && (
               <div className="w-full">
                 <CalendarioGithub 

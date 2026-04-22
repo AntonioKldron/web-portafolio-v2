@@ -69,7 +69,6 @@ const LoaderMobile = ({ isVisible = true }) => {
           exit={{
             opacity: 0,
             scale: 1.8,
-            // Bajé el blur de salida a 20px para evitar el crasheo en iOS
             filter: "brightness(4) blur(20px)",
             transition: { duration: 1, ease: [0.43, 0.13, 0.23, 0.96] }
           }}
@@ -77,20 +76,18 @@ const LoaderMobile = ({ isVisible = true }) => {
           <motion.div 
             className="absolute inset-0 bg-black/10"
             initial={{ backdropFilter: "blur(0px)" }}
-            // Limité el blur de fondo a 20px (60px crashea la GPU del móvil)
             animate={{ backdropFilter: isComplete ? "blur(0px)" : "blur(20px)" }}
             transition={{ duration: 1 }}
           />
 
-          {/* SOLUCIÓN PRINCIPAL: Agregué scale-[0.45] para que el canvas de 800px quepa en la pantalla del celular */}
           <div className="relative flex items-center justify-center w-[800px] h-[800px] scale-[0.45] sm:scale-75">
             
             {isComplete && (
               <motion.div
-                initial={{ scale: 0, opacity: 1, border: "2px solid white" }}
+                initial={{ scale: 0, opacity: 1, border: "2px solid #00f6ff" }}
                 animate={{ scale: 4, opacity: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="absolute w-40 h-40 rounded-full z-50 shadow-[0_0_50px_10px_#fff]"
+                className="absolute w-40 h-40 rounded-full z-50 shadow-[0_0_50px_10px_#00f6ff]"
               />
             )}
 
@@ -98,7 +95,7 @@ const LoaderMobile = ({ isVisible = true }) => {
               {geometry.centralParticles.map((p) => (
                 <motion.div
                   key={`spark-${p.id}`}
-                  className="absolute top-1/2 left-1/2 rounded-full bg-white"
+                  className="absolute top-1/2 left-1/2 rounded-full bg-[#00f6ff]"
                   style={{ width: p.size, height: p.size, filter: 'blur(1px)' }}
                   animate={{
                     x: [0, Math.cos(p.angle) * p.distance],
@@ -116,16 +113,16 @@ const LoaderMobile = ({ isVisible = true }) => {
               ))}
             </div>
 
-            <svg className="absolute w-[700px] h-[700px] opacity-20" viewBox="0 0 200 200">
+            <svg className="absolute w-[700px] h-[700px] opacity-30" viewBox="0 0 200 200">
               <g transform="translate(100, 100)">
                 {geometry.radarTicks.map((tick) => (
                   <motion.line
                     key={`radar-${tick.id}`}
                     x1="0" y1="-95" x2="0" y2="-100"
-                    stroke="#fff"
+                    stroke="#22d3ee"
                     strokeWidth={tick.id % 9 === 0 ? "0.4" : "0.1"}
                     transform={`rotate(${tick.rotate})`}
-                    animate={{ opacity: [0.2, 0.6, 0.2] }}
+                    animate={{ opacity: [0.2, 0.8, 0.2] }}
                     transition={{ duration: 2, repeat: Infinity, delay: tick.id * 0.02 }}
                   />
                 ))}
@@ -136,7 +133,7 @@ const LoaderMobile = ({ isVisible = true }) => {
               {geometry.orbitalParticles.map((bit) => (
                 <motion.div
                   key={`particle-${bit.id}`}
-                  className="absolute top-1/2 left-1/2 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.9)]"
+                  className="absolute top-1/2 left-1/2 rounded-full bg-[#00f6ff] shadow-[0_0_15px_rgba(0,246,255,0.9)]"
                   style={{ width: bit.size, height: bit.size }}
                   animate={{
                     x: [Math.cos(bit.angle) * bit.radius, 0],
@@ -160,21 +157,23 @@ const LoaderMobile = ({ isVisible = true }) => {
                   <feGaussianBlur stdDeviation="6" result="blur" />
                   <feComposite in="SourceGraphic" in2="blur" operator="over" />
                 </filter>
-                <linearGradient id="chromeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#94a3b8" stopOpacity={0.2} />
-                  <stop offset="45%" stopColor="#ffffff" stopOpacity={1} />
-                  <stop offset="55%" stopColor="#ffffff" stopOpacity={1} />
-                  <stop offset="100%" stopColor="#475569" stopOpacity={0.2} />
+                
+                {/* Nuevo Gradiente Azul Neón */}
+                <linearGradient id="neonBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="#1e3a8a" stopOpacity={0.3} />
+                  <stop offset="45%" stopColor="#00f6ff" stopOpacity={1} />
+                  <stop offset="55%" stopColor="#22d3ee" stopOpacity={1} />
+                  <stop offset="100%" stopColor="#1e3a8a" stopOpacity={0.3} />
                 </linearGradient>
               </defs>
 
               <g transform="translate(200, 200)">
                 <g transform="rotate(-90)">
-                  <circle r={RADIUS_MAIN} fill="none" stroke="rgba(255,255,255,0.03)" strokeWidth="12" />
+                  <circle r={RADIUS_MAIN} fill="none" stroke="rgba(0,246,255,0.05)" strokeWidth="12" />
                   <motion.circle
                     r={RADIUS_MAIN}
                     fill="none"
-                    stroke="url(#chromeGrad)"
+                    stroke="url(#neonBlueGrad)"
                     strokeLinecap="round"
                     filter="url(#ultraGlow)"
                     style={{
@@ -201,7 +200,7 @@ const LoaderMobile = ({ isVisible = true }) => {
                     <path
                       d="M 60 0 L 30 52 L -30 52 L -60 0 L -30 -52 L 30 -52 Z"
                       fill="none"
-                      stroke={`rgba(255,255,255,${0.1 + (progress/100) * 0.4})`}
+                      stroke={`rgba(0,246,255,${0.1 + (progress/100) * 0.4})`}
                       strokeWidth="2"
                       transform={`scale(${1 + i * 0.3})`}
                     />
@@ -214,16 +213,16 @@ const LoaderMobile = ({ isVisible = true }) => {
                   }}
                   transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <circle r="8" fill="#fff" filter="url(#ultraGlow)" />
+                  <circle r="8" fill="#00f6ff" filter="url(#ultraGlow)" />
                   <motion.line 
                     x1="-200" y1="0" x2="200" y2="0" 
-                    stroke="rgba(255,255,255,0.4)" strokeWidth="0.5" 
+                    stroke="rgba(0,246,255,0.4)" strokeWidth="0.5" 
                     animate={{ opacity: [0.2, 0.8, 0.2] }}
                     transition={{ duration: 0.1, repeat: Infinity }}
                   />
                   <motion.line 
                     x1="0" y1="-200" x2="0" y2="200" 
-                    stroke="rgba(255,255,255,0.4)" strokeWidth="0.5"
+                    stroke="rgba(0,246,255,0.4)" strokeWidth="0.5"
                     animate={{ opacity: [0.2, 0.8, 0.2] }}
                     transition={{ duration: 0.1, repeat: Infinity, delay: 0.05 }}
                   />
