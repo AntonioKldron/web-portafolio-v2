@@ -1,7 +1,12 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+// Importamos tu contexto
+import { useApp } from '@context/appContext';
 
 const LoaderWeb = ({ isVisible = true }) => {
+  // Extraemos isDark del contexto
+  const { isDark } = useApp();
+  
   const [progress, setProgress] = useState(0);
   const [isComplete, setIsComplete] = useState(false);
 
@@ -77,24 +82,29 @@ const LoaderWeb = ({ isVisible = true }) => {
   const speedMultiplier = 1 + Math.pow(progress / 100, 3) * 5; 
   const shakeOffset = isCritical ? (Math.random() - 0.5) * 8 : (Math.random() - 0.5) * (progress / 50);
 
-  const coreGlow = isCritical ? "#e0f2fe" : "#0ea5e9";
+  // ========================================================
+  // VARIABLES DE COLOR DINÁMICAS SEGÚN EL TEMA
+  // ========================================================
+const themeBaseColor = isDark ? "#0ea5e9" : "#0088ff"; // Cian original vs Cobalto Profundo
+const themeGlowColor = isDark ? "#0095f9" : "#93c5fd"; // Destello original vs Azul Cielo
+const coreGlow = isCritical ? themeGlowColor : themeBaseColor;
+const themeRgb = isDark ? "14, 165, 233" : "29, 78, 216";
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
           key="hyper-reactor-loader"
-          // Mantenemos bg-transparent y nos aseguramos de que no haya colores de fondo
-          className="fixed inset-0 z-[999999] flex items-center justify-center overflow-hidden pointer-events-none bg-transparent"
+          className={`fixed inset-0 z-[999999] flex items-center justify-center overflow-hidden pointer-events-none bg-transparent`}
           style={{ perspective: "1200px" }}
           exit={{ opacity: 0, transition: { duration: 1.5 } }}
         >
 
-          {/* SUPERNOVA FINAL (Mantenemos el destello porque es un efecto de luz, no un fondo) */}
+          {/* SUPERNOVA FINAL */}
           <AnimatePresence>
             {isComplete && (
               <motion.div
-                initial={{ scale: 0, opacity: 1, background: "radial-gradient(circle, #fff 0%, #0ea5e9 40%, transparent 80%)" }}
+                initial={{ scale: 0, opacity: 1, background: `radial-gradient(circle, #fff 0%, ${themeBaseColor} 40%, transparent 80%)` }}
                 animate={{ scale: 20, opacity: 0 }}
                 transition={{ duration: 1.2, ease: "easeOut" }}
                 className="absolute inset-0 flex items-center justify-center z-[100]"
@@ -106,7 +116,7 @@ const LoaderWeb = ({ isVisible = true }) => {
 
           {/* CONTENEDOR 3D FLOTANTE */}
           <motion.div 
-            className="relative flex items-center justify-center w-[800px] h-[800px] mix-blend-screen"
+            className={`relative flex items-center justify-center w-[800px] h-[800px] ${isDark ? 'mix-blend-screen' : 'mix-blend-multiply'}`}
             animate={{ 
               x: shakeOffset, 
               y: shakeOffset,
@@ -122,7 +132,7 @@ const LoaderWeb = ({ isVisible = true }) => {
             }}
           >
 
-            {/* Nebulosa Dinámica de Fondo (Brillos de luz, no bloquean el fondo) */}
+            {/* Nebulosa Dinámica de Fondo */}
             <div className="absolute inset-0 pointer-events-none opacity-40">
               {geometry.nebulas.map((nebula) => (
                 <motion.div
@@ -154,7 +164,7 @@ const LoaderWeb = ({ isVisible = true }) => {
               {geometry.vortexParticles.map((p) => (
                 <motion.div
                   key={`vortex-${p.id}`}
-                  className="absolute top-1/2 left-1/2 bg-white rounded-full shadow-[0_0_8px_#0ea5e9]"
+                  className={`absolute top-1/2 left-1/2 bg-white rounded-full ${isDark ? 'shadow-[0_0_8px_#0ea5e9]' : 'shadow-[0_0_8px_#2563eb]'}`}
                   style={{ width: p.size, height: p.size, transformOrigin: '0 0' }}
                   animate={{
                     rotate: [`${p.angle}rad`, `${p.angle + Math.PI * 2}rad`],
@@ -211,7 +221,7 @@ const LoaderWeb = ({ isVisible = true }) => {
                     key={`arc-${arc.id}`}
                     d="M -120 0 Q -60 -40 0 -130 T 120 0"
                     fill="none"
-                    stroke="#fff"
+                    stroke={isDark ? "#fff" : themeBaseColor}
                     strokeWidth="1.5"
                     filter="url(#hyperGlow)"
                     transform={`rotate(${arc.rotate}) scale(${arc.scale})`}
@@ -223,11 +233,11 @@ const LoaderWeb = ({ isVisible = true }) => {
 
                 {/* ANILLO DE CARGA DE PLASMA */}
                 <g transform="rotate(-90)">
-                  <circle r={RADIUS_MAIN} fill="none" stroke="rgba(14, 165, 233, 0.1)" strokeWidth="18" />
+                  <circle r={RADIUS_MAIN} fill="none" stroke={`rgba(${themeRgb}, 0.1)`} strokeWidth="18" />
                   <motion.circle
                     r={RADIUS_MAIN}
                     fill="none"
-                    stroke="#fff"
+                    stroke={isDark ? "#fff" : themeBaseColor}
                     strokeLinecap="round"
                     filter="url(#hyperGlow)"
                     style={{
@@ -265,8 +275,8 @@ const LoaderWeb = ({ isVisible = true }) => {
                   >
                     <polygon
                       points="0,-50 43,-25 43,25 0,50 -43,25 -43,-25" 
-                      fill={i === 0 ? `rgba(14, 165, 233, ${0.1 + progress/200})` : "none"}
-                      stroke={i % 3 === 0 ? "#fff" : coreGlow}
+                      fill={i === 0 ? `rgba(${themeRgb}, ${0.1 + progress/200})` : "none"}
+                      stroke={i % 3 === 0 ? (isDark ? "#fff" : themeBaseColor) : coreGlow}
                       strokeWidth={1.5}
                       transform={`scale(${0.3 + i * 0.2}) rotate(${i * 15})`}
                       filter={i > 4 ? "url(#hyperGlow)" : ""}
@@ -278,7 +288,7 @@ const LoaderWeb = ({ isVisible = true }) => {
                 {/* NÚCLEO SINGULARIDAD */}
                 <motion.circle 
                   r="15" 
-                  fill="#fff" 
+                  fill={isDark ? "#fff" : themeBaseColor}
                   filter="url(#hyperGlow)"
                   animate={{ scale: isCritical ? [1, 2, 1] : [1, 1.2, 1] }}
                   transition={{ duration: 0.2 / speedMultiplier, repeat: Infinity }}
@@ -289,7 +299,7 @@ const LoaderWeb = ({ isVisible = true }) => {
 
             {/* Destello Numérico Central */}
             <motion.div 
-              className="absolute text-white/50 font-mono text-xs tracking-[0.3em] z-50 mix-blend-overlay"
+              className={`absolute font-mono text-xs tracking-[0.3em] z-50 mix-blend-overlay ${isDark ? 'text-white/50' : 'text-blue-900/50'}`}
               animate={{ opacity: isCritical ? [0.2, 1, 0.2] : 0.5 }}
               transition={{ duration: 0.1, repeat: Infinity }}
             >

@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// Importamos tu contexto
 import { useApp } from '@app/context/appContext';
 
 export default function EncabezadoSeccion({ 
@@ -9,7 +8,6 @@ export default function EncabezadoSeccion({
   tituloHighlight,
   align = "left" 
 }) {
-  // Extraemos el estado del tema
   const { isDark } = useApp();
 
   const alignClasses = {
@@ -31,10 +29,10 @@ export default function EncabezadoSeccion({
   };
 
   return (
-    <div className={`flex flex-col mb-16 pointer-events-none select-none w-full relative ${alignClasses[align]}`}>
+    <div className={`flex flex-col mb-16 w-full relative ${alignClasses[align]}`}>
       
       {/* --- 1. SUBTÍTULO SUPERIOR --- */}
-      <div className={`flex items-center gap-4 mb-4 ${align === "right" ? "flex-row-reverse" : ""} ${justifyClasses[align]}`}>
+      <div className={`flex items-center gap-4 mb-4 select-none pointer-events-none ${align === "right" ? "flex-row-reverse" : ""} ${justifyClasses[align]}`}>
         <div className="relative h-[1px] w-12 bg-main-border overflow-hidden hidden md:block shrink-0 opacity-80">
           <motion.div 
             initial={{ left: "-100%" }}
@@ -74,7 +72,10 @@ export default function EncabezadoSeccion({
         {/* ======================================================== */}
         {/* ANIMACIÓN CIRCULAR SCI-FI */}
         {/* ======================================================== */}
-        <div className={`absolute top-1/2 -translate-y-1/2 flex justify-center items-center -z-10 mix-blend-screen dark:mix-blend-screen ${
+        {/* 2. FIX MODO CLARO Y Z-INDEX: Ajuste dinámico de mix-blend y opacidad. Z-index seguro */}
+        <div className={`absolute top-1/2 -translate-y-1/2 flex justify-center items-center pointer-events-none select-none z-0 ${
+          isDark ? 'mix-blend-screen opacity-100' : 'mix-blend-multiply opacity-40'
+        } ${
           align === "left" ? "-left-2 md:-left-6" : align === "right" ? "-right-2 md:-right-6" : "left-1/2 -translate-x-1/2"
         }`}>
           
@@ -135,35 +136,39 @@ export default function EncabezadoSeccion({
         {/* ======================================================== */}
 
         {/* CONTENEDOR DEL TEXTO */}
-        <div className={`relative py-2 pb-4 overflow-visible w-full flex ${justifyClasses[align]} z-10`}>
+        <div className={`relative py-4 w-full flex ${justifyClasses[align]} z-10 overflow-visible`}>
           <motion.h2 
-            initial={{ y: "50%", opacity: 0, skewY: 5 }}
-            whileInView={{ y: 0, opacity: 1, skewY: 0 }}
+            initial={{ y: "30%", opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className={`text-3xl lg:text-5xl font-black tracking-tighter uppercase leading-snug flex flex-wrap gap-x-3 w-full transition-colors duration-300 ${justifyClasses[align]}`}
+            className={`text-3xl lg:text-5xl font-black tracking-tighter uppercase leading-relaxed flex flex-wrap items-baseline gap-x-3 w-full transition-colors duration-300 ${justifyClasses[align]}`}
           >
             {/* Título Principal */}
-            <span className={`opacity-100 relative z-20 ${isDark ? 'text-white' : 'text-blue-950'}`}>
+            <span className={`relative z-20 shrink-0 ${isDark ? 'text-white' : 'text-blue-950'}`}>
               {tituloPrincipal}
             </span>
             
-            {/* Título Highlight - Gradiente dinámico según isDark */}
+            {/* Título Highlight */}
             <motion.span 
-              initial={{ opacity: 0, filter: "blur(12px)", x: 20 }}
+              initial={{ opacity: 0, filter: "blur(12px)", x: 40 }} 
               whileInView={{ opacity: 1, filter: "blur(0px)", x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-              className={`relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text z-20 transition-all duration-300 bg-gradient-to-r ${
+              transition={{ 
+                duration: 1.2, 
+                delay: 0.2, 
+                ease: [0.34, 1.56, 0.64, 1]
+              }}
+              className={`relative italic font-extrabold lowercase tracking-normal text-transparent bg-clip-text z-20 px-2 pb-3 -mb-3 transition-all duration-300 bg-gradient-to-r ${
                 isDark 
-                  ? 'from-[#3b82f6] via-[#00f6ff] to-[#2563eb]' // Modo Oscuro: Neón Brillante
-                  : 'from-blue-800 via-blue-600 to-indigo-900' // Modo Claro: Azules profundos y vibrantes
+                  ? 'from-[#3b82f6] via-[#00f6ff] to-[#2563eb]' 
+                  : 'from-blue-800 via-blue-600 to-indigo-900' 
               }`}
             >
               {tituloHighlight}.
             </motion.span>
           </motion.h2>
-        </div>
+        </div>       
 
       </div>
     </div>

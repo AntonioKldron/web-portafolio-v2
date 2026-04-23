@@ -8,9 +8,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    /* ✅ Usa clip en lugar de hidden. Clip corta sin crear barras de scroll */
     overflow-x: clip; 
-    /* ✅ Evita el efecto rebote "goma" en iOS que parece un doble scroll */
     overscroll-behavior-y: none; 
   }
   :root {
@@ -23,7 +21,7 @@
     --color-bg-card: #ffffff;        
     --color-border: #e2e8f0;         
 
-    --color-text-right: #08009a;     
+    --color-text-right: #060074;     
     --color-text-card-base: #002c8c;  
     --color-text-card-muted: #001c44; 
     --color-primary-accent: #2563eb;  
