@@ -18,7 +18,7 @@ const baseData = {
       dt.python, dt.django, dt.djangorest, dt.fastapi, dt.sqlserver, dt.sql,
       dt.postgresql, dt.docker, dt.linux, dt.git, dt.gitlab, 
       dt.javascript, dt.angular, dt.intelisis, dt.json, dt.postman,
-      dt.typescript, dt.xml, dt.api, dt.html, dt.css,
+      dt.typescript, dt.xml, dt.api, dt.html, dt.css, dt.scss,
       dt.csharp, dt.netframework, dt.php, dt.codeigniter, dt.jquery
     ],
     proyectos: [ 
