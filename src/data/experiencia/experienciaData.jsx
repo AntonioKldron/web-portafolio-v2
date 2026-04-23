@@ -33,7 +33,7 @@ const baseData = {
       { tecnologias: [dt.sql, dt.sqlserver, dt.intelisis], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
       { tecnologias: [dt.sql,dt.sqlserver, dt.json, dt.api, dt.intelisis], repositorio: "/404" },
-      { tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css], repositorio: "/404" },
+      { tecnologias: [dt.angular, dt.javascript, dt.typescript, dt.html, dt.css, dt.scss], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.djangorest, dt.django, dt.python, dt.api, dt.json, dt.docker, dt.linux], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.xml, dt.api, dt.csharp, dt.netframework], repositorio: "/404" },
       { tecnologias: [dt.sql, dt.sqlserver, dt.php, dt.jquery, dt.javascript, dt.css, dt.html, dt.codeigniter], repositorio: "/404" },
