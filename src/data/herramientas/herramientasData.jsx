@@ -18,12 +18,12 @@ export const herramientasCategorias = [
   { 
     id: 'cat-2-backend', 
     icon: <FaCogs />, 
-    items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest].filter(Boolean) 
+    items: [dt.nodejs, dt.fastapi, dt.django, dt.djangorest, dt.netframework, dt.nestjs].filter(Boolean) 
   },
   { 
     id: 'cat-3-frontend', 
     icon: <FaReact />, 
-    items: [dt.react, dt.vue, dt.tailwind, dt.html, dt.css, dt.bootstrap, dt.astro].filter(Boolean) 
+    items: [dt.react, dt.vue, dt.angular, dt.tailwind, dt.html, dt.css, dt.bootstrap, dt.astro].filter(Boolean) 
   },
   { 
     id: 'cat-4-meta-frameworks', 
