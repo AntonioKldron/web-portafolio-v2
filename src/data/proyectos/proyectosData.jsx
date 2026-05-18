@@ -51,7 +51,7 @@ const proyectosItems = [
     id: 'PROY_02',
     imagen: '', 
     imagenes: [],
-    tecnologias: [dt.react, dt.supabase, dt.nodejs, dt.tailwind, dt.docker, dt.javascript].filter(Boolean),
+    tecnologias: [dt.react, dt.supabase, dt.nodejs, dt.tailwind, dt.docker, dt.javascript, dt.aws].filter(Boolean),
     urlSitio: 'https://techani.net/',
     urlRepositorio: 'https://github.com/alfonsonadamas/Techani-2.0.git',
     deploy: { estado: 'live', url: 'https://techani.net/' },
