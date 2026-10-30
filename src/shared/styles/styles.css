@@ -1,51 +1,64 @@
 @import "tailwindcss";
 
 /* =========================================================
-   1. BASE LAYER: Variables y Reseteos Globales
+   1. BASE LAYER
    ========================================================= */
 @layer base {
   html, body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: clip; 
-    overscroll-behavior-y: none; 
+    overflow-x: clip;
+    overscroll-behavior-y: none;
   }
+
   :root {
-    /* --- ☁️ MODO CLARO (Elegante y descansado) --- */
-    --color-bg-screen: #ffffff6c;      
-    --bg-grad-1: #e3e7ffba;            
-    --bg-grad-2: #a8bff8;            
-    --shadow-color: rgba(0, 61, 165, 0.87); 
+    /* --- ☁️ MODO CLARO --- */
+    --color-bg-screen: #ffffff6c;
+    --bg-grad-1: #e3e7ffba;
+    --bg-grad-2: #a8bff8;
+    --shadow-color: rgba(0, 61, 165, 0.87);
 
-    --color-bg-card: #ffffff;        
-    --color-border: #e2e8f0;         
+    --aurora-a: rgba(147, 197, 253, 0.55);
+    --aurora-b: rgba(199, 210, 254, 0.5);
+    --aurora-c: rgba(186, 230, 253, 0.45);
+    --particle-rgb: 37, 99, 235;
+    --grid-line: rgba(37, 99, 235, 0.06);
 
-    --color-text-right: #060074;     
-    --color-text-card-base: #002c8c;  
-    --color-text-card-muted: #001c44; 
-    --color-primary-accent: #2563eb;  
+    --color-bg-card: #ffffff;
+    --color-border: #e2e8f0;
+
+    --color-text-right: #060074;
+    --color-text-card-base: #002c8c;
+    --color-text-card-muted: #001c44;
+    --color-primary-accent: #2563eb;
   }
 
   .dark {
-    /* --- 🌌 MODO OSCURO (Profundo) --- */
-    --color-bg-screen: #020617; 
-    --bg-grad-1: #0f172a; 
-    --bg-grad-2: #020617; 
-    --shadow-color: #6366f1;         
+    /* --- 🌌 MODO OSCURO --- */
+    --color-bg-screen: #020617;
+    --bg-grad-1: #0f172a;
+    --bg-grad-2: #020617;
+    --shadow-color: #6366f1;
 
-    --color-bg-card: #0f172a;        
-    --color-border: #1e293b; 
+    --aurora-a: rgba(99, 102, 241, 0.35);
+    --aurora-b: rgba(14, 165, 233, 0.28);
+    --aurora-c: rgba(168, 85, 247, 0.25);
+    --particle-rgb: 129, 140, 248;
+    --grid-line: rgba(129, 140, 248, 0.07);
 
-    --color-text-right: #f8fafc;      
-    --color-text-card-base: #f8fafc;   
-    --color-text-card-muted: #cbd5e1;  
-    --color-primary-accent: #818cf8;   
+    --color-bg-card: #0f172a;
+    --color-border: #1e293b;
+
+    --color-text-right: #f8fafc;
+    --color-text-card-base: #f8fafc;
+    --color-text-card-muted: #cbd5e1;
+    --color-primary-accent: #818cf8;
   }
 }
 
 /* =========================================================
-   2. THEME: Conexión de variables a Tailwind
+   2. THEME
    ========================================================= */
 @theme {
   --color-card-bg: var(--color-bg-card);
@@ -58,49 +71,45 @@
 }
 
 /* =========================================================
-   3. COMPONENTS LAYER: Estilos específicos de tus componentes
+   3. COMPONENTS
    ========================================================= */
 @layer components {
-  /* --- APLICACIÓN EN LA CARTA (IZQUIERDA) --- */
+  /* --- CARTA (IZQUIERDA) --- */
   .informational-card-container {
     background-color: var(--color-bg-card) !important;
     color: var(--color-text-card-base);
   }
-
   .informational-card-container h1,
   .informational-card-container .text-main-text {
     color: var(--color-text-card-base) !important;
   }
-
   .informational-card-container nav a,
   .informational-card-container footer i,
   .informational-card-container p {
     color: var(--color-text-card-muted) !important;
   }
-
   .informational-card-container nav a:hover,
   .informational-card-container footer i:hover,
   .informational-card-container .text-primary-accent {
     color: var(--color-primary-accent) !important;
   }
 
-  /* --- APLICACIÓN EN EL CONTENIDO (DERECHA) --- */
-  .reveal-section h1, 
-  .reveal-section h2, 
-  .reveal-section p, 
+  /* --- CONTENIDO (DERECHA) --- */
+  .reveal-section h1,
+  .reveal-section h2,
+  .reveal-section p,
   .reveal-section li,
   .reveal-section span:not(.text-transparent) {
     color: var(--color-text-right) !important;
   }
-
-  .reveal-section strong, 
+  .reveal-section strong,
   .reveal-section b {
     color: var(--color-primary-accent) !important;
     font-weight: 700;
-    filter: drop-shadow(0 0 5px rgba(100, 116, 139, 0.15));
+    text-shadow: 0 0 12px color-mix(in srgb, var(--color-primary-accent) 35%, transparent);
   }
 
-  /* --- AJUSTES MÓVIL: FONDO SÓLIDO --- */
+  /* --- MÓVIL: tarjeta sólida sobre la escena --- */
   @media (max-width: 1023px) {
     .layout-principal-container {
       background-color: var(--color-bg-card) !important;
@@ -109,101 +118,115 @@
     }
   }
 
-  /* --- ANIMACIÓN ORIGINAL DE LUCES --- */
+  /* =======================================================
+     FONDO: ESCENA AURORA + PARTÍCULAS
+     ======================================================= */
   #floating-bg {
     position: fixed;
-    /* ✅ CAMBIO CLAVE: 100vw causa scroll horizontal. 100% se adapta perfectamente al contenedor padre */
+    inset: 0;
     width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
+    height: 100dvh;
     z-index: -1;
     pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    /* ✅ COLOR SÓLIDO POR DEFECTO (Aplica en Móvil) */
-    background: var(--color-bg-screen);
     overflow: hidden;
-  }
-
-  /* ✅ DEGRADADO SÓLO EN PANTALLAS GRANDES (PC) */
-  @media (min-width: 1024px) {
-    #floating-bg {
-      background: radial-gradient(circle at center, var(--bg-grad-1), var(--bg-grad-2));
-    }
+    background: var(--color-bg-screen);
+    opacity: 0;
+    transition: opacity 0.9s ease;
+    contain: strict;
   }
 
   #floating-bg.active {
     opacity: 1;
   }
 
-  .light {
+  /* Capa base: gradiente radial en PC, sólido en móvil */
+  #floating-bg::before {
+    content: "";
     position: absolute;
-    width: 0px;
-    background-color: var(--color-text-card-muted); 
-    box-shadow: var(--shadow-color) 0px 0px 20px 2px; 
-    top: 100vh;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    opacity: 0.75;
+    inset: 0;
+    background: var(--color-bg-screen);
+  }
+  @media (min-width: 1024px) {
+    #floating-bg::before {
+      background: radial-gradient(circle at 50% 35%, var(--bg-grad-1), var(--bg-grad-2));
+    }
   }
 
-  .x1 { animation: floatUp 4s infinite linear; transform: scale(1.0); }
-  .x2 { animation: floatUp 7s infinite linear; transform: scale(1.6); left: 15%; }
-  .x3 { animation: floatUp 2.5s infinite linear; transform: scale(0.5); left: -15%; }
-  .x4 { animation: floatUp 4.5s infinite linear; transform: scale(1.2); left: -34%; }
-  .x5 { animation: floatUp 8s infinite linear; transform: scale(2.2); left: -57%; }
-  .x6 { animation: floatUp 3s infinite linear; transform: scale(0.8); left: -81%; }
-  .x7 { animation: floatUp 5.3s infinite linear; transform: scale(3.2); left: 37%; }
-  .x8 { animation: floatUp 4.7s infinite linear; transform: scale(1.7); left: 62%; }
-  .x9 { animation: floatUp 4.1s infinite linear; transform: scale(0.9); left: 85%; }
+  /* Retículo sutil (estático, sin coste de animación) */
+  #floating-bg::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+
+  /* Aurora: blobs de gradiente animados solo con transform */
+  .aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    will-change: transform;
+    background: radial-gradient(circle, var(--blob-color) 0%, transparent 65%);
+    animation: aurora-drift var(--dur, 22s) ease-in-out infinite alternate;
+    animation-delay: var(--delay, 0s);
+  }
+  .aurora-blob--a { --blob-color: var(--aurora-a); width: 62vmax; height: 62vmax; top: -18vmax; left: -14vmax; --dur: 24s; }
+  .aurora-blob--b { --blob-color: var(--aurora-b); width: 56vmax; height: 56vmax; bottom: -20vmax; right: -12vmax; --dur: 30s; --delay: -6s; }
+  .aurora-blob--c { --blob-color: var(--aurora-c); width: 40vmax; height: 40vmax; top: 30%; left: 40%; --dur: 18s; --delay: -10s; }
+
+  @keyframes aurora-drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(6vmax, -4vmax, 0) scale(1.12); }
+    100% { transform: translate3d(-4vmax, 5vmax, 0) scale(0.95); }
+  }
+
+  /* Canvas de partículas */
+  #floating-bg canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* En móvil: aurora más suave y menos movimiento */
+  @media (max-width: 1023px) {
+    .aurora-blob { opacity: 0.6; }
+    .aurora-blob--c { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aurora-blob { animation: none; }
+  }
 }
 
 /* =========================================================
-   4. UTILITIES LAYER: Clases de utilidad
-   ========================================================= */
-/* =========================================================
-   4. UTILITIES LAYER: Clases de utilidad
+   4. UTILITIES
    ========================================================= */
 @layer utilities {
-  @keyframes floatUp {
-    0%   { top: 100vh; opacity: 0; }
-    25%  { opacity: 1; }
-    50%  { top: 50vh; opacity: 0.8; }
-    75%  { opacity: 1; }
-    100% { top: -10vh; opacity: 0; }
-  }
-
-  /* ✅ ENVOLVEMOS EL SCROLLBAR PARA QUE SOLO EXISTA EN PC (lg: 1024px+) */
+  /* Scrollbar solo en PC */
   @media (min-width: 1024px) {
     .custom-scrollbar {
       scrollbar-width: thin;
       scrollbar-color: rgba(148, 163, 184, 0.2) transparent;
     }
-
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 3px; 
-    }
-
+    .custom-scrollbar::-webkit-scrollbar { width: 3px; }
     .custom-scrollbar::-webkit-scrollbar-track {
-      background: transparent; 
-      margin-block: 40px; 
+      background: transparent;
+      margin-block: 40px;
     }
-
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background: rgba(148, 163, 184, 0.2);
       border-radius: 20px;
       transition: background 0.4s ease, opacity 0.4s ease;
     }
-
-    .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-      background: rgba(148, 163, 184, 0.4);
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:active {
-      background: rgba(148, 163, 184, 0.6);
-    }
+    .custom-scrollbar:hover::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.4); }
+    .custom-scrollbar::-webkit-scrollbar-thumb:active { background: rgba(148, 163, 184, 0.6); }
   }
 }
